@@ -46,7 +46,7 @@ export class ItemDatabaseComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.routeSub = this.activatedRoute.params.subscribe((params : Params) => {
-      if(params['item-search']) { this.getItems('blank', params['item-search']); }
+      if(params['item-search']) { this.getItems('blank', decodeURIComponent(params['item-search'])); }
       else { this.getItems('blank'); }
     });
   }
@@ -153,7 +153,7 @@ export class ItemDatabaseComponent implements OnInit, OnDestroy {
   }
 
   openItemDetails(id: string): void {
-    this.router.navigate(['item', id]);
+    this.router.navigate(['item', encodeURIComponent(id)]);
   }
 
   ngOnDestroy(): void {

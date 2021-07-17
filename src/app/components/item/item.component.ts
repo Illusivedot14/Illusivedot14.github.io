@@ -69,7 +69,7 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.routeSub = this.ActivatedRoute.params.subscribe((params : Params) => {
-      this.itemID = params['id'];
+      this.itemID = decodeURIComponent(params['id']);
       this.getItemDetails(this.itemID);
     })
   }
@@ -151,6 +151,9 @@ export class ItemComponent implements OnInit, OnDestroy {
     if(name.includes("Gatekeeper")) name = "Gatekeeper";
     if(name.includes("Mad Clown")) name = "Mad Clown";
     if(name.includes("Ragnaar")) name = "Ragnaar";
+    if(name.includes("Frostspider Queen")) name = "Spider Queen";
+    if(name.includes("Frostspider Lord")) name = "Mage Lord";
+    if(name.includes("Everfrost")) name = "Everfrost";
     const url_name = name.replace(/\s/g, '%20');
     return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + url_name + '%20Icon.jpg';
   }
@@ -165,7 +168,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
   openItemDetails(id: string): void {
     this.recipe = [];
-    this.router.navigate(['item', id]);
+    this.router.navigate(['item', encodeURIComponent(id)]);
   }
   ngOnDestroy(): void {
     if(this.itemSub)
