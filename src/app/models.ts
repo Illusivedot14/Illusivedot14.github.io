@@ -27,7 +27,7 @@ export interface RecipeWithOptions {
 }
 export interface BossWithRate {
     name: string;
-    rate: string;
+    rate: number;
 }
 
 export interface GradeWithColor {

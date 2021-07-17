@@ -5,7 +5,7 @@
         <mat-select
           panelClass="sort-select"
           [(ngModel)]="sort"
-          (selectionChange)="getItems(sort)"
+          (selectionChange)="getItems(sort, itemSearch)"
         >
           <mat-option value="name">Name</mat-option>
           <mat-option value="grade">Grade</mat-option>
@@ -16,7 +16,7 @@
       </mat-form-field>
   </div>
   <mat-button-toggle-group multiple #filterGroup="matButtonToggleGroup" class="filters">
-    <mat-button-toggle *ngFor="let item of getFilterNames(filterOptions);" [value]="item" (click)="getItems(sort, '', item)">{{item}}</mat-button-toggle>
+    <mat-button-toggle *ngFor="let filter of getFilterNames(filterOptions);" [value]="filter" (click)="getItems(sort, itemSearch, filter)">{{filter}}</mat-button-toggle>
   </mat-button-toggle-group>
 </div>
 

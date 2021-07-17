@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
 import { Item } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 
@@ -13,6 +12,7 @@ import { HttpService } from 'src/app/services/http.service';
 export class ItemDatabaseComponent implements OnInit, OnDestroy {
   public sort!: string;
   public items!: Array<Item>;
+  public itemSearch : string = '';
 
   public filterOptions: Record<string, boolean> = {"Armor" : false, "Head" : false, "Accessory" : false, "Weapon" : false, "Wing" : false, "Misc" : false, 
                                                    "Mat" : false, "Food" : false, "Token" : false, "Pickaxe": false, "Icon": false , "Special" : false, "Coin" : false};
@@ -46,8 +46,12 @@ export class ItemDatabaseComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.routeSub = this.activatedRoute.params.subscribe((params : Params) => {
-      if(params['item-search']) { this.getItems('blank', decodeURIComponent(params['item-search'])); }
-      else { this.getItems('blank'); }
+      if(params['item-search']) 
+      { 
+        this.itemSearch = decodeURIComponent(params['item-search']);
+        this.getItems('blank', decodeURIComponent(params['item-search'])); 
+      }
+      else { this.getItems(this.itemSearch); }
     });
   }
 
@@ -148,8 +152,7 @@ export class ItemDatabaseComponent implements OnInit, OnDestroy {
   getItemImageURL(name: string) {
     if(name.includes("Token")) { return 'https://raw.githubusercontent.com/sfarmani/twicons/master/Token.jpg'; }
     if(name.includes("Sealed") && name !== "Sealed Weapon") { name = name.substring(7) }
-    const url_name = name.replace(/\s/g, '%20');
-    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + url_name + '.jpg';
+    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(name) + '.jpg';
   }
 
   openItemDetails(id: string): void {

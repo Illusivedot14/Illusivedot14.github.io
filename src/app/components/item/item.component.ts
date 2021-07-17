@@ -101,7 +101,7 @@ export class ItemComponent implements OnInit, OnDestroy {
             if(!(key == "passive" || key == "active" || key == "spec")) {
               this.stats.push(key);
               this.possibleStats[key].value = value;
-              if(key.includes("percent")) this.possibleStats[key].value *= 100;
+              if(key.includes("percent")) this.possibleStats[key].value = Math.round(value * 10000) / 100;
               this.possibleStats[key].value = Number(value) > 0 ? '+' + this.possibleStats[key].value : this.possibleStats[key].value;
             }
           });
@@ -112,14 +112,14 @@ export class ItemComponent implements OnInit, OnDestroy {
         {
           for(let boss of this.item.dropped_by)
           {
-            this.rates.push(this.convertBoss(boss, this.item.droprate));
+            this.rates.push(this.convertBoss(boss, (Math.round(parseFloat(this.item.droprate) * 10000) / 100) ));
           }
         }
         else
         {
           for(let i = 0; i < this.item.dropped_by.length; i++)
           {
-            this.rates.push(this.convertBoss(this.item.dropped_by[i], this.item.droprate[i]));
+            this.rates.push(this.convertBoss(this.item.dropped_by[i], (Math.round(parseFloat(this.item.droprate[i]) * 10000) / 100)));
           }
         }
       }
@@ -140,22 +140,12 @@ export class ItemComponent implements OnInit, OnDestroy {
     var listOfAmounts = Object.values(item);
     return { currentIndex: 0, name: listOfNames, amount: listOfAmounts};
   }
-  convertBoss(name: string, rate: string): BossWithRate {
-    rate = Number(rate)*100 + '';
+  convertBoss(name: string, rate: number): BossWithRate {
     return {name : name, rate : rate};
   }
   getBossImageURL(name: string)
   {
-    if(name.includes("Jack")) name = "Jack";
-    if(name.includes("Angel")) name = "Guardian Angel";
-    if(name.includes("Gatekeeper")) name = "Gatekeeper";
-    if(name.includes("Mad Clown")) name = "Mad Clown";
-    if(name.includes("Ragnaar")) name = "Ragnaar";
-    if(name.includes("Frostspider Queen")) name = "Spider Queen";
-    if(name.includes("Frostspider Lord")) name = "Mage Lord";
-    if(name.includes("Everfrost")) name = "Everfrost";
-    const url_name = name.replace(/\s/g, '%20');
-    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + url_name + '%20Icon.jpg';
+    return 'https://raw.githubusercontent.com/Illusivedot14/twenemyicons/main/' + encodeURIComponent(name) + '.jpg';
   }
   getItemImageURL(name: string)
   {
@@ -163,8 +153,7 @@ export class ItemComponent implements OnInit, OnDestroy {
       return 'https://raw.githubusercontent.com/sfarmani/twicons/master/Token.jpg';
     }
     if(name.includes("Sealed") && name !== "Sealed Weapon") { name = name.substring(7) }
-    const url_name = name.replace(/\s/g, '%20');
-    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + url_name + '.jpg';
+    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(name) + '.jpg';
   }
   openItemDetails(id: string): void {
     this.recipe = [];
