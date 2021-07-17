@@ -149,6 +149,8 @@ export class ItemComponent implements OnInit, OnDestroy {
     if(name.includes("Jack")) name = "Jack";
     if(name.includes("Angel")) name = "Guardian Angel";
     if(name.includes("Gatekeeper")) name = "Gatekeeper";
+    if(name.includes("Mad Clown")) name = "Mad Clown";
+    if(name.includes("Ragnaar")) name = "Ragnaar";
     const url_name = name.replace(/\s/g, '%20');
     return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + url_name + '%20Icon.jpg';
   }
