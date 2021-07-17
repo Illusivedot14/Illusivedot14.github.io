@@ -112,12 +112,21 @@ export class ItemDatabaseComponent implements OnInit, OnDestroy {
     return items;
   }
   filterItems(items: Item[]): Item[] {
+    var checkIfButtonPressed = false;
+    for(var key in this.filterOptions)
+    {
+      if(this.filterOptions[key])
+      {
+        checkIfButtonPressed = true;
+      }
+    }
+    if(!checkIfButtonPressed) return items;
     items = items.filter((item) => {
       for(var key in this.filterOptions)
       {
-        if(this.filterOptions[key] && item.type.toUpperCase().includes(key.toUpperCase())) { return false; }
+        if(this.filterOptions[key] && item.type.toUpperCase().includes(key.toUpperCase())) { return true; }
       }
-      return true;
+      return false;
     });
     return items;
   }
