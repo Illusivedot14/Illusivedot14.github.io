@@ -62,8 +62,8 @@
                     <div class="item-used-in">
                         <ng-container *ngFor="let req of item.required_by">
                             <button mat-icon-button class="item-button" (click)="openItemDetails(req)" (mouseover)="changeItemDisplay(req)" (mouseout)="changeItemDisplay('Used In')">
-                                <img src="{{ getItemImageURL(req) }}"
-                                alt="thumbnail"/>
+                                <img class="item-button-image" src="{{ getItemImageURL(req) }}"
+                                alt="thumbnail" style="width:100%"/>
                                 </button>
                         </ng-container>
                     </div>
@@ -73,7 +73,7 @@
                 <span class="item-recipe-label">Ingredients</span>
                 <ng-container *ngFor="let ingredient of recipe">
                     <div class="item-recipe-descript-single" *ngIf='ingredient.name.length==1'>
-                        <button mat-icon-button class="item-button" (click)="openItemDetails(ingredient.name[ingredient.currentIndex])">
+                        <button mat-icon-button class="item-recipe-button" (click)="openItemDetails(ingredient.name[ingredient.currentIndex])">
                         <img src="{{ getItemImageURL(ingredient.name[ingredient.currentIndex]) }}"
                         alt="thumbnail"/>
                         </button>
@@ -81,7 +81,7 @@
                         <div class="item-recipe-filler-button"></div>
                     </div>
                     <div class="item-recipe-descript-multiple" *ngIf='ingredient.name.length>1;'>
-                            <button mat-icon-button class="item-button" (click)="openItemDetails(ingredient.name[ingredient.currentIndex])">
+                            <button mat-icon-button class="item-recipe-button" (click)="openItemDetails(ingredient.name[ingredient.currentIndex])">
                             <img src="{{ getItemImageURL(ingredient.name[ingredient.currentIndex]) }}"
                             alt="thumbnail"/>
                             </button>

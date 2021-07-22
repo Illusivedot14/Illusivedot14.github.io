@@ -11,13 +11,12 @@
     &-container {
       width: 40%;
       max-width: auto;
-      padding-left:2%;
-      padding-top: 1%;
+      padding-left:1%;
+      padding-top: 1.24%;
     }
     &-details-container {
       display: flex;
       flex-direction: row;
-      padding: .5%;
     }
     &-thumbnail {
       width: 168px;
@@ -37,7 +36,7 @@
     &-name {
       color: #fff;
       font-weight: 700;
-      font-size: 28px;
+      font-size: 25px;
       margin-bottom: 20px;
       text-overflow: ellipsis;
       align-self: center;
@@ -160,19 +159,20 @@
     &-used-in-container {
       display: flex;
       flex-flow: column;
+      padding: 2.8%;
     }
     &-used-in {
         display: flex;
         flex-flow: row wrap;
-        padding: 20px;
+        
     }
     &-used-in-label {
       color: #fff;
-      font-weight: 700;
-      font-size: 34px;
+      font-weight: 500;
+      font-size: 30px;
       display: inline-block;
       margin: 0 auto;
-      padding: 3px;
+      padding: 1%;
     }
 
     //Recipe
@@ -215,13 +215,23 @@
     &-button {
       cursor: pointer;
       align-self: center;
-      height: 128px;
-      max-height: 128px;
-      width: 128px;
-      max-width: 128px;;
+      height: 12.5%;
+      max-height: 12.5%;
+      width: 12.5%;
+      max-width: 12.5%;
+      position: relative;
+      z-index: 3;
+      display: block;
     }
     &-recipe-filler-button{
       width: 64px;
+    }
+    &-recipe-button {
+      align-self: center;
+      height: 128px;
+      max-height: 128px;
+      width: 128px;
+      max-width: 128px;
     }
     &-ingredient-swap {
       cursor: pointer;
@@ -260,7 +270,7 @@
       height: 128px;
       max-height: 128px;
       width: 128px;
-      max-width: 128px;;
+      max-width: 128px;
     }
     &-drop-details {
       color: #fff;
