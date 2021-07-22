@@ -49,12 +49,12 @@
                                 <span class="item-spec">※ {{ line }}</span>
                             </ng-container>
                         </div>
-                    </div>
-                    <div class="item-notes-container" *ngIf='item.notes'>
-                        <p class="item-notes-label">Notes</p>
-                        <ng-container *ngFor="let line of item.notes">
-                            <span class="item-note">※ {{ line }}</span>
-                        </ng-container>
+                        <div class="item-notes-container" *ngIf='item.notes'>
+                            <p class="item-notes-label">Notes</p>
+                            <ng-container *ngFor="let line of item.notes">
+                                <span class="item-note">※ {{ line }}</span>
+                            </ng-container>
+                        </div>
                     </div>
                 </div>
                 <div class="item-used-in-container" *ngIf="item.required_by">
