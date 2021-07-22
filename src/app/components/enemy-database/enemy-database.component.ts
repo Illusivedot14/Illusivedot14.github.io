@@ -30,15 +30,15 @@ export class EnemyDatabaseComponent implements OnInit {
     });
   }
   getEnemies(): void {
-    // this.enemySub = this._enemyService.getEnemies().subscribe(data => {
-    //   this.enemies = data;
-    //   this.mobs   = this.enemies.filter(x => x.category == "Mob");
-    //   this.fields = this.enemies.filter(x => x.category == "Field");
-    //   this.minors = this.enemies.filter(x => x.category == "Minor" && x.type == "boss");
-    //   this.mids   = this.enemies.filter(x => x.category == "Mid" && x.type == "boss");
-    //   this.highs  = this.enemies.filter(x => x.category == "High" && x.type == "boss");
-    //   this.ends   = this.enemies.filter(x => x.category == "Endgame" && x.type == "boss");
-    // });
+    this.enemySub = this._enemyService.getEnemies().subscribe(data => {
+      this.enemies = data;
+      this.mobs   = this.enemies.filter(x => x.category == "Mob");
+      this.fields = this.enemies.filter(x => x.category == "Field");
+      this.minors = this.enemies.filter(x => x.category == "Minor" && x.type == "boss");
+      this.mids   = this.enemies.filter(x => x.category == "Mid" && x.type == "boss");
+      this.highs  = this.enemies.filter(x => x.category == "High" && x.type == "boss");
+      this.ends   = this.enemies.filter(x => x.category == "Endgame" && x.type == "boss");
+    });
   }
   getEnemyImageURL(name: string)
   {
