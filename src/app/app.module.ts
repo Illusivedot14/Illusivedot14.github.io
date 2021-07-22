@@ -19,6 +19,7 @@ import { ItemComponent } from './components/item/item.component';
 import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { EnemyDatabaseComponent } from './components/enemy-database/enemy-database.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     SearchBarComponent,
     HomeComponent,
     ItemDatabaseComponent,
-    ItemComponent
+    ItemComponent,
+    EnemyDatabaseComponent
   ],
   imports: [
     BrowserModule,

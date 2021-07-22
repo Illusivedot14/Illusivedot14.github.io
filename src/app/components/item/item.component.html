@@ -1,102 +1,113 @@
 <div class="item">
-    <ng-container class="item" *ngIf="item">
-        <div class="item-container">
-            <div class="item-details-container">
-                <img class="item-thumbnail" *ngIf="item.name" src="{{ getItemImageURL(item.name) }}" alt="thumbnail" />
-                <div class="item-content">
-                    <span class="item-name">{{item.name}}</span>
-                    <div class="item-descript">
-                        <span class="item-rank"  *ngIf="item.rank" [style.color]="item.color">{{ item.rank }}&nbsp;</span>
-                        <span class="item-level" *ngIf="item.level">Lvl. {{ item.level }}&nbsp;</span>
-                        <span class="item-grade"  *ngIf="item.grade" [style.color]="grade[item.grade].color">{{ grade[item.grade].name }}&nbsp;</span>
-                        <span class="item-type"  *ngIf="item.type" >{{ item.type }}</span>
+    <div class ="back-button-container">
+        <button class="back-button" mat-icon-button class="back-button" (click)="returnToDatabase()">
+            <img class="item-swap-button"
+            src="https://raw.githubusercontent.com/sfarmani/twicons/master/GoBack.jpg"
+            style="width:64px;height:64px;"
+            alt="thumbnail"/>
+        </button>
+        <p class="back-button-label">Return to Items</p>
+    </div>
+    <div class="item-large-container">
+        <ng-container *ngIf="item">
+            <div class="item-container">
+                <div class="item-details-container">
+                    <img class="item-thumbnail" *ngIf="item.name" src="{{ getItemImageURL(item.name) }}" alt="thumbnail" />
+                    <div class="item-content">
+                        <span class="item-name">{{item.name}}</span>
+                        <div class="item-descript">
+                            <span class="item-rank"  *ngIf="item.rank" [style.color]="item.color">{{ item.rank }}&nbsp;</span>
+                            <span class="item-level" *ngIf="item.level">Lvl. {{ item.level }}&nbsp;</span>
+                            <span class="item-grade"  *ngIf="item.grade" [style.color]="grade[item.grade].color">{{ grade[item.grade].name }}&nbsp;</span>
+                            <span class="item-type"  *ngIf="item.type" >{{ item.type }}</span>
+                        </div>
+                        <p class="item-quote">{{ item.description }}</p>
                     </div>
-                    <p class="item-quote">{{ item.description }}</p>
+                </div>
+                <div class="item-stats-outer-container">
+                    <div class="item-details-padding"></div>
+                    <div class="item-attributes" *ngIf=item.stats>
+                        <div class="item-stat-container">
+                            <ng-container *ngFor="let stat of stats">
+                                <span class="item-stat" [style.color]="possibleStats[stat].color">∴ {{ possibleStats[stat].value }}{{ possibleStats[stat].name }}</span>
+                            </ng-container>
+                        </div>
+                        <div class="item-passive-container" *ngIf='passive.length > 0'>
+                            <p class="item-passive-label">Passive</p>
+                            <ng-container *ngFor="let line of passive">
+                                <span class="item-passive">⁘ {{ line }}</span>
+                            </ng-container>
+                        </div>
+                        <div class="item-active-container" *ngIf='active.length > 0'> 
+                            <p class="item-active-label">Active</p>
+                            <ng-container *ngFor="let line of active">
+                                <span class="item-active">❖ {{ line }}</span>
+                            </ng-container>
+                        </div>
+                        <div class="item-spec-container" *ngIf='spec.length > 0'>
+                            <ng-container *ngFor="let line of spec">
+                                <span class="item-spec">※ {{ line }}</span>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="item-notes-container" *ngIf='item.notes'>
+                        <p class="item-notes-label">Notes</p>
+                        <ng-container *ngFor="let line of item.notes">
+                            <span class="item-note">※ {{ line }}</span>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="item-used-in-container" *ngIf="item.required_by">
+                    <span class="item-used-in-label">{{ display }}</span>
+                    <div class="item-used-in">
+                        <ng-container *ngFor="let req of item.required_by">
+                            <button mat-icon-button class="item-button" (click)="openItemDetails(req)" (mouseover)="changeItemDisplay(req)" (mouseout)="changeItemDisplay('Used In')">
+                                <img src="{{ getItemImageURL(req) }}"
+                                alt="thumbnail"/>
+                                </button>
+                        </ng-container>
+                    </div>
                 </div>
             </div>
-            <div class="item-stats-outer-container">
-                <div class="item-details-padding"></div>
-                <div class="item-attributes" *ngIf=item.stats>
-                    <div class="item-stat-container">
-                        <ng-container *ngFor="let stat of stats">
-                            <span class="item-stat" [style.color]="possibleStats[stat].color">∴ {{ possibleStats[stat].value }}{{ possibleStats[stat].name }}</span>
-                        </ng-container>
-                    </div>
-                    <div class="item-passive-container" *ngIf='passive.length > 0'>
-                        <p class="item-passive-label">Passive</p>
-                        <ng-container *ngFor="let line of passive">
-                            <span class="item-passive">⁘ {{ line }}</span>
-                        </ng-container>
-                    </div>
-                    <div class="item-active-container" *ngIf='active.length > 0'> 
-                        <p class="item-active-label">Active</p>
-                        <ng-container *ngFor="let line of active">
-                            <span class="item-active">❖ {{ line }}</span>
-                        </ng-container>
-                    </div>
-                    <div class="item-spec-container" *ngIf='spec.length > 0'>
-                        <ng-container *ngFor="let line of spec">
-                            <span class="item-spec">※ {{ line }}</span>
-                        </ng-container>
-                    </div>
-                </div>
-                <div class="item-notes-container" *ngIf='item.notes'>
-                    <p class="item-notes-label">Notes</p>
-                    <ng-container *ngFor="let line of item.notes">
-                        <span class="item-note">※ {{ line }}</span>
-                    </ng-container>
-                </div>
-            </div>
-            <div class="item-used-in-container" *ngIf="item.required_by">
-                <span class="item-used-in-label">Used In</span>
-                <div class="item-used-in">
-                    <ng-container *ngFor="let img of item.required_by">
-                        <button mat-icon-button class="item-button" (click)="openItemDetails(img)">
-                            <img src="{{ getItemImageURL(img) }}"
-                            alt="thumbnail"/>
-                            </button>
-                    </ng-container>
-                </div>
-            </div>
-        </div>
-        <div class="item-recipe-container" *ngIf='recipe.length > 0'>
-            <span class="item-recipe-label">Ingredients</span>
-            <ng-container *ngFor="let ingredient of recipe">
-                <div class="item-recipe-descript-single" *ngIf='ingredient.name.length==1'>
-                    <button mat-icon-button class="item-button" (click)="openItemDetails(ingredient.name[ingredient.currentIndex])">
-                    <img src="{{ getItemImageURL(ingredient.name[ingredient.currentIndex]) }}"
-                    alt="thumbnail"/>
-                    </button>
-                    <p class="item-recipe-details"> x{{ingredient.amount[ingredient.currentIndex]}} {{ingredient.name[ingredient.currentIndex]}}</p>
-                    <div class="item-recipe-filler-button"></div>
-                </div>
-                <div class="item-recipe-descript-multiple" *ngIf='ingredient.name.length>1;'>
+            <div class="item-recipe-container" *ngIf='recipe.length > 0'>
+                <span class="item-recipe-label">Ingredients</span>
+                <ng-container *ngFor="let ingredient of recipe">
+                    <div class="item-recipe-descript-single" *ngIf='ingredient.name.length==1'>
                         <button mat-icon-button class="item-button" (click)="openItemDetails(ingredient.name[ingredient.currentIndex])">
                         <img src="{{ getItemImageURL(ingredient.name[ingredient.currentIndex]) }}"
                         alt="thumbnail"/>
                         </button>
-                    <p class="item-recipe-details"> x{{ingredient.amount[ingredient.currentIndex]}} {{ingredient.name[ingredient.currentIndex]}}</p>
-                    <button mat-icon-button class="item-ingredient-swap" (click)='ingredient.currentIndex = incrementIndex(ingredient.currentIndex,ingredient.name.length)'>
-                        <img class="item-swap-button"
-                        src="https://static.wikia.nocookie.net/wowpedia/images/4/4f/BTNSelectUnit.png"
-                        style="width:64px;height:64px;"
+                        <p class="item-recipe-details"> x{{ingredient.amount[ingredient.currentIndex]}} {{ingredient.name[ingredient.currentIndex]}}</p>
+                        <div class="item-recipe-filler-button"></div>
+                    </div>
+                    <div class="item-recipe-descript-multiple" *ngIf='ingredient.name.length>1;'>
+                            <button mat-icon-button class="item-button" (click)="openItemDetails(ingredient.name[ingredient.currentIndex])">
+                            <img src="{{ getItemImageURL(ingredient.name[ingredient.currentIndex]) }}"
+                            alt="thumbnail"/>
+                            </button>
+                        <p class="item-recipe-details"> x{{ingredient.amount[ingredient.currentIndex]}} {{ingredient.name[ingredient.currentIndex]}}</p>
+                        <button mat-icon-button class="item-ingredient-swap" (click)='ingredient.currentIndex = incrementIndex(ingredient.currentIndex,ingredient.name.length)'>
+                            <img class="item-swap-button"
+                            src="https://static.wikia.nocookie.net/wowpedia/images/4/4f/BTNSelectUnit.png"
+                            style="width:64px;height:64px;"
+                            alt="thumbnail"/>
+                        </button>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="item-boss-container" *ngIf='this.item.droprate'>
+                <span class="item-boss-label">Dropped By</span>
+                <ng-container *ngFor="let rate of rates">
+                    <div class="item-boss">
+                        <button mat-icon-button class="item-boss-button">
+                        <img src="{{ getBossImageURL(rate.name) }}"
                         alt="thumbnail"/>
-                    </button>
-                </div>
-            </ng-container>
-        </div>
-        <div class="item-boss-container" *ngIf='this.item.droprate'>
-            <span class="item-boss-label">Dropped By</span>
-            <ng-container *ngFor="let rate of rates">
-                <div class="item-boss">
-                    <button mat-icon-button class="item-boss-button">
-                    <img src="{{ getBossImageURL(rate.name) }}"
-                    alt="thumbnail"/>
-                    </button>
-                    <p class="item-drop-details"> {{ rate.name }}  ({{ rate.rate }}%) </p>
-                    <div class="item-recipe-filler-button"></div>
-                </div>
-            </ng-container>
-        </div>
-      </ng-container>
+                        </button>
+                        <p class="item-drop-details"> {{ rate.name }}  ({{ rate.rate }}%) </p>
+                        <div class="item-recipe-filler-button"></div>
+                    </div>
+                </ng-container>
+            </div>
+        </ng-container>
+    </div>
 </div>

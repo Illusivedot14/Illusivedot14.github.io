@@ -48,3 +48,22 @@ export interface GradeWithColor {
         color: '99FF99'
     }
 }
+
+
+//Enemy classes
+export interface Enemy {
+    id: string;
+    name: string;
+    category: string;
+    type: string;
+    limit: number;
+    respawn: string;
+    location: string;
+    conditions: string;
+    
+    timer: number;
+    drops: Array<string>;
+    droprates: Array<string>;
+    displayDrop: string;
+    
+}

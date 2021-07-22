@@ -13,7 +13,7 @@ export class ItemDatabaseComponent implements OnInit, OnDestroy {
   public sort!: string;
   public items!: Array<Item>;
   public itemSearch : string = '';
-
+  public buttonClicked: boolean = false;
   public filterOptions: Record<string, boolean> = {"Armor" : false, "Head" : false, "Accessory" : false, "Weapon" : false, "Wing" : false, "Misc" : false, 
                                                    "Mat" : false, "Food" : false, "Token" : false, "Pickaxe": false, "Icon": false , "Special" : false, "Coin" : false};
   public grade: any = {
@@ -49,7 +49,7 @@ export class ItemDatabaseComponent implements OnInit, OnDestroy {
       if(params['item-search']) 
       { 
         this.itemSearch = decodeURIComponent(params['item-search']);
-        this.getItems('blank', decodeURIComponent(params['item-search'])); 
+        this.getItems('blank', this.itemSearch); 
       }
       else { this.getItems(this.itemSearch); }
     });
@@ -58,12 +58,16 @@ export class ItemDatabaseComponent implements OnInit, OnDestroy {
   getItems(sort: string, search?: string, filterChange?: string): void {
 
     this.itemSub = this._itemService.getItems().subscribe(data => {
-      if(filterChange) { this.toggleOption(filterChange); }
+      if(filterChange) 
+      { 
+        this.toggleOption(filterChange); 
+      }
       this.items = data;
       if(search){ this.items = this.items.filter(x => x.name.toUpperCase().includes(search.toUpperCase())); }
       this.items = this.filterItems(this.items);
       this.items = this.sortItems(this.items, sort);
       for(let i = 0; i < this.items.length; i++) { this.items[i] = this.formatItemDetails(this.items[i]); }
+      this.buttonClicked = false;
     });
   }
 
@@ -142,6 +146,7 @@ export class ItemDatabaseComponent implements OnInit, OnDestroy {
 
   toggleOption(option: string)
   {
+    this.buttonClicked = true;
     this.filterOptions[option] = option in this.filterOptions ? !this.filterOptions[option] : this.filterOptions[option];
   }
   getFilterNames(filters: Object): string[]

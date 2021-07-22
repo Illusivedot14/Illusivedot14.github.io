@@ -1,0 +1,142 @@
+<div class="enemy-container">
+    <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="2" dynamicHeight>
+        <mat-tab label="Mob"> Mob WORK IN PROGRESS</mat-tab>
+        <mat-tab label="Field"> Field WORK IN PROGRESS</mat-tab>
+        <mat-tab label="Minor">
+          <div class="enemy-list">
+            <ng-container *ngFor="let enemy of minors; let m = index">
+              <div class="enemy-main" (click)="openEnemyDetails(enemy.name)">
+                <div class="enemy-details">
+                  <img class="enemy-thumbnail" *ngIf="enemy.name" src="{{ getEnemyImageURL(enemy.name) }}" alt="thumbnail" />
+                  <div class="enemy-description">
+                    <span class="enemy-name"  *ngIf="enemy.name">{{ enemy.name }}&nbsp;</span>  
+                    <span class="enemy-location"  *ngIf="enemy.location">Location: {{ enemy.location }}&nbsp;</span> 
+                    <span class="enemy-conditions"  *ngIf="enemy.conditions">Requirements: {{ enemy.conditions }}&nbsp;</span> 
+
+                    <span class="enemy-limit"  *ngIf="enemy.limit">Drop Limit: {{ enemy.limit }}&nbsp;</span>  
+                    <span class="enemy-respawn"  *ngIf="enemy.respawn">Respawns: {{ enemy.respawn }}&nbsp;</span>  
+                  </div>
+                </div>
+                
+                <div class="enemy-items">
+                  <div class="enemy-drops">
+                    <ng-container *ngFor="let drop of enemy.drops; let i = index">
+                      <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay('minor', m, i)" (mouseout)="changeItemDisplay('minor', m, -1)">
+                        <img src="{{ getItemImageURL(drop) }}"
+                        style="width:64px;height:64px;"
+                        alt="thumbnail"/>
+                        </button>
+                    </ng-container>
+                  </div>
+                  <div class="enemy-drops-display">
+                    Item: {{ enemy.displayDrop }}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </mat-tab>
+        <mat-tab label="Mid">
+          <div class="enemy-list">
+            <ng-container *ngFor="let enemy of mids; let m = index">
+              <div class="enemy-main" (click)="openEnemyDetails(enemy.name)">
+                <div class="enemy-details">
+                  <img class="enemy-thumbnail" *ngIf="enemy.name" src="{{ getEnemyImageURL(enemy.name) }}" alt="thumbnail" />
+                  <div class="enemy-description">
+                    <span class="enemy-name"  *ngIf="enemy.name">{{ enemy.name }}&nbsp;</span>  
+                    <span class="enemy-location"  *ngIf="enemy.location">Location: {{ enemy.location }}&nbsp;</span> 
+                    <span class="enemy-conditions"  *ngIf="enemy.conditions">Requirements: {{ enemy.conditions }}&nbsp;</span> 
+
+                    <span class="enemy-limit"  *ngIf="enemy.limit">Drop Limit: {{ enemy.limit }}&nbsp;</span>  
+                    <span class="enemy-respawn"  *ngIf="enemy.respawn">Respawns: {{ enemy.respawn }}&nbsp;</span>  
+                  </div>
+                </div>
+                
+                <div class="enemy-items">
+                  <div class="enemy-drops">
+                    <ng-container *ngFor="let drop of enemy.drops; let i = index">
+                      <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay('mid', m, i)" (mouseout)="changeItemDisplay('mid', m, -1)">
+                        <img src="{{ getItemImageURL(drop) }}"
+                        style="width:64px;height:64px;"
+                        alt="thumbnail"/>
+                        </button>
+                    </ng-container>
+                  </div>
+                  <div class="enemy-drops-display">
+                    Item: {{ enemy.displayDrop }}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </mat-tab>
+        <mat-tab label="Late">
+          <div class="enemy-list">
+            <ng-container *ngFor="let enemy of highs; let m = index">
+              <div class="enemy-main" (click)="openEnemyDetails(enemy.name)">
+                <div class="enemy-details">
+                  <img class="enemy-thumbnail" *ngIf="enemy.name" src="{{ getEnemyImageURL(enemy.name) }}" alt="thumbnail" />
+                  <div class="enemy-description">
+                    <span class="enemy-name"  *ngIf="enemy.name">{{ enemy.name }}&nbsp;</span>  
+                    <span class="enemy-location"  *ngIf="enemy.location">Location: {{ enemy.location }}&nbsp;</span> 
+                    <span class="enemy-conditions"  *ngIf="enemy.conditions">Requirements: {{ enemy.conditions }}&nbsp;</span> 
+
+                    <span class="enemy-limit"  *ngIf="enemy.limit">Drop Limit: {{ enemy.limit }}&nbsp;</span>  
+                    <span class="enemy-respawn"  *ngIf="enemy.respawn">Respawns: {{ enemy.respawn }}&nbsp;</span>  
+                  </div>
+                </div>
+                
+                <div class="enemy-items">
+                  <div class="enemy-drops">
+                    <ng-container *ngFor="let drop of enemy.drops; let i = index">
+                      <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay('high', m, i)" (mouseout)="changeItemDisplay('high', m, -1)">
+                        <img src="{{ getItemImageURL(drop) }}"
+                        style="width:64px;height:64px;"
+                        alt="thumbnail"/>
+                        </button>
+                    </ng-container>
+                  </div>
+                  <div class="enemy-drops-display">
+                    Item: {{ enemy.displayDrop }}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </mat-tab>
+        <mat-tab label="End">
+          <div class="enemy-list">
+            <ng-container *ngFor="let enemy of ends; let m = index">
+              <div class="enemy-main" (click)="openEnemyDetails(enemy.name)">
+                <div class="enemy-details">
+                  <img class="enemy-thumbnail" *ngIf="enemy.name" src="{{ getEnemyImageURL(enemy.name) }}" alt="thumbnail" />
+                  <div class="enemy-description">
+                    <span class="enemy-name"  *ngIf="enemy.name">{{ enemy.name }}&nbsp;</span>  
+                    <span class="enemy-location"  *ngIf="enemy.location">Location: {{ enemy.location }}&nbsp;</span> 
+                    <span class="enemy-conditions"  *ngIf="enemy.conditions">Requirements: {{ enemy.conditions }}&nbsp;</span> 
+
+                    <span class="enemy-limit"  *ngIf="enemy.limit">Drop Limit: {{ enemy.limit }}&nbsp;</span>  
+                    <span class="enemy-respawn"  *ngIf="enemy.respawn">Respawns: {{ enemy.respawn }}&nbsp;</span>  
+                  </div>
+                </div>
+                
+                <div class="enemy-items">
+                  <div class="enemy-drops">
+                    <ng-container *ngFor="let drop of enemy.drops; let i = index">
+                      <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay('end', m, i)" (mouseout)="changeItemDisplay('end', m, -1)">
+                        <img src="{{ getItemImageURL(drop) }}"
+                        style="width:64px;height:64px;"
+                        alt="thumbnail"/>
+                        </button>
+                    </ng-container>
+                  </div>
+                  <div class="enemy-drops-display">
+                    Item: {{ enemy.displayDrop }}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+</div>

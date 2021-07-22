@@ -64,6 +64,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   public rates:   Array<BossWithRate> = [];
   routeSub!: Subscription;
   itemSub!: Subscription;
+  public display: string = "Used In";
 
   constructor(private ActivatedRoute: ActivatedRoute, private router: Router, private _itemService: HttpService) { }
 
@@ -135,6 +136,9 @@ export class ItemComponent implements OnInit, OnDestroy {
   incrementIndex(index: number, max: number): number {
     return index < max-1 ? index + 1: 0;
   }
+  changeItemDisplay(name: string): void  {
+    this.display = name;
+  }
   convertRecipe(item: Object): RecipeWithOptions {
     var listOfNames = Object.keys(item);
     var listOfAmounts = Object.values(item);
@@ -183,6 +187,10 @@ export class ItemComponent implements OnInit, OnDestroy {
     }
     if(name.includes("Sealed") && name !== "Sealed Weapon") { name = name.substring(7) }
     return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(name) + '.jpg';
+  }
+  returnToDatabase(): void {
+    console.log("hi");
+    this.router.navigate(['item']);
   }
   openItemDetails(id: string): void {
     this.recipe = [];
