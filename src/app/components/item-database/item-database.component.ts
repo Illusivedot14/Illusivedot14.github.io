@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Item } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
+
 
 @Component({
   selector: 'app-item-database',
@@ -10,10 +11,11 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./item-database.component.scss']
 })
 export class ItemDatabaseComponent implements OnInit, OnDestroy {
-  public sort!: string;
-  public items!: Array<Item>;
+
+  public sort: string = "";
+  public items: Array<Item> = [];
   public itemSearch : string = '';
-  public buttonClicked: boolean = false;
+  public buttonClicked : boolean = false;
   public filterOptions: Record<string, boolean> = {"Armor" : false, "Head" : false, "Accessory" : false, "Weapon" : false, "Wing" : false, "Misc" : false, 
                                                    "Mat" : false, "Food" : false, "Token" : false, "Pickaxe": false, "Icon": false , "Special" : false, "Coin" : false};
   public grade: any = {
@@ -55,19 +57,13 @@ export class ItemDatabaseComponent implements OnInit, OnDestroy {
     });
   }
 
-  getItems(sort: string, search?: string, filterChange?: string): void {
-
+  getItems(sort: string, search?: string): void {
     this.itemSub = this._itemService.getItems().subscribe(data => {
-      if(filterChange) 
-      { 
-        this.toggleOption(filterChange); 
-      }
       this.items = data;
       if(search){ this.items = this.items.filter(x => x.name.toUpperCase().includes(search.toUpperCase())); }
       this.items = this.filterItems(this.items);
       this.items = this.sortItems(this.items, sort);
       for(let i = 0; i < this.items.length; i++) { this.items[i] = this.formatItemDetails(this.items[i]); }
-      this.buttonClicked = false;
     });
   }
 
@@ -143,17 +139,16 @@ export class ItemDatabaseComponent implements OnInit, OnDestroy {
     if(item.color) { item.color = '#' + item.color; }
     return item;
   }
-
-  toggleOption(option: string)
-  {
-    this.buttonClicked = true;
-    this.filterOptions[option] = option in this.filterOptions ? !this.filterOptions[option] : this.filterOptions[option];
-  }
   getFilterNames(filters: Object): string[]
   {
     return Object.keys(filters);
   }
-
+  toggleFilters(options: string) {
+    Object.keys(this.filterOptions).forEach(key => {
+        this.filterOptions[key] = options.includes(key);
+    });
+    this.getItems(this.sort, this.itemSearch);
+  }
   getItemImageURL(name: string) {
     if(name.includes("Token")) { return 'https://raw.githubusercontent.com/sfarmani/twicons/master/Token.jpg'; }
     if(name.includes("Sealed") && name !== "Sealed Weapon") { name = name.substring(7) }

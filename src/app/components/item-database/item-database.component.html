@@ -15,12 +15,10 @@
         </mat-select>
       </mat-form-field>
   </div>
-  <mat-button-toggle-group multiple #filterGroup="matButtonToggleGroup" class="filters" *ngIf="!buttonClicked">
-    <mat-button-toggle class="filter-button" *ngFor="let filter of getFilterNames(filterOptions);" [value]="filter" (click)="getItems(sort, itemSearch, filter)">{{filter}}</mat-button-toggle>
+  <mat-button-toggle-group multiple class="filters" #group="matButtonToggleGroup" (change)="toggleFilters(group.value)">
+    <mat-button-toggle class="filter-button" *ngFor="let filter of getFilterNames(filterOptions);" [value]="filter">{{filter}}</mat-button-toggle>
   </mat-button-toggle-group>
-  <mat-button-toggle-group multiple #filterGroup="matButtonToggleGroup" *ngIf="buttonClicked" class="filters" [disabled]="true">
-    <mat-button-toggle class="filter-button" *ngFor="let filter of getFilterNames(filterOptions);">{{filter}}</mat-button-toggle>
-  </mat-button-toggle-group>
+
 </div>
 
 <div class="items">

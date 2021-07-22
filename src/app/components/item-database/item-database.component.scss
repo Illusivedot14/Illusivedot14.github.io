@@ -10,9 +10,6 @@
     padding-left: 20px;
     
   }
-  [disabled]{
-    pointer-events: none;
-  }
 .filters {
   margin: 20px auto;
   padding-right: 20px;
@@ -20,11 +17,9 @@
 .mat-button-toggle-group {
   box-shadow: none;
 }
-
 .mat-button-toggle {
     border: 1px rgba(0,0,0,0) solid !important;
     margin-top: 5px !important;
-    padding: 0 5px !important;
     z-index: 3 !important;
     background-color: #464545 !important;
 }
@@ -38,11 +33,9 @@
 .mat-button-toggle-checked {
     border: 1px #000 solid !important;
     margin-top: 5px !important;
-    padding: 0 5px !important;
     z-index: 3 !important;
     background-color: #ffffff !important;
 }
-
 .mat-button-toggle-input {
     background-color: none !important;
     padding-left: 32px !important;
