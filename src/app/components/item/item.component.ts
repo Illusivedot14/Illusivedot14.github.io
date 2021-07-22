@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import {Location} from '@angular/common';
 import { Subscription } from 'rxjs';
 import { Item, RecipeWithOptions, BossWithRate } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
+
 
 @Component({
   selector: 'app-item',
@@ -66,7 +68,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   itemSub!: Subscription;
   public display: string = "Used In";
 
-  constructor(private ActivatedRoute: ActivatedRoute, private router: Router, private _itemService: HttpService) { }
+  constructor(private _location: Location, private ActivatedRoute: ActivatedRoute, private router: Router, private _itemService: HttpService) { }
 
   ngOnInit(): void {
     this.routeSub = this.ActivatedRoute.params.subscribe((params : Params) => {
@@ -188,9 +190,8 @@ export class ItemComponent implements OnInit, OnDestroy {
     if(name.includes("Sealed") && name !== "Sealed Weapon") { name = name.substring(7) }
     return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(name) + '.jpg';
   }
-  returnToDatabase(): void {
-    console.log("hi");
-    this.router.navigate(['item']);
+  returnToPrior(): void {
+    this._location.back();
   }
   openItemDetails(id: string): void {
     this.recipe = [];
