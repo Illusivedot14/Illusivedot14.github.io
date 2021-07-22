@@ -191,8 +191,12 @@ export class ItemComponent implements OnInit, OnDestroy {
     return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(name) + '.jpg';
   }
   returnToPrior(): void {
-    if(document.referrer && document.referrer != window.location.href) this._location.back();
-    else this.router.navigate(['item']);
+    if(document.referrer && document.referrer != window.location.href) {
+      this._location.back();
+    }
+    else {
+      this.router.navigate(['item']);
+    }
   }
   openItemDetails(id: string): void {
     this.recipe = [];
