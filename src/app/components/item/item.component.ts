@@ -191,10 +191,13 @@ export class ItemComponent implements OnInit, OnDestroy {
     return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(name) + '.jpg';
   }
   returnToPrior(): void {
-      this._location.back();
+    this.recipe = [];
+    this.display = "Used In";
+    this._location.back();
   }
   openItemDetails(id: string): void {
     this.recipe = [];
+    this.display = "Used In";
     this.router.navigate(['item', encodeURIComponent(id)]);
   }
   ngOnDestroy(): void {

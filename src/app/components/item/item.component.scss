@@ -81,6 +81,7 @@
     }
     &-details-padding {
       width: 168px;
+      min-width: 168px;
       height: 168px;
       resize: none;
     }
@@ -189,6 +190,7 @@
         margin-left: auto;
         padding-right:5%;
         padding-top: 1%;
+        padding-bottom: 1%;
         width:30%;
     }
     &-recipe-descript-single {
@@ -245,6 +247,7 @@
       color:#fff;
       margin-left: auto;
       padding-top: 1%;
+      padding-bottom: 1%;
       padding-right:5%;
       width:30%;
     }

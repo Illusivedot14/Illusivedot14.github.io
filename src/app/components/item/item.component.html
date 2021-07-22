@@ -26,8 +26,8 @@
                 </div>
                 <div class="item-stats-outer-container">
                     <div class="item-details-padding"></div>
-                    <div class="item-attributes" *ngIf=item.stats>
-                        <div class="item-stat-container">
+                    <div class="item-attributes">
+                        <div class="item-stat-container"  *ngIf='stats.length > 0'>
                             <ng-container *ngFor="let stat of stats">
                                 <span class="item-stat" [style.color]="possibleStats[stat].color">∴ {{ possibleStats[stat].value }}{{ possibleStats[stat].name }}</span>
                             </ng-container>
