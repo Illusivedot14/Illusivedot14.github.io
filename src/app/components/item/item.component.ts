@@ -195,6 +195,11 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.display = "Used In";
     this._location.back();
   }
+  openEnemyDetails(id: string): void {
+    this.recipe = [];
+    this.display = "Used In";
+    this.router.navigate(['enemy', this.findFilename(encodeURIComponent(id))]);
+  }
   openItemDetails(id: string): void {
     this.recipe = [];
     this.display = "Used In";

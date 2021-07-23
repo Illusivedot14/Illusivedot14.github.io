@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Enemy } from 'src/app/models';
+import { Enemy, Item } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -13,8 +13,10 @@ export class EnemyDatabaseComponent implements OnInit {
 
   private routeSub!: Subscription;
   private enemySub!: Subscription;
+  private itemsSub!: Subscription;
 
   public enemies  : Enemy[] = [];
+  public items    : Item[]  = [];
   public mobs     : Enemy[] = [];
   public fields   : Enemy[] = [];
   public minors   : Enemy[] = [];
@@ -32,12 +34,16 @@ export class EnemyDatabaseComponent implements OnInit {
   getEnemies(): void {
     this.enemySub = this._enemyService.getEnemies().subscribe(data => {
       this.enemies = data;
-      this.mobs   = this.enemies.filter(x => x.category == "Mob");
-      this.fields = this.enemies.filter(x => x.category == "Field");
-      this.minors = this.enemies.filter(x => x.category == "Minor" && x.type == "boss");
-      this.mids   = this.enemies.filter(x => x.category == "Mid" && x.type == "boss");
-      this.highs  = this.enemies.filter(x => x.category == "High" && x.type == "boss");
-      this.ends   = this.enemies.filter(x => x.category == "Endgame" && x.type == "boss");
+      this.itemsSub = this._enemyService.getItems().subscribe(itemData => { this.items = itemData })
+      for(let enemy of this.enemies)
+      {
+        if(enemy.category == "Mob") this.mobs.push(enemy);
+        else if(enemy.category == "Field") this.fields.push(enemy);
+        else if(enemy.category == "Minor"   && enemy.type == "boss") this.minors.push(enemy);
+        else if(enemy.category == "Mid"     && enemy.type == "boss") this.mids.push(enemy);
+        else if(enemy.category == "High"    && enemy.type == "boss") this.highs.push(enemy);
+        else if(enemy.category == "Endgame" && enemy.type == "boss") this.ends.push(enemy);
+      }
     });
   }
   getEnemyImageURL(name: string)
@@ -87,24 +93,23 @@ export class EnemyDatabaseComponent implements OnInit {
   openItemDetails(id: string): void {
     this.router.navigate(['item', encodeURIComponent(id)]);
   }
-  changeItemDisplay(category: string, e: number, index: number): void  {
-    switch(category){
-      case("minor"):
-        if(index == -1) this.minors[e].displayDrop = "";
-        else this.minors[e].displayDrop = this.minors[e].drops[index] +' ' + (Math.round(parseFloat(this.minors[e].droprates[index]) * 10000) / 100) + "%";
-        break;
-      case("mid"):
-        if(index == -1) this.mids[e].displayDrop = "";
-        else this.mids[e].displayDrop = this.mids[e].drops[index] +' ' + (Math.round(parseFloat(this.mids[e].droprates[index]) * 10000) / 100) + "%";
-        break;
-      case("high"):
-        if(index == -1) this.highs[e].displayDrop = "";
-        else this.highs[e].displayDrop = this.highs[e].drops[index] +' ' + (Math.round(parseFloat(this.highs[e].droprates[index]) * 10000) / 100) + "%";
-        break;
-      case("end"):
-        if(index == -1) this.ends[e].displayDrop = "";
-        else this.ends[e].displayDrop = this.ends[e].drops[index] +' ' + (Math.round(parseFloat(this.ends[e].droprates[index]) * 10000) / 100) + "%";
-        break;
+  changeItemDisplay(enemy: Enemy, drop: string): void  {
+    enemy.displayDrop = drop;
+    if(drop != "" && this.items) {
+      let item = this.items.find(x => x.name === drop);
+      if(item) {
+        if(item.droprate[0] == undefined) {
+          enemy.displayDrop += ' (' + (Math.round(parseFloat(item.droprate) * 10000) / 100) + "%)"
+        }
+        else {
+          for(let i = 0; i < item.dropped_by.length; i++) {
+            if(item.dropped_by[i] === enemy.name) {
+              enemy.displayDrop += ' (' + (Math.round(parseFloat(item.droprate[i]) * 10000) / 100) + "%)";
+              break;
+            }
+          }
+        }
+      }
     }
   }
 }

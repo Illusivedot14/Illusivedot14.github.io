@@ -54,6 +54,29 @@ export interface GradeWithColor {
 export interface Enemy {
     id: string;
     name: string;
+    color: string;
+    category: string;
+    type: string;
+    limit: number;
+    respawn: string;
+    location: string;
+    conditions: string;
+    stats: object;
+
+    notes: Array<string>;
+    drops: Array<string>;
+    spells: Array<string>;
+    minions: Array<string>;
+    displayDrop: string;
+
+    timer: number;
+    
+}
+
+
+export interface EnemySkills {
+    id: string;
+    name: string;
     category: string;
     type: string;
     limit: number;
@@ -63,7 +86,6 @@ export interface Enemy {
     
     timer: number;
     drops: Array<string>;
-    droprates: Array<string>;
     displayDrop: string;
     
 }

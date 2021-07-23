@@ -99,7 +99,7 @@
                 <span class="item-boss-label">Dropped By</span>
                 <ng-container *ngFor="let rate of rates">
                     <div class="item-boss">
-                        <button mat-icon-button class="item-boss-button">
+                        <button mat-icon-button class="item-boss-button" (click)="openEnemyDetails(rate.name)">
                         <img src="{{ getBossImageURL(rate.name) }}"
                         alt="thumbnail"/>
                         </button>

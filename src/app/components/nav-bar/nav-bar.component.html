@@ -1,0 +1,19 @@
+<mat-toolbar class='nav-container' color="primary">
+    <mat-toolbar-row>
+      <h1 class = 'logo' routerLink="/">TWRPG Guidebook</h1>
+      <span class="menu-spacer"></span>
+      <div>
+        <a mat-button [routerLink]="'/character'"> Characters </a>
+        <a mat-button [routerLink]="'/enemy'"> Enemies </a>
+        <a mat-button [routerLink]="'/item'"> Items </a>
+      </div>
+      <form class="nav-form" #form="ngForm" (ngSubmit)="onSubmitItem(form)" *ngIf='checkIfItems()'>
+        <input
+            class="nav-input"
+            name="nav"
+            ngModel
+            placeholder="Search 300+ Items!" />
+        <button class="nav-button">Search</button>
+    </form>
+    </mat-toolbar-row>
+</mat-toolbar>

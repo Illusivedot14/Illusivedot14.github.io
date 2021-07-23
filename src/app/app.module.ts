@@ -12,23 +12,28 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { HomeComponent } from './components/home/home.component';
 import { ItemDatabaseComponent } from './components/item-database/item-database.component';
 import { ItemComponent } from './components/item/item.component';
 import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
-import {MatButtonModule} from '@angular/material/button';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonModule} from '@angular/material/button';
+import { MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { EnemyDatabaseComponent } from './components/enemy-database/enemy-database.component';
+import { EnemyComponent } from './components/enemy/enemy.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchBarComponent,
     HomeComponent,
+    NavBarComponent,
     ItemDatabaseComponent,
     ItemComponent,
-    EnemyDatabaseComponent
+    EnemyDatabaseComponent,
+    EnemyComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,8 @@ import { EnemyDatabaseComponent } from './components/enemy-database/enemy-databa
     MatIconModule,
     MatSelectModule,
     MatButtonModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatToolbarModule
   ],
   providers: [
     {

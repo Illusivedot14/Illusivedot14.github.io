@@ -3,9 +3,8 @@
         <mat-tab label="Mob"> Mob WORK IN PROGRESS</mat-tab>
         <mat-tab label="Field"> Field WORK IN PROGRESS</mat-tab>
         <mat-tab label="Minor">
-          
           <div class="enemy-list">
-            <ng-container *ngFor="let enemy of minors; let m = index">
+            <ng-container *ngFor="let enemy of minors">
               <div class="enemy-main" (click)="openEnemyDetails(enemy.name)">
                 <div class="enemy-details">
                   <img class="enemy-thumbnail" *ngIf="enemy.name" src="{{ getEnemyImageURL(enemy.name) }}" alt="thumbnail" />
@@ -21,8 +20,8 @@
                 
                 <div class="enemy-items">
                   <div class="enemy-drops">
-                    <ng-container *ngFor="let drop of enemy.drops; let i = index">
-                      <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay('minor', m, i)" (mouseout)="changeItemDisplay('minor', m, -1)">
+                    <ng-container *ngFor="let drop of enemy.drops">
+                      <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay(enemy, drop)" (mouseout)="changeItemDisplay(enemy, '')">
                         <img src="{{ getItemImageURL(drop) }}"
                         style="width:64px;height:64px;"
                         alt="thumbnail"/>
@@ -39,8 +38,7 @@
         </mat-tab>
         <mat-tab label="Mid">
           <div class="enemy-list">
-            <ng-container *ngFor="let enemy of mids; let m = index">
-
+            <ng-container *ngFor="let enemy of mids">
               <div class="enemy-main" (click)="openEnemyDetails(enemy.name)">
                 <div class="enemy-details">
                   <img class="enemy-thumbnail" *ngIf="enemy.name" src="{{ getEnemyImageURL(enemy.name) }}" alt="thumbnail" />
@@ -56,8 +54,8 @@
                 
                 <div class="enemy-items">
                   <div class="enemy-drops">
-                    <ng-container *ngFor="let drop of enemy.drops; let i = index">
-                      <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay('mid', m, i)" (mouseout)="changeItemDisplay('mid', m, -1)">
+                    <ng-container *ngFor="let drop of enemy.drops">
+                      <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay(enemy, drop)" (mouseout)="changeItemDisplay(enemy, '')">
                         <img src="{{ getItemImageURL(drop) }}"
                         style="width:64px;height:64px;"
                         alt="thumbnail"/>
@@ -74,8 +72,7 @@
         </mat-tab>
         <mat-tab label="Late">
           <div class="enemy-list">
-            <ng-container *ngFor="let enemy of highs; let m = index">
-
+            <ng-container *ngFor="let enemy of highs">
               <div class="enemy-main" (click)="openEnemyDetails(enemy.name)">
                 <div class="enemy-details">
                   <img class="enemy-thumbnail" *ngIf="enemy.name" src="{{ getEnemyImageURL(enemy.name) }}" alt="thumbnail" />
@@ -91,8 +88,8 @@
                 
                 <div class="enemy-items">
                   <div class="enemy-drops">
-                    <ng-container *ngFor="let drop of enemy.drops; let i = index">
-                      <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay('high', m, i)" (mouseout)="changeItemDisplay('high', m, -1)">
+                    <ng-container *ngFor="let drop of enemy.drops">
+                      <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay(enemy, drop)" (mouseout)="changeItemDisplay(enemy, '')">
                         <img src="{{ getItemImageURL(drop) }}"
                         style="width:64px;height:64px;"
                         alt="thumbnail"/>
@@ -109,8 +106,7 @@
         </mat-tab>
         <mat-tab label="End">
           <div class="enemy-list">
-
-            <ng-container *ngFor="let enemy of ends; let m = index">
+            <ng-container *ngFor="let enemy of ends">
               <div class="enemy-main" (click)="openEnemyDetails(enemy.name)">
                 <div class="enemy-details">
                   <img class="enemy-thumbnail" *ngIf="enemy.name" src="{{ getEnemyImageURL(enemy.name) }}" alt="thumbnail" />
@@ -126,8 +122,8 @@
                 
                 <div class="enemy-items">
                   <div class="enemy-drops">
-                    <ng-container *ngFor="let drop of enemy.drops; let i = index">
-                      <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay('end', m, i)" (mouseout)="changeItemDisplay('end', m, -1)">
+                    <ng-container *ngFor="let drop of enemy.drops">
+                      <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay(enemy, drop)" (mouseout)="changeItemDisplay(enemy, '')">
                         <img src="{{ getItemImageURL(drop) }}"
                         style="width:64px;height:64px;"
                         alt="thumbnail"/>
