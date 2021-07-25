@@ -37,12 +37,13 @@ export class EnemyDatabaseComponent implements OnInit {
       this.itemsSub = this._enemyService.getItems().subscribe(itemData => { this.items = itemData })
       for(let enemy of this.enemies)
       {
+        enemy.color = "#" + enemy.color;
         if(enemy.category == "Mob") this.mobs.push(enemy);
         else if(enemy.category == "Field") this.fields.push(enemy);
-        else if(enemy.category == "Minor"   && enemy.type == "boss") this.minors.push(enemy);
-        else if(enemy.category == "Mid"     && enemy.type == "boss") this.mids.push(enemy);
-        else if(enemy.category == "High"    && enemy.type == "boss") this.highs.push(enemy);
-        else if(enemy.category == "Endgame" && enemy.type == "boss") this.ends.push(enemy);
+        else if(enemy.category == "Minor"   && enemy.type == "Boss") this.minors.push(enemy);
+        else if(enemy.category == "Mid"     && enemy.type == "Boss") this.mids.push(enemy);
+        else if(enemy.category == "High"    && enemy.type == "Boss") this.highs.push(enemy);
+        else if(enemy.category == "Endgame" && enemy.type == "Boss") this.ends.push(enemy);
       }
     });
   }

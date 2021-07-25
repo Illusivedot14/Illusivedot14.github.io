@@ -12,6 +12,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { HomeComponent } from './components/home/home.component';
 import { ItemDatabaseComponent } from './components/item-database/item-database.component';
 import { ItemComponent } from './components/item/item.component';
@@ -19,6 +20,7 @@ import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
 import { MatButtonModule} from '@angular/material/button';
 import { MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSliderModule} from '@angular/material/slider';
 import { EnemyDatabaseComponent } from './components/enemy-database/enemy-database.component';
 import { EnemyComponent } from './components/enemy/enemy.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -48,7 +50,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     MatSelectModule,
     MatButtonModule,
     MatButtonToggleModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatGridListModule,
+    MatSliderModule
   ],
   providers: [
     {

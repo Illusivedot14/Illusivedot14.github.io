@@ -1,1 +1,201 @@
-<p>enemy works!</p>
+<div class="enemy">
+    <div class ="back-button-container">
+        <button class="back-button" mat-icon-button class="back-button" (click)="returnToPrior()">
+            <img class="item-swap-button"
+            src="https://raw.githubusercontent.com/sfarmani/twicons/master/GoBack.jpg"
+            style="width:64px;height:64px;"
+            alt="thumbnail"/>
+        </button>
+        <p class="back-button-label">Return to Prior Page</p>
+    </div>
+    <div class="enemy-container" *ngIf="enemy">
+        <span class="enemy-name" [style.color]="enemy.color"> {{ enemy.name }}</span>
+            <img class="enemy-thumbnail"
+            src="{{getBossImageURL(enemy.name)}}"
+            style="width:256px;height:256px;"
+            alt="thumbnail"/>
+        <span class="enemy-quote" [style.color]="enemy.color">"{{ enemy.quote }}"</span>
+    </div>
+
+    <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="0" dynamicHeight>
+        <mat-tab label="Details">
+            <div class="enemy-details" *ngIf="enemy">
+                <div class="enemy-basics">
+                    <div class="enemy-card">
+                        <img class="enemy-image"
+                        src="{{getBossImageURL(enemy.name)}}"
+                        style="width:168px;height:168px;"
+                        alt="Body Image"/>
+                        <div class="enemy-quick-details">
+                            <span class="enemy-name-details"  *ngIf="enemy.name" [style.color]="enemy.color">{{ enemy.name }}</span>  
+                            <div>
+                                <span class="enemy-level">Lvl. {{ enemy.level }}&nbsp;</span> 
+                                <span class="enemy-category" *ngIf="enemy.category">{{ enemy.category }}&nbsp;</span> 
+                                <span class="enemy-type" *ngIf="enemy.type">{{ enemy.type }}&nbsp;</span> 
+                            </div>
+                            <p class="enemy-respawn"  *ngIf="enemy.respawn">Respawns: {{ enemy.respawn }}</p>
+                        </div>
+                    </div>
+                    <div class="enemy-difficulty" *ngIf="enemy.type == 'Boss'">
+                        <span class="enemy-difficulty-label" *ngIf='difficulty==1'>Difficulty: {{ difficulty }} Player</span>
+                        <span class="enemy-difficulty-label" *ngIf='difficulty>1'>Difficulty: {{ difficulty }} Players</span>
+                        <mat-slider min="1" max="10" step="1" value="1" (input)="onInputChange($event)"></mat-slider>
+                    </div>
+                    <mat-grid-list class ="enemy-stat-container" cols="4" rowHeight="4:2">
+                        <mat-grid-tile>
+                            <img class="enemy-attribute-image"
+                            src="../../../assets/img/health.jpg"
+                            style="width:96px;height:96px;"
+                            alt="Health Thumbnail"/>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <span class="enemy-health" [style.color]="possibleStats['health'].color">
+                                {{ getHealth() }} HP<br>({{ possibleStats['healthRegen'].value }} HP/s)
+                            </span>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <img class="enemy-attribute-image"
+                            src="../../../assets/img/mana.jpg"
+                            style="width:96px;height:96px;"
+                            alt="Health Thumbnail"/>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <span class="enemy-mana" [style.color]="possibleStats['mana'].color">
+                                {{ possibleStats['mana'].value }} MP<br>({{ possibleStats['manaRegen'].value }} MP/s)
+                            </span>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <img class="enemy-attribute-image"
+                            src="../../../assets/img/attack.png"
+                            style="width:96px;height:96px;"
+                            alt="Health Thumbnail"/>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <span class="enemy-attack" [style.color]="possibleStats['attackDamage'].color">
+                                {{ possibleStats['attackDamage'].value }} - {{ maxAttack }} ATK<br>({{ possibleStats['attackSpeed'].value}} ATK/s)
+                            </span>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <img class="enemy-attribute-image"
+                            src="../../../assets/img/range.png"
+                            style="width:96px;height:96px;"
+                            alt="Armor Thumbnail"/>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <span class="enemy-range" [style.color]="possibleStats['attackRange'].color">
+                                {{ possibleStats['attackRange'].value }} Range
+                            </span>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <img class="enemy-attribute-image"
+                            src="../../../assets/img/light.png"
+                            alt="Armor Thumbnail"
+                            style="width:96px;height:96px;"
+                            *ngIf="possibleStats['armorType'].value=='Light'"/>
+                            <img class="enemy-attribute-image"
+                            src="../../../assets/img/medium.png"
+                            alt="Armor Thumbnail"
+                            style="width:96px;height:96px;"
+                            *ngIf="possibleStats['armorType'].value=='Medium'"/>
+                            <img class="enemy-attribute-image"
+                            src="../../../assets/img/heavy.png"
+                            alt="Armor Thumbnail"
+                            style="width:96px;height:96px;"
+                            *ngIf="possibleStats['armorType'].value=='Heavy'"/>
+                            <img class="enemy-attribute-image"
+                            src="../../../assets/img/hero.png"
+                            alt="Armor Thumbnail"
+                            style="width:96px;height:96px;"
+                            *ngIf="possibleStats['armorType'].value=='Hero'"/>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <span class="enemy-armor" [style.color]="possibleStats['armor'].color">
+                                {{ possibleStats['armor'].value }} Armor
+                            </span>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <img class="enemy-attribute-image"
+                            src="../../../assets/img/speed.png"
+                            style="width:96px;height:96px;"
+                            alt="Health Thumbnail"/>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <span class="enemy-moveSpeed" [style.color]="possibleStats['moveSpeed'].color">
+                                {{ possibleStats['moveSpeed'].value }} Movespeed
+                            </span>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <img class="enemy-attribute-image"
+                            src="../../../assets/img/magicResist.png"
+                            style="width:96px;height:96px;"
+                            alt="Health Thumbnail"/>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <span class="enemy-magicResist" [style.color]="possibleStats['magicResist'].color">
+                                {{ possibleStats['magicResist'].value }}% Magic Defense
+                            </span>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <img class="enemy-attribute-image"
+                            src="../../../assets/img/damageResist.png"
+                            style="width:96px;height:96px;"
+                            alt="Health Thumbnail"/>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <span class="enemy-damageResist" [style.color]="possibleStats['damageResist'].color">
+                                {{ possibleStats['damageResist'].value }}% Damage Defense
+                            </span>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                    <div class="enemy-notes-container" *ngIf='enemy.notes'>
+                        <p class="enemy-notes-label">Notes</p>
+                        <ng-container *ngFor="let line of enemy.notes">
+                            <span class="enemy-note">※ {{ line }}</span>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="enemy-drop-container">
+                    <span class="enemy-drop-label">Drops (Max: {{ enemy.limit }})</span>
+                    <ng-container *ngFor="let drop of enemy.drops">
+                        <div class="enemy-drop">
+                            <button mat-icon-button class="enemy-drop-button" (click)="openItemDetails(drop)">
+                            <img src="{{ getItemImageURL(drop) }}"
+                            alt="thumbnail"
+                            style="width:96px;height:96px;"/>
+                            </button>
+                            <p class="enemy-drop-details"> {{ drop }} {{ getItemDroprate(enemy, drop) }}</p>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Guide">
+            <!-- <div class="enemy-guide">
+                <div class="enemy-location">
+                    <p>Location</p>
+                    <img class="enemy-body-image"
+                    src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cmFuZG9tfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
+                    style="width:256px;height:256px;"
+                    alt="Body Image"/>
+                </div>
+                <span class="enemy-overall-label">Overall</span>
+                what's needed, General Tips
+                <span class="enemy-Mechanics-label">Mechanics</span>
+                Any special mechanic this boss employs
+                <div class="enemy-spells">
+                    <span class="enemy-spells-label">Spells</span>
+                    <ng-container *ngFor="let spell of enemy.spells">
+                        <img class="enemy-spell-demonstration"/>
+                        <div class="enemy-spell"> 
+                            <span class="enemy-spell-name"> {{spell}}</span>
+                            <div class="enemy-spell-descript"></div>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="enemy-phase-container" *ngIf="hasPhase">
+                    no phase
+                </div>
+            </div> -->
+        </mat-tab>
+    </mat-tab-group>
+</div>

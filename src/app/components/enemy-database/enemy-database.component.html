@@ -9,7 +9,7 @@
                 <div class="enemy-details">
                   <img class="enemy-thumbnail" *ngIf="enemy.name" src="{{ getEnemyImageURL(enemy.name) }}" alt="thumbnail" />
                   <div class="enemy-description">
-                    <span class="enemy-name"  *ngIf="enemy.name">{{ enemy.name }}&nbsp;</span>  
+                    <span class="enemy-name"  *ngIf="enemy.name" [style.color]="enemy.color">{{ enemy.name }}&nbsp;</span>  
                     <span class="enemy-location"  *ngIf="enemy.location">Location: {{ enemy.location }}&nbsp;</span> 
                     <span class="enemy-conditions"  *ngIf="enemy.conditions">Requirements: {{ enemy.conditions }}&nbsp;</span> 
 
@@ -43,7 +43,7 @@
                 <div class="enemy-details">
                   <img class="enemy-thumbnail" *ngIf="enemy.name" src="{{ getEnemyImageURL(enemy.name) }}" alt="thumbnail" />
                   <div class="enemy-description">
-                    <span class="enemy-name"  *ngIf="enemy.name">{{ enemy.name }}&nbsp;</span>  
+                    <span class="enemy-name"  *ngIf="enemy.name" [style.color]="enemy.color">{{ enemy.name }}&nbsp;</span>  
                     <span class="enemy-location"  *ngIf="enemy.location">Location: {{ enemy.location }}&nbsp;</span> 
                     <span class="enemy-conditions"  *ngIf="enemy.conditions">Requirements: {{ enemy.conditions }}&nbsp;</span> 
 
@@ -77,7 +77,7 @@
                 <div class="enemy-details">
                   <img class="enemy-thumbnail" *ngIf="enemy.name" src="{{ getEnemyImageURL(enemy.name) }}" alt="thumbnail" />
                   <div class="enemy-description">
-                    <span class="enemy-name"  *ngIf="enemy.name">{{ enemy.name }}&nbsp;</span>  
+                    <span class="enemy-name"  *ngIf="enemy.name" [style.color]="enemy.color">{{ enemy.name }}&nbsp;</span>  
                     <span class="enemy-location"  *ngIf="enemy.location">Location: {{ enemy.location }}&nbsp;</span> 
                     <span class="enemy-conditions"  *ngIf="enemy.conditions">Requirements: {{ enemy.conditions }}&nbsp;</span> 
 
@@ -111,7 +111,7 @@
                 <div class="enemy-details">
                   <img class="enemy-thumbnail" *ngIf="enemy.name" src="{{ getEnemyImageURL(enemy.name) }}" alt="thumbnail" />
                   <div class="enemy-description">
-                    <span class="enemy-name"  *ngIf="enemy.name">{{ enemy.name }}&nbsp;</span>  
+                    <span class="enemy-name"  *ngIf="enemy.name" [style.color]="enemy.color">{{ enemy.name }}&nbsp;</span>  
                     <span class="enemy-location"  *ngIf="enemy.location">Location: {{ enemy.location }}&nbsp;</span> 
                     <span class="enemy-conditions"  *ngIf="enemy.conditions">Requirements: {{ enemy.conditions }}&nbsp;</span> 
 

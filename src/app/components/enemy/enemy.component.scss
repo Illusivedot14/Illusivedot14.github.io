@@ -1,0 +1,221 @@
+.enemy {
+    align-self: center;
+    border-radius: 5px;
+    background-color: #202020;
+    display: flex;
+    flex-direction: column;
+    &-container {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        color: #fff;
+    }
+    &-name {
+        color: #fff;
+        font-weight: 700;
+        font-size: 30px;
+        margin-bottom: 20px;
+        text-overflow: ellipsis;
+        align-self: center;
+        &-details {
+            color: #fff;
+            font-weight: 700;
+            font-size: 25px;
+            margin-bottom: 20px;
+            text-overflow: ellipsis;
+            align-self: center;
+        }
+    }
+    &-thumbnail {
+        align-self: center;
+    }
+    &-quote {
+        margin-top: 20px;
+        font-weight: 700;
+        font-size: 30px;
+        margin-bottom: 20px;
+        align-self: center;
+        font-style: italic;
+    }
+
+    &-details {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    &-basics {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+    &-card {
+        display: flex;
+        flex-direction: row;
+    }
+    &-quick-details {
+        align-self: center;
+    }
+    &-image {
+        padding: 20px;
+    }
+    &-type {
+        color: #fff;
+        font-weight: 350;
+        font-size: 18px;
+    }
+    &-level {
+    color: #FFD700;
+    font-weight: 350;
+    font-size: 18px;
+    }
+    &-category {
+    color: #fff;
+    font-weight: 350;
+    font-size: 18px;
+    }
+    &-respawn {
+        padding-top: 3%;
+        color: #fff;
+        flex-grow: 1;
+        font-size: 20px;
+        flex-wrap: wrap;
+        max-width: 200% ;
+        overflow-wrap: break-word;
+        margin: 0;
+        padding: 0;
+    }
+
+    &-difficulty {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        align-content: center;
+        align-self: center;
+        &-label {
+            align-self: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 30px;
+            margin-bottom: 20px;
+            text-overflow: ellipsis;
+            align-self: center;
+        }
+    }
+
+
+    &-stat-container {
+        padding-bottom: 1%;
+    }
+    &-health {
+        font-size: 24px;
+        font-weight: 550;
+    }
+    &-mana {
+        font-size: 24px;
+        font-weight: 550;    
+    }
+    &-attack {
+        font-size: 24px;
+        font-weight: 550;
+        line-height: 1;
+    }
+    &-range {
+        font-size: 24px;
+        font-weight: 550;
+    }
+    &-armor {
+        font-size: 24px;
+        font-weight: 550;
+    }
+    &-moveSpeed {
+        font-size: 24px;
+        font-weight: 550;
+    }
+    &-magicResist {
+        font-size: 24px;
+        font-weight: 550;
+    }
+    &-damageResist {
+        font-size: 24px;
+        font-weight: 550;
+    }
+
+    &-note {
+        color: #ffffff;
+        font-weight: 200;
+        font-size: 22px;
+      }
+      &-notes-container {
+        padding-top: 3%;
+        padding-bottom: 1%;
+        padding-left: 10%;
+        padding-right: 10%;
+        display: flex;
+        flex-direction: column;
+        overflow-wrap: break-word;
+      }
+      &-notes-label {
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 25px;
+      }
+
+    &-drop-label {
+    color: #fff;
+    font-weight: 700;
+    font-size: 34px;
+    padding-bottom: 1%;
+    align-self: center;
+    
+    }
+    &-drop-container {
+    display: flex;
+    flex-flow: column;
+    color:#fff;
+    margin-left: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-right:5%;
+    width:35%;
+    }
+    &-drop {
+    display: flex;
+    flex-flow: row;
+    }
+    &-drop-button {
+    align-self: center;
+    height: 96px;
+    max-height: 96px;
+    width: 96px;
+    max-width: 96px;
+    }
+    &-drop-details {
+    color: #fff;
+    font-weight: 700;
+    font-size: 22px;
+    text-overflow: ellipsis;
+    align-self: center;
+    width:325px;
+    max-width: 325px;;
+    max-height: 128px;
+    padding: 10px;
+    }
+}
+.back-button{
+  width:64px;
+  height:64px;
+}
+.back-button-container{
+  display: flex;
+  flex-flow: row;
+  padding: 10px;
+  height: 90px;
+}
+.back-button-label{
+      color: #FFD700;
+      font-weight: 250;
+      font-size: 28px;
+      text-overflow: ellipsis;
+      align-self: center;
+      margin-left: 10px;
+}

@@ -55,6 +55,8 @@ export interface Enemy {
     id: string;
     name: string;
     color: string;
+    quote: string;
+    level: string;
     category: string;
     type: string;
     limit: number;
@@ -68,9 +70,6 @@ export interface Enemy {
     spells: Array<string>;
     minions: Array<string>;
     displayDrop: string;
-
-    timer: number;
-    
 }
 
 
