@@ -135,39 +135,34 @@ export class EnemyComponent implements OnInit {
     let item = this.items.find(x => x.name === drop);
     if(item) {
       if(item.droprate[0] == undefined) {
-        var displayDrop = parseFloat(item.droprate);
-        var difficultyDrop = 0;
-        if((enemy.category == "Minor" || enemy.category == "Mid") && enemy.type == "Boss")
-        {
-          difficultyDrop = this.difficulty <= 5 ? displayDrop*.125*(this.difficulty-1) : displayDrop*.5;
-        }
-        if((enemy.category == "High" || enemy.category == "Endgame") && enemy.type == "Boss")
-        {
-          difficultyDrop = this.difficulty > 5 ? displayDrop*.2*(this.difficulty-5) : 0;
-        }
-        return ' (' + (Math.round((displayDrop + difficultyDrop) * 10000) / 100) + "%)"
+        return this.getDropRateString(enemy,item,parseFloat(item.droprate));
       }
       else {
         for(let i = 0; i < item.dropped_by.length; i++) {
           if(item.dropped_by[i] === enemy.name) {
-            var displayDrop = parseFloat(item.droprate);
-            var difficultyDrop = 0;
-            if((enemy.category == "Minor" || enemy.category == "Mid") && enemy.type == "Boss")
-            {
-              difficultyDrop = this.difficulty <= 5 ? displayDrop*.125*(this.difficulty-1) : displayDrop*.5;
-            }
-            if((enemy.category == "High" || enemy.category == "Endgame") && enemy.type == "Boss")
-            {
-              difficultyDrop = this.difficulty > 5 ? displayDrop*.2*(this.difficulty-5) : 0;
-            }
-            return ' (' + (Math.round((displayDrop + difficultyDrop) * 10000) / 100) + "%)"
+            return this.getDropRateString(enemy,item,parseFloat(item.droprate[i]));
           }
         }
       }
     }
     return "";
   }
-  
+  getDropRateString(enemy: Enemy, item: Item, droprate: number) : string {
+    var difficultyDrop = 0;
+    if(item.name.includes("Token")|| item.name.includes("Icon"))
+    {
+      return ' (' + (Math.round((droprate) * 10000) / 100) + "%)"
+    }
+    if((enemy.category == "Minor" || enemy.category == "Mid") && enemy.type == "Boss")
+    {
+      difficultyDrop = this.difficulty <= 5 ? droprate*.125*(this.difficulty-1) : droprate*.5;
+    }
+    if((enemy.category == "High" || enemy.category == "Endgame") && enemy.type == "Boss")
+    {
+      difficultyDrop = this.difficulty > 5 ? droprate*.2*(this.difficulty-5) : 0;
+    }
+    return ' (' + (Math.round((droprate + difficultyDrop) * 10000) / 100) + "%)"
+  }
   returnToPrior(): void {
     this._location.back();
   }
