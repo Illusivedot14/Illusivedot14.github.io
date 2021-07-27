@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import {Location} from '@angular/common';
 import { Subscription } from 'rxjs';
-import { Item, Enemy, BossWithRate } from 'src/app/models';
+import { Item, Enemy, EnemySkill } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 import { MatSliderChange } from '@angular/material/slider';
 
@@ -11,18 +11,25 @@ import { MatSliderChange } from '@angular/material/slider';
   templateUrl: './enemy.component.html',
   styleUrls: ['./enemy.component.scss']
 })
-export class EnemyComponent implements OnInit {
-  public enemyID: string = "";
-  public enemy!: Enemy;
-  public items    : Item[]  = [];
-  public stats    : string[]  = [];
-  public hasPhase : boolean = false;
-  public maxAttack : number = 0;
+export class EnemyComponent implements OnInit, OnDestroy {
+  public enemyID    : string = "";
+  public enemy!     : Enemy;
+  public items      : Item[]  = [];
+  public skills     : EnemySkill[]  = [];
+  public stats      : string[]  = [];
+  public hasGuide   : boolean = false;
+  public maxAttack  : number = 0;
   public difficulty : number = 1;
 
   private routeSub!: Subscription;
   private enemySub!: Subscription;
+  private enemySpellsSub!: Subscription;
   private itemsSub!: Subscription;
+
+
+  private lowerDropRateScale = .125;
+  private higherDropRateScale = .2;
+  private cutOffDropRateScale = 5;
 
   public possibleStats: any = {
     'health':        {  name: " Health",        color: '#90EE90', value: 0 },
@@ -51,12 +58,10 @@ export class EnemyComponent implements OnInit {
     this.enemySub = this._enemyService.getEnemies().subscribe(data => {
       this.enemy = data.find(x => x.name.includes(id))!;
       this.enemy.color = "#" + this.enemy.color;
-      if(this.enemy.stats)
-      {
+      if(this.enemy.stats) {
           Object.entries(this.enemy.stats).forEach(entry => {
             const [key, value] = entry;
-            if(value != 0)
-            {
+            if(value != 0) {
               this.stats.push(key);
               this.possibleStats[key].value = value;
             }
@@ -65,33 +70,20 @@ export class EnemyComponent implements OnInit {
           this.possibleStats['attackSpeed'].value = Math.round(Number(this.possibleStats['attackSpeed'].value) * 10000) / 10000;
           this.possibleStats['magicResist'].value = Math.round(Number(this.possibleStats['magicResist'].value) * 10000) / 100;
           this.possibleStats['damageResist'].value = Math.round(Number(this.possibleStats['damageResist'].value) * 10000) / 100;
-        }
-      this.itemsSub = this._enemyService.getItems().subscribe(itemData => { this.items = itemData })
+      }
+      this.enemySpellsSub = this._enemyService.getEnemySkills().subscribe(skillData => {
+        this.skills = skillData.filter(x => x.caster == this.enemy.name || x.caster.includes(this.enemy.name));
+      });
     });
+    this.itemsSub = this._enemyService.getItems().subscribe(itemData => { this.items = itemData });
   }
-  onInputChange(event: MatSliderChange) {
-    let prior = this.difficulty;
-    this.difficulty = event.value!;
-    
-  }
+
+
   getBossImageURL(name: string)
   {
-    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this.findFilename(name)) + '%20Icon.jpg';
+    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this.getBossImageFilename(name)) + '%20Icon.jpg';
   }
-  getHealth() : number {
-    var health = parseFloat(this.possibleStats['health'].value);
-    var difficultyHealth = 0;
-    if((this.enemy.category == "Minor" || this.enemy.category == "Mid") && this.enemy.type == "Boss")
-    {
-      difficultyHealth = this.difficulty <= 5 ? health*.5*(this.difficulty-1) : health*2;
-    }
-    if((this.enemy.category == "High" || this.enemy.category == "Endgame") && this.enemy.type == "Boss")
-    {
-      difficultyHealth = this.difficulty > 5 ? health*.2*(this.difficulty-5) : 0;
-    }
-    return health+difficultyHealth;
-  }
-  findFilename(boss_name: string){
+  getBossImageFilename(boss_name: string){
     switch(true){
         case /^Troll/ig.test(boss_name): return "Troll";
         case /^Ice Troll/ig.test(boss_name): return "Ice Troll";
@@ -128,42 +120,83 @@ export class EnemyComponent implements OnInit {
     if(name.includes("Sealed") && name !== "Sealed Weapon") { name = name.substring(7) }
     return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(name) + '.jpg';
   }
+
   openItemDetails(id: string): void {
     this.router.navigate(['item', encodeURIComponent(id)]);
   }
-  getItemDroprate(enemy: Enemy, drop: string): string  {
+
+  onInputChange(event: MatSliderChange) {
+    this.difficulty = event.value!;
+  }
+  getHealth() : number {
+    var health = parseFloat(this.possibleStats['health'].value);
+    var difficultyHealth = 0;
+    if((this.enemy.category == "Minor" || this.enemy.category == "Mid") && this.enemy.type == "Boss")
+    {
+      difficultyHealth = this.difficulty <= 5 ? health*.5*(this.difficulty-1) : health*2;
+    }
+    if((this.enemy.category == "High" || this.enemy.category == "Endgame") && this.enemy.type == "Boss")
+    {
+      difficultyHealth = this.difficulty > 5 ? health*.2*(this.difficulty-5) : 0;
+    }
+    return health+difficultyHealth;
+  }
+  getDropRateString(enemy: Enemy, drop: string): string  {
     let item = this.items.find(x => x.name === drop);
     if(item) {
       if(item.droprate[0] == undefined) {
-        return this.getDropRateString(enemy,item,parseFloat(item.droprate));
+        return this.getDropRate(enemy,item,parseFloat(item.droprate));
       }
       else {
         for(let i = 0; i < item.dropped_by.length; i++) {
           if(item.dropped_by[i] === enemy.name) {
-            return this.getDropRateString(enemy,item,parseFloat(item.droprate[i]));
+            return this.getDropRate(enemy,item,parseFloat(item.droprate[i]));
           }
         }
       }
     }
     return "";
   }
-  getDropRateString(enemy: Enemy, item: Item, droprate: number) : string {
-    var difficultyDrop = 0;
-    if(item.name.includes("Token")|| item.name.includes("Icon"))
-    {
+  getDropRate(enemy: Enemy, item: Item, droprate: number) : string {
+    var droprateScale = 0;
+    if(item.name.includes("Token") || item.name.includes("Icon")) {
       return ' (' + (Math.round((droprate) * 10000) / 100) + "%)"
     }
-    if((enemy.category == "Minor" || enemy.category == "Mid") && enemy.type == "Boss")
-    {
-      difficultyDrop = this.difficulty <= 5 ? droprate*.125*(this.difficulty-1) : droprate*.5;
+    if((enemy.category == "Minor" || enemy.category == "Mid") && enemy.type == "Boss") {
+      droprateScale = this.difficulty <= this.cutOffDropRateScale ? droprate*this.lowerDropRateScale*(this.difficulty-1) : droprate*this.lowerDropRateScale*4;
     }
-    if((enemy.category == "High" || enemy.category == "Endgame") && enemy.type == "Boss")
-    {
-      difficultyDrop = this.difficulty > 5 ? droprate*.2*(this.difficulty-5) : 0;
+    if((enemy.category == "High" || enemy.category == "Endgame") && enemy.type == "Boss") {
+      droprateScale = this.difficulty > this.cutOffDropRateScale ? droprate*this.higherDropRateScale*(this.difficulty-5) : 0;
     }
-    return ' (' + (Math.round((droprate + difficultyDrop) * 10000) / 100) + "%)"
+    return ' (' + (Math.round((droprate + droprateScale) * 10000) / 100) + "%)"
   }
+
+  getLocationAsset(name: string) : string
+  {
+    return "";
+  }
+
+
+
   returnToPrior(): void {
     this._location.back();
+  }
+  openEnemyDetails(id: string): void {
+    this.router.navigate(['enemy', encodeURIComponent(id)]);
+  }
+
+  ngOnDestroy(): void {
+    if(this.enemySub) {
+      this.enemySub.unsubscribe();
+    }
+    if(this.enemySpellsSub) {
+      this.enemySpellsSub.unsubscribe();
+    }
+    if(this.itemsSub) {
+      this.itemsSub.unsubscribe();
+    }
+    if(this.routeSub) {
+      this.routeSub.unsubscribe();
+    }
   }
 }

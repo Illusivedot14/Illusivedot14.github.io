@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Enemy, EnemySkills, Item } from '../models';
+import { Enemy, EnemySkill, Item } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { Enemy, EnemySkills, Item } from '../models';
 export class HttpService {
   private _item_URL: string = "https://raw.githubusercontent.com/sfarmani/twrpg-info/master/items.json";
   private _enemy_URL: string = "https://raw.githubusercontent.com/Illusivedot14/twrpg-info/master/bosses.json";
-  private _enemy_skills_URL: string = "https://raw.githubusercontent.com/Illusivedot14/twrpg-info/master/bosses.json";
+  private _enemy_skills_URL: string = "https://raw.githubusercontent.com/Illusivedot14/twrpg-info/master/skills-boss.json";
   constructor(private http: HttpClient) { }
 
   getItems() : Observable<Item[]>
@@ -21,8 +21,8 @@ export class HttpService {
   {
     return this.http.get<Enemy[]>(this._enemy_URL);
   }
-  getEnemySkills() : Observable<EnemySkills[]>
+  getEnemySkills() : Observable<EnemySkill[]>
   {
-    return this.http.get<EnemySkills[]>(this._enemy_skills_URL);
+    return this.http.get<EnemySkill[]>(this._enemy_skills_URL);
   }
 }

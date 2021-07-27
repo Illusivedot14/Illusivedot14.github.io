@@ -13,6 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
 import { HomeComponent } from './components/home/home.component';
 import { ItemDatabaseComponent } from './components/item-database/item-database.component';
 import { ItemComponent } from './components/item/item.component';
@@ -52,7 +54,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     MatButtonToggleModule,
     MatToolbarModule,
     MatGridListModule,
-    MatSliderModule
+    MatSliderModule,
+    MatDividerModule,
+    MatExpansionModule
   ],
   providers: [
     {

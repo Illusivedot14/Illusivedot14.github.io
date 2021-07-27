@@ -37,21 +37,22 @@ export class EnemyDatabaseComponent implements OnInit {
       this.itemsSub = this._enemyService.getItems().subscribe(itemData => { this.items = itemData })
       for(let enemy of this.enemies)
       {
+        if(enemy.type == "Minion" || enemy.type == "Mechanic") continue;
         enemy.color = "#" + enemy.color;
-        if(enemy.category == "Mob") this.mobs.push(enemy);
+        if(enemy.category == "Creep" || enemy.type == "Mob") this.mobs.push(enemy);
         else if(enemy.category == "Field") this.fields.push(enemy);
-        else if(enemy.category == "Minor"   && enemy.type == "Boss") this.minors.push(enemy);
-        else if(enemy.category == "Mid"     && enemy.type == "Boss") this.mids.push(enemy);
-        else if(enemy.category == "High"    && enemy.type == "Boss") this.highs.push(enemy);
-        else if(enemy.category == "Endgame" && enemy.type == "Boss") this.ends.push(enemy);
+        else if(enemy.category == "Minor") this.minors.push(enemy);
+        else if(enemy.category == "Mid") this.mids.push(enemy);
+        else if(enemy.category == "High") this.highs.push(enemy);
+        else if(enemy.category == "Endgame") this.ends.push(enemy);
       }
     });
   }
   getEnemyImageURL(name: string)
   {
-    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this.findFilename(name)) + '%20Icon.jpg';
+    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this.getEnemyImageFilename(name)) + '%20Icon.jpg';
   }
-  findFilename(boss_name: string){
+  getEnemyImageFilename(boss_name: string){
     switch(true){
         case /^Troll/ig.test(boss_name): return "Troll";
         case /^Ice Troll/ig.test(boss_name): return "Ice Troll";
@@ -89,11 +90,12 @@ export class EnemyDatabaseComponent implements OnInit {
     return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(name) + '.jpg';
   }
   openEnemyDetails(id: string): void {
-    this.router.navigate(['enemy', this.findFilename(encodeURIComponent(id))]);
+    this.router.navigate(['enemy', encodeURIComponent(id)]);
   }
   openItemDetails(id: string): void {
     this.router.navigate(['item', encodeURIComponent(id)]);
   }
+  
   changeItemDisplay(enemy: Enemy, drop: string): void  {
     enemy.displayDrop = drop;
     if(drop != "" && this.items) {

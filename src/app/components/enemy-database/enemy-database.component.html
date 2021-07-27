@@ -1,7 +1,73 @@
 <div class="enemy-container">
     <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="2" dynamicHeight>
-        <mat-tab label="Mob"> Mob WORK IN PROGRESS</mat-tab>
-        <mat-tab label="Field"> Field WORK IN PROGRESS</mat-tab>
+        <mat-tab label="Mob">
+          <div class="enemy-list">
+            <ng-container *ngFor="let enemy of mobs">
+              <div class="enemy-main" (click)="openEnemyDetails(enemy.name)">
+                <div class="enemy-details">
+                  <img class="enemy-thumbnail" *ngIf="enemy.name" src="{{ getEnemyImageURL(enemy.name) }}" alt="thumbnail" />
+                  <div class="enemy-description">
+                    <span class="enemy-name"  *ngIf="enemy.name" [style.color]="enemy.color">{{ enemy.name }}&nbsp;</span>  
+                    <span class="enemy-location"  *ngIf="enemy.location">Location: {{ enemy.location }}&nbsp;</span> 
+                    <span class="enemy-conditions"  *ngIf="enemy.conditions">Requirements: {{ enemy.conditions }}&nbsp;</span> 
+
+                    <span class="enemy-limit"  *ngIf="enemy.limit">Drop Limit: {{ enemy.limit }}&nbsp;</span>  
+                    <span class="enemy-respawn"  *ngIf="enemy.respawn">Respawns: {{ enemy.respawn }}&nbsp;</span>  
+                  </div>
+                </div>
+                
+                <div class="enemy-items" *ngIf="enemy.drops">
+                  <div class="enemy-drops">
+                    <ng-container *ngFor="let drop of enemy.drops">
+                      <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay(enemy, drop)" (mouseout)="changeItemDisplay(enemy, '')">
+                        <img src="{{ getItemImageURL(drop) }}"
+                        style="width:64px;height:64px;"
+                        alt="thumbnail"/>
+                        </button>
+                    </ng-container>
+                  </div>
+                  <div class="enemy-drops-display">
+                    Item: {{ enemy.displayDrop }}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </mat-tab>
+        <mat-tab label="Field">
+          <div class="enemy-list">
+            <ng-container *ngFor="let enemy of fields">
+              <div class="enemy-main" (click)="openEnemyDetails(enemy.name)">
+                <div class="enemy-details">
+                  <img class="enemy-thumbnail" *ngIf="enemy.name" src="{{ getEnemyImageURL(enemy.name) }}" alt="thumbnail" />
+                  <div class="enemy-description">
+                    <span class="enemy-name"  *ngIf="enemy.name" [style.color]="enemy.color">{{ enemy.name }}&nbsp;</span>  
+                    <span class="enemy-location"  *ngIf="enemy.location">Location: {{ enemy.location }}&nbsp;</span> 
+                    <span class="enemy-conditions"  *ngIf="enemy.conditions">Requirements: {{ enemy.conditions }}&nbsp;</span> 
+
+                    <span class="enemy-limit"  *ngIf="enemy.limit">Drop Limit: {{ enemy.limit }}&nbsp;</span>  
+                    <span class="enemy-respawn"  *ngIf="enemy.respawn">Respawns: {{ enemy.respawn }}&nbsp;</span>  
+                  </div>
+                </div>
+                
+                <div class="enemy-items">
+                  <div class="enemy-drops">
+                    <ng-container *ngFor="let drop of enemy.drops">
+                      <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay(enemy, drop)" (mouseout)="changeItemDisplay(enemy, '')">
+                        <img src="{{ getItemImageURL(drop) }}"
+                        style="width:64px;height:64px;"
+                        alt="thumbnail"/>
+                        </button>
+                    </ng-container>
+                  </div>
+                  <div class="enemy-drops-display" *ngIf="enemy.drops">
+                    Item: {{ enemy.displayDrop }}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </mat-tab>
         <mat-tab label="Minor">
           <div class="enemy-list">
             <ng-container *ngFor="let enemy of minors">
@@ -18,7 +84,7 @@
                   </div>
                 </div>
                 
-                <div class="enemy-items">
+                <div class="enemy-items" *ngIf="enemy.drops">
                   <div class="enemy-drops">
                     <ng-container *ngFor="let drop of enemy.drops">
                       <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay(enemy, drop)" (mouseout)="changeItemDisplay(enemy, '')">
@@ -70,7 +136,7 @@
             </ng-container>
           </div>
         </mat-tab>
-        <mat-tab label="Late">
+        <mat-tab label="High">
           <div class="enemy-list">
             <ng-container *ngFor="let enemy of highs">
               <div class="enemy-main" (click)="openEnemyDetails(enemy.name)">
@@ -86,7 +152,7 @@
                   </div>
                 </div>
                 
-                <div class="enemy-items">
+                <div class="enemy-items" *ngIf="enemy.drops">
                   <div class="enemy-drops">
                     <ng-container *ngFor="let drop of enemy.drops">
                       <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay(enemy, drop)" (mouseout)="changeItemDisplay(enemy, '')">
@@ -120,7 +186,7 @@
                   </div>
                 </div>
                 
-                <div class="enemy-items">
+                <div class="enemy-items" *ngIf="enemy.drops">
                   <div class="enemy-drops">
                     <ng-container *ngFor="let drop of enemy.drops">
                       <button mat-icon-button class="enemy-drops-button" (click)="openItemDetails(drop)" (mouseover)="changeItemDisplay(enemy, drop)" (mouseout)="changeItemDisplay(enemy, '')">
@@ -138,5 +204,5 @@
             </ng-container>
           </div>
         </mat-tab>
-      </mat-tab-group>
+    </mat-tab-group>
 </div>

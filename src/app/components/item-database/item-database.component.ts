@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Item } from 'src/app/models';
@@ -15,30 +15,15 @@ export class ItemDatabaseComponent implements OnInit, OnDestroy {
   public sort: string = "";
   public items: Array<Item> = [];
   public itemSearch : string = '';
-  public buttonClicked : boolean = false;
+
   public filterOptions: Record<string, boolean> = {"Armor" : false, "Head" : false, "Accessory" : false, "Weapon" : false, "Wing" : false, "Misc" : false, 
                                                    "Mat" : false, "Food" : false, "Token" : false, "Pickaxe": false, "Icon": false , "Special" : false, "Coin" : false};
   public grade: any = {
-  0: {
-    name: '',
-    color: ''
-  },
-  1: {
-      name: 'Deltirama',
-      color: '#C39BE1'
-  },
-  2: {
-      name: 'Neptinos',
-      color: '#9BE1E1'
-  },
-  3: {
-      name: 'Gnosis',
-      color: '#DC143C'
-  },
-  4: {
-      name: 'Alteia',
-      color: '#99FF99'
-  }
+  0: { name: '',          color: '' },
+  1: { name: 'Deltirama', color: '#C39BE1' },
+  2: { name: 'Neptinos',  color: '#9BE1E1' },
+  3: { name: 'Gnosis',    color: '#DC143C' },
+  4: { name: 'Alteia',    color: '#99FF99' }
 };
 
   private routeSub!: Subscription;

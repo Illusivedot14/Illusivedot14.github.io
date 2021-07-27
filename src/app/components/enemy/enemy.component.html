@@ -14,11 +14,11 @@
             src="{{getBossImageURL(enemy.name)}}"
             style="width:256px;height:256px;"
             alt="thumbnail"/>
-        <span class="enemy-quote" [style.color]="enemy.color">"{{ enemy.quote }}"</span>
+        <span class="enemy-quote" *ngIf="enemy.quote"[style.color]="enemy.color">"{{ enemy.quote }}"</span>
     </div>
 
     <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="0" dynamicHeight>
-        <mat-tab label="Details">
+        <mat-tab label="Stats">
             <div class="enemy-details" *ngIf="enemy">
                 <div class="enemy-basics">
                     <div class="enemy-card">
@@ -31,12 +31,13 @@
                             <div>
                                 <span class="enemy-level">Lvl. {{ enemy.level }}&nbsp;</span> 
                                 <span class="enemy-category" *ngIf="enemy.category">{{ enemy.category }}&nbsp;</span> 
-                                <span class="enemy-type" *ngIf="enemy.type">{{ enemy.type }}&nbsp;</span> 
+                                <span class="enemy-type" *ngIf="enemy.type && enemy.type!='Mob'">{{ enemy.type }}&nbsp;</span> 
                             </div>
                             <p class="enemy-respawn"  *ngIf="enemy.respawn">Respawns: {{ enemy.respawn }}</p>
+                            <p class="enemy-respawn"  *ngIf="enemy.timer">Respawns: Every {{ enemy.timer }} seconds</p>
                         </div>
                     </div>
-                    <div class="enemy-difficulty" *ngIf="enemy.type == 'Boss'">
+                    <div class="enemy-difficulty" *ngIf="enemy.type == 'Boss' && enemy.category != 'Field' && enemy.category != 'Creep'">
                         <span class="enemy-difficulty-label" *ngIf='difficulty==1'>Difficulty: {{ difficulty }} Player</span>
                         <span class="enemy-difficulty-label" *ngIf='difficulty>1'>Difficulty: {{ difficulty }} Players</span>
                         <mat-slider min="1" max="10" step="1" value="1" (input)="onInputChange($event)"></mat-slider>
@@ -154,7 +155,7 @@
                         </ng-container>
                     </div>
                 </div>
-                <div class="enemy-drop-container">
+                <div class="enemy-drop-container" *ngIf="enemy.drops">
                     <span class="enemy-drop-label">Drops (Max: {{ enemy.limit }})</span>
                     <ng-container *ngFor="let drop of enemy.drops">
                         <div class="enemy-drop">
@@ -163,39 +164,90 @@
                             alt="thumbnail"
                             style="width:96px;height:96px;"/>
                             </button>
-                            <p class="enemy-drop-details"> {{ drop }} {{ getItemDroprate(enemy, drop) }}</p>
+                            <p class="enemy-drop-details"> {{ drop }} {{ getDropRateString(enemy, drop) }}</p>
                         </div>
                     </ng-container>
                 </div>
             </div>
         </mat-tab>
-        <mat-tab label="Guide">
-            <!-- <div class="enemy-guide">
-                <div class="enemy-location">
-                    <p>Location</p>
-                    <img class="enemy-body-image"
-                    src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cmFuZG9tfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
-                    style="width:256px;height:256px;"
-                    alt="Body Image"/>
+        <mat-tab label="Details">
+            <div class="enemy-location" *ngIf="enemy.location">
+                <div class="enemy-location-label">
+                    <span >Location</span>
+                    <span *ngIf="enemy.conditions"> and Conditions</span>
                 </div>
-                <span class="enemy-overall-label">Overall</span>
-                what's needed, General Tips
-                <span class="enemy-Mechanics-label">Mechanics</span>
-                Any special mechanic this boss employs
-                <div class="enemy-spells">
-                    <span class="enemy-spells-label">Spells</span>
-                    <ng-container *ngFor="let spell of enemy.spells">
-                        <img class="enemy-spell-demonstration"/>
-                        <div class="enemy-spell"> 
-                            <span class="enemy-spell-name"> {{spell}}</span>
-                            <div class="enemy-spell-descript"></div>
+                <mat-divider></mat-divider>
+                <img class="enemy-location-image"
+                src="{{ getLocationAsset(enemy.name) }}"
+                alt="location-image"/>
+                <span class="enemy-location-details">{{ enemy.location }}</span> 
+                <span class="enemy-location-conditions" *ngIf="enemy.conditions">Requires: {{ enemy.conditions }}</span> 
+                
+            </div>
+            <div class="enemy-spell-container" *ngIf="!hasGuide && enemy.spells">
+                <span class="enemy-spell-label">Spells</span>
+                <mat-divider></mat-divider>
+                <mat-accordion class="enemy-spell-container">
+                    <mat-expansion-panel hideToggle *ngFor="let spell of skills" style="background-color: #151515;width:1200px;align-self: center;">
+                      <mat-expansion-panel-header style="height:100px">
+                        <mat-panel-title class="enemy-spell-name">
+                          {{spell.name}}
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                    <div class="enemy-spell">
+                        <div class="enemy-spell-details">
+                            <div class="enemy-spell-description" style="color:#ff8c00" *ngIf=spell.active>
+                                <div class="enemy-spell-detail-label" style="color:#ff8c00" *ngIf=spell.active>Active</div>
+                                <ng-container *ngFor="let line of spell.active">
+                                    <span class="enemy-spell-active">❖ {{line}}<br></span>
+                                </ng-container>
+                            </div>
+                            <div class="enemy-spell-description" style="color:#ff1493" *ngIf=spell.passive>
+                                <div class="enemy-spell-detail-label" style="color:#ff1493" *ngIf=spell.passive>Passive</div>
+                                <ng-container *ngFor="let line of spell.passive">
+                                    <span class="enemy-spell-passive">⁘ {{line}}<br></span>
+                                </ng-container>
+                            </div>
+                            <div class="enemy-spell-description" *ngIf=spell.trigger>
+                                <div class="enemy-spell-detail-label" *ngIf=spell.trigger style="color:#8a2be2">Event</div>
+                                <ng-container *ngFor="let line of spell.trigger">
+                                    <span class="enemy-spell-trigger" style="color:#8a2be2">※ {{line}}<br></span>
+                                </ng-container>
+                            </div>
+                            <ng-container *ngFor="let summon of spell.summons">
+                                <button mat-icon-button class="enemy-summon-button" (click)="openEnemyDetails(summon)">
+                                    <img class="enemy-button-image" src="{{ getBossImageURL(summon) }}"
+                                    alt="thumbnail" style="width:100%"/>
+                                    </button>
+                            </ng-container>
+                            <div style="margin-top: auto;">
+                                <div class="enemy-spell-cost" *ngIf="spell.cost">
+                                    <img/> Cost: {{spell.cost}} Resource
+                                </div>
+                                <div class="enemy-spell-cooldown" *ngIf="spell.cooldown">
+                                    <img/> Cooldown: {{spell.cooldown}} second(s)
+                                </div>
+                            </div>
+
                         </div>
-                    </ng-container>
+                        <img class="enemy-spell-image" style="width:320px;height:320px;" [style.background-color]="enemy.color"/>
+                    </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+            <div class="enemy-guide-container" *ngIf="hasGuide">
+                guide will go here (Child component)
+                <div class="phase">
+                    <div class="enemy-overall">
+                        If boss, overall and quick tips go here
+                    </div>
+                    <div class="enemy-spell-container">
+                        the spells will go here with an ngFor
+                        gif / description
+                        cooldown with clock
+                    </div>
                 </div>
-                <div class="enemy-phase-container" *ngIf="hasPhase">
-                    no phase
-                </div>
-            </div> -->
+            </div>
         </mat-tab>
     </mat-tab-group>
 </div>

@@ -56,11 +56,12 @@ export interface Enemy {
     name: string;
     color: string;
     quote: string;
-    level: string;
+    level: number;
     category: string;
     type: string;
     limit: number;
-    respawn: string;
+    respawn: number;
+    timer: string;
     location: string;
     conditions: string;
     stats: object;
@@ -73,18 +74,17 @@ export interface Enemy {
 }
 
 
-export interface EnemySkills {
+export interface EnemySkill {
     id: string;
     name: string;
-    category: string;
-    type: string;
-    limit: number;
-    respawn: string;
-    location: string;
-    conditions: string;
-    
-    timer: number;
-    drops: Array<string>;
-    displayDrop: string;
+    caster: string;
+    color: string;
+    cooldown: number;
+    cost: number;
+
+    active: Array<string>;
+    passive: Array<string>;
+    trigger: Array<string>;
+    summons: Array<string>;
     
 }
