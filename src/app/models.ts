@@ -79,12 +79,11 @@ export interface EnemySkill {
     name: string;
     caster: string;
     color: string;
+    type: string;
     cooldown: number;
     cost: number;
 
-    active: Array<string>;
-    passive: Array<string>;
-    trigger: Array<string>;
+    description: Array<string>;
     summons: Array<string>;
     
 }

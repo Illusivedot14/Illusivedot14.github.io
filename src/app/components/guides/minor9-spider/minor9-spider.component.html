@@ -45,36 +45,18 @@
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
             <mat-accordion class="spell-container">
-                <mat-expansion-panel hideToggle *ngFor="let spell of skills" style="background-color: #151515;align-self: center; width: 100%;">
+                <mat-expansion-panel hideToggle *ngFor="let spell of skills" style="background-color: #151515;width:1200px;align-self: center; width: 100%;">
                   <mat-expansion-panel-header style="height:100px">
-                    <mat-panel-title class="spell-name" style="color:#ff8c00" *ngIf=spell.active>
-                      {{spell.name}}
-                    </mat-panel-title>
-                    <mat-panel-title class="spell-name" style="color:#ff1493" *ngIf=spell.passive>
-                        {{spell.name}}
-                      </mat-panel-title>
-                      <mat-panel-title class="spell-name" *ngIf=spell.trigger style="color:#8a2be2">
-                        {{spell.name}}
-                      </mat-panel-title>
+                    <mat-panel-title class="spell-name" [style.color]="spell.color"> {{spell.name}}</mat-panel-title>
                   </mat-expansion-panel-header>
-                  <div class="spell">
+                <div class="spell">
                     <div class="spell-details">
-                        <div class="spell-description" style="color:#ff8c00" *ngIf=spell.active>
-                            <div class="spell-detail-label" style="color:#ff8c00" *ngIf=spell.active>Active</div>
-                            <ng-container *ngFor="let line of spell.active">
-                                <span class="spell-active">❖ {{line}}<br></span>
-                            </ng-container>
-                        </div>
-                        <div class="spell-description" style="color:#ff1493" *ngIf=spell.passive>
-                            <div class="spell-detail-label" style="color:#ff1493" *ngIf=spell.passive>Passive</div>
-                            <ng-container *ngFor="let line of spell.passive">
-                                <span class="spell-passive">⁘ {{line}}<br></span>
-                            </ng-container>
-                        </div>
-                        <div class="spell-description" *ngIf=spell.trigger>
-                            <div class="spell-detail-label" *ngIf=spell.trigger style="color:#8a2be2">Event</div>
-                            <ng-container *ngFor="let line of spell.trigger">
-                                <span class="spell-trigger" style="color:#8a2be2">※ {{line}}<br></span>
+                        <div class="spell-description" [style.color]="spell.color">
+                            <div class="spell-detail-label">{{ capitalizeFirstLetter(spell.type) }}</div>
+                            <ng-container *ngFor="let line of spell.description">
+                                <span class="spell-active" *ngIf="spell.type=='active'">❖ {{line}}<br></span>
+                                <span class="spell-passive" *ngIf="spell.type=='passive'">⁘ {{line}}<br></span>
+                                <span class="spell-trigger" *ngIf="spell.type=='trigger'">※ {{line}}<br></span>
                             </ng-container>
                         </div>
                         <ng-container *ngFor="let summon of spell.summons">
@@ -91,7 +73,6 @@
                                 <img/> Cooldown: {{spell.cooldown}} second(s)
                             </div>
                         </div>
-        
                     </div>
                     <img class="spell-image" style="width:320px;height:320px;" [style.background-color]="enemy.color"/>
                 </div>

@@ -5,46 +5,66 @@
         <img class="guide-summon-image"
         src="{{ getLocationAsset(enemy.name) }}"
         alt="location-image"/>
-        <p class="guide-summon-description"></p>
+        <p class="guide-summon-description">
+            Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
+            before approaching this boss as you will get no loot if you're below that threshold. Also if you're not being carried, 
+            have at least Demon Lord level gear before attempting to make your life easier.
+            <br>
+            <br> 
+            To summon this boss, first, gather 4 blue stones from any blue stone deposit in the Snowy Hills (Teleport 6) AND 4 green stones from the Fairy Forest (Teleport 9) 
+            or if you have a Chaos Pick or above, you can mine directly from the stone deposits in front of the golem cave (Teleport 4). Use any pickaxe to gather the stones. Then, go to 
+            the Deep Sea and kill Tentacle Lord for the Orb of Deep Sea, which you will need to summon Turtle Lord. Finally, bring all these items to the light east of Tentacle Lord and use 
+            the Orb to summon the boss.</p>
     </div>
     <div class="guide-overall">
         <h1 class="guide-label">Overall</h1>
         <mat-divider></mat-divider>
-        <p class="guide-overall-description"></p>
+        <p class="guide-overall-description">
+            <br>
+            The first thing you should <u style="color:red">IMMEDIATELY</u> do is lure Turtle Lord to the center of the Deep Sea, above where you killed Tentacle Lord. Since there will be 
+            Healing Turtles coming from either side. Use any stuns or interrupts to maintain aggro. Make sure 
+            you get someone with a lot of <span style="color:#D3D3D3">armor</span> to tank Turtle Lord, as his Chomp Armor will make quick work of any glass cannon.
+            <br><br>
+            Every forty seconds (or when he reaches full mana), he will use Summon Healing Turtle. Dedicate half your DPS to kill these turtles as soon as possible. <u style="color:red">When the Healing 
+            Turtles reach Turtle Lord, they will heal him for <span style="color:#90EE90">25% HP</span>.</u>
+            <br><br>
+            The only other thing you'll have to worry about in this boss are the Turtles that come whenever Turtle Lord reaches <span style="color:#90EE90">75%, 50% and 25%</span>. Turtle Lord will gain 
+            <span style="color:#FFFF99">90% Damage Reduction</span> and will not 
+            go below 1 HP until all Turtles are dead. There are eight Turtles that spawn, <span style="color:#FFFF99">six with no Damage Reduction, and two with 50% Damage 
+            Reduction</span>. A good tip for killing these Turtles quickly is to clump up every <span style="color:#90EE90">25%</span>, as the spawn range of these Turtles are dependent on your positions.
+            <br><br>
+            Focus down all the minions as soon as possible and this will be an easy kill.
+        </p>
+        <div class="guide-minions">
+            <h1 class="guide-label">Minions</h1>
+            <mat-divider></mat-divider>
+            <div class="minion-container">
+            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Healing Turtle')">
+                <img class="button-image" src="{{ getEnemyImageURL('Healing Turtle') }}"
+                alt="thumbnail"/>
+            </button>
+            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Turtle')">
+                <img class="button-image" src="{{ getEnemyImageURL('Turtle') }}"
+                alt="thumbnail"/>
+            </button>
+            </div>
+        </div> 
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
             <mat-accordion class="spell-container">
-                <mat-expansion-panel hideToggle *ngFor="let spell of skills" style="background-color: #151515;align-self: center; width: 100%;">
+                <mat-expansion-panel hideToggle *ngFor="let spell of skills" style="background-color: #151515;width:1200px;align-self: center; width: 100%;">
                   <mat-expansion-panel-header style="height:100px">
-                    <mat-panel-title class="spell-name" style="color:#ff8c00" *ngIf=spell.active>
-                      {{spell.name}}
-                    </mat-panel-title>
-                    <mat-panel-title class="spell-name" style="color:#ff1493" *ngIf=spell.passive>
-                        {{spell.name}}
-                      </mat-panel-title>
-                      <mat-panel-title class="spell-name" *ngIf=spell.trigger style="color:#8a2be2">
-                        {{spell.name}}
-                      </mat-panel-title>
+                    <mat-panel-title class="spell-name" [style.color]="spell.color"> {{spell.name}}</mat-panel-title>
                   </mat-expansion-panel-header>
-                  <div class="spell">
+                <div class="spell">
                     <div class="spell-details">
-                        <div class="spell-description" style="color:#ff8c00" *ngIf=spell.active>
-                            <div class="spell-detail-label" style="color:#ff8c00" *ngIf=spell.active>Active</div>
-                            <ng-container *ngFor="let line of spell.active">
-                                <span class="spell-active">❖ {{line}}<br></span>
-                            </ng-container>
-                        </div>
-                        <div class="spell-description" style="color:#ff1493" *ngIf=spell.passive>
-                            <div class="spell-detail-label" style="color:#ff1493" *ngIf=spell.passive>Passive</div>
-                            <ng-container *ngFor="let line of spell.passive">
-                                <span class="spell-passive">⁘ {{line}}<br></span>
-                            </ng-container>
-                        </div>
-                        <div class="spell-description" *ngIf=spell.trigger>
-                            <div class="spell-detail-label" *ngIf=spell.trigger style="color:#8a2be2">Event</div>
-                            <ng-container *ngFor="let line of spell.trigger">
-                                <span class="spell-trigger" style="color:#8a2be2">※ {{line}}<br></span>
+                        <div class="spell-description" [style.color]="spell.color">
+                            <div class="spell-detail-label">{{ capitalizeFirstLetter(spell.type) }}</div>
+                            <ng-container *ngFor="let line of spell.description">
+                                <span class="spell-active" *ngIf="spell.type=='active'">❖ {{line}}<br></span>
+                                <span class="spell-passive" *ngIf="spell.type=='passive'">⁘ {{line}}<br></span>
+                                <span class="spell-trigger" *ngIf="spell.type=='trigger'">※ {{line}}<br></span>
                             </ng-container>
                         </div>
                         <ng-container *ngFor="let summon of spell.summons">
@@ -61,7 +81,6 @@
                                 <img/> Cooldown: {{spell.cooldown}} second(s)
                             </div>
                         </div>
-        
                     </div>
                     <img class="spell-image" style="width:320px;height:320px;" [style.background-color]="enemy.color"/>
                 </div>

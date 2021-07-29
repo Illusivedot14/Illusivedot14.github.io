@@ -73,6 +73,9 @@ export class EnemyComponent implements OnInit, OnDestroy {
       }
       this.enemySpellsSub = this._enemyService.getEnemySkills().subscribe(skillData => {
         this.skills = skillData.filter(x => x.caster == this.enemy.name || (x.caster[0].length > 1 && x.caster.includes(this.enemy.name)));
+        for(let skill of this.skills) {
+          skill.color = '#' + skill.color;
+        }
       });
     });
     this.itemsSub = this._enemyService.getItems().subscribe(itemData => { this.items = itemData });
@@ -148,7 +151,12 @@ export class EnemyComponent implements OnInit, OnDestroy {
   {
     return "";
   }
-
+  getEnemySkill(name: string) : EnemySkill {
+    return this.skills.find(x => x.name == name)!;
+  }
+  capitalizeFirstLetter(name: string) : string {
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  }
   returnToPrior(): void {
     this._location.back();
   }

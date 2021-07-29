@@ -15,6 +15,7 @@
             style="width:256px;height:256px;"
             alt="thumbnail"/>
         <span class="enemy-quote" *ngIf="enemy.quote"[style.color]="enemy.color">"{{ enemy.quote }}"</span>
+        <div class="enemy-filler-quote" *ngIf="!enemy.quote" style="height: 50px;"></div>
     </div>
     <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="1" dynamicHeight>
         <mat-tab label="Stats">
@@ -36,7 +37,7 @@
                             <p class="enemy-respawn"  *ngIf="enemy.timer">Respawns: Every {{ enemy.timer }} seconds</p>
                         </div>
                     </div>
-                    <div class="enemy-difficulty" *ngIf="enemy.type == 'Boss' && enemy.category != 'Field' && enemy.category != 'Creep'">
+                    <div class="enemy-difficulty" *ngIf="enemy.type == 'Boss' && enemy.category != 'Field' && enemy.category != 'Creep' && !enemy.name.includes('Clown')">
                         <span class="enemy-difficulty-label" *ngIf='difficulty==1'>Difficulty: {{ difficulty }} Player</span>
                         <span class="enemy-difficulty-label" *ngIf='difficulty>1'>Difficulty: {{ difficulty }} Players</span>
                         <mat-slider min="1" max="10" step="1" value="1" (input)="onInputChange($event)"></mat-slider>
