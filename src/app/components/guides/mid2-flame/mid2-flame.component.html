@@ -19,7 +19,45 @@
     <div class="guide-overall">
         <h1 class="guide-label">Overall</h1>
         <mat-divider></mat-divider>
-        <p class="guide-overall-description"></p>
+        <p class="guide-overall-description">
+            <br>
+            What sets Flame Nightmare apart from the other Mid-tier bosses, is the fact you have to worry about Hatred and Anger by his side. However, these unkillable minions are easy to deal with. 
+            <br><br>
+            With Hatred, make sure the person with the Mark of Hatred (the purple circle underneath you) move away from the rest pf the group every 10 seconds, or else everyone around that person will lose 99% of 
+            their health.
+            <br><br>
+            Anger's only dangerous when Flame Nightmare reaches 25% and goes invulnerable. At that point, just run away from him as he's chained to Flame Nightmare and will teleport to him if he gets too far.
+            <br><br></p>
+        <div class="minion-container">
+            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Hatred')">
+                <img class="button-image" src="{{ getEnemyImageURL('Hatred') }}"
+                alt="thumbnail"/>
+            </button>
+            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Anger')">
+                <img class="button-image" src="{{ getEnemyImageURL('Anger') }}"
+                alt="thumbnail"/>
+            </button>
+        </div>
+        <p class="guide-overall-description">
+            The first <span style="color:#90EE90">25% HP</span> is easy as all you do is make sure he keeps hitting you so he doesn't use Overload and run away from the Flame Barrage. Flame Barrage can be easily dodged by moving in a circle. 
+            At <span style="color:#90EE90">75% HP</span>, Flame Nightmare will trigger his "On Your Knees". There's two approaches to this spell, you can either kite him away from the Flame Spawns, or use AOE to kill them all when they're close. 
+            <br><br>
+            If you choose to kite him, before he reaches <span style="color:#90EE90">75% HP</span>, move him to the bottom left of Lava Lands, and then trigger it. Then maintain his aggro until you reach the top left. You can maintain 
+            his aggro by stunning/interrupting him.
+            <br><br>
+            If you choose to do either, keep damaging him until he reaches <span style="color:#90EE90">25% HP</span>, where he will use Total Annihilation. Just run away from him for 10 seconds and come back to finish him off before he can 
+            use his "On Your Knees" again.
+        </p>
+        <div class="guide-minions">
+            <h1 class="guide-label">Minions</h1>
+            <mat-divider></mat-divider>
+            <div class="minion-container">
+            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Flame Spawn')">
+                <img class="button-image" src="{{ getEnemyImageURL('Flame Spawn') }}"
+                alt="thumbnail"/>
+            </button>
+            </div>
+        </div> 
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>

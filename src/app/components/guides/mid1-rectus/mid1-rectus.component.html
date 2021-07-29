@@ -1,16 +1,60 @@
 <div class="guide">
     <div class="guide-summon">
-        <h1 class="guide-label">How to Summon</h1>
+        <h1 class="guide-label">Location</h1>
         <mat-divider></mat-divider>
         <img class="guide-summon-image"
         src="{{ getLocationAsset(enemy.name) }}"
         alt="location-image"/>
-        <p class="guide-summon-description"></p>
+        <p class="guide-summon-description">
+        Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
+        before approaching this boss as you will get no loot if you're below that threshold. Also if you're not being carried, 
+        have at least Demon Lord level gear before attempting to make your life easier.
+        <br>
+        <br> 
+        To find this boss, just go to the Corrupted Tower south of the Spirit Forest (Teleport 9).</p>
     </div>
     <div class="guide-overall">
         <h1 class="guide-label">Overall</h1>
         <mat-divider></mat-divider>
-        <p class="guide-overall-description"></p>
+        <p class="guide-overall-description">
+        <br>
+        When he is first attacked, he will channel for 5 seconds and then deal <span style="color:red">25% HP damage</span> to all players in his room. He'll have all spells but Soul Swap during this part. 
+        Just focus him down and kill the Life Orb if you need health. <span style="color:#90EE90">75% HP</span>, he'll summon Avenger at the center of the arena and become invulnerable. His Corruption Overload 
+        will continue increasing in power during this phase. Make sure you kill him before his passive kills you.</p>
+        <div class="minion-container">
+            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Life Orb')">
+                <img class="button-image" src="{{ getEnemyImageURL('Life Orb') }}"
+                alt="thumbnail"/>
+            </button>
+        </div>
+        <div class="minion-container">
+            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Avenger')">
+                <img class="button-image" src="{{ getEnemyImageURL('Avenger') }}"
+                alt="thumbnail"/>
+            </button>
+        </div>
+        <p class="guide-overall-description">
+        The Avenger is pretty simple, just move behind him when he uses his Corruption Wave, which makes an arc in front of him. And you'll kill him quickly.
+        <br><br>
+        After the first summoning, he'll gain access to Soul Swap. Which can insta-kill the party if you're not careful, so make sure that both members are separated far away from each other and others.
+        <br><br>
+        In the second summoning, at <span style="color:#90EE90">50% HP</span>, he'll use Corrupted Summoning again and summon 1 Avenger and 8 Stalkers and go invulnerable. These stalkers deal a massive amount of damage on death so be careful!</p>
+        <div class="minion-container">
+            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Avenger')">
+                <img class="button-image" src="{{ getEnemyImageURL('Avenger') }}"
+                alt="thumbnail"/>
+            </button>
+            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Stalker')">
+                <img class="button-image" src="{{ getEnemyImageURL('Stalker') }}"
+                alt="thumbnail"/>
+            </button>
+        </div>
+        <p class="guide-overall-description">
+        After the second summoing, he'll be the same as the second phase.
+        <br><br>
+        At the last phase, at <span style="color:#90EE90">25% HP</span>, he'll summon the same as the <span style="color:#90EE90">50% HP</span> trigger, except he'll turn vulnernable after 5 seconds of channeling. His Death Coil 
+        will also get an upgrade in this phase, where it will shoot out eight coils that'll stun you. Focus down the minions or both Rectus and his minions if they're stacked and you'll kill this boss.
+        </p>
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
