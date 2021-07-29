@@ -15,6 +15,26 @@
             A cutscene will play and a portal will appear at East Prius Gate (Teleport 4). <b><u style="color:red">MAKE SURE YOU DO NOT KILL THE PORTAL OR YOU WILL UNLEASH A TERRIBLE EVIL.</u></b> 
             Defend the town for 90 seconds or kill all the demons to summon Lord Beriel.
         </p>
+        <div class="minion-container">
+            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Hell Portal')">
+                <img class="button-image" src="{{ getEnemyImageURL('Hell Portal') }}"
+                alt="thumbnail"/>
+            </button>
+        </div>
+        <div class="minion-container">
+            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Slime Monster')">
+                <img class="button-image" src="{{ getEnemyImageURL('Slime Monster') }}"
+                alt="thumbnail"/>
+            </button>
+            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Golem Monster')">
+                <img class="button-image" src="{{ getEnemyImageURL('Golem Monster') }}"
+                alt="thumbnail"/>
+            </button>
+            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Hound Monster')">
+                <img class="button-image" src="{{ getEnemyImageURL('Hound Monster') }}"
+                alt="thumbnail"/>
+            </button>
+        </div>
     </div>
     <div class="guide-overall">
         <h1 class="guide-label">Overall</h1>
