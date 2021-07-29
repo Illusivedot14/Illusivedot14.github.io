@@ -153,60 +153,65 @@
     display: flex;
     flex-direction: column;
     overflow-wrap: break-word;
-    }
-    &-notes-label {
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 25px;
+        &-label {
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 25px;
+            }
     }
 
-    &-drop-label {
-    color: #fff;
-    font-weight: 700;
-    font-size: 34px;
-    padding-bottom: 1%;
-    align-self: center;
-    
-    }
-    &-drop-container {
-    display: flex;
-    flex-flow: column;
-    color:#fff;
-    margin-left: auto;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    padding-right:5%;
-    width:35%;
-    }
     &-drop {
     display: flex;
     flex-flow: row;
+    &-label {
+        color: #fff;
+        font-weight: 700;
+        font-size: 34px;
+        padding-bottom: 1%;
+        align-self: center;
+        }
+    &-container {
+        display: flex;
+        flex-flow: column;
+        color:#fff;
+        margin-left: auto;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        padding-right:5%;
+        width:35%;
+        }
+    &-button {
+        align-self: center;
+        height: 96px;
+        max-height: 96px;
+        width: 96px;
+        max-width: 96px;
+        }
+    &-details {
+        color: #fff;
+        font-weight: 700;
+        font-size: 22px;
+        text-overflow: ellipsis;
+        align-self: center;
+        width:325px;
+        max-width: 325px;;
+        max-height: 128px;
+        padding: 10px;
+        }
     }
-    &-drop-button {
-    align-self: center;
-    height: 96px;
-    max-height: 96px;
-    width: 96px;
-    max-width: 96px;
+    
+    &-default {
+        display: flex;
+        flex-direction: column;
+        
     }
-    &-drop-details {
-    color: #fff;
-    font-weight: 700;
-    font-size: 22px;
-    text-overflow: ellipsis;
-    align-self: center;
-    width:325px;
-    max-width: 325px;;
-    max-height: 128px;
-    padding: 10px;
-    }
-
     &-location {
-        padding:2%;
         display: flex;
         flex-direction: column;
         align-self: center;
-        color: #fff;
+        padding-top: 60px;
+        padding-bottom: 30px;
+        width: 1200px;
         &-image {
             align-self: center;
             padding: 35px;
@@ -234,61 +239,6 @@
             align-self: center;
         }
     }
-    &-spell {
-        display: flex;
-        flex-direction: row;
-        width: 1200px;
-        min-width: 1200px;
-        max-width: 1200px;
-        align-self: center;
-        padding: 1%;
-        &-label {
-            font-weight: 700;
-            font-size: 45px;
-            margin-bottom: 20px;
-            color: #fff;
-            align-self: center;
-        }
-        &-container {
-            display: flex;
-            flex-direction: column;
-            color: #fff;
-            padding: 2%;
-        }
-        &-name {
-            font-weight: 350;
-            font-size: 33px;
-            margin-bottom: 1%;
-            color: #fff;
-            align-self: center;
-            line-height: 0.9;
-        }
-        &-detail-label {
-            font-weight: 350;
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-        &-details {
-            display: flex;
-            flex-direction: column;
-            width: 60%;
-        }
-        &-description {
-            font-size: 20px;
-            width:70%;
-        }
-        &-image {
-            align-self: center;
-        }
-        &-cooldown {
-            color: #fff;
-            font-size:18px;
-        }
-        &-cost {
-            font-size:18px;
-            color: #8292e9;
-        }
-    }
 }
 .back-button{
   width:64px;
@@ -311,3 +261,126 @@
 .mat-divider {
     border-top-color: white;
   }
+
+
+.spell {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    &-label {
+        font-weight: 700;
+        font-size: 45px;
+        margin-bottom: 20px;
+        color: #fff;
+        align-self: center;
+    }
+    &-container {
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+        width: 100%;
+    }
+    &-name {
+        font-weight: 350;
+        font-size: 33px;
+        margin-bottom: 1%;
+        color: #fff;
+        align-self: center;
+        line-height: 0.9;
+    }
+    &-detail-label {
+        font-weight: 350;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    &-details {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+    }
+    &-description {
+        font-size: 20px;
+        width:70%;
+    }
+    &-image {
+        align-self: center;
+    }
+    &-cooldown {
+        color: #fff;
+        font-size:18px;
+    }
+    &-cost {
+        font-size:18px;
+        color: #8292e9;
+    }
+}
+.guide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    &-label {
+        font-weight: 400;
+        font-size: 45px;
+        text-overflow: ellipsis;
+        align-self: center;
+        margin-bottom: 20px;
+    }
+    &-summon {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        padding-top: 60px;
+        padding-bottom: 30px;
+        width: 1200px;
+        &-image {
+            align-self: center;
+            padding: 35px;
+        }
+        &-description {
+            font-size: 25px;
+            line-height: 30px;
+        }
+    }
+    &-overall {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        width: 1200px;
+        &-description {
+            font-size: 25px;
+            line-height: 30px;
+        }
+    }
+    &-spells {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        padding-top: 30px;
+        width: 90%;
+        padding-bottom: 30px;
+    }
+    &-minions {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        padding-top: 30px;
+        width: 90%;
+        padding-bottom: 30px;  
+    }
+}
+
+.minion {
+    &-container {
+        padding-top: 20px;
+        display: flex;
+        flex-direction: row;
+        align-self: center;
+    }
+    &-button {
+        width: 128px;
+        height: 128px;
+    }
+}

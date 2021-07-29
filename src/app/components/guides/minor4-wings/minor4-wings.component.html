@@ -1,0 +1,82 @@
+<div class="guide">
+    <div class="guide-summon">
+        <h1 class="guide-label">How to Summon</h1>
+        <mat-divider></mat-divider>
+        <img class="guide-summon-image"
+        src="{{ getLocationAsset(enemy.name) }}"
+        alt="location-image"/>
+        <p class="guide-summon-description">
+            Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 70</span> 
+            before approaching this boss as you will get no experience nor loot if you're below that threshold.
+            <br>
+            <br> 
+            To summon this boss, first, gather 4 red stones from any red stone deposit in Lava Lands (Teleport 8) or, if you have a Chaos Pick or above, 
+            you can mine directly from the stone deposits in front of golem cave (Teleport 4). Use any pickaxe to gather the stones. Then, bring it above the 
+            Ancient Elemental in Lava Land (Teleport 8), as shown above.</p>
+    </div>
+    <div class="guide-overall">
+        <h1 class="guide-label">Overall</h1>
+        <mat-divider></mat-divider>
+        <p class="guide-overall-description">
+            <br>
+            Look carefully at his actions as he does not have any wind-up animation for his spells. At 50% HP, just dodge 
+        his fireballs as his Dragon's Might only lasts for 3 seconds.</p>
+        <div class="guide-spells">
+            <h1 class="guide-label">Spells</h1>
+            <mat-divider></mat-divider>
+            <mat-accordion class="spell-container">
+                <mat-expansion-panel hideToggle *ngFor="let spell of skills" style="background-color: #151515;align-self: center; width: 100%;">
+                  <mat-expansion-panel-header style="height:100px">
+                    <mat-panel-title class="spell-name" style="color:#ff8c00" *ngIf=spell.active>
+                      {{spell.name}}
+                    </mat-panel-title>
+                    <mat-panel-title class="spell-name" style="color:#ff1493" *ngIf=spell.passive>
+                        {{spell.name}}
+                      </mat-panel-title>
+                      <mat-panel-title class="spell-name" *ngIf=spell.trigger style="color:#8a2be2">
+                        {{spell.name}}
+                      </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="spell">
+                    <div class="spell-details">
+                        <div class="spell-description" style="color:#ff8c00" *ngIf=spell.active>
+                            <div class="spell-detail-label" style="color:#ff8c00" *ngIf=spell.active>Active</div>
+                            <ng-container *ngFor="let line of spell.active">
+                                <span class="spell-active">❖ {{line}}<br></span>
+                            </ng-container>
+                        </div>
+                        <div class="spell-description" style="color:#ff1493" *ngIf=spell.passive>
+                            <div class="spell-detail-label" style="color:#ff1493" *ngIf=spell.passive>Passive</div>
+                            <ng-container *ngFor="let line of spell.passive">
+                                <span class="spell-passive">⁘ {{line}}<br></span>
+                            </ng-container>
+                        </div>
+                        <div class="spell-description" *ngIf=spell.trigger>
+                            <div class="spell-detail-label" *ngIf=spell.trigger style="color:#8a2be2">Event</div>
+                            <ng-container *ngFor="let line of spell.trigger">
+                                <span class="spell-trigger" style="color:#8a2be2">※ {{line}}<br></span>
+                            </ng-container>
+                        </div>
+                        <ng-container *ngFor="let summon of spell.summons">
+                            <button mat-icon-button class="summon-button" (click)="openEnemyDetails(summon)">
+                                <img class="button-image" src="{{ getEnemyImageURL(summon) }}"
+                                alt="thumbnail" style="width:100%"/>
+                                </button>
+                        </ng-container>
+                        <div style="margin-top: auto;">
+                            <div class="spell-cost" *ngIf="spell.cost">
+                                <img/> Cost: {{spell.cost}} Resource
+                            </div>
+                            <div class="spell-cooldown" *ngIf="spell.cooldown">
+                                <img/> Cooldown: {{spell.cooldown}} second(s)
+                            </div>
+                        </div>
+        
+                    </div>
+                    <img class="spell-image" style="width:320px;height:320px;" [style.background-color]="enemy.color"/>
+                </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+</div>

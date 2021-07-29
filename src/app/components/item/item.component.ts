@@ -151,36 +151,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
   getBossImageURL(name: string)
   {
-    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this.findFilename(name)) + '%20Icon.jpg';
-  }
-  findFilename(boss_name: string){
-    switch(true){
-        case /^Troll/ig.test(boss_name): return "Troll";
-        case /^Ice Troll/ig.test(boss_name): return "Ice Troll";
-        case /^Furbolg/ig.test(boss_name): return "Furbolg";
-        case /Murloc/ig.test(boss_name): return "Murloc";
-        case /^Polar Bear/ig.test(boss_name): return "Polar Bear";
-        case /Duchy of Wallachia Count/ig.test(boss_name): return "Count";
-        case /^Duchy of Wallachia/ig.test(boss_name): return "Duchy of Wallachia";
-        case /^Lava/ig.test(boss_name): return "Lava";
-        case /^(Solid|Stone) Golem/ig.test(boss_name): return "Stone Golem";
-        case /Guardian of Sea/ig.test(boss_name): return "Tide Caller";
-        case /Mad Clown/ig.test(boss_name): return "Mad Clown";
-        case /Hydra/ig.test(boss_name): return "Hydra";
-        case /Jack/ig.test(boss_name): return "Jack";
-        case /Gatekeeper/ig.test(boss_name): return "Gatekeeper";
-        case /Guardian Angel/ig.test(boss_name): return "Guardian Angel";
-        case /Corrupt Angel/ig.test(boss_name): return "Corrupt Angel";
-        case /Everfrost/ig.test(boss_name): return "Everfrost";
-        case /Frostspider Queen/ig.test(boss_name): return "Spider Queen";
-        case /Beriel/ig.test(boss_name): return "Demon Lord";
-        case /Rectus/ig.test(boss_name): return "Corruptor";
-        case /Desperia/ig.test(boss_name): return "Skeleton King";
-        case /Samael/ig.test(boss_name): return "Archangel";
-        case /Irbert/ig.test(boss_name): return "Shadow Dragon";
-        case /Elemental of Chaos/ig.test(boss_name): return "ElementalistF";
-        default: return boss_name;
-    }
+    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this._itemService.getEnemyImageFilename(name)) + '%20Icon.jpg';
   }
   getItemImageURL(name: string)
   {

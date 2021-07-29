@@ -1,0 +1,84 @@
+<div class="guide">
+    <div class="guide-summon">
+        <h1 class="guide-label">How to Summon</h1>
+        <mat-divider></mat-divider>
+        <img class="guide-summon-image"
+        src="{{ getLocationAsset(enemy.name) }}"
+        alt="location-image"/>
+        <p class="guide-summon-description">
+            Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 80</span> 
+            before approaching this boss as you will get no experience nor loot if you're below that threshold.
+            <br>
+            <br> 
+            This boss is the second boss you ecounter in the Avalon Scenario, alongside Gatekeeper and Corrupt Angel. To summon these bosses, get 4 White Stones from 
+            either the deposits in front of golem cave (Teleport 4) if you have a chaos pick or above, or the white stone deposits in Wallachia (Teleport 7). Then, bring
+            the stones into the Golem Cave, toward the white stones at the very end of the cave, as shown above. Avalon will appear in front of the cave, where you'll
+            have to fight (or run past) Avalon Defenders and Protectors and kill the Gatekeeper.</p>
+    </div>
+    <div class="guide-overall">
+        <h1 class="guide-label">Overall</h1>
+        <mat-divider></mat-divider>
+        <p class="guide-overall-description">
+            <br>
+            Since there are three of these angels, you'll have to run past the first Angel and get the attention of the other two angels. Then, when they're all together, 
+            use all of your AoE spells, then pick off the stragglers. However, if you can't pull that off, then kite one Angel at a time and go back to the entrance to kill it. 
+            You'll get loot once all three are dead. Make sure to kill these guys before an hour passes when they are first summoned or else you won't be able to save!</p>
+        <div class="guide-spells">
+            <h1 class="guide-label">Spells</h1>
+            <mat-divider></mat-divider>
+            <mat-accordion class="spell-container">
+                <mat-expansion-panel hideToggle *ngFor="let spell of skills" style="background-color: #151515;align-self: center; width: 100%;">
+                  <mat-expansion-panel-header style="height:100px">
+                    <mat-panel-title class="spell-name" style="color:#ff8c00" *ngIf=spell.active>
+                      {{spell.name}}
+                    </mat-panel-title>
+                    <mat-panel-title class="spell-name" style="color:#ff1493" *ngIf=spell.passive>
+                        {{spell.name}}
+                      </mat-panel-title>
+                      <mat-panel-title class="spell-name" *ngIf=spell.trigger style="color:#8a2be2">
+                        {{spell.name}}
+                      </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="spell">
+                    <div class="spell-details">
+                        <div class="spell-description" style="color:#ff8c00" *ngIf=spell.active>
+                            <div class="spell-detail-label" style="color:#ff8c00" *ngIf=spell.active>Active</div>
+                            <ng-container *ngFor="let line of spell.active">
+                                <span class="spell-active">❖ {{line}}<br></span>
+                            </ng-container>
+                        </div>
+                        <div class="spell-description" style="color:#ff1493" *ngIf=spell.passive>
+                            <div class="spell-detail-label" style="color:#ff1493" *ngIf=spell.passive>Passive</div>
+                            <ng-container *ngFor="let line of spell.passive">
+                                <span class="spell-passive">⁘ {{line}}<br></span>
+                            </ng-container>
+                        </div>
+                        <div class="spell-description" *ngIf=spell.trigger>
+                            <div class="spell-detail-label" *ngIf=spell.trigger style="color:#8a2be2">Event</div>
+                            <ng-container *ngFor="let line of spell.trigger">
+                                <span class="spell-trigger" style="color:#8a2be2">※ {{line}}<br></span>
+                            </ng-container>
+                        </div>
+                        <ng-container *ngFor="let summon of spell.summons">
+                            <button mat-icon-button class="summon-button" (click)="openEnemyDetails(summon)">
+                                <img class="button-image" src="{{ getEnemyImageURL(summon) }}"
+                                alt="thumbnail" style="width:100%"/>
+                                </button>
+                        </ng-container>
+                        <div style="margin-top: auto;">
+                            <div class="spell-cost" *ngIf="spell.cost">
+                                <img/> Cost: {{spell.cost}} Resource
+                            </div>
+                            <div class="spell-cooldown" *ngIf="spell.cooldown">
+                                <img/> Cooldown: {{spell.cooldown}} second(s)
+                            </div>
+                        </div>
+        
+                    </div>
+                    <img class="spell-image" style="width:320px;height:320px;" [style.background-color]="enemy.color"/>
+                </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+</div>

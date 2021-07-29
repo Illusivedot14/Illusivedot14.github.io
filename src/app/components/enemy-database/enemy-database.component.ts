@@ -16,13 +16,11 @@ export class EnemyDatabaseComponent implements OnInit {
   private itemsSub!: Subscription;
 
   public enemies  : Enemy[] = [];
-  public items    : Item[]  = [];
-  public mobs     : Enemy[] = [];
-  public fields   : Enemy[] = [];
-  public minors   : Enemy[] = [];
-  public mids     : Enemy[] = [];
-  public highs    : Enemy[] = [];
-  public ends     : Enemy[] = [];
+  public enemy_categories : string[] = ["Mobs", "Fields", "Minors", "Mids", "Highs", "Ends"];
+  public enemy_list : Enemy[][] = [[], [], [], [], [], []];
+
+  public items : Item[]  = [];
+
 
   constructor(private _enemyService : HttpService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -39,47 +37,19 @@ export class EnemyDatabaseComponent implements OnInit {
       {
         if(enemy.type == "Minion" || enemy.type == "Mechanic") continue;
         enemy.color = "#" + enemy.color;
-        if(enemy.category == "Creep" || enemy.type == "Mob") this.mobs.push(enemy);
-        else if(enemy.category == "Field") this.fields.push(enemy);
-        else if(enemy.category == "Minor") this.minors.push(enemy);
-        else if(enemy.category == "Mid") this.mids.push(enemy);
-        else if(enemy.category == "High") this.highs.push(enemy);
-        else if(enemy.category == "Endgame") this.ends.push(enemy);
+        if(enemy.category == "Creep" || enemy.type == "Mob") this.enemy_list[0].push(enemy);
+        else if(enemy.category == "Field")                   this.enemy_list[1].push(enemy);
+        else if(enemy.category == "Minor")                   this.enemy_list[2].push(enemy);
+        else if(enemy.category == "Mid")                     this.enemy_list[3].push(enemy);
+        else if(enemy.category == "High")                    this.enemy_list[4].push(enemy);
+        else if(enemy.category == "Endgame")                 this.enemy_list[5].push(enemy);
       }
     });
   }
   getEnemyImageURL(name: string)
   {
-    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this.getEnemyImageFilename(name)) + '%20Icon.jpg';
-  }
-  getEnemyImageFilename(boss_name: string){
-    switch(true){
-        case /^Troll/ig.test(boss_name): return "Troll";
-        case /^Ice Troll/ig.test(boss_name): return "Ice Troll";
-        case /^Furbolg/ig.test(boss_name): return "Furbolg";
-        case /Murloc/ig.test(boss_name): return "Murloc";
-        case /^Polar Bear/ig.test(boss_name): return "Polar Bear";
-        case /Duchy of Wallachia Count/ig.test(boss_name): return "Count";
-        case /^Duchy of Wallachia/ig.test(boss_name): return "Duchy of Wallachia";
-        case /^Lava/ig.test(boss_name): return "Lava";
-        case /^(Solid|Stone) Golem/ig.test(boss_name): return "Stone Golem";
-        case /Guardian of Sea/ig.test(boss_name): return "Tide Caller";
-        case /Mad Clown/ig.test(boss_name): return "Mad Clown";
-        case /Hydra/ig.test(boss_name): return "Hydra";
-        case /Jack/ig.test(boss_name): return "Jack";
-        case /Gatekeeper/ig.test(boss_name): return "Gatekeeper";
-        case /Guardian Angel/ig.test(boss_name): return "Guardian Angel";
-        case /Corrupt Angel/ig.test(boss_name): return "Corrupt Angel";
-        case /Everfrost/ig.test(boss_name): return "Everfrost";
-        case /Frostspider Queen/ig.test(boss_name): return "Spider Queen";
-        case /Beriel/ig.test(boss_name): return "Demon Lord";
-        case /Rectus/ig.test(boss_name): return "Corruptor";
-        case /Desperia/ig.test(boss_name): return "Skeleton King";
-        case /Samael/ig.test(boss_name): return "Archangel";
-        case /Irbert/ig.test(boss_name): return "Shadow Dragon";
-        case /Elemental of Chaos/ig.test(boss_name): return "ElementalistF";
-        default: return boss_name;
-    }
+    if(name == "Elemental of Chaos") return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this._enemyService.getEnemyImageFilename(name)) + '.jpg';
+    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this._enemyService.getEnemyImageFilename(name)) + '%20Icon.jpg';
   }
   getItemImageURL(name: string)
   {

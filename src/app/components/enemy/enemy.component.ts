@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import {Location} from '@angular/common';
+import { Location} from '@angular/common';
 import { Subscription } from 'rxjs';
 import { Item, Enemy, EnemySkill } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
@@ -72,46 +72,19 @@ export class EnemyComponent implements OnInit, OnDestroy {
           this.possibleStats['damageResist'].value = Math.round(Number(this.possibleStats['damageResist'].value) * 10000) / 100;
       }
       this.enemySpellsSub = this._enemyService.getEnemySkills().subscribe(skillData => {
-        this.skills = skillData.filter(x => x.caster == this.enemy.name || x.caster.includes(this.enemy.name));
+        this.skills = skillData.filter(x => x.caster == this.enemy.name || (x.caster[0].length > 1 && x.caster.includes(this.enemy.name)));
       });
     });
     this.itemsSub = this._enemyService.getItems().subscribe(itemData => { this.items = itemData });
   }
 
 
-  getBossImageURL(name: string)
+  getEnemyImageURL(name: string)
   {
-    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this.getBossImageFilename(name)) + '%20Icon.jpg';
+    if(name == "Elemental of Chaos") return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this._enemyService.getEnemyImageFilename(name)) + '.jpg';
+    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this._enemyService.getEnemyImageFilename(name)) + '%20Icon.jpg';
   }
-  getBossImageFilename(boss_name: string){
-    switch(true){
-        case /^Troll/ig.test(boss_name): return "Troll";
-        case /^Ice Troll/ig.test(boss_name): return "Ice Troll";
-        case /^Furbolg/ig.test(boss_name): return "Furbolg";
-        case /Murloc/ig.test(boss_name): return "Murloc";
-        case /^Polar Bear/ig.test(boss_name): return "Polar Bear";
-        case /Duchy of Wallachia Count/ig.test(boss_name): return "Count";
-        case /^Duchy of Wallachia/ig.test(boss_name): return "Duchy of Wallachia";
-        case /^Lava/ig.test(boss_name): return "Lava";
-        case /^(Solid|Stone) Golem/ig.test(boss_name): return "Stone Golem";
-        case /Guardian of Sea/ig.test(boss_name): return "Tide Caller";
-        case /Mad Clown/ig.test(boss_name): return "Mad Clown";
-        case /Hydra/ig.test(boss_name): return "Hydra";
-        case /Jack/ig.test(boss_name): return "Jack";
-        case /Gatekeeper/ig.test(boss_name): return "Gatekeeper";
-        case /Guardian Angel/ig.test(boss_name): return "Guardian Angel";
-        case /Corrupt Angel/ig.test(boss_name): return "Corrupt Angel";
-        case /Everfrost/ig.test(boss_name): return "Everfrost";
-        case /Frostspider Queen/ig.test(boss_name): return "Spider Queen";
-        case /Beriel/ig.test(boss_name): return "Demon Lord";
-        case /Rectus/ig.test(boss_name): return "Corruptor";
-        case /Desperia/ig.test(boss_name): return "Skeleton King";
-        case /Samael/ig.test(boss_name): return "Archangel";
-        case /Irbert/ig.test(boss_name): return "Shadow Dragon";
-        case /Elemental of Chaos/ig.test(boss_name): return "ElementalistF";
-        default: return boss_name;
-    }
-  }
+
   getItemImageURL(name: string)
   {
     if(name.includes("Token"))  {
@@ -159,7 +132,7 @@ export class EnemyComponent implements OnInit, OnDestroy {
   }
   getDropRate(enemy: Enemy, item: Item, droprate: number) : string {
     var droprateScale = 0;
-    if(item.name.includes("Token") || item.name.includes("Icon")) {
+    if(item.name.includes("Token") || item.name.includes("Icon") || item.name.includes("Effort")) {
       return ' (' + (Math.round((droprate) * 10000) / 100) + "%)"
     }
     if((enemy.category == "Minor" || enemy.category == "Mid") && enemy.type == "Boss") {
@@ -175,8 +148,6 @@ export class EnemyComponent implements OnInit, OnDestroy {
   {
     return "";
   }
-
-
 
   returnToPrior(): void {
     this._location.back();

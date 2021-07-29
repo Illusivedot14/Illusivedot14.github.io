@@ -11,19 +11,18 @@
     <div class="enemy-container" *ngIf="enemy">
         <span class="enemy-name" [style.color]="enemy.color"> {{ enemy.name }}</span>
             <img class="enemy-thumbnail"
-            src="{{getBossImageURL(enemy.name)}}"
+            src="{{getEnemyImageURL(enemy.name)}}"
             style="width:256px;height:256px;"
             alt="thumbnail"/>
         <span class="enemy-quote" *ngIf="enemy.quote"[style.color]="enemy.color">"{{ enemy.quote }}"</span>
     </div>
-
-    <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="0" dynamicHeight>
+    <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="1" dynamicHeight>
         <mat-tab label="Stats">
             <div class="enemy-details" *ngIf="enemy">
                 <div class="enemy-basics">
                     <div class="enemy-card">
                         <img class="enemy-image"
-                        src="{{getBossImageURL(enemy.name)}}"
+                        src="{{getEnemyImageURL(enemy.name)}}"
                         style="width:168px;height:168px;"
                         alt="Body Image"/>
                         <div class="enemy-quick-details">
@@ -171,81 +170,37 @@
             </div>
         </mat-tab>
         <mat-tab label="Details">
-            <div class="enemy-location" *ngIf="enemy.location">
-                <div class="enemy-location-label">
-                    <span >Location</span>
-                    <span *ngIf="enemy.conditions"> and Conditions</span>
-                </div>
-                <mat-divider></mat-divider>
-                <img class="enemy-location-image"
-                src="{{ getLocationAsset(enemy.name) }}"
-                alt="location-image"/>
-                <span class="enemy-location-details">{{ enemy.location }}</span> 
-                <span class="enemy-location-conditions" *ngIf="enemy.conditions">Requires: {{ enemy.conditions }}</span> 
-                
-            </div>
-            <div class="enemy-spell-container" *ngIf="!hasGuide && enemy.spells">
-                <span class="enemy-spell-label">Spells</span>
-                <mat-divider></mat-divider>
-                <mat-accordion class="enemy-spell-container">
-                    <mat-expansion-panel hideToggle *ngFor="let spell of skills" style="background-color: #151515;width:1200px;align-self: center;">
-                      <mat-expansion-panel-header style="height:100px">
-                        <mat-panel-title class="enemy-spell-name">
-                          {{spell.name}}
-                        </mat-panel-title>
-                      </mat-expansion-panel-header>
-                    <div class="enemy-spell">
-                        <div class="enemy-spell-details">
-                            <div class="enemy-spell-description" style="color:#ff8c00" *ngIf=spell.active>
-                                <div class="enemy-spell-detail-label" style="color:#ff8c00" *ngIf=spell.active>Active</div>
-                                <ng-container *ngFor="let line of spell.active">
-                                    <span class="enemy-spell-active">❖ {{line}}<br></span>
-                                </ng-container>
-                            </div>
-                            <div class="enemy-spell-description" style="color:#ff1493" *ngIf=spell.passive>
-                                <div class="enemy-spell-detail-label" style="color:#ff1493" *ngIf=spell.passive>Passive</div>
-                                <ng-container *ngFor="let line of spell.passive">
-                                    <span class="enemy-spell-passive">⁘ {{line}}<br></span>
-                                </ng-container>
-                            </div>
-                            <div class="enemy-spell-description" *ngIf=spell.trigger>
-                                <div class="enemy-spell-detail-label" *ngIf=spell.trigger style="color:#8a2be2">Event</div>
-                                <ng-container *ngFor="let line of spell.trigger">
-                                    <span class="enemy-spell-trigger" style="color:#8a2be2">※ {{line}}<br></span>
-                                </ng-container>
-                            </div>
-                            <ng-container *ngFor="let summon of spell.summons">
-                                <button mat-icon-button class="enemy-summon-button" (click)="openEnemyDetails(summon)">
-                                    <img class="enemy-button-image" src="{{ getBossImageURL(summon) }}"
-                                    alt="thumbnail" style="width:100%"/>
-                                    </button>
-                            </ng-container>
-                            <div style="margin-top: auto;">
-                                <div class="enemy-spell-cost" *ngIf="spell.cost">
-                                    <img/> Cost: {{spell.cost}} Resource
-                                </div>
-                                <div class="enemy-spell-cooldown" *ngIf="spell.cooldown">
-                                    <img/> Cooldown: {{spell.cooldown}} second(s)
-                                </div>
-                            </div>
-
-                        </div>
-                        <img class="enemy-spell-image" style="width:320px;height:320px;" [style.background-color]="enemy.color"/>
-                    </div>
-                    </mat-expansion-panel>
-                </mat-accordion>
-            </div>
-            <div class="enemy-guide-container" *ngIf="hasGuide">
-                guide will go here (Child component)
-                <div class="phase">
-                    <div class="enemy-overall">
-                        If boss, overall and quick tips go here
-                    </div>
-                    <div class="enemy-spell-container">
-                        the spells will go here with an ngFor
-                        gif / description
-                        cooldown with clock
-                    </div>
+            <div *ngIf='enemy'>
+                <div [ngSwitch]="true">
+                    <app-minor0-hydra    *ngSwitchCase="enemy.name.includes('Hydra')"            [enemy]='enemy' [skills]='skills'></app-minor0-hydra>
+                    <app-minor1-jack     *ngSwitchCase="enemy.name.includes('Jack')"             [enemy]='enemy' [skills]='skills'></app-minor1-jack>
+                    <app-minor2-count    *ngSwitchCase="enemy.name.includes('Count')"            [enemy]='enemy' [skills]='skills'></app-minor2-count>
+                    <app-minor3-mage     *ngSwitchCase="enemy.name.includes('Mage Lord')"        [enemy]='enemy' [skills]='skills'></app-minor3-mage>
+                    <app-minor4-wings    *ngSwitchCase="enemy.name.includes('Wings')"            [enemy]='enemy' [skills]='skills'></app-minor4-wings>
+                    <app-minor5-gate     *ngSwitchCase="enemy.name.includes('Gatekeeper')"       [enemy]='enemy' [skills]='skills'></app-minor5-gate>
+                    <app-minor6-angel    *ngSwitchCase="enemy.name.includes('Guardian Angel')"   [enemy]='enemy' [skills]='skills'></app-minor6-angel>
+                    <app-minor7-corrupt  *ngSwitchCase="enemy.name.includes('Corrupt Angel')"    [enemy]='enemy' [skills]='skills'></app-minor7-corrupt>
+                    <app-minor8-soul     *ngSwitchCase="enemy.name.includes('Soul')"             [enemy]='enemy' [skills]='skills'></app-minor8-soul>
+                    <app-minor9-spider   *ngSwitchCase="enemy.name.includes('Queen')"            [enemy]='enemy' [skills]='skills'></app-minor9-spider>
+                    <app-minor10-lord    *ngSwitchCase="enemy.name.includes('Frostspider Lord')" [enemy]='enemy' [skills]='skills'></app-minor10-lord>
+                    <app-minor11-demon   *ngSwitchCase="enemy.name.includes('Demon')"            [enemy]='enemy' [skills]='skills'></app-minor11-demon>
+                    <app-minor12-clown   *ngSwitchCase="enemy.name.includes('Clown')"            [enemy]='enemy' [skills]='skills'></app-minor12-clown>
+                    <app-mid0-spirit     *ngSwitchCase="enemy.name.includes('Spirit')"           [enemy]='enemy' [skills]='skills'></app-mid0-spirit>
+                    <app-mid1-rectus     *ngSwitchCase="enemy.name.includes('Rectus')"           [enemy]='enemy' [skills]='skills'></app-mid1-rectus>
+                    <app-mid2-flame      *ngSwitchCase="enemy.name.includes('Flame')"            [enemy]='enemy' [skills]='skills'></app-mid2-flame>
+                    <app-mid3-turtle     *ngSwitchCase="enemy.name.includes('Turtle')"           [enemy]='enemy' [skills]='skills'></app-mid3-turtle>
+                    <!-- <app-high0-bone      *ngSwitchCase="enemy.name.includes('Bone Dragon')"      [enemy]='enemy' [skills]='skills'></app-high0-bone> -->
+                    <!-- <app-high1-skeleton  *ngSwitchCase="enemy.name.includes('Skeleton King')"    [enemy]='enemy' [skills]='skills'></app-high1-skeleton> -->
+                    <!-- <app-high2-zombie    *ngSwitchCase="enemy.name.includes('Zombie Lord')"      [enemy]='enemy' [skills]='skills'></app-high2-zombie> -->
+                    <!-- <app-high3-ent       *ngSwitchCase="enemy.name.includes('Ancient Ent')"      [enemy]='enemy' [skills]='skills'></app-high3-ent> -->
+                    <!-- <app-high4-archangel *ngSwitchCase="enemy.name.includes('Archangel')"        [enemy]='enemy' [skills]='skills'></app-high4-archangel> -->
+                    <!-- <app-high5-shadow    *ngSwitchCase="enemy.name.includes('Shadow Dragon')"    [enemy]='enemy' [skills]='skills'></app-high5-shadow> -->
+                    <!-- <app-end0-death      *ngSwitchCase="enemy.name.includes('Death Fiend')"      [enemy]='enemy' [skills]='skills'></app-end0-death> -->
+                    <!-- <app-end1-valtora    *ngSwitchCase="enemy.name.includes('Valtora')"          [enemy]='enemy' [skills]='skills'></app-end1-valtora> -->
+                    <!-- <app-end2-ifrit      *ngSwitchCase="enemy.name.includes('Ifrit')"            [enemy]='enemy' [skills]='skills'></app-end2-ifrit> -->
+                    <!-- <app-end3-nereid     *ngSwitchCase="enemy.name.includes('Nereid')"           [enemy]='enemy' [skills]='skills'></app-end3-nereid> -->
+                    <!-- <app-end4-agareth    *ngSwitchCase="enemy.name.includes('Agareth')"          [enemy]='enemy' [skills]='skills'></app-end4-agareth> -->
+                    <app-default         *ngSwitchDefault                                        [enemy]='enemy' [skills]='skills'></app-default>
                 </div>
             </div>
         </mat-tab>
