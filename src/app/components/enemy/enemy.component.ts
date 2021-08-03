@@ -56,7 +56,7 @@ export class EnemyComponent implements OnInit, OnDestroy {
   }
   getEnemyDetails(id: string): void {
     this.enemySub = this._enemyService.getEnemies().subscribe(data => {
-      this.enemy = data.find(x => x.name.includes(id))!;
+      this.enemy = data.find(x => x.name == id)!;
       this.enemy.color = "#" + this.enemy.color;
       if(this.enemy.stats) {
           Object.entries(this.enemy.stats).forEach(entry => {

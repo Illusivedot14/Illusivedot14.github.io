@@ -30,7 +30,6 @@ export class HttpService {
     switch(true){
         case /^Spider/ig.test(boss_name): return "Spider Queen";
         case /^(Giant|Frost|Frostvemon) Spider/ig.test(boss_name): return "Spider Queen";
-
         case /^Wolf/ig.test(boss_name): return "Silverback Wolf";
         case /^(Shadow|Dark) Wolf/ig.test(boss_name): return "Silverback Wolf";
         
@@ -44,9 +43,11 @@ export class HttpService {
         case /^Lava/ig.test(boss_name): return "Lava";
         case /^(Solid|Stone) Golem/ig.test(boss_name): return "Stone Golem";
         case /Guardian of Sea/ig.test(boss_name): return "Tide Caller";
+
         case /Mad Clown/ig.test(boss_name): return "Mad Clown";
         case /Hydra/ig.test(boss_name): return "Hydra";
         case /Jack/ig.test(boss_name): return "Jack";
+
         case /Gatekeeper/ig.test(boss_name): return "Gatekeeper";
         case /Guardian Angel/ig.test(boss_name): return "Guardian Angel";
         case /Corrupt Angel/ig.test(boss_name): return "Corrupt Angel";
@@ -61,10 +62,17 @@ export class HttpService {
         case /Golem Monster/ig.test(boss_name): return "Flesh Golem"; 
         case /Hound Monster/ig.test(boss_name): return "Felhound";
         case /Beriel/ig.test(boss_name): return "Demon Lord";
+
+        case /Avenger/ig.test(boss_name): return "Monster - Avenger";
+        case /Stalker/ig.test(boss_name): return "Monster - Stalker";
         case /Rectus/ig.test(boss_name): return "Corruptor";
+
+        case /Hatred/ig.test(boss_name): return "Monster -Hatred";
+        case /Anger/ig.test(boss_name): return "Monster - Anger";
 
         case /Healing Turtle/ig.test(boss_name): return "Turtle Lord";
         case /Turtle/ig.test(boss_name): return "Turtle Lord";
+        
         case /Desperia/ig.test(boss_name): return "Skeleton King";
         case /Samael/ig.test(boss_name): return "Archangel";
         case /Irbert/ig.test(boss_name): return "Shadow Dragon";

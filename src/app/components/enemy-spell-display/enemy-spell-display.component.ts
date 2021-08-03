@@ -46,6 +46,7 @@ export class EnemySpellDisplayComponent implements OnInit {
       case /^Immortal Body/ig.test(spellName): return false;
       case /^Blessed Wings/ig.test(spellName): return false;
       case /^Dark Wings/ig.test(spellName): return false;
+      case /^Nanoscale Armor/ig.test(spellName): return false;
       case /^Hellfrost Attack/ig.test(spellName): return false;
       case /^Frost Aura/ig.test(spellName): return false;
       case /^Hellfrost Body/ig.test(spellName): return false;
