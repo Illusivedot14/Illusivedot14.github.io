@@ -278,39 +278,6 @@
         color: #fff;
         width: 100%;
     }
-    &-name {
-        font-weight: 350;
-        font-size: 33px;
-        margin-bottom: 1%;
-        color: #fff;
-        align-self: center;
-        line-height: 0.9;
-    }
-    &-detail-label {
-        font-weight: 350;
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
-    &-details {
-        display: flex;
-        flex-direction: column;
-        width: 60%;
-    }
-    &-description {
-        font-size: 20px;
-        width:70%;
-    }
-    &-image {
-        align-self: center;
-    }
-    &-cooldown {
-        color: #fff;
-        font-size:18px;
-    }
-    &-cost {
-        font-size:18px;
-        color: #8292e9;
-    }
 }
 .guide {
     display: flex;
@@ -367,6 +334,18 @@
         padding-top: 30px;
         width: 90%;
         padding-bottom: 30px;  
+    }
+    &-kill {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        padding-top: 30px;
+        padding-bottom: 60px;
+        width: 1200px;
+        &-description {
+            font-size: 25px;
+            line-height: 30px;
+        }
     }
 }
 

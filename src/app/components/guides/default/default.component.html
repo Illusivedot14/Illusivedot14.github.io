@@ -5,7 +5,9 @@
         <mat-divider></mat-divider>
         <img class="enemy-location-image"
         src="{{ getLocationAsset(enemy.name) }}"
-        alt="location-image"/>
+        alt="location-image"
+        *ngIf="!(enemy.type == 'Minion' || enemy.type == 'Mechanic')"/>
+        <div *ngIf="(enemy.type == 'Minion' || enemy.type == 'Mechanic')" style="height: 32px;"></div>
         <span class="enemy-location-details">{{ enemy.location }}</span> 
         <span class="enemy-location-conditions" *ngIf="enemy.conditions">Requires: {{ enemy.conditions }}</span> 
     </div>
@@ -13,40 +15,7 @@
         <div class="spell-container" *ngIf="enemy.spells">
             <span class="spell-label">Spells</span>
             <mat-divider></mat-divider>
-            <mat-accordion class="spell-container">
-                <mat-expansion-panel hideToggle *ngFor="let spell of skills" style="background-color: #151515;width:1200px;align-self: center; width: 100%;">
-                  <mat-expansion-panel-header style="height:100px">
-                    <mat-panel-title class="spell-name" [style.color]="spell.color"> {{spell.name}}</mat-panel-title>
-                  </mat-expansion-panel-header>
-                <div class="spell">
-                    <div class="spell-details">
-                        <div class="spell-description" [style.color]="spell.color">
-                            <div class="spell-detail-label">{{ capitalizeFirstLetter(spell.type) }}</div>
-                            <ng-container *ngFor="let line of spell.description">
-                                <span class="spell-active" *ngIf="spell.type=='active'">❖ {{line}}<br></span>
-                                <span class="spell-passive" *ngIf="spell.type=='passive'">⁘ {{line}}<br></span>
-                                <span class="spell-trigger" *ngIf="spell.type=='trigger'">※ {{line}}<br></span>
-                            </ng-container>
-                        </div>
-                        <ng-container *ngFor="let summon of spell.summons">
-                            <button mat-icon-button class="summon-button" (click)="openEnemyDetails(summon)">
-                                <img class="button-image" src="{{ getEnemyImageURL(summon) }}"
-                                alt="thumbnail" style="width:100%"/>
-                                </button>
-                        </ng-container>
-                        <div style="margin-top: auto;">
-                            <div class="spell-cost" *ngIf="spell.cost">
-                                <img/> Cost: {{spell.cost}} Resource
-                            </div>
-                            <div class="spell-cooldown" *ngIf="spell.cooldown">
-                                <img/> Cooldown: {{spell.cooldown}} second(s)
-                            </div>
-                        </div>
-                    </div>
-                    <img class="spell-image" style="width:320px;height:320px;" [style.background-color]="enemy.color"/>
-                </div>
-                </mat-expansion-panel>
-            </mat-accordion>
+            <app-enemy-spell-display [skills]="skills"></app-enemy-spell-display>
         </div>
     </div>
 

@@ -29,7 +29,8 @@ export class HttpService {
   getEnemyImageFilename(boss_name: string){
     switch(true){
         case /^Spider/ig.test(boss_name): return "Spider Queen";
-        case /^Giant Spider/ig.test(boss_name): return "Spider Queen";
+        case /^(Giant|Frost|Frostvemon) Spider/ig.test(boss_name): return "Spider Queen";
+
         case /^Wolf/ig.test(boss_name): return "Silverback Wolf";
         case /^(Shadow|Dark) Wolf/ig.test(boss_name): return "Silverback Wolf";
         
@@ -49,10 +50,21 @@ export class HttpService {
         case /Gatekeeper/ig.test(boss_name): return "Gatekeeper";
         case /Guardian Angel/ig.test(boss_name): return "Guardian Angel";
         case /Corrupt Angel/ig.test(boss_name): return "Corrupt Angel";
+
+        case /^Spider/ig.test(boss_name): return "Spider Queen";
+        case /^Frost Skirmisher/ig.test(boss_name): return "Spider Queen";
         case /Everfrost/ig.test(boss_name): return "Everfrost";
+        case /Frozen Soul/ig.test(boss_name): return "Evil Lava Spawn";
         case /Frostspider Queen/ig.test(boss_name): return "Spider Queen";
+
+        case /Slime Monster/ig.test(boss_name): return "Slime";
+        case /Golem Monster/ig.test(boss_name): return "Flesh Golem"; 
+        case /Hound Monster/ig.test(boss_name): return "Felhound";
         case /Beriel/ig.test(boss_name): return "Demon Lord";
         case /Rectus/ig.test(boss_name): return "Corruptor";
+
+        case /Healing Turtle/ig.test(boss_name): return "Turtle Lord";
+        case /Turtle/ig.test(boss_name): return "Turtle Lord";
         case /Desperia/ig.test(boss_name): return "Skeleton King";
         case /Samael/ig.test(boss_name): return "Archangel";
         case /Irbert/ig.test(boss_name): return "Shadow Dragon";

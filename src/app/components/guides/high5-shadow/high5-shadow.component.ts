@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Enemy, EnemySkill } from 'src/app/models';
+import { EnemyComponent } from '../../enemy/enemy.component';
 
 @Component({
   selector: 'app-high5-shadow',
   templateUrl: './high5-shadow.component.html',
-  styleUrls: ['./high5-shadow.component.scss']
+  styleUrls: ['../../enemy/enemy.component.scss']
 })
-export class High5ShadowComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class High5ShadowComponent extends EnemyComponent  {
+  @Input() enemy!: Enemy;
+  @Input() skills!: EnemySkill[];
 }

@@ -149,14 +149,9 @@ export class EnemyComponent implements OnInit, OnDestroy {
 
   getLocationAsset(name: string) : string
   {
-    return "";
+    return "..\..\..\..\assets\img\twrpg_map.png";
   }
-  getEnemySkill(name: string) : EnemySkill {
-    return this.skills.find(x => x.name == name)!;
-  }
-  capitalizeFirstLetter(name: string) : string {
-    return name.charAt(0).toUpperCase() + name.slice(1);
-  }
+
   returnToPrior(): void {
     this._location.back();
   }

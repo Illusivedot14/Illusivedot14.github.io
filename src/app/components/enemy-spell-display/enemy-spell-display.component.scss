@@ -1,0 +1,77 @@
+.spell {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    &-label {
+        font-weight: 700;
+        font-size: 45px;
+        margin-bottom: 20px;
+        color: #fff;
+        align-self: center;
+    }
+    &-container {
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+        width: 100%;
+    }
+    &-name {
+        font-weight: 350;
+        font-size: 33px;
+        margin-bottom: 1%;
+        color: #fff;
+        align-self: center;
+        line-height: 0.9;
+    }
+    &-detail-label {
+        font-weight: 350;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    &-details {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    &-description {
+        font-size: 20px;
+        width: 90%;
+    }
+    &-video {
+        height: 100%;
+        width: 100%;
+        align-self: center;
+        &-container {
+            align-self: center;
+            height: 384px;
+            padding: 20px;
+            width: 100%;
+        }
+    }
+    &-image {
+        align-self: center;
+    }
+    &-cooldown {
+        display: flex;
+        flex-direction: row;
+        color: #fff;
+        &-label {
+            height: 75%;
+            font-size: 25px;
+            color: #b3c2cb;
+            align-self: center;
+        }
+    }
+    &-cost {
+        margin-left: 5px;
+        display: flex;
+        flex-direction: row;
+        color: #fff;
+        &-label {
+            height: 75%;
+            font-size: 25px;
+            color: #8292e9;
+            align-self: center;
+        }
+    }
+}

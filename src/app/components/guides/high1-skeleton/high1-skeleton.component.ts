@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Enemy, EnemySkill } from 'src/app/models';
+import { EnemyComponent } from '../../enemy/enemy.component';
 
 @Component({
   selector: 'app-high1-skeleton',
   templateUrl: './high1-skeleton.component.html',
-  styleUrls: ['./high1-skeleton.component.scss']
+  styleUrls: ['../../enemy/enemy.component.scss']
 })
-export class High1SkeletonComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class High1SkeletonComponent extends EnemyComponent  {
+  @Input() enemy!: Enemy;
+  @Input() skills!: EnemySkill[];
 }

@@ -64,6 +64,7 @@ import { End4AgarethComponent } from './components/guides/end4-agareth/end4-agar
 import { CharacterDatabaseComponent } from './components/character-database/character-database.component';
 import { CharacterComponent } from './components/character/character.component';
 import { DefaultComponent } from './components/guides/default/default.component';
+import { EnemySpellDisplayComponent } from './components/enemy-spell-display/enemy-spell-display.component';
 
 
 @NgModule({
@@ -106,6 +107,7 @@ import { DefaultComponent } from './components/guides/default/default.component'
     CharacterDatabaseComponent,
     CharacterComponent,
     DefaultComponent,
+    EnemySpellDisplayComponent,
     
   ],
   imports: [

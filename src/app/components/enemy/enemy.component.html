@@ -36,6 +36,9 @@
                             <p class="enemy-respawn"  *ngIf="enemy.respawn">Respawns: {{ enemy.respawn }}</p>
                             <p class="enemy-respawn"  *ngIf="enemy.timer">Respawns: Every {{ enemy.timer }} seconds</p>
                         </div>
+                        <div class="enemy-special-stat-change">
+                            
+                        </div>
                     </div>
                     <div class="enemy-difficulty" *ngIf="enemy.type == 'Boss' && enemy.category != 'Field' && enemy.category != 'Creep' && !enemy.name.includes('Clown')">
                         <span class="enemy-difficulty-label" *ngIf='difficulty==1'>Difficulty: {{ difficulty }} Player</span>
@@ -190,16 +193,16 @@
                     <app-mid1-rectus     *ngSwitchCase="enemy.name.includes('Rectus')"            [enemy]='enemy' [skills]='skills'></app-mid1-rectus>
                     <app-mid2-flame      *ngSwitchCase="enemy.name.includes('Flame Nightmare')"   [enemy]='enemy' [skills]='skills'></app-mid2-flame>
                     <app-mid3-turtle     *ngSwitchCase="enemy.name.includes('Turtle Lord')"       [enemy]='enemy' [skills]='skills'></app-mid3-turtle>
-                    <!-- <app-high0-bone      *ngSwitchCase="enemy.name.includes('Bone Dragon')"      [enemy]='enemy' [skills]='skills'></app-high0-bone> -->
-                    <!-- <app-high1-skeleton  *ngSwitchCase="enemy.name.includes('Skeleton King')"    [enemy]='enemy' [skills]='skills'></app-high1-skeleton> -->
-                    <!-- <app-high2-zombie    *ngSwitchCase="enemy.name.includes('Zombie Lord')"      [enemy]='enemy' [skills]='skills'></app-high2-zombie> -->
-                    <!-- <app-high3-ent       *ngSwitchCase="enemy.name.includes('Ancient Ent')"      [enemy]='enemy' [skills]='skills'></app-high3-ent> -->
-                    <!-- <app-high4-archangel *ngSwitchCase="enemy.name.includes('Archangel')"        [enemy]='enemy' [skills]='skills'></app-high4-archangel> -->
-                    <!-- <app-high5-shadow    *ngSwitchCase="enemy.name.includes('Shadow Dragon')"    [enemy]='enemy' [skills]='skills'></app-high5-shadow> -->
-                    <!-- <app-end0-death      *ngSwitchCase="enemy.name.includes('Death Fiend')"      [enemy]='enemy' [skills]='skills'></app-end0-death> -->
-                    <!-- <app-end1-valtora    *ngSwitchCase="enemy.name.includes('Valtora')"          [enemy]='enemy' [skills]='skills'></app-end1-valtora> -->
-                    <!-- <app-end2-ifrit      *ngSwitchCase="enemy.name.includes('Ifrit')"            [enemy]='enemy' [skills]='skills'></app-end2-ifrit> -->
-                    <!-- <app-end3-nereid     *ngSwitchCase="enemy.name.includes('Nereid')"           [enemy]='enemy' [skills]='skills'></app-end3-nereid> -->
+                    <app-high0-bone      *ngSwitchCase="enemy.name.includes('Bone Dragon')"       [enemy]='enemy' [skills]='skills'></app-high0-bone>
+                    <app-high1-skeleton  *ngSwitchCase="enemy.name.includes('Skeleton King')"     [enemy]='enemy' [skills]='skills'></app-high1-skeleton>
+                    <app-high2-zombie    *ngSwitchCase="enemy.name.includes('Zombie Lord')"       [enemy]='enemy' [skills]='skills'></app-high2-zombie>
+                    <app-high3-ent       *ngSwitchCase="enemy.name.includes('Ancient Ent')"       [enemy]='enemy' [skills]='skills'></app-high3-ent>
+                    <app-high4-archangel *ngSwitchCase="enemy.name.includes('Archangel')"         [enemy]='enemy' [skills]='skills'></app-high4-archangel>
+                    <app-high5-shadow    *ngSwitchCase="enemy.name.includes('Shadow Dragon')"     [enemy]='enemy' [skills]='skills'></app-high5-shadow>
+                    <app-end0-death      *ngSwitchCase="enemy.name.includes('Death Fiend')"       [enemy]='enemy' [skills]='skills'></app-end0-death>
+                    <app-end1-valtora    *ngSwitchCase="enemy.name.includes('Valtora')"           [enemy]='enemy' [skills]='skills'></app-end1-valtora>
+                    <app-end2-ifrit      *ngSwitchCase="enemy.name.includes('Ifrit')"             [enemy]='enemy' [skills]='skills'></app-end2-ifrit>
+                    <app-end3-nereid     *ngSwitchCase="enemy.name.includes('Nereid')"            [enemy]='enemy' [skills]='skills'></app-end3-nereid>
                     <!-- <app-end4-agareth    *ngSwitchCase="enemy.name.includes('Agareth')"          [enemy]='enemy' [skills]='skills'></app-end4-agareth> -->
                     <app-default         *ngSwitchDefault                                        [enemy]='enemy' [skills]='skills'></app-default>
                 </div>

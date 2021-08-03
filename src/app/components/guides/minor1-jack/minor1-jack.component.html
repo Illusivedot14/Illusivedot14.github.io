@@ -3,15 +3,16 @@
         <h1 class="guide-label">How to Summon</h1>
         <mat-divider></mat-divider>
         <img class="guide-summon-image"
-        src="{{ getLocationAsset(enemy.name) }}"
-        alt="location-image"/>
+        src="https://i.imgur.com/TzOewTE.jpg"
+        alt="location-image"
+        width="896" height="448"/>
         <p class="guide-summon-description">
             Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 60</span> 
             before approaching this boss as you will get no experience nor loot if you're below that threshold.
             <br>
             <br> 
-            To summon this boss, first, gather 4 white stones from any white stone deposit in Wallachia (Teleport 7) or, if you have a Chaos Pick or above, 
-            you can mine directly from the stone deposits in front of golem cave (Teleport 4). Use any pickaxe to gather the stones. Then, bring them to the fountain at Prius City 
+            To summon this boss, first, gather 4 white stones from any white stone deposit at the Duchy of Wallachia (Teleport 7) or, if you have a Chaos Pick or above, 
+            you can mine directly from the stone deposits at the Cave Entrance (Teleport 4). Use any pickaxe to gather the stones. Then, bring them to the fountain at Capital Prius 
             (Teleport 5), as shown above.</p>
     </div>
     <div class="guide-overall">
@@ -22,40 +23,13 @@
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <mat-accordion class="spell-container">
-                <mat-expansion-panel hideToggle *ngFor="let spell of skills" style="background-color: #151515;width:1200px;align-self: center; width: 100%;">
-                  <mat-expansion-panel-header style="height:100px">
-                    <mat-panel-title class="spell-name" [style.color]="spell.color"> {{spell.name}}</mat-panel-title>
-                  </mat-expansion-panel-header>
-                <div class="spell">
-                    <div class="spell-details">
-                        <div class="spell-description" [style.color]="spell.color">
-                            <div class="spell-detail-label">{{ capitalizeFirstLetter(spell.type) }}</div>
-                            <ng-container *ngFor="let line of spell.description">
-                                <span class="spell-active" *ngIf="spell.type=='active'">❖ {{line}}<br></span>
-                                <span class="spell-passive" *ngIf="spell.type=='passive'">⁘ {{line}}<br></span>
-                                <span class="spell-trigger" *ngIf="spell.type=='trigger'">※ {{line}}<br></span>
-                            </ng-container>
-                        </div>
-                        <ng-container *ngFor="let summon of spell.summons">
-                            <button mat-icon-button class="summon-button" (click)="openEnemyDetails(summon)">
-                                <img class="button-image" src="{{ getEnemyImageURL(summon) }}"
-                                alt="thumbnail" style="width:100%"/>
-                                </button>
-                        </ng-container>
-                        <div style="margin-top: auto;">
-                            <div class="spell-cost" *ngIf="spell.cost">
-                                <img/> Cost: {{spell.cost}} Resource
-                            </div>
-                            <div class="spell-cooldown" *ngIf="spell.cooldown">
-                                <img/> Cooldown: {{spell.cooldown}} second(s)
-                            </div>
-                        </div>
-                    </div>
-                    <img class="spell-image" style="width:320px;height:320px;" [style.background-color]="enemy.color"/>
-                </div>
-                </mat-expansion-panel>
-            </mat-accordion>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="skills"></app-enemy-spell-display>
         </div>
+    </div>
+    <div class="guide-kill">
+        <h1 class="guide-label">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;"></mat-divider>
+        <!-- <iframe controls=0 width="1120" height="630" src="https://www.youtube-nocookie.com/embed/CisSrIzTCvE?autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=2&showinfo=1&rel=0" title="YouTube video player" 
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="align-self: center;"></iframe> -->
     </div>
 </div>

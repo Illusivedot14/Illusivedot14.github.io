@@ -1,1 +1,30 @@
-<p>high3-ent works!</p>
+<div class="guide">
+    <div class="guide-summon">
+        <h1 class="guide-label">How to Summon</h1>
+        <mat-divider></mat-divider>
+        <img class="guide-summon-image"
+        src="{{ getLocationAsset(enemy.name) }}"
+        alt="location-image"/>
+        <p class="guide-summon-description">
+            Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 50</span> 
+            before approaching this boss as you will get no experience nor loot if you're below that threshold.
+            <br>
+            <br> 
+            To summon this boss, first, gather 4 blue stones from any blue stone deposit in the Snowy Hills (Teleport 6) or if you have a Chaos Pick or above, 
+            you can mine directly from the stone deposits in front of the golem cave (Teleport 4). Use any pickaxe to gather the stones. Then, bring them to the 
+            top-right of the Seaside Area (Teleport 3) in front of the shipwreck, as shown above.</p>
+    </div>
+    <div class="guide-overall">
+        <h1 class="guide-label">Overall</h1>
+        <mat-divider></mat-divider>
+        <p class="guide-overall-description">
+            <br>
+            This boss is pretty simple as you can just hit and die until the boss is dead. However, its spells are pretty easy to avoid due to their long wind-ups. 
+            Just be mindful of your surroundings in case mobs come.</p>
+        <div class="guide-spells">
+            <h1 class="guide-label">Spells</h1>
+            <mat-divider></mat-divider>
+            <app-enemy-spell-display [skills]="skills"></app-enemy-spell-display>
+        </div>
+    </div>
+</div>
