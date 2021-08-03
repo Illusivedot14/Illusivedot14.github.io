@@ -18,7 +18,6 @@ export class Minor2CountComponent extends EnemyComponent {
         this.exclusionList.push(names[i]);
     }
     let result = this.skills.filter(x => names.includes(x.name));
-    console.log(this.exclusionList);
     return result;
   }
   getRemainingSkills() : EnemySkill[] {
