@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Item, Enemy, EnemySkill } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 import { MatSliderChange } from '@angular/material/slider';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-enemy',
@@ -46,11 +47,12 @@ export class EnemyComponent implements OnInit, OnDestroy {
     'attackSpeed':   {  name: " Attack Speed",  color: '#FF6666', value: 0 },
     'moveSpeed':     {  name: " Move Speed",    color: '#808080', value: 0 },
   };
-  constructor(private _location: Location, private ActivatedRoute: ActivatedRoute, private router: Router, private _enemyService: HttpService) { }
+  constructor(private _location: Location, private ActivatedRoute: ActivatedRoute, private router: Router, private _enemyService: HttpService, private titleService: Title) { }
 
   ngOnInit(): void {
     this.routeSub = this.ActivatedRoute.params.subscribe((params : Params) => {
       this.enemyID = decodeURIComponent(params['id']);
+      this.titleService.setTitle("TWRPG Guidebook | Enemy | " + this.enemyID);
       this.getEnemyDetails(this.enemyID);
     })
   }

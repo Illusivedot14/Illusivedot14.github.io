@@ -19,7 +19,12 @@
         <mat-divider></mat-divider>
         <p class="guide-overall-description">
             <br>
-            As the first High boss, this guy is pretty tough if you're unprepared. You will require someone who can <span style="color:#90EE90">tank 50% max hp damage every 8 seconds</span> and good positioning. 
+            As the first High boss, this guy is pretty tough if you're unprepared. You'll require someone who can <span style="color:#90EE90">tank 50% max hp damage every 8 seconds</span> due to his Swipe ability 
+            he'll be using all game. You'll also require good positioning for his Hell Spikes. 
+            <br>
+            <br>
+            Bone Dragon has two Phases: a calm phase, and enraged phase. The duration of his rage phase depends on his mana. So it is important to drain all of his mana during this phase or else he'll go into this 
+            mode twice with the remaining mana.
             <br>
             <br>
             Bone Dragon starts out in his calm phase, where he will have access to the spells: Swipe, Flame Breath, and Petrification. Make sure to have someone to take every Swipe, or else Bone Dragon 
@@ -32,35 +37,29 @@
             use Petrification. Instead, he'll be able to use Hell Spike for the rest of the fight. Make sure your party deals at least 10% max hp to him during this form, so you don't have to deal with this mode 
             twice.
             <br>
+            <br></p>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(['Dragon%27s%20Rage'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <p class="guide-overall-description">
             <br>
-            To deal with Hell Spike, place the first two somewhere near the middle of the arena, so there's room to maneuver to hide from the third Hell Spike (see diagram below). Other than that, once he's 
+            To deal with Hell Spike, place the first two somewhere near the middle of the arena, so there's room to maneuver to hide from the third Hell Spike (see video below). Other than that, once he's 
             off his Rage mode, he'll gain Petrification again, but keep his Hell Spike. Keep going and he'll be dead in no time.
             </p>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(['Hell%20Spike'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
             <div class="guide-video-container" style="align-self: center;">
-                <video class="guide-video" controls style="align-self: center; width: 500px; height: 500px;">
+                <video class="guide-video" controls style="align-self: center; width: 500px; height: 400px;">
                     <source src="https://ia601408.us.archive.org/8/items/bd_20210804/BD.mp4" type="video/mp4"/>
                     Browser not supported
                 </video>
-            </div>
-            
-            <div class="guide-minions">
-                <h1 class="guide-label">Minions</h1>
-                <mat-divider></mat-divider>
-                <div class="minion-container">
-                <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Flame Spirit')">
-                    <img class="button-image" src="{{ getEnemyImageURL('Flame Spirit') }}"
-                    alt="thumbnail"/>
-                </button>
-                <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Hell Spike')">
-                    <img class="button-image" src="{{ getEnemyImageURL('Hell Spike') }}"
-                    alt="thumbnail"/>
-                </button>
-                </div>
             </div> 
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [skills]="skills"></app-enemy-spell-display>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills()"></app-enemy-spell-display>
         </div>
+    </div>
+    <div class="guide-kill">
+        <h1 class="guide-label">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;"></mat-divider>
+        <!-- <iframe src="https://ia801506.us.archive.org/24/items/TWRPGGuidebook/0Hydra%2FStomp.ia.mp4" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe> -->
     </div>
 </div>

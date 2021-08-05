@@ -4,6 +4,7 @@ import {Location} from '@angular/common';
 import { Subscription } from 'rxjs';
 import { Item, RecipeWithOptions, BossWithRate } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -68,11 +69,13 @@ export class ItemComponent implements OnInit, OnDestroy {
   itemSub!: Subscription;
   public display: string = "Used In";
 
-  constructor(private _location: Location, private ActivatedRoute: ActivatedRoute, private router: Router, private _itemService: HttpService) { }
+  constructor(private _location: Location, private ActivatedRoute: ActivatedRoute, private router: Router, private _itemService: HttpService, private titleService: Title) { }
 
   ngOnInit(): void {
+    
     this.routeSub = this.ActivatedRoute.params.subscribe((params : Params) => {
       this.itemID = decodeURIComponent(params['id']);
+      this.titleService.setTitle("TWRPG Guidebook | Item | " + this.itemID);
       this.getItemDetails(this.itemID);
     })
   }

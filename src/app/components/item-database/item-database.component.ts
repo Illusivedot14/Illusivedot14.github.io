@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Item } from 'src/app/models';
@@ -29,9 +30,10 @@ export class ItemDatabaseComponent implements OnInit, OnDestroy {
   private routeSub!: Subscription;
   private itemSub!: Subscription;
 
-  constructor(private _itemService : HttpService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private _itemService : HttpService, private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle("TWRPG Guidebook | Item");
     this.routeSub = this.activatedRoute.params.subscribe((params : Params) => {
       if(params['item-search']) 
       { 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Enemy, Item } from 'src/app/models';
@@ -22,9 +23,10 @@ export class EnemyDatabaseComponent implements OnInit {
   public items : Item[]  = [];
 
 
-  constructor(private _enemyService : HttpService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private _enemyService : HttpService, private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle("TWRPG Guidebook | Enemy");
     this.routeSub = this.activatedRoute.params.subscribe((params : Params) => {
       this.getEnemies();
     });
