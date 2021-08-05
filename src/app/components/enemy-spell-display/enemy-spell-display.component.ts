@@ -39,6 +39,13 @@ export class EnemySpellDisplayComponent implements OnInit {
     }
     return "";
   }
+  openMinionDetails(id: string) : void {
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree([`/enemy/${id}`])
+    );
+  
+    window.open(url, '_blank');
+  }
   hasMP4(spellName : string) : boolean {
     switch(true){
       case /^Pumpkin Body/ig.test(spellName): return false;
@@ -56,6 +63,7 @@ export class EnemySpellDisplayComponent implements OnInit {
       case /^Corrupt Power/ig.test(spellName): return false;
       case /^Corrupt Explosion/ig.test(spellName): return false;
       case /^Nightmare Body/ig.test(spellName): return false;
+      case /^Berserk/ig.test(spellName): return false;
       case /^Mystic Shell/ig.test(spellName): return false;
       case /^Hard Shell/ig.test(spellName): return false;
       case /^Infected Swipes/ig.test(spellName): return false;

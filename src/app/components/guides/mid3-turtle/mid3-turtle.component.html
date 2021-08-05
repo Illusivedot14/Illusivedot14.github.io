@@ -27,37 +27,40 @@
             you get someone with a lot of <span style="color:#D3D3D3">armor</span> to tank Turtle Lord, as his Chomp Armor will make quick work of any glass cannon.
             <br><br>
             Every forty seconds (or when he reaches full mana), he will use Summon Healing Turtle. Dedicate half your DPS to kill these turtles as soon as possible. <u style="color:red">When the Healing 
-            Turtles reach Turtle Lord, they will heal him for <span style="color:#90EE90">25% HP</span>.</u>
-            <br><br>
+            Turtles reach Turtle Lord, they will heal him for <span style="color:#90EE90">25% HP</span>.</u></p>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(['Summon%20Healing%20Turtle'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <div class="guide-minion-example">
+                <img class="guide-summon-image"
+                src="https://i.imgur.com/OZ9wOE2.jpg"
+                alt="location-image"
+                width="1216" height="768"
+                style="align-self: center;"/>
+                <button mat-icon-button class="minion-button" (click)="openMinionDetails('Healing Turtle')" style="position: absolute; width: 64px; height: 64px; left:100px; top:380px;">
+                    <img class="button-image" src="{{ getEnemyImageURL('Healing Turtle') }}"
+                    alt="thumbnail"
+                    width="64px"/>
+                </button>
+                <button mat-icon-button class="minion-button" (click)="openMinionDetails('Healing Turtle')" style="position: absolute; width: 64px; height: 64px; left:1036px; top:377px;">
+                    <img class="button-image" src="{{ getEnemyImageURL('Healing Turtle') }}"
+                    alt="thumbnail"
+                    width="64px"/>
+                </button>
+            </div>
+            <p class="guide-overall-description">
             The only other thing you'll have to worry about in this boss are the Turtles that come whenever Turtle Lord reaches <span style="color:#90EE90">75%, 50% and 25% HP</span>. Turtle Lord will gain 
             <span style="color:#FFFF99">90% Damage Reduction</span> and will not 
             go below 1 HP until all Turtles are dead. There are eight Turtles that spawn, <span style="color:#FFFF99">six with no Damage Reduction, and two with 50% Damage 
             Reduction</span>. A good tip for killing these Turtles quickly is to clump up every <span style="color:#90EE90">25% HP</span>, as the spawn range of these Turtles are dependent on your positions.
-            <br><br>
+            </p>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(['Turtle%20Ambush'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <p class="guide-overall-description">
+            <br>
             Focus down all the minions as soon as possible and this will be an easy kill.
-        </p>
-        <img class="guide-summon-image"
-        src="https://i.imgur.com/OZ9wOE2.jpg"
-        alt="location-image"
-        width="1344" height="448"/>
-        <div class="guide-minions">
-            <h1 class="guide-label">Minions</h1>
-            <mat-divider></mat-divider>
-            <div class="minion-container">
-            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Healing Turtle')">
-                <img class="button-image" src="{{ getEnemyImageURL('Healing Turtle') }}"
-                alt="thumbnail"/>
-            </button>
-            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Turtle')">
-                <img class="button-image" src="{{ getEnemyImageURL('Turtle') }}"
-                alt="thumbnail"/>
-            </button>
-            </div>
-        </div> 
+            </p>
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="skills"></app-enemy-spell-display>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills()"></app-enemy-spell-display>
         </div>
     </div>
     <div class="guide-kill">

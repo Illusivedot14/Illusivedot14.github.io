@@ -284,6 +284,10 @@
     flex-direction: column;
     justify-content: center;
     color: #fff;
+    background-color: #303030;
+    margin:auto;
+    width: 80%;
+    align-self: center;
     &-label {
         font-weight: 400;
         font-size: 45px;
@@ -313,10 +317,11 @@
         align-self: center;
         padding-top: 30px;
         padding-bottom: 30px;
-        width: 1200px;
+        width: 90%;
         &-description {
             font-size: 25px;
             line-height: 30px;
+            align-self: center;
         }
     }
     &-spells {
@@ -331,6 +336,7 @@
         display: flex;
         flex-direction: column;
         align-self: center;
+        position: relative;
         padding-top: 30px;
         width: 90%;
         padding-bottom: 30px;  
@@ -346,6 +352,10 @@
             font-size: 25px;
             line-height: 30px;
         }
+    }
+    &-minion-example {
+        align-self: center;
+        position: relative;
     }
 }
 

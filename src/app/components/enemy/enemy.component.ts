@@ -155,7 +155,13 @@ export class EnemyComponent implements OnInit, OnDestroy {
   getMinionSpell() : EnemySkill[] {
     return [];
   }
-
+  openMinionDetails(id: string) : void {
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree([`/enemy/${id}`])
+    );
+  
+    window.open(url, '_blank');
+  }
   returnToPrior(): void {
     this._location.back();
   }

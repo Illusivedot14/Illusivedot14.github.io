@@ -27,42 +27,35 @@
             With Hatred, make sure the person with the Mark of Hatred (the purple circle underneath you) move away from the rest pf the group every 10 seconds, or else everyone around that person will lose 99% of 
             their health.
             <br><br>
-            Anger's only dangerous when Flame Nightmare reaches 25% and goes invulnerable. At that point, just run away from him as he's chained to Flame Nightmare and will teleport to him if he gets too far.
-            <br><br></p>
+            Anger's only dangerous when Flame Nightmare reaches 25% and goes invulnerable. At that point, just run away from him as he's chained to Flame Nightmare and will teleport to him if he gets too far.</p>
         <div class="minion-container">
-            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Hatred')">
+            <button mat-icon-button class="minion-button" (click)="openMinionDetails('Hatred')">
                 <img class="button-image" src="{{ getEnemyImageURL('Hatred') }}"
                 alt="thumbnail"/>
             </button>
-            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Anger')">
+            <button mat-icon-button class="minion-button" (click)="openMinionDetails('Anger')">
                 <img class="button-image" src="{{ getEnemyImageURL('Anger') }}"
                 alt="thumbnail"/>
             </button>
         </div>
         <p class="guide-overall-description">
+            <br>
             The first <span style="color:#90EE90">25% HP</span> is easy as all you do is make sure he keeps hitting you so he doesn't use Overload and run away from the Flame Barrage. Flame Barrage can be easily dodged by moving in a circle. 
             At <span style="color:#90EE90">75% HP</span>, Flame Nightmare will trigger his "On Your Knees". There's two approaches to this spell, you can either kite him away from the Flame Spawns, or use AOE to kill them all when they're close. 
-            <br><br>
-            If you choose to kite him, before he reaches <span style="color:#90EE90">75% HP</span>, move him to the bottom left of Lava Lands, and then trigger it. Then maintain his aggro until you reach the top left. You can maintain 
-            his aggro by stunning/interrupting him.
+            <br><br></p>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(['On%20Your%20Knees%21'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+        <p class="guide-overall-description">
+            <br>
+            If you choose to kite him, after he uses his "On Your Knees!", move him away from the epicenter of the jump. He will not be healed when the Flame Spawns reach his jump location.
             <br><br>
             If you choose to do either, keep damaging him until he reaches <span style="color:#90EE90">25% HP</span>, where he will use Total Annihilation. Just run away from him for 10 seconds and come back to finish him off before he can 
-            use his "On Your Knees" again.
+            use his "On Your Knees" again.<br><br>
         </p>
-        <div class="guide-minions">
-            <h1 class="guide-label">Minions</h1>
-            <mat-divider></mat-divider>
-            <div class="minion-container">
-            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Flame Spawn')">
-                <img class="button-image" src="{{ getEnemyImageURL('Flame Spawn') }}"
-                alt="thumbnail"/>
-            </button>
-            </div>
-        </div> 
+        <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(['Total%20Annihilation'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="skills"></app-enemy-spell-display>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills()"></app-enemy-spell-display>
         </div>
     </div>
     <div class="guide-kill">

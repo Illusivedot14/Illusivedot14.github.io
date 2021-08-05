@@ -22,43 +22,44 @@
         When he is first attacked, he will channel for 5 seconds and then deal <span style="color:red">25% HP damage</span> to all players in his room. He'll have all spells but Soul Swap during this part. 
         Just focus him down and kill the Life Orb if you need health. <span style="color:#90EE90">75% HP</span>, he'll summon Avenger at the center of the arena and become invulnerable. His Corruption Overload 
         will continue increasing in power during this phase. Make sure you kill him before his passive kills you.</p>
-        <img class="guide-summon-image"
-        src="https://i.imgur.com/HAX3cRZ.jpg"
-        alt="location-image"
-        width="500" height="500"/>
-        <div class="minion-container">
-            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Life Orb')">
+        <div class="guide-minion-example">
+            <img class="guide-summon-image"
+            src="https://i.imgur.com/HAX3cRZ.jpg"
+            alt="location-image"
+            width="500" height="500"/>
+            <button mat-icon-button class="minion-button" (click)="openMinionDetails('Life Orb')" style="position: absolute; width: 64px; height: 64px; left:352px; top:80px;">
                 <img class="button-image" src="{{ getEnemyImageURL('Life Orb') }}"
-                alt="thumbnail"/>
+                alt="thumbnail"
+                width="64px"/>
             </button>
-        </div>
-        <div class="minion-container">
-            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Avenger')">
+            <button mat-icon-button class="minion-button" (click)="openMinionDetails('Avenger')" style="position: absolute; width: 64px;  height: 64px; left:150px; top:200px;">
                 <img class="button-image" src="{{ getEnemyImageURL('Avenger') }}"
-                alt="thumbnail"/>
+                alt="thumbnail"
+                width="64px"/>
             </button>
         </div>
         <p class="guide-overall-description">
         The Avenger is pretty simple, just move behind him when he uses his Corruption Wave, which makes an arc in front of him. And you'll kill him quickly.
         <br><br>
-        After the first summoning, he'll gain access to Soul Swap. Which can insta-kill the party if you're not careful, so make sure that both members are separated far away from each other and others.
+        After the first summoning, he'll gain access to Soul Swap. Which can insta-kill the party if you're not careful, so make sure that both members are separated far away from each other and others. His Death 
+        Coil will also get an upgrade in this phase, where it will shoot out eight coils that'll stun you.
         <br><br>
-        In the second summoning, at <span style="color:#90EE90">50% HP</span>, he'll use Corrupted Summoning again and summon 1 Avenger and 8 Stalkers and go invulnerable. These stalkers deal a massive amount of damage on death so be careful!</p>
+        In the second summoning, at <span style="color:#90EE90">50% HP</span>, he'll use Corrupted Summoning again and summon 1 Avenger at the same spot, and 8 Stalkers around himself. He will also go invulnerable. These stalkers deal a massive amount of damage on death so be careful!</p>
         <div class="minion-container">
-            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Avenger')">
+            <button mat-icon-button class="minion-button" (click)="openMinionDetails('Avenger')">
                 <img class="button-image" src="{{ getEnemyImageURL('Avenger') }}"
                 alt="thumbnail"/>
             </button>
-            <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Stalker')">
+            <button mat-icon-button class="minion-button" (click)="openMinionDetails('Stalker')">
                 <img class="button-image" src="{{ getEnemyImageURL('Stalker') }}"
                 alt="thumbnail"/>
             </button>
         </div>
-        <p class="guide-overall-description">
-        After the second summoing, he'll be the same as the second phase.
+        <p class="guide-overall-description" style="margin-top: 30px;">
+        After the second summoning, he'll be the same as the second phase.
         <br><br>
-        At the last phase, at <span style="color:#90EE90">25% HP</span>, he'll summon the same as the <span style="color:#90EE90">50% HP</span> trigger, except he'll turn vulnernable after 5 seconds of channeling. His Death Coil 
-        will also get an upgrade in this phase, where it will shoot out eight coils that'll stun you. Focus down the minions or both Rectus and his minions if they're stacked and you'll kill this boss.
+        At the last phase, at <span style="color:#90EE90">25% HP</span>, he'll summon the same as the <span style="color:#90EE90">50% HP</span> trigger, except he'll turn vulnernable after 5 seconds of channeling. 
+        Focus down the minions or both Rectus and his minions if they're stacked and you'll kill this boss.
         </p>
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>

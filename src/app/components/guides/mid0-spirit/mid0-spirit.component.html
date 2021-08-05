@@ -19,14 +19,19 @@
         <mat-divider></mat-divider>
         <p class="guide-overall-description">
         <br>
-        This is your first Mid boss, it is also the easiest Mid boss. One of your main concerns is dodging his Ethereal Strike/Spirit Echo and blocking the Drain Orbs from reaching him, like with Mana Ancient. 
+        This is your first Mid boss, it is also the easiest Mid boss. Your main concerns are dodging his Ethereal Strike/Spirit Echo and blocking the Drain Orbs from reaching him, like with Mana Ancient. 
         This boss is straight forward until he reaches <span style="color:#90EE90">50% HP</span>, where he will use Heaven's Wrath. 
         <br><br></p>
-        <app-enemy-spell-display [category]="enemy.category" [skills]="skills"></app-enemy-spell-display>
+        <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(['Heaven%27s%20Wrath'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
         <p class="guide-overall-description">
         <br>
         After <span style="color:#90EE90">50% HP</span>, he will gain <span style="color:#FFFF99">25% Damage Reduction</span> and his Ethereal Strike will travel a second time after reaching its maximum range. This part is the same as before except he's a little bit tankier. 
         Mind your positioning due to the Spirit Flames and you'll get this boss down in no time.</p>
+        <div class="guide-spells">
+            <h1 class="guide-label">Spells</h1>
+            <mat-divider></mat-divider>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills()"></app-enemy-spell-display>
+        </div>
     </div>
     <div class="guide-kill">
         <h1 class="guide-label">Kill Video</h1>

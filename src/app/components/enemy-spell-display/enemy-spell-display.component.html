@@ -24,7 +24,7 @@
                 </ng-container>
             </div>
             <ng-container *ngFor="let summon of spell.summons">
-                <button mat-icon-button class="summon-button" (click)="openEnemyDetails(summon)">
+                <button mat-icon-button class="summon-button" (click)="openMinionDetails(summon)">
                     <img class="button-image" src="{{ getEnemyImageURL(summon) }}"
                     alt="thumbnail" style="width:100%"/>
                     </button>
