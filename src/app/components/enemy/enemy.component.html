@@ -40,7 +40,7 @@
                             
                         </div>
                     </div>
-                    <div class="enemy-difficulty" *ngIf="enemy.type == 'Boss' && enemy.category != 'Field' && enemy.category != 'Creep' && !enemy.name.includes('Clown')">
+                    <div class="enemy-difficulty" *ngIf="enemy.category != 'Field' && enemy.category != 'Creep' && !enemy.name.includes('Clown')">
                         <span class="enemy-difficulty-label" *ngIf='difficulty==1'>Difficulty: {{ difficulty }} Player</span>
                         <span class="enemy-difficulty-label" *ngIf='difficulty>1'>Difficulty: {{ difficulty }} Players</span>
                         <mat-slider min="1" max="10" step="1" value="1" (input)="onInputChange($event)"></mat-slider>

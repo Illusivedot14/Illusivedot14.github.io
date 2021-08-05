@@ -1,5 +1,5 @@
 <div class="enemy-container">
-    <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="2" dynamicHeight>
+    <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="4" dynamicHeight>
         <mat-tab *ngFor="let category of enemy_categories; let i = index" [label]="category">
           <div class="enemy-list">
             <ng-container *ngFor="let enemy of enemy_list[i]">

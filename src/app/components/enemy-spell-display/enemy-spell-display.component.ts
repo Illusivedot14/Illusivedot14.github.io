@@ -52,6 +52,15 @@ export class EnemySpellDisplayComponent implements OnInit {
       case /^Hellfrost Body/ig.test(spellName): return false;
       case /^The Demon Lord's Power/ig.test(spellName): return false;
       case /^Instincts/ig.test(spellName): return false;
+      case /^Corruption Aura/ig.test(spellName): return false;
+      case /^Corrupt Power/ig.test(spellName): return false;
+      case /^Corrupt Explosion/ig.test(spellName): return false;
+      case /^Nightmare Body/ig.test(spellName): return false;
+      case /^Mystic Shell/ig.test(spellName): return false;
+      case /^Hard Shell/ig.test(spellName): return false;
+      case /^Infected Swipes/ig.test(spellName): return false;
+      case /^Ent Power/ig.test(spellName): return false;
+      case /^Grasp of the Fiend/ig.test(spellName): return false;
       default: return true;
   }
   }

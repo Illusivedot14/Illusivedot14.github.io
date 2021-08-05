@@ -107,11 +107,11 @@ export class EnemyComponent implements OnInit, OnDestroy {
   getHealth() : number {
     var health = parseFloat(this.possibleStats['health'].value);
     var difficultyHealth = 0;
-    if((this.enemy.category == "Minor" || this.enemy.category == "Mid") && this.enemy.type == "Boss")
+    if((this.enemy.category == "Minor" || this.enemy.category == "Mid"))
     {
       difficultyHealth = this.difficulty <= 5 ? health*.5*(this.difficulty-1) : health*2;
     }
-    if((this.enemy.category == "High" || this.enemy.category == "Endgame") && this.enemy.type == "Boss")
+    if((this.enemy.category == "High" || this.enemy.category == "Endgame"))
     {
       difficultyHealth = this.difficulty > 5 ? health*.2*(this.difficulty-5) : 0;
     }
@@ -138,10 +138,10 @@ export class EnemyComponent implements OnInit, OnDestroy {
     if(item.name.includes("Token") || item.name.includes("Icon") || item.name.includes("Effort")) {
       return ' (' + (Math.round((droprate) * 10000) / 100) + "%)"
     }
-    if((enemy.category == "Minor" || enemy.category == "Mid") && enemy.type == "Boss") {
+    if((enemy.category == "Minor" || enemy.category == "Mid")) {
       droprateScale = this.difficulty <= this.cutOffDropRateScale ? droprate*this.lowerDropRateScale*(this.difficulty-1) : droprate*this.lowerDropRateScale*4;
     }
-    if((enemy.category == "High" || enemy.category == "Endgame") && enemy.type == "Boss") {
+    if((enemy.category == "High" || enemy.category == "Endgame")) {
       droprateScale = this.difficulty > this.cutOffDropRateScale ? droprate*this.higherDropRateScale*(this.difficulty-5) : 0;
     }
     return ' (' + (Math.round((droprate + droprateScale) * 10000) / 100) + "%)"
@@ -150,6 +150,10 @@ export class EnemyComponent implements OnInit, OnDestroy {
   getLocationAsset(name: string) : string
   {
     return "..\..\..\..\assets\img\twrpg_map.png";
+  }
+
+  getMinionSpell() : EnemySkill[] {
+    return [];
   }
 
   returnToPrior(): void {

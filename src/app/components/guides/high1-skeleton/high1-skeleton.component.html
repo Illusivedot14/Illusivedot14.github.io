@@ -1,14 +1,15 @@
 <div class="guide">
     <div class="guide-summon">
-        <h1 class="guide-label">How to Summon</h1>
+        <h1 class="guide-label">Location</h1>
         <mat-divider></mat-divider>
         <img class="guide-summon-image"
-        src="{{ getLocationAsset(enemy.name) }}"
-        alt="location-image"/>
+        src="https://i.imgur.com/Va9tuKo.jpg"
+        alt="location-image"
+        width="1344" height="448"/>
         <p class="guide-summon-description">
             Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
             before approaching this boss as you will get no loot if you're below that threshold. Also if you're not being carried, 
-            have at least Mid level gear before attempting to make your life easier.
+            have at least Mid level gear before attempting to make your life easier, from this point on, you need a party.
             <br>
             <br> 
             To find this boss, just go into the Prius Forward Camp (Teleport Q-1) and go north, to the Sealed Land.</p>
@@ -18,8 +19,34 @@
         <mat-divider></mat-divider>
         <p class="guide-overall-description">
             <br>
-            This boss is pretty simple as you can just hit and die until the boss is dead. However, its spells are pretty easy to avoid due to their long wind-ups. 
-            Just be mindful of your surroundings in case mobs come.</p>
+            This boss will test your patience if you're melee as you NEED TO STAY AWAY FROM THE BOSS at every 25% threshold. I'd recommend modifying your Health Bar so that you can see every 25%.
+            <br>
+            <br>
+            Skeleton King starts out with all of his abilities but Absolute Devastation, which he will unlock later. He'll also spawn 2 Skeleton Soliders every 15 seconds, one on each side of the arena. Generally, 
+            don't have a lot of units near him as his Drain Soul will give him a ton of healing. He'll use Soul Terror at ranged, clumped up units. There aren't a lot of wind-ups for his abilities, so you have to 
+            know the cooldowns to dodge them.
+            <br>
+            <br>
+            At <span style="color:#90EE90">every 25% HP lost</span>, he'll begin using Ture Power of Despair, which takes 3 seconds to fully power. Once activated, <span style="color:red">he will instantly kill any 
+            player or player-owned unit around him (500 range).</span> So dodge it, or don't if you're that kind of person.
+            <br>
+            <br>
+            After this point, he'll unlock Absolute Devastation, which he will need to cast <u>at least once</u> during the fight. If he reaches below 0 and he hasn't cast it, he will regain 25% of his health and 
+            cast it immediately. Make sure the Skeleton Soliders don't pull you during the ability.
+            <br>
+            <br>
+            Keep the Solider number down and keep going through the fight and he'll go down.
+            </p>
+            <div class="guide-minions">
+                <h1 class="guide-label">Minions</h1>
+                <mat-divider></mat-divider>
+                <div class="minion-container">
+                <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Skeletal Solider')">
+                    <img class="button-image" src="{{ getEnemyImageURL('Skeletal Solider') }}"
+                    alt="thumbnail"/>
+                </button>
+                </div>
+            </div> 
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>

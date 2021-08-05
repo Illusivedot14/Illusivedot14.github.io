@@ -3,24 +3,62 @@
         <h1 class="guide-label">How to Summon</h1>
         <mat-divider></mat-divider>
         <img class="guide-summon-image"
-        src="{{ getLocationAsset(enemy.name) }}"
-        alt="location-image"/>
-        <p class="guide-summon-description">
-            Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 50</span> 
-            before approaching this boss as you will get no experience nor loot if you're below that threshold.
-            <br>
-            <br> 
-            To summon this boss, first, gather 4 blue stones from any blue stone deposit in the Snowy Hills (Teleport 6) or if you have a Chaos Pick or above, 
-            you can mine directly from the stone deposits in front of the golem cave (Teleport 4). Use any pickaxe to gather the stones. Then, bring them to the 
-            top-right of the Seaside Area (Teleport 3) in front of the shipwreck, as shown above.</p>
+        src="https://i.imgur.com/hmP0u9g.jpg"
+        alt="location-image"
+        width="1344" height="448"/>
+            <p class="guide-summon-description">
+                Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
+                before approaching this boss as you will get no loot if you're below that threshold. Also if you're not being carried, 
+                have at least Mid level gear before attempting to make your life easier, from this point on, you need a party.
+                <br>
+                <br> 
+                To find this boss, just go into the Prius Forward Camp (Teleport Q-1) and go east into the Eternal Graveyard. On the first kill, bring 4 Holy Waters from the Priest in the top-left corner of Prius (Teleport 5) and 
+                use them on the Worshippers of Immortality around the dormant boss. </p>
     </div>
     <div class="guide-overall">
         <h1 class="guide-label">Overall</h1>
         <mat-divider></mat-divider>
         <p class="guide-overall-description">
             <br>
-            This boss is pretty simple as you can just hit and die until the boss is dead. However, its spells are pretty easy to avoid due to their long wind-ups. 
-            Just be mindful of your surroundings in case mobs come.</p>
+            This boss is the the most unique high boss as you will be killing him not once, but three or more times. You will need at least one or two people than can interrupt enemies.
+            <br>
+            <br>
+            When starting, Zombie Lord will take 4 seconds to get up, he'll have 90% Damage Reduction at this point. When he finally gets up, he'll knock everyone back and lose his Damage Reduction. 
+            In his first life, he has all of his abilities except aura of death, which he will unlock in his next life. Whenever Zombie Lord shouts "...", Run. If he gets you, he'll be able to recover at least half of his HP. 
+            In later lives this put you at a major disadvantage. 
+            <br>
+            <br>
+            When Zombie Lord dies, if he has full mana, he will use Immortality, which uses up all of his mana. On his first and second life, he will have full mana thanks to his Worshippers. At past 80% HP past his 
+            second life, he'll be able to use Aura of Death. You can either dodge the blasts or move out of range. Priest or Witch can interrupt this spell by using Hex or Raguel's Pull.
+            <br>
+            <br>
+            On that note, Supports or people who can interrupt channeling will be EXPECTED to stun Worshippers when they reach full mana and are casting their Gift of Immortality. This gift will kill all those 
+            between the Worshipper and Zombie Lord and heal him for 25% of his max HP and give 45 mana. It is imperative that these acolytes are interrupted. They will lose all mana after interruption and start to 
+            regen mana.
+            <br>
+            <br>
+            On his third life and beyond, Zombie Lord can drop items. The fight will be exactly like the second life. You may have noticed that everytime Zombie Lord ressurects he gets stronger. He'll gain more 
+            and more Damage Reduction the more he ressurects and by the fourth life and beyond, his damage will also start increasing by 25% every life. If you're just after the loot, just kill him on the third life. 
+            However, there is a secret reward in form of the Immortal Kitty Token when you kill Zombie Lord nine times.
+            <br>
+            <br>
+            If you're going for ninth life Zombie Lord, keep your party to about 5-7 people. Zombie Lord will have 90% Damage Reduction beyond 7th life. I'd recommend bringing 3-4 supports who can cleanse and keep 
+            the group alive between one-shots and a ton of burst damage since you'll only have 3 minutes to kill Zombie Lord in his ninth life.
+            </p>
+            <div class="guide-minions">
+                <h1 class="guide-label">Minions</h1>
+                <mat-divider></mat-divider>
+                <div class="minion-container">
+                <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Worshipper of Immortality')">
+                    <img class="button-image" src="{{ getEnemyImageURL('Worshipper of Immortality') }}"
+                    alt="thumbnail"/>
+                </button>
+                <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Zombie')">
+                    <img class="button-image" src="{{ getEnemyImageURL('Zombie') }}"
+                    alt="thumbnail"/>
+                </button>
+                </div>
+            </div> 
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
