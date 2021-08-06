@@ -23,11 +23,11 @@
             This boss is also pretty straight-forward. Be careful at 50% HP as he will unleash his True Form for 10 seconds. During this form, he will have increased attack speed 
             and damage. Combined with his Death Bind, he will quickly make short work of you. If you keep your distance during this form until its over, 
             he'll go down like the rest. When he triggers his True Form he will unlock Requiem of Blood.</p>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(['Unleash%20True%20Form', 'Requiem%20of%20Blood'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Unleash%20True%20Form', 'Requiem%20of%20Blood'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills()"></app-enemy-spell-display>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
         </div>
     </div>
     <div class="guide-kill">

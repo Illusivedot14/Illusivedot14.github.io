@@ -21,36 +21,39 @@
         <mat-divider></mat-divider>
         <p class="guide-overall-description">
             <br>
-            This boss is the easiest High boss, but it is also the easiest to mess up if you're not careful. 
+            This boss is the easiest High boss, but it is also the easiest to mess up if you're not careful. This boss has a lot of avenues to heal itself, and if it gets to full once triggering 
+            its phase, it will reset and lower drop rates considerably.
             <br>
             <br>
-            To start this 
+            Starting off, the Ancient Ent itself isn't a large issue. It only has access to two whole spells throughout the fight, both relatively easy to dodge. Just get it down 
+            to 50%, where it will cast "Fortitude of Nature". This is where the real fight begins.</p>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Fortitude%20of%20Nature'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <p class="guide-overall-description">
             <br>
-            <br>
-
-            <br>
-            <br>
-
-            <br>
-            <br>
-
-            <br>
-            <br>
-
-            </p>
+            Once this spell is activated, two Elder Giants will rise from the ground, taking 4 seconds to fully get up. These giants will have three spells you'll have to worry about but the most 
+            important ones are Thorns Armor, Blessing of Nature and Might of Nature. <span style="color: red;">MAKE SURE THESE GUYS STAY AWAY FROM EACH OTHER AND ANCIENT ENT.</span> Blessing of Nature 
+            will garuantee a reset if these guys are near anyone. Other than that, position yourselves well (even if it means dying, re-entry is free), to keep Elder Ents away. Pay attention. </p>
+            <div class="guide-spells">
+                <h1 class="guide-label">Elder Ent Spells</h1>
+                <mat-divider></mat-divider>
+                <app-enemy-spell-display [category]="enemy.category" [skills]="minionSkills['Elder Ent']"></app-enemy-spell-display>
+            </div>
+            <p class="guide-overall-description">
+                <br>
+                After at least one of these Elder Ents are dead, they will spawn 5 Giant Ents, these guys are just filler. Kill the other Elder Ent and finish off Ancient Ent for your loot.</p>
             <div class="guide-minions">
                 <h1 class="guide-label">Minions</h1>
                 <mat-divider></mat-divider>
                 <div class="minion-container">
-                <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Elder Ent')">
+                <button mat-icon-button class="minion-button" (click)="openMinionDetails('Elder Ent')">
                     <img class="button-image" src="{{ getEnemyImageURL('Elder Ent') }}"
                     alt="thumbnail"/>
                 </button>
-                <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Giant Ent')">
+                <button mat-icon-button class="minion-button" (click)="openMinionDetails('Giant Ent')">
                     <img class="button-image" src="{{ getEnemyImageURL('Giant Ent') }}"
                     alt="thumbnail"/>
                 </button>
-                <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Ent')">
+                <button mat-icon-button class="minion-button" (click)="openMinionDetails('Ent')">
                     <img class="button-image" src="{{ getEnemyImageURL('Ent') }}"
                     alt="thumbnail"/>
                 </button>
@@ -59,7 +62,12 @@
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [skills]="skills"></app-enemy-spell-display>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
         </div>
+    </div>
+    <div class="guide-kill">
+        <h1 class="guide-label">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;"></mat-divider>
+        <!-- <iframe src="https://ia801506.us.archive.org/24/items/TWRPGGuidebook/0Hydra%2FStomp.ia.mp4" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe> -->
     </div>
 </div>

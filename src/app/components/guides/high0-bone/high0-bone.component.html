@@ -38,13 +38,13 @@
             twice.
             <br>
             <br></p>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(['Dragon%27s%20Rage'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Dragon%27s%20Rage'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
             <p class="guide-overall-description">
             <br>
             To deal with Hell Spike, place the first two somewhere near the middle of the arena, so there's room to maneuver to hide from the third Hell Spike (see video below). Other than that, once he's 
             off his Rage mode, he'll gain Petrification again, but keep his Hell Spike. Keep going and he'll be dead in no time.
             </p>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(['Hell%20Spike'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Hell%20Spike'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
             <div class="guide-video-container" style="align-self: center;">
                 <video class="guide-video" controls style="align-self: center; width: 500px; height: 400px;">
                     <source src="https://ia601408.us.archive.org/8/items/bd_20210804/BD.mp4" type="video/mp4"/>
@@ -54,7 +54,7 @@
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills()"></app-enemy-spell-display>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
         </div>
     </div>
     <div class="guide-kill">

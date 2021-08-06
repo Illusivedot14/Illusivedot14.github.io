@@ -12,45 +12,49 @@
             have at least Mid level gear before attempting to make your life easier, from this point on, you need a party.
             <br>
             <br> 
-            To find this boss, just go into the Prius Forward Camp (Teleport Q-1) and go north, to the Sealed Land.</p>
+            To find this boss, just go to the Prius Forward Camp (Teleport Q-1) and go north, to the Sealed Land.</p>
     </div>
     <div class="guide-overall">
         <h1 class="guide-label">Overall</h1>
         <mat-divider></mat-divider>
         <p class="guide-overall-description">
             <br>
-            This boss will test your patience if you're melee as you NEED TO STAY AWAY FROM THE BOSS at every 25% threshold. I'd recommend modifying your Health Bar so that you can see every 25%.
+            This boss will test your patience if you're melee as you NEED TO STAY AWAY FROM THE BOSS at <span style="color:#90EE90">every 25% HP threshold</span>. I'd recommend modifying your Health Bar so that you can see every 25%.
             <br>
             <br>
-            Skeleton King starts out with all of his abilities but Absolute Devastation, which he will unlock later. He'll also spawn 2 Skeleton Soliders every 15 seconds, one on each side of the arena. Generally, 
-            don't have a lot of units near him as his Drain Soul will give him a ton of healing. He'll use Soul Terror at ranged, clumped up units. There aren't a lot of wind-ups for his abilities, so you have to 
-            know the cooldowns to dodge them.
+            Skeleton King starts out with all of his abilities except Absolute Devastation, which he will unlock later. He'll also spawn 2 Skeleton Soliders every 15 seconds, one on each side of the arena. Be sure to 
+            keep their numbers low as they can pull people into the skeleton piles on the side, which will <span style="color:#FF7276">deal 10% max HP magic damage per second.</span></p>
+            <button mat-icon-button class="minion-button" (click)="openMinionDetails('Skeletal Solider')" style="align-self: center;">
+                <img class="button-image" src="{{ getEnemyImageURL('Skeletal Solider') }}"
+                alt="thumbnail"/>
+            </button>
+            <p class="guide-overall-description">
+            <br>
+            If you have a lot of summons, don't clump them around Skeleton King, He'll use Soul Drain to regain a ton of health. He'll use Soul Terror at ranged, clumped up units. There aren't a lot of wind-ups for his abilities, 
+            so you have to know the cooldowns to dodge them.
             <br>
             <br>
-            At <span style="color:#90EE90">every 25% HP lost</span>, he'll begin using Ture Power of Despair, which takes 3 seconds to fully power. Once activated, <span style="color:red">he will instantly kill any 
-            player or player-owned unit around him (500 range).</span> So dodge it, or don't if you're that kind of person.
-            <br>
+            At <span style="color:#90EE90">every 25% HP lost</span>, he'll begin using True Power of Despair, which takes 3 seconds to fully power. Once activated, <span style="color:red">he will instantly kill any 
+            player or player-owned unit around him (500 range).</span> So dodge it, or don't if you're that kind of person.</p>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['True%20Power%20of%20Despair'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <p class="guide-overall-description">
             <br>
             After this point, he'll unlock Absolute Devastation, which he will need to cast <u>at least once</u> during the fight. If he reaches below 0 and he hasn't cast it, he will regain 25% of his health and 
-            cast it immediately. Make sure the Skeleton Soliders don't pull you during the ability.
-            <br>
+            cast it immediately. Make sure the Skeleton Soliders don't pull you during the ability.</p>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Absolute%20Devastation'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <p class="guide-overall-description">
             <br>
             Keep the Solider number down and keep going through the fight and he'll go down.
             </p>
-            <div class="guide-minions">
-                <h1 class="guide-label">Minions</h1>
-                <mat-divider></mat-divider>
-                <div class="minion-container">
-                <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Skeletal Solider')">
-                    <img class="button-image" src="{{ getEnemyImageURL('Skeletal Solider') }}"
-                    alt="thumbnail"/>
-                </button>
-                </div>
-            </div> 
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [skills]="skills"></app-enemy-spell-display>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
         </div>
+    </div>
+    <div class="guide-kill">
+        <h1 class="guide-label">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;"></mat-divider>
+        <!-- <iframe src="https://ia801506.us.archive.org/24/items/TWRPGGuidebook/0Hydra%2FStomp.ia.mp4" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe> -->
     </div>
 </div>

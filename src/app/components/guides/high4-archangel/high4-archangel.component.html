@@ -7,25 +7,42 @@
         alt="location-image"
         width="1344" height="448"/>
         <p class="guide-summon-description">
-            Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 50</span> 
-            before approaching this boss as you will get no experience nor loot if you're below that threshold.
+            Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
+            before approaching this boss as you will get no loot if you're below that threshold. Also if you're not being carried, 
+            have at least SK, ZL, or AE level gear before attempting to make your life easier, you need a party.
             <br>
             <br> 
-            To summon this boss, first, gather 4 blue stones from any blue stone deposit in the Snowy Hills (Teleport 6) or if you have an Abyssal Pickaxe or above, 
-            you can mine directly from the stone deposits in front of the golem cave (Teleport 4). Use any pickaxe to gather the stones. Then, bring them to the 
-            top-right of the Seaside Area (Teleport 3) in front of the shipwreck, as shown above.</p>
+            To summon this boss, you must kill Guardian Angels from the Avalon Scenario and stop the summoning. You will need 7 White Stones from 
+            either the deposits at the Cave Entrance (Teleport 4) if you have an Abyssal Pickaxe or above, or the white stone deposits at the Duchy of Wallachia (Teleport 7). Complete 
+            the Avalon Scenario and you should have 3 White Stones left to summon Archangel Samael. Make sure everyone is inside the room, because it locks the room. There are no do-overs if 
+            you fail the boss, so don't fail.</p>
     </div>
     <div class="guide-overall">
         <h1 class="guide-label">Overall</h1>
         <mat-divider></mat-divider>
         <p class="guide-overall-description">
             <br>
-            This boss is pretty simple as you can just hit and die until the boss is dead. However, its spells are pretty easy to avoid due to their long wind-ups. 
-            Just be mindful of your surroundings in case mobs come.</p>
+            This is the most punishing out of all the High bosses as every single spell will help recovery in some way or form. Unlike the other bosses, Samael is actually the most simple.
+            <br>
+            <br>
+            He'll first start off with his two spells, Focused Light and Order of Light. Make sure the person with Focused Light moves away from the group and Samael so none of you get hit by the 
+            splash of light. Don't stand in Order of Light, at all. Samael will heal for every person inside it. Past 85% Max HP, he'll use the Protection of Light spell, 
+            which grants him 25% Damage Reduction and 1% HP regen. Break it ASAP if you can. 
+            <br>
+            <br>
+            At 66% max HP, he'll use Purge of Light. Which has you dodging 8 patterns of light of various patterns. 
+            An easy way to dodge them, even if you have high ping, is to stay at the middle corners of the pattern, giving you ample time to respond. If there are multiple people in the same section, MOVE IF 
+            YOU'RE IN THE WAY. Pay attention to your allies. If ANYONE dies to this wheel, Samael will heal by 15%, which can potentially reset the wheel, forcing you to do it over and over and over and over and over again.</p>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Purge%20of%20Light'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <p class="guide-overall-description">
+            <br>
+            After his intermission, he will gain Spirit of Light, make sure he does not get healed by them, otherwise the fight is generally the same as the first phase. At 33% Max HP, he'll use Purge of Light again. 
+            However, its pretty much the same as last time. Don't let Samael's spells touch him and you'll kill him in no time.
+            </p>
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [skills]="skills"></app-enemy-spell-display>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
         </div>
     </div>
 </div>

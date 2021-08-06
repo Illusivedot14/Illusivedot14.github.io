@@ -29,17 +29,46 @@
             <br>
             <br>
             When Zombie Lord dies, if he has full mana, he will use Immortality, which uses up all of his mana. On his first and second life, he will have full mana thanks to his Worshippers. At past 80% HP past his 
-            second life, he'll be able to use Aura of Death. You can either dodge the blasts or move out of range. Priest or Witch can interrupt this spell by using Hex or Raguel's Pull.
-            <br>
+            second life, he'll be able to use Aura of Death. You can either dodge the blasts or move out of range. Priest or Witch can interrupt this spell by using Hex or Raguel's Pull.</p>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Immortality', 'Aura%20of%20Death'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <p class="guide-overall-description">
             <br>
             On that note, Supports or people who can interrupt channeling will be EXPECTED to stun Worshippers when they reach full mana and are casting their Gift of Immortality. This gift will kill all those 
             between the Worshipper and Zombie Lord and heal him for 25% of his max HP and give 45 mana. It is imperative that these acolytes are interrupted. They will lose all mana after interruption and start to 
-            regen mana.
-            <br>
-            <br>
+            regen mana. Supports can also cleanse those with the Infect debuff, which is important to do when the person who has the debuff is about to die.
+            </p>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(minionSkills['Worshipper of Immortality'], ['Gift%20of%20Immortality'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <div class="guide-minion-example">
+                <img class="guide-summon-image"
+                src="https://i.imgur.com/J16VPwT.png"
+                alt="location-image"
+                width="600" height="600"
+                style="align-self: center;"/>
+                <button mat-icon-button class="minion-button" (click)="openMinionDetails('Worshipper of Immortality')" style="position: absolute; width: 64px; height: 64px; left:50px; top:250px;">
+                    <img class="button-image" src="{{ getEnemyImageURL('Worshipper of Immortality') }}"
+                    alt="thumbnail"
+                    width="64px"/>
+                </button>
+                <button mat-icon-button class="minion-button" (click)="openMinionDetails('Worshipper of Immortality')" style="position: absolute; width: 64px; height: 64px; left:450px; top:250px;">
+                    <img class="button-image" src="{{ getEnemyImageURL('Worshipper of Immortality') }}"
+                    alt="thumbnail"
+                    width="64px"/>
+                </button>
+                <button mat-icon-button class="minion-button" (click)="openMinionDetails('Worshipper of Immortality')" style="position: absolute; width: 64px; height: 64px; left: 270px;; top:50px;">
+                    <img class="button-image" src="{{ getEnemyImageURL('Worshipper of Immortality') }}"
+                    alt="thumbnail"
+                    width="64px"/>
+                </button>
+                <button mat-icon-button class="minion-button" (click)="openMinionDetails('Worshipper of Immortality')" style="position: absolute; width: 64px; height: 64px; left: 270px;; top:475px;">
+                    <img class="button-image" src="{{ getEnemyImageURL('Worshipper of Immortality') }}"
+                    alt="thumbnail"
+                    width="64px"/>
+                </button>
+            </div>
+            <p class="guide-overall-description">
             On his third life and beyond, Zombie Lord can drop items. The fight will be exactly like the second life. You may have noticed that everytime Zombie Lord ressurects he gets stronger. He'll gain more 
             and more Damage Reduction the more he ressurects and by the fourth life and beyond, his damage will also start increasing by 25% every life. If you're just after the loot, just kill him on the third life. 
-            However, there is a secret reward in form of the Immortal Kitty Token when you kill Zombie Lord nine times.
+            On that note, make sure his Zombies (the ones that spawn every 10 seconds) are kept below 50, or else you'll fail. There is a secret reward in form of the Immortal Kitty Token when you kill Zombie Lord nine times.
             <br>
             <br>
             If you're going for ninth life Zombie Lord, keep your party to about 5-7 people. Zombie Lord will have 90% Damage Reduction beyond 7th life. I'd recommend bringing 3-4 supports who can cleanse and keep 
@@ -49,11 +78,7 @@
                 <h1 class="guide-label">Minions</h1>
                 <mat-divider></mat-divider>
                 <div class="minion-container">
-                <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Worshipper of Immortality')">
-                    <img class="button-image" src="{{ getEnemyImageURL('Worshipper of Immortality') }}"
-                    alt="thumbnail"/>
-                </button>
-                <button mat-icon-button class="minion-button" (click)="openEnemyDetails('Zombie')">
+                <button mat-icon-button class="minion-button" (click)="openMinionDetails('Zombie')">
                     <img class="button-image" src="{{ getEnemyImageURL('Zombie') }}"
                     alt="thumbnail"/>
                 </button>
@@ -62,7 +87,7 @@
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [skills]="skills"></app-enemy-spell-display>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
         </div>
     </div>
 </div>

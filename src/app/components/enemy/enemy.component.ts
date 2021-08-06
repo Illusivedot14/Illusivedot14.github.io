@@ -17,6 +17,7 @@ export class EnemyComponent implements OnInit, OnDestroy {
   public enemy!     : Enemy;
   public items      : Item[]  = [];
   public skills     : EnemySkill[]  = [];
+  public minionSkills : Record<string, EnemySkill[]> = {};
   public stats      : string[]  = [];
   public hasGuide   : boolean = false;
   public maxAttack  : number = 0;
@@ -75,8 +76,18 @@ export class EnemyComponent implements OnInit, OnDestroy {
       }
       this.enemySpellsSub = this._enemyService.getEnemySkills().subscribe(skillData => {
         this.skills = skillData.filter(x => x.caster == this.enemy.name || (x.caster[0].length > 1 && x.caster.includes(this.enemy.name)));
+        if(this.enemy.minions)
+        {
+          for(let minion of this.enemy.minions)
+          {
+            this.minionSkills[minion] = skillData.filter(x => x.caster == minion || (x.caster[0].length > 1 && x.caster.includes(minion)));
+            for(let minionSkill of this.minionSkills[minion]) {
+              minionSkill.color = minionSkill.color[0] == '#' ? minionSkill.color : '#' + minionSkill.color;
+            }
+          }
+        }
         for(let skill of this.skills) {
-          skill.color = '#' + skill.color;
+          skill.color = skill.color[0] == '#' ? skill.color : '#' + skill.color;
         }
       });
     });
@@ -149,6 +160,21 @@ export class EnemyComponent implements OnInit, OnDestroy {
     return ' (' + (Math.round((droprate + droprateScale) * 10000) / 100) + "%)"
   }
 
+  private exclusionList : string[] = [];
+  getSkills(skillList: EnemySkill[], names: string[]) : EnemySkill[] {
+    for(let i = 0; i < names.length; i++){
+      names[i] = decodeURI(names[i]);
+      if(!this.exclusionList.includes(names[i]))
+        this.exclusionList.push(names[i]);
+    }
+    let result = skillList.filter(x => names.includes(x.name));
+    return result;
+  }
+  getRemainingSkills(skillList: EnemySkill[]) : EnemySkill[] {
+    let result = skillList.filter(x => !this.exclusionList.includes(x.name));
+    return result;
+  }
+  
   getLocationAsset(name: string) : string
   {
     return "..\..\..\..\assets\img\twrpg_map.png";

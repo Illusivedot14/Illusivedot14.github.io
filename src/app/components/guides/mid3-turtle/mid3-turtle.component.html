@@ -28,7 +28,7 @@
             <br><br>
             Every forty seconds (or when he reaches full mana), he will use Summon Healing Turtle. Dedicate half your DPS to kill these turtles as soon as possible. <u style="color:red">When the Healing 
             Turtles reach Turtle Lord, they will heal him for <span style="color:#90EE90">25% HP</span>.</u></p>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(['Summon%20Healing%20Turtle'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Summon%20Healing%20Turtle'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
             <div class="guide-minion-example">
                 <img class="guide-summon-image"
                 src="https://i.imgur.com/OZ9wOE2.jpg"
@@ -52,7 +52,7 @@
             go below 1 HP until all Turtles are dead. There are eight Turtles that spawn, <span style="color:#FFFF99">six with no Damage Reduction, and two with 50% Damage 
             Reduction</span>. A good tip for killing these Turtles quickly is to clump up every <span style="color:#90EE90">25% HP</span>, as the spawn range of these Turtles are dependent on your positions.
             </p>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(['Turtle%20Ambush'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Turtle%20Ambush'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
             <p class="guide-overall-description">
             <br>
             Focus down all the minions as soon as possible and this will be an easy kill.
@@ -60,7 +60,7 @@
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills()"></app-enemy-spell-display>
+            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
         </div>
     </div>
     <div class="guide-kill">
