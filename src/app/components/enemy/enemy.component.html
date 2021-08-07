@@ -17,7 +17,7 @@
         <span class="enemy-quote" *ngIf="enemy.quote"[style.color]="enemy.color">"{{ enemy.quote }}"</span>
         <div class="enemy-filler-quote" *ngIf="!enemy.quote" style="height: 50px;"></div>
     </div>
-    <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="1" dynamicHeight>
+    <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="0" dynamicHeight>
         <mat-tab label="Stats">
             <div class="enemy-details" *ngIf="enemy">
                 <div class="enemy-basics">

@@ -27,7 +27,7 @@
             <br>
             Starting off, the Ancient Ent itself isn't a large issue. It only has access to two whole spells throughout the fight, both relatively easy to dodge. Just get it down 
             to 50%, where it will cast "Fortitude of Nature". This is where the real fight begins.</p>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Fortitude%20of%20Nature'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <app-enemy-spell-display [caster]= "enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Fortitude%20of%20Nature'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
             <p class="guide-overall-description">
             <br>
             Once this spell is activated, two Elder Giants will rise from the ground, taking 4 seconds to fully get up. These giants will have three spells you'll have to worry about but the most 
@@ -36,7 +36,7 @@
             <div class="guide-spells">
                 <h1 class="guide-label">Elder Ent Spells</h1>
                 <mat-divider></mat-divider>
-                <app-enemy-spell-display [category]="enemy.category" [skills]="minionSkills['Elder Ent']"></app-enemy-spell-display>
+                <app-enemy-spell-display [caster]="'Elder Ent'" [category]="enemy.category" [skills]="minionSkills['Elder Ent']"></app-enemy-spell-display>
             </div>
             <p class="guide-overall-description">
                 <br>
@@ -62,12 +62,12 @@
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
+            <app-enemy-spell-display [caster]= "enemy.name" [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
         </div>
     </div>
     <div class="guide-kill">
         <h1 class="guide-label">Kill Video</h1>
         <mat-divider style="margin-bottom: 20px;"></mat-divider>
-        <!-- <iframe src="https://ia801506.us.archive.org/24/items/TWRPGGuidebook/0Hydra%2FStomp.ia.mp4" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe> -->
+        <iframe src="https://drive.google.com/file/d/1AovxBDfWYj9mnlKSXQ4fdLBJf6l6ry5X/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

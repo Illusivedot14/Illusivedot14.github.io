@@ -33,7 +33,7 @@
             At 66% max HP, he'll use Purge of Light. Which has you dodging 8 patterns of light of various patterns. 
             An easy way to dodge them, even if you have high ping, is to stay at the middle corners of the pattern, giving you ample time to respond. If there are multiple people in the same section, MOVE IF 
             YOU'RE IN THE WAY. Pay attention to your allies. If ANYONE dies to this wheel, Samael will heal by 15%, which can potentially reset the wheel, forcing you to do it over and over and over and over and over again.</p>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Purge%20of%20Light'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Purge%20of%20Light'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
             <p class="guide-overall-description">
             <br>
             After his intermission, he will gain Spirit of Light, make sure he does not get healed by them, otherwise the fight is generally the same as the first phase. At 33% Max HP, he'll use Purge of Light again. 
@@ -42,7 +42,12 @@
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
         </div>
+    </div>
+    <div class="guide-kill">
+        <h1 class="guide-label">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;"></mat-divider>
+        <iframe src="https://drive.google.com/file/d/1XpT2ZzbWGg6te7-SHihDjnmfIMG71Rx8/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

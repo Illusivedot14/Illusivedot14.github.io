@@ -32,7 +32,7 @@
         </div>
         <div class="spell-video-container" *ngIf="hasMP4(spell.name)">
             <video class="spell-video" controls>
-                <source src="{{ getEnemySpellMP4(spell.name, spell.caster) }}" type="video/mp4"/>
+                <source src="{{ getEnemySpellMP4(spell.name) }}" type="video/mp4"/>
                 Browser not supported
             </video>
         </div>

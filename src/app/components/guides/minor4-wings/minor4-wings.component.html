@@ -22,16 +22,16 @@
             <br>
             Look carefully at his actions as he does not have any wind-up animation for his spells. At 50% HP, just dodge 
         his fireballs as his Dragon's Might only lasts for 3 seconds.</p>
-        <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Dragon%27s%20Might'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+        <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Dragon%27s%20Might'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
         </div>
     </div>
     <div class="guide-kill">
         <h1 class="guide-label">Kill Video</h1>
         <mat-divider style="margin-bottom: 20px;"></mat-divider>
-        <iframe src="https://drive.google.com/file/d/1YaRGBAGzT1SWQOAmcSWMnocVUsG5IWvZ/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
+        <iframe src="https://drive.google.com/file/d/1pVwI1FA8fkMifRbJpWrwrOqGB-r8Vo2N/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

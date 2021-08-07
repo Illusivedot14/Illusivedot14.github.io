@@ -15,7 +15,7 @@
         <div class="spell-container" *ngIf="enemy.spells" style="width: 90%; align-self:center;">
             <span class="spell-label">Spells</span>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="skills"></app-enemy-spell-display>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="skills"></app-enemy-spell-display>
         </div>
     </div>
 

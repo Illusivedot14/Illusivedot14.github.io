@@ -301,7 +301,7 @@
         align-self: center;
         padding-top: 60px;
         padding-bottom: 30px;
-        width: 1200px;
+        width: 90%;
         &-image {
             align-self: center;
             padding: 35px;
@@ -309,6 +309,7 @@
         &-description {
             font-size: 25px;
             line-height: 30px;
+            align-self: center;
         }
     }
     &-overall {

@@ -25,13 +25,13 @@
             need to exercise some patiences, else risk healing Shadow Dragon back to full. You can also break Dragonic Skin. There is no counter for seal, just keep the person on fire away from everyone else. 
             At 50% max HP, he will regain all health and use his Illusions of Shadow. Which creates one Large Illusion and 3 other Illusions.
             </p>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Illusions%20of%20Shadow'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Illusions%20of%20Shadow'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
             <p class="guide-overall-description">
             <br>
             The Large Illusion will have all of Shadow Dragon's spells from the first phase outside of Super Armor, and the other Illusions will just have Shadow Breath. Prioritize the Smaller Illusions first by grouping them up and using your bursts on it. After they die, SPREAD. 
             Dark Detonation will be cast on everyone in the arena. After the Dark Detonation is over, pull Large Illusion to the center so you don't take damage from the aura and kill it. Don't take your time 
             killing it either, if you spend longer than a few minutes, it will be unkillable, resulting in a reset. Dark Detonation will happen again on its death.</p>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(minionSkills['Illusion of Irbert'], ['Reinforcement%20of%20Darkness', 'Dark%20Detonation'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <!-- <app-enemy-spell-display [caster]="'Illusion of Irbert'" [category]="enemy.category" [skills]="getSkills(minionSkills['Illusion of Irbert'], ['Reinforcement%20of%20Darkness', 'Dark%20Detonation'])" style="width: 90%; align-self: center;"></app-enemy-spell-display> -->
             <p class="guide-overall-description">
                 <br>
                 After the Illusions are dead, Shadow Dragon will have unlocked three very annoying spells, but the fight is the same as the first phase. These spells require you to PAY ATTENTION to the surroundings. 
@@ -39,7 +39,7 @@
                 This spell will one-shot you if you have no one to link with. If you're linked, move away from the other person ASAP. Move in opposite directions. Dark Blast is pretty easy to dodge unless its on a hill where 
                 it's not visible. Dark Blast goes through invulnerability effects.
                 </p>
-                <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Shadow%20Circle', 'Eternity%20Link', 'Dark%20Blast'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+                <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Shadow%20Circle', 'Eternity%20Link', 'Dark%20Blast'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
             <p class="guide-overall-description">
                 <br>
                 Just be mindful of your environment and you'll kill this boss.
@@ -47,12 +47,12 @@
             <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
         </div>
     </div>
     <div class="guide-kill">
         <h1 class="guide-label">Kill Video</h1>
         <mat-divider style="margin-bottom: 20px;"></mat-divider>
-        <!-- <iframe src="https://ia801506.us.archive.org/24/items/TWRPGGuidebook/0Hydra%2FStomp.ia.mp4" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe> -->
+        <iframe src="https://drive.google.com/file/d/1M8uyaT_nE1Ard2YNzOJ9IVoBuWJrBt3W/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

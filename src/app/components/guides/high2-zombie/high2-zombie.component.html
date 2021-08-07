@@ -30,14 +30,14 @@
             <br>
             When Zombie Lord dies, if he has full mana, he will use Immortality, which uses up all of his mana. On his first and second life, he will have full mana thanks to his Worshippers. At past 80% HP past his 
             second life, he'll be able to use Aura of Death. You can either dodge the blasts or move out of range. Priest or Witch can interrupt this spell by using Hex or Raguel's Pull.</p>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Immortality', 'Aura%20of%20Death'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <app-enemy-spell-display [caster]= "enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Immortality', 'Aura%20of%20Death'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
             <p class="guide-overall-description">
             <br>
             On that note, Supports or people who can interrupt channeling will be EXPECTED to stun Worshippers when they reach full mana and are casting their Gift of Immortality. This gift will kill all those 
             between the Worshipper and Zombie Lord and heal him for 25% of his max HP and give 45 mana. It is imperative that these acolytes are interrupted. They will lose all mana after interruption and start to 
             regen mana. Supports can also cleanse those with the Infect debuff, which is important to do when the person who has the debuff is about to die.
             </p>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(minionSkills['Worshipper of Immortality'], ['Gift%20of%20Immortality'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <app-enemy-spell-display [caster]= "'Worshipper of Immortality'" [category]="enemy.category" [skills]="getSkills(minionSkills['Worshipper of Immortality'], ['Gift%20of%20Immortality'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
             <div class="guide-minion-example">
                 <img class="guide-summon-image"
                 src="https://i.imgur.com/J16VPwT.png"
@@ -87,7 +87,12 @@
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
+            <app-enemy-spell-display [caster]= "enemy.name" [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
         </div>
+    </div>
+    <div class="guide-kill">
+        <h1 class="guide-label">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;"></mat-divider>
+        <iframe src="https://drive.google.com/file/d/1VSyFIxt_0Psn7uhhpgLbP_MIxfxwy1Eu/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

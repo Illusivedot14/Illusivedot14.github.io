@@ -22,7 +22,7 @@
         This is your first Mid boss, it is also the easiest Mid boss. Your main concerns are dodging his Ethereal Strike/Spirit Echo and blocking the Drain Orbs from reaching him, like with Mana Ancient. 
         This boss is straight forward until he reaches <span style="color:#90EE90">50% HP</span>, where he will use Heaven's Wrath. 
         <br><br></p>
-        <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['Heaven%27s%20Wrath'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+        <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Heaven%27s%20Wrath'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
         <p class="guide-overall-description">
         <br>
         After <span style="color:#90EE90">50% HP</span>, he will gain <span style="color:#FFFF99">25% Damage Reduction</span> and his Ethereal Strike will travel a second time after reaching its maximum range. This part is the same as before except he's a little bit tankier. 
@@ -30,12 +30,12 @@
         <div class="guide-spells">
             <h1 class="guide-label">Spells</h1>
             <mat-divider></mat-divider>
-            <app-enemy-spell-display [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
         </div>
     </div>
     <div class="guide-kill">
         <h1 class="guide-label">Kill Video</h1>
         <mat-divider style="margin-bottom: 20px;"></mat-divider>
-        <!-- <iframe src="https://ia801506.us.archive.org/24/items/TWRPGGuidebook/0Hydra%2FStomp.ia.mp4" width="640" height="480" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe> -->
+        <iframe src="https://drive.google.com/file/d/13e1cijRsMz6NSLiLVCcAEaoNBeUd0Fft/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>
