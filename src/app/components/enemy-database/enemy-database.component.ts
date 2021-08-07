@@ -39,6 +39,7 @@ export class EnemyDatabaseComponent implements OnInit {
       {
         if(enemy.type == "Minion" || enemy.type == "Mechanic") continue;
         enemy.color = "#" + enemy.color;
+        enemy.displayDrop = '';
         if(enemy.category == "Creep" || enemy.type == "Mob") this.enemy_list[0].push(enemy);
         else if(enemy.category == "Field")                   this.enemy_list[1].push(enemy);
         else if(enemy.category == "Minor")                   this.enemy_list[2].push(enemy);
@@ -70,21 +71,20 @@ export class EnemyDatabaseComponent implements OnInit {
   
   changeItemDisplay(enemy: Enemy, drop: string): void  {
     enemy.displayDrop = drop;
-    if(drop != "" && this.items) {
-      let item = this.items.find(x => x.name === drop);
-      if(item) {
-        if(item.droprate[0] == undefined) {
-          enemy.displayDrop += ' (' + (Math.round(parseFloat(item.droprate) * 10000) / 100) + "%)"
-        }
-        else {
-          for(let i = 0; i < item.dropped_by.length; i++) {
-            if(item.dropped_by[i] === enemy.name) {
-              enemy.displayDrop += ' (' + (Math.round(parseFloat(item.droprate[i]) * 10000) / 100) + "%)";
-              break;
-            }
+    let item = this.items.find(x => x.name === drop);
+    if(item) {
+      if(item.droprate[0] == undefined) {
+        enemy.displayDrop += ' (' + (Math.round(parseFloat(item.droprate) * 10000) / 100) + "%)"
+      }
+      else {
+        for(let i = 0; i < item.dropped_by.length; i++) {
+          if(item.dropped_by[i] === enemy.name) {
+            enemy.displayDrop += ' (' + (Math.round(parseFloat(item.droprate[i]) * 10000) / 100) + "%)";
+            break;
           }
         }
       }
     }
+    
   }
 }
