@@ -180,9 +180,6 @@ export class EnemyComponent implements OnInit, OnDestroy {
     return "..\..\..\..\assets\img\twrpg_map.png";
   }
 
-  getMinionSpell() : EnemySkill[] {
-    return [];
-  }
   openMinionDetails(id: string) : void {
     const url = this.router.serializeUrl(
       this.router.createUrlTree([`/enemy/${id}`])

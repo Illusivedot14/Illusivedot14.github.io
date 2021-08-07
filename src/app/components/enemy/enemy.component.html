@@ -8,15 +8,6 @@
         </button>
         <p class="back-button-label">Return to Prior Page</p>
     </div>
-    <div class="enemy-container" *ngIf="enemy">
-        <span class="enemy-name" [style.color]="enemy.color"> {{ enemy.name }}</span>
-            <img class="enemy-thumbnail"
-            src="{{getEnemyImageURL(enemy.name)}}"
-            style="width:256px;height:256px;"
-            alt="thumbnail"/>
-        <span class="enemy-quote" *ngIf="enemy.quote"[style.color]="enemy.color">"{{ enemy.quote }}"</span>
-        <div class="enemy-filler-quote" *ngIf="!enemy.quote" style="height: 50px;"></div>
-    </div>
     <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="0" dynamicHeight>
         <mat-tab label="Stats">
             <div class="enemy-details" *ngIf="enemy">
@@ -27,7 +18,8 @@
                         style="width:168px;height:168px;"
                         alt="Body Image"/>
                         <div class="enemy-quick-details">
-                            <span class="enemy-name-details"  *ngIf="enemy.name" [style.color]="enemy.color">{{ enemy.name }}</span>  
+                            <span class="enemy-name-details"  *ngIf="enemy.name" [style.color]="enemy.color">{{ enemy.name }}&nbsp;</span>  
+                            <div class="enemy-quote" *ngIf="enemy.quote" [style.color]="enemy.color">"{{ enemy.quote }}"</div>
                             <div>
                                 <span class="enemy-level">Lvl. {{ enemy.level }}&nbsp;</span> 
                                 <span class="enemy-category" *ngIf="enemy.category">{{ enemy.category }}&nbsp;</span> 
