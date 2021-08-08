@@ -1,7 +1,7 @@
 <div class="guide">
     <div class="guide-summon">
-        <h1 class="guide-label">How to Summon</h1>
-        <mat-divider></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">How to Summon</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <img class="guide-summon-image"
         src="https://i.imgur.com/tfCnmyJ.jpg"
         alt="location-image"
@@ -16,8 +16,8 @@
             by 3 Prius Magus. See Soul of Everfrost or Frostspider Queen to see how to deal with the waves.</p>
     </div>
     <div class="guide-overall">
-        <h1 class="guide-label">Overall</h1>
-        <mat-divider></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <p class="guide-overall-description">
             <br>
             This boss is extremely tanky for a Minor and has the first insta-kill mechanic in the game. Due to his Hellfrost Body, you will take periodic damage no matter where 
@@ -29,14 +29,14 @@
             to break it. He'll freeze you when its over but it's nothing to worry about. After this, he will gain access to Frozen Shatter. When he uses Frozen Shatter, make sure you dont stand in front of him and 
             keep moving to the side as that's the best way to avoid it. Keep going until he is dead.</p>
         <div class="guide-spells">
-            <h1 class="guide-label">Spells</h1>
-            <mat-divider></mat-divider>
+            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
             <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="skills"></app-enemy-spell-display>
         </div>
     </div>
     <div class="guide-kill">
-        <h1 class="guide-label">Kill Video</h1>
-        <mat-divider style="margin-bottom: 20px;"></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
         <iframe src="https://drive.google.com/file/d/1RYzslcwyRvOufJhOPXx7bV5bK3LiUSic/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

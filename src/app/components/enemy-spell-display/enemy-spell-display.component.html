@@ -16,19 +16,21 @@
     <div class="spell">
         <div class="spell-details">
             <div class="spell-description" [style.color]="spell.color">
-                <div class="spell-detail-label">{{ capitalizeFirstLetter(spell.type) }}</div>
+                <div class="spell-detail-label">[{{ capitalizeFirstLetter(spell.type) }}]</div>
                 <ng-container *ngFor="let line of spell.description">
-                    <span class="spell-active" *ngIf="spell.type=='active'">❖ {{line}}<br></span>
+                    <span class="spell-active"  *ngIf="spell.type=='active'">❖ {{line}}<br></span>
                     <span class="spell-passive" *ngIf="spell.type=='passive'">⁘ {{line}}<br></span>
                     <span class="spell-trigger" *ngIf="spell.type=='trigger'">※ {{line}}<br></span>
                 </ng-container>
             </div>
-            <ng-container *ngFor="let summon of spell.summons">
-                <button mat-icon-button class="summon-button" (click)="openMinionDetails(summon)">
-                    <img class="button-image" src="{{ getEnemyImageURL(summon) }}"
-                    alt="thumbnail" style="width:100%"/>
-                    </button>
-            </ng-container>
+            <div class="spell-summon-container">
+                <ng-container *ngFor="let summon of spell.summons">
+                    <button mat-icon-button class="spell-summon-button" (click)="openMinionDetails(summon)">
+                        <img class="button-image" src="{{ getEnemyImageURL(summon) }}"
+                        alt="thumbnail" style="width:100%"/>
+                        </button>
+                </ng-container>
+            </div>
         </div>
         <div class="spell-video-container" *ngIf="hasMP4(spell.name)">
             <video class="spell-video" controls>
@@ -36,7 +38,6 @@
                 Browser not supported
             </video>
         </div>
-
     </div>
     </mat-expansion-panel>
 </mat-accordion>

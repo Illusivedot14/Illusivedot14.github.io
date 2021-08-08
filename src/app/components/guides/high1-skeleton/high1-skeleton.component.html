@@ -1,7 +1,7 @@
 <div class="guide">
     <div class="guide-summon">
-        <h1 class="guide-label">Location</h1>
-        <mat-divider></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Location</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <img class="guide-summon-image"
         src="https://i.imgur.com/Va9tuKo.jpg"
         alt="location-image"
@@ -15,8 +15,8 @@
             To find this boss, just go to the Prius Forward Camp (Teleport Q-1) and go north, to the Sealed Land.</p>
     </div>
     <div class="guide-overall">
-        <h1 class="guide-label">Overall</h1>
-        <mat-divider></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <p class="guide-overall-description">
             <br>
             This boss will test your patience if you're melee as you NEED TO STAY AWAY FROM THE BOSS at <span style="color:#90EE90">every 25% HP threshold</span>. I'd recommend modifying your Health Bar so that you can see every 25%.
@@ -47,14 +47,14 @@
             Keep the Solider number down and keep going through the fight and he'll go down.
             </p>
         <div class="guide-spells">
-            <h1 class="guide-label">Spells</h1>
-            <mat-divider></mat-divider>
+            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
             <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
         </div>
     </div>
     <div class="guide-kill">
-        <h1 class="guide-label">Kill Video</h1>
-        <mat-divider style="margin-bottom: 20px;"></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
         <iframe src="https://drive.google.com/file/d/1w6graQgjH4XWtu51jwVpmG5hhhFvkvdD/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

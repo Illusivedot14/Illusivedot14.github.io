@@ -37,112 +37,109 @@
                         <span class="enemy-difficulty-label" *ngIf='difficulty>1'>Difficulty: {{ difficulty }} Players</span>
                         <mat-slider min="1" max="10" step="1" value="1" (input)="onInputChange($event)"></mat-slider>
                     </div>
-                    <mat-grid-list class ="enemy-stat-container" cols="4" rowHeight="4:2">
-                        <mat-grid-tile>
-                            <img class="enemy-attribute-image"
-                            src="../../../assets/img/health.jpg"
-                            style="width:96px;height:96px;"
-                            alt="Health Thumbnail"/>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <span class="enemy-health" [style.color]="possibleStats['health'].color">
-                                {{ getHealth() }} HP<br>({{ possibleStats['healthRegen'].value }} HP/s)
-                            </span>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <img class="enemy-attribute-image"
-                            src="../../../assets/img/mana.jpg"
-                            style="width:96px;height:96px;"
-                            alt="Health Thumbnail"/>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <span class="enemy-mana" [style.color]="possibleStats['mana'].color">
-                                {{ possibleStats['mana'].value }} MP<br>({{ possibleStats['manaRegen'].value }} MP/s)
-                            </span>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <img class="enemy-attribute-image"
-                            src="../../../assets/img/attack.png"
-                            style="width:96px;height:96px;"
-                            alt="Health Thumbnail"/>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <span class="enemy-attack" [style.color]="possibleStats['attackDamage'].color">
-                                {{ possibleStats['attackDamage'].value }} - {{ maxAttack }} ATK<br>({{ possibleStats['attackSpeed'].value}} ATK/s)
-                            </span>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <img class="enemy-attribute-image"
-                            src="../../../assets/img/range.png"
-                            style="width:96px;height:96px;"
-                            alt="Armor Thumbnail"/>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <span class="enemy-range" [style.color]="possibleStats['attackRange'].color">
-                                {{ possibleStats['attackRange'].value }} Range
-                            </span>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <img class="enemy-attribute-image"
-                            src="../../../assets/img/light.png"
-                            alt="Armor Thumbnail"
-                            style="width:96px;height:96px;"
-                            *ngIf="possibleStats['armorType'].value=='Light'"/>
-                            <img class="enemy-attribute-image"
-                            src="../../../assets/img/medium.png"
-                            alt="Armor Thumbnail"
-                            style="width:96px;height:96px;"
-                            *ngIf="possibleStats['armorType'].value=='Medium'"/>
-                            <img class="enemy-attribute-image"
-                            src="../../../assets/img/heavy.png"
-                            alt="Armor Thumbnail"
-                            style="width:96px;height:96px;"
-                            *ngIf="possibleStats['armorType'].value=='Heavy'"/>
-                            <img class="enemy-attribute-image"
-                            src="../../../assets/img/hero.png"
-                            alt="Armor Thumbnail"
-                            style="width:96px;height:96px;"
-                            *ngIf="possibleStats['armorType'].value=='Hero'"/>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <span class="enemy-armor" [style.color]="possibleStats['armor'].color">
-                                {{ possibleStats['armor'].value }} Armor
-                            </span>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <img class="enemy-attribute-image"
-                            src="../../../assets/img/speed.png"
-                            style="width:96px;height:96px;"
-                            alt="Health Thumbnail"/>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <span class="enemy-moveSpeed" [style.color]="possibleStats['moveSpeed'].color">
-                                {{ possibleStats['moveSpeed'].value }} Movespeed
-                            </span>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <img class="enemy-attribute-image"
-                            src="../../../assets/img/magicResist.png"
-                            style="width:96px;height:96px;"
-                            alt="Health Thumbnail"/>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <span class="enemy-magicResist" [style.color]="possibleStats['magicResist'].color">
-                                {{ possibleStats['magicResist'].value }}% Magic Defense
-                            </span>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <img class="enemy-attribute-image"
-                            src="../../../assets/img/damageResist.png"
-                            style="width:96px;height:96px;"
-                            alt="Health Thumbnail"/>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <span class="enemy-damageResist" [style.color]="possibleStats['damageResist'].color">
-                                {{ possibleStats['damageResist'].value }}% Damage Defense
-                            </span>
-                        </mat-grid-tile>
-                    </mat-grid-list>
+                    <div class="enemy-stats">
+                        <div class="enemy-stats-row">
+                            <div class="enemy-stat">
+                                <img class="enemy-attribute-image"
+                                src="../../../assets/img/health.jpg"
+                                alt="Health Thumbnail"/>
+                                <div class="enemy-stat-label-container">
+                                    <span class="enemy-stat-label" [style.color]="possibleStats['health'].color">
+                                        {{ getHealth() }} HP<br>({{ possibleStats['healthRegen'].value }} HP/s)
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="enemy-stat">
+                                <img class="enemy-attribute-image"
+                                src="../../../assets/img/mana.jpg"
+                                alt="Mana Thumbnail"/>
+                                <div class="enemy-stat-label-container">
+                                    <span class="enemy-stat-label" [style.color]="possibleStats['mana'].color">
+                                        {{ possibleStats['mana'].value }} MP<br>({{ possibleStats['manaRegen'].value }} MP/s)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="enemy-stats-row">
+                            <div class="enemy-stat">
+                                <img class="enemy-attribute-image"
+                                src="../../../assets/img/attack.png"
+                                alt="Attack Thumbnail"/>
+                                <div class="enemy-stat-label-container">
+                                    <span class="enemy-stat-label" [style.color]="possibleStats['attackDamage'].color">
+                                        {{ possibleStats['attackDamage'].value }} - {{ maxAttack }} Attack<br>({{ possibleStats['attackSpeed'].value}} Attack/s)
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="enemy-stat">
+                                <img class="enemy-attribute-image"
+                                src="../../../assets/img/range.png"
+                                alt="Range Thumbnail"/>
+                                <div class="enemy-stat-label-container">
+                                    <span class="enemy-stat-label" [style.color]="possibleStats['attackRange'].color">
+                                        {{ possibleStats['attackRange'].value }} Range
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="enemy-stats-row">
+                            <div class="enemy-stat">
+                                <img class="enemy-attribute-image"
+                                src="../../../assets/img/light.png"
+                                alt="Armor Thumbnail"
+                                *ngIf="possibleStats['armorType'].value=='Light'"/>
+                                <img class="enemy-attribute-image"
+                                src="../../../assets/img/medium.png"
+                                alt="Armor Thumbnail"
+                                *ngIf="possibleStats['armorType'].value=='Medium'"/>
+                                <img class="enemy-attribute-image"
+                                src="../../../assets/img/heavy.png"
+                                alt="Armor Thumbnail"
+                                *ngIf="possibleStats['armorType'].value=='Heavy'"/>
+                                <img class="enemy-attribute-image"
+                                src="../../../assets/img/hero.png"
+                                alt="Armor Thumbnail"
+                                *ngIf="possibleStats['armorType'].value=='Hero'"/>
+                                <div class="enemy-stat-label-container">
+                                    <span class="enemy-stat-label" [style.color]="possibleStats['armor'].color">
+                                        {{ possibleStats['armor'].value }} Armor
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="enemy-stat">
+                                <img class="enemy-attribute-image"
+                                src="../../../assets/img/speed.png"
+                                alt="Speed Thumbnail"/>
+                                <div class="enemy-stat-label-container">
+                                    <span class="enemy-stat-label" [style.color]="possibleStats['moveSpeed'].color">
+                                        {{ possibleStats['moveSpeed'].value }} Movespeed
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="enemy-stats-row">
+                            <div class="enemy-stat">
+                                <img class="enemy-attribute-image"
+                                src="../../../assets/img/magicResist.png"
+                                alt="Magic Defense Thumbnail"/>
+                                <div class="enemy-stat-label-container">
+                                    <span class="enemy-stat-label" [style.color]="possibleStats['magicResist'].color">
+                                        {{ possibleStats['magicResist'].value }}% Magic Defense
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="enemy-stat">
+                                <img class="enemy-attribute-image"
+                                src="../../../assets/img/damageResist.png"
+                                alt="Damage Defense Thumbnail"/>
+                                <div class="enemy-stat-label-container">
+                                    <span class="enemy-stat-label" [style.color]="possibleStats['damageResist'].color">
+                                        {{ possibleStats['damageResist'].value }}% Damage Defense
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="enemy-notes-container" *ngIf='enemy.notes'>
                         <p class="enemy-notes-label">Notes</p>
                         <ng-container *ngFor="let line of enemy.notes">

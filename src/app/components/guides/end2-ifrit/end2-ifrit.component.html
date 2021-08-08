@@ -1,7 +1,7 @@
 <div class="guide">
     <div class="guide-summon">
-        <h1 class="guide-label">How to Summon</h1>
-        <mat-divider></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">How to Summon</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <img class="guide-summon-image"
         src="https://i.imgur.com/9Z1iQ2t.jpg"
         alt="location-image"
@@ -16,15 +16,15 @@
             top-right of the Seaside Area (Teleport 3) in front of the shipwreck, as shown above.</p>
     </div>
     <div class="guide-overall">
-        <h1 class="guide-label">Overall</h1>
-        <mat-divider></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <p class="guide-overall-description">
             <br>
             This boss is pretty simple as you can just hit and die until the boss is dead. However, its spells are pretty easy to avoid due to their long wind-ups. 
             Just be mindful of your surroundings in case mobs come.</p>
         <div class="guide-spells">
-            <h1 class="guide-label">Spells</h1>
-            <mat-divider></mat-divider>
+            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
             <app-enemy-spell-display [skills]="skills"></app-enemy-spell-display>
         </div>
     </div>

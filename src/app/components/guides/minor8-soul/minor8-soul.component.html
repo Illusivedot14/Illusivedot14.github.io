@@ -1,7 +1,7 @@
 <div class="guide">
     <div class="guide-summon">
-        <h1 class="guide-label">How to Summon</h1>
-        <mat-divider></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">How to Summon</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <img class="guide-summon-image"
         src="https://i.imgur.com/tfCnmyJ.jpg"
         alt="location-image"
@@ -17,8 +17,8 @@
             Frostvemon Spiders. Go near the green spiders to trigger their explosion (and run away from them) and use AoE on the other spiders. Near the end of the waves, both Soul of
              Everfrost and Frostspider Queen will arrive.</p>
             <div class="guide-minions">
-                <h1 class="guide-label">Minions</h1>
-                <mat-divider></mat-divider>
+                <h1 class="guide-label" [style.color]="enemy.color">Minions</h1>
+                <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
                 <div class="minion-container">
                 <button mat-icon-button class="minion-button" (click)="openMinionDetails('Frost Spider')">
                     <img class="button-image" src="{{ getEnemyImageURL('Frost Spider') }}"
@@ -37,21 +37,21 @@
     </div>
     
     <div class="guide-overall">
-        <h1 class="guide-label">Overall</h1>
-        <mat-divider></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <p class="guide-overall-description">
             <br>
             Depending if he comes first or second will determine your strategy. Don't die or else they'll have a chance to kill the Prius Mages and end the Scenario. 
             Stun whenever he is channeling and use your AOE on his Frozen Souls. If he comes first, focus him down before the Frostspider Queen. If he comes second, focus the Queen.</p>
         <div class="guide-spells">
-            <h1 class="guide-label">Spells</h1>
-            <mat-divider></mat-divider>
+            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
             <app-enemy-spell-display [caster]="enemy.name" [caster]="enemy.name" [category]="enemy.category" [skills]="skills"></app-enemy-spell-display>
         </div>
     </div>
     <div class="guide-kill">
-        <h1 class="guide-label">Kill Video</h1>
-        <mat-divider style="margin-bottom: 20px;"></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
         <iframe src="https://drive.google.com/file/d/1s-TFfsuP07JucV4RB8ZK-OSbignnEa-K/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

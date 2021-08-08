@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     &-container {
+
         display: flex;
         flex-direction: column;
         align-self: center;
@@ -24,10 +25,8 @@
             margin-bottom: 20px;
             text-overflow: ellipsis;
             align-self: center;
+            font-family: "Times New Roman", Times, serif;
         }
-    }
-    &-thumbnail {
-        align-self: center;
     }
     &-quote {
         font-weight: 700;
@@ -36,7 +35,6 @@
         font-style: italic;
         margin-bottom: 5px;
     }
-
     &-details {
         display: flex;
         flex-direction: row;
@@ -44,6 +42,7 @@
     }
     &-basics {
         width: 50%;
+        min-width: 700px;
         display: flex;
         flex-direction: column;
     }
@@ -89,6 +88,12 @@
         padding: 0;
     }
 
+    &-attribute-image {
+        width: 96px;
+        height: 96px;
+        min-height: 32px;
+    }
+
     &-difficulty {
         display: flex;
         flex-direction: column;
@@ -106,51 +111,45 @@
         }
     }
 
-
-    &-stat-container {
-        padding-bottom: 1%;
+    &-stat {
+        width: 50%;
+        min-width: 300px;
+        display: flex;
+        flex-flow: row;
+        color: #fff;
+        &-label {
+            font-size: 28px;
+            line-height: 28px;
+            font-weight: 600;
+            &-container {
+                display: flex;
+                align-items: center;
+                padding-left: 10px;
+                width: 100%;
+            }
+        }
     }
-    &-health {
-        font-size: 24px;
-        font-weight: 550;
-    }
-    &-mana {
-        font-size: 24px;
-        font-weight: 550;    
-    }
-    &-attack {
-        font-size: 24px;
-        font-weight: 550;
-        line-height: 1;
-    }
-    &-range {
-        font-size: 24px;
-        font-weight: 550;
-    }
-    &-armor {
-        font-size: 24px;
-        font-weight: 550;
-    }
-    &-moveSpeed {
-        font-size: 24px;
-        font-weight: 550;
-    }
-    &-magicResist {
-        font-size: 24px;
-        font-weight: 550;
-    }
-    &-damageResist {
-        font-size: 24px;
-        font-weight: 550;
+    &-stats {
+        height: 424px;
+        padding: 1%;
+        width: 90%;
+        margin: auto;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        &-row {
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+        }
     }
 
     &-note {
         color: #ffffff;
         font-weight: 200;
         font-size: 22px;
-      }
+    }
     &-notes-container {
-    padding-top: 3%;
+    padding-top: 1%;
     padding-bottom: 1%;
     padding-left: 10%;
     padding-right: 10%;
@@ -169,6 +168,7 @@
         flex-flow: row;
         align-items: center;
         width: 50%;
+        min-width: 500px;
         &-label {
             font-size: 33px;
             &-container {
@@ -190,13 +190,16 @@
         }
         &-button {
             align-self: center;
-            height: 128px;
+            height: 100%;
             max-height: 128px;
-            width: 128px;
+            min-width: 32px;
+            width: 100%;
             max-width: 128px;
+            min-width: 32px;
             }
         &-details {
             font-size: 22px;
+            font-weight: 600;
             padding-left: 5px;
         }
     }
@@ -204,7 +207,7 @@
     &-default {
         display: flex;
         flex-direction: column;
-        
+
     }
     &-location {
         display: flex;
@@ -265,29 +268,21 @@
 
 
 
-
-
-
-
-
-
-
-
 .guide {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     color: #fff;
     background-color: #303030;
     margin:auto;
     width: 80%;
-    align-self: center;
+    
     &-label {
         font-weight: 400;
         font-size: 45px;
         text-overflow: ellipsis;
         align-self: center;
         margin-bottom: 20px;
+        font-family: "Times New Roman", Times, serif;
     }
     &-summon {
         display: flex;
@@ -365,4 +360,8 @@
         width: 128px;
         height: 128px;
     }
+}
+
+.mat-divider{
+    border-top-width: 5px;
 }

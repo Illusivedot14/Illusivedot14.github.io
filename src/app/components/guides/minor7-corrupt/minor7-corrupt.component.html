@@ -1,7 +1,7 @@
 <div class="guide">
     <div class="guide-summon">
-        <h1 class="guide-label">How to Summon</h1>
-        <mat-divider></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">How to Summon</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <img class="guide-summon-image"
         src="https://i.imgur.com/qzymPtc.jpg"
         alt="location-image"
@@ -17,21 +17,21 @@
             the Frosty Snowfield (Teleport 6) and wait for him in front of the obelisk, he will appear after 90 seconds.</p>
     </div>
     <div class="guide-overall">
-        <h1 class="guide-label">Overall</h1>
-        <mat-divider></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <p class="guide-overall-description">
             <br>
             This boss is like all the other minor bosses. Make sure to keep stunning him whenever he casts a spell so he keeps trying to cast it, giving you more time for you to kill him.
             Run away when he uses Craze or Judgement of Darkness.</p>
         <div class="guide-spells">
-            <h1 class="guide-label">Spells</h1>
-            <mat-divider></mat-divider>
+            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
             <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="skills"></app-enemy-spell-display>
         </div>
     </div>
     <div class="guide-kill">
-        <h1 class="guide-label">Kill Video</h1>
-        <mat-divider style="margin-bottom: 20px;"></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
         <iframe src="https://drive.google.com/file/d/1NKdFnd5MK8ToiND3Q4KnvAl0W-dJJaMl/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

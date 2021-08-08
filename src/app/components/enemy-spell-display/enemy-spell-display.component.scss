@@ -17,35 +17,41 @@
     }
     &-name {
         font-weight: 350;
-        font-size: 33px;
+        font-size: 40px;
         margin-bottom: 1%;
         color: #fff;
         align-self: center;
         line-height: 0.9;
+        font-family: "Times New Roman", Times, serif !important;
     }
     &-detail-label {
         font-weight: 350;
-        font-size: 20px;
+        font-size: 30px;
         margin-bottom: 20px;
+        line-height: 30px;
+        font-family: "Times New Roman", Times, serif !important;
     }
     &-details {
         display: flex;
         flex-direction: column;
         width: 100%;
+        line-height: 22px;
     }
     &-description {
-        font-size: 20px;
+        font-size: 22px;
         width: 90%;
     }
     &-video {
         height: 100%;
         width: 100%;
+        min-width: 300px;
+        min-height: 200px;
         align-self: center;
         &-container {
             align-self: center;
-            height: 384px;
+            height: 328px;
             padding: 20px;
-            width: 100%;
+            width: 75%;
         }
     }
     &-image {
@@ -72,6 +78,18 @@
             font-size: 25px;
             color: #8292e9;
             align-self: center;
+        }
+    }
+
+    &-summon {
+        &-button {
+            width: 64px;
+        }
+        &-container {
+            height: 64px;
+            display: flex;
+            flex-flow: row;
+            margin-top: auto;
         }
     }
 }

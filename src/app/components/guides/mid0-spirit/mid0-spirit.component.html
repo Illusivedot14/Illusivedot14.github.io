@@ -1,7 +1,7 @@
 <div class="guide">
     <div class="guide-summon">
-        <h1 class="guide-label">Location</h1>
-        <mat-divider></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Location</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <img class="guide-summon-image"
         src="https://i.imgur.com/aXVvxri.jpg"
         alt="location-image"
@@ -15,8 +15,8 @@
         To find this boss, just go into the Deep Forest in the Spirit Forest West of Prius (Teleport 9).</p>
     </div>
     <div class="guide-overall">
-        <h1 class="guide-label">Overall</h1>
-        <mat-divider></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <p class="guide-overall-description">
         <br>
         This is your first Mid boss, it is also the easiest Mid boss. Your main concerns are dodging his Ethereal Strike/Spirit Echo and blocking the Drain Orbs from reaching him, like with Mana Ancient. 
@@ -28,14 +28,14 @@
         After <span style="color:#90EE90">50% HP</span>, he will gain <span style="color:#FFFF99">25% Damage Reduction</span> and his Ethereal Strike will travel a second time after reaching its maximum range. This part is the same as before except he's a little bit tankier. 
         Mind your positioning due to the Spirit Flames and you'll get this boss down in no time.</p>
         <div class="guide-spells">
-            <h1 class="guide-label">Spells</h1>
-            <mat-divider></mat-divider>
+            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
             <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getRemainingSkills(skills)"></app-enemy-spell-display>
         </div>
     </div>
     <div class="guide-kill">
-        <h1 class="guide-label">Kill Video</h1>
-        <mat-divider style="margin-bottom: 20px;"></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
         <iframe src="https://drive.google.com/file/d/13e1cijRsMz6NSLiLVCcAEaoNBeUd0Fft/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

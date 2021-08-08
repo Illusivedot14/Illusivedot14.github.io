@@ -1,7 +1,7 @@
 <div class="guide">
     <div class="guide-summon">
-        <h1 class="guide-label">Location</h1>
-        <mat-divider></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Location</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <img class="guide-summon-image"
         src="https://i.imgur.com/NZE3Czr.jpg"
         alt="location-image"
@@ -14,8 +14,8 @@
             Walk to the Wallachia Graveyard (Teleport 7), south of the teleporter. He will be mid-way, between the small creeps and the large creeps.
     </div>
     <div class="guide-overall">
-        <h1 class="guide-label">Overall</h1>
-        <mat-divider></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <p class="guide-overall-description">
             <br>
             To make killing this boss easier, kite him to the easier area, above his spawn area. There are less graves and easier mobs to deal with. Keep him in an open area 
@@ -23,14 +23,14 @@
             in the way. There are two layers in his wheel, an inner and outer layer. When warning lights spawn in either layer, MOVE OUT OF THAT LAYER IMMEDIATELY. A blast will happen AFTER those lights 
             disappear. If anyone dies in the wheel, he will regain 25% HP. After this wheel, kill him quickly before his mana gets full.</p>
         <div class="guide-spells">
-            <h1 class="guide-label">Spells</h1>
-            <mat-divider></mat-divider>
+            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
             <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="skills"></app-enemy-spell-display>
         </div>
     </div>
     <div class="guide-kill">
-        <h1 class="guide-label">Kill Video</h1>
-        <mat-divider style="margin-bottom: 20px;"></mat-divider>
+        <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
         <iframe src="https://drive.google.com/file/d/1AGDl9CvydqFQB_Fdn9M494yxKy1vPc42/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>
