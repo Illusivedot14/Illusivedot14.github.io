@@ -151,17 +151,21 @@
                     </div>
                 </div>
                 <div class="enemy-drop-container" *ngIf="enemy.drops">
-                    <span class="enemy-drop-label">Drops (Max: {{ enemy.limit }})</span>
-                    <ng-container *ngFor="let drop of enemy.drops">
-                        <div class="enemy-drop">
-                            <button mat-icon-button class="enemy-drop-button" (click)="openItemDetails(drop)">
-                            <img src="{{ getItemImageURL(drop) }}"
-                            alt="thumbnail"
-                            style="width:96px;height:96px;"/>
-                            </button>
-                            <p class="enemy-drop-details"> {{ drop }} {{ getDropRateString(enemy, drop) }}</p>
-                        </div>
-                    </ng-container>
+                    <div class="enemy-drop-label-container">
+                        <span class="enemy-drop-label">Drops (Max: {{ enemy.limit }})</span>
+                    </div>
+                    <div class="enemy-drop-list">
+                        <ng-container *ngFor="let drop of enemy.drops">
+                            <div class="enemy-drop">
+                                <button mat-icon-button class="enemy-drop-button" (click)="openItemDetails(drop)">
+                                <img src="{{ getItemImageURL(drop) }}"
+                                alt="thumbnail"
+                                width="100%"/>
+                                </button>
+                                <p class="enemy-drop-details"> {{ drop }} {{ getDropRateString(enemy, drop) }}</p>
+                            </div>
+                        </ng-container>
+                    </div>
                 </div>
             </div>
         </mat-tab>

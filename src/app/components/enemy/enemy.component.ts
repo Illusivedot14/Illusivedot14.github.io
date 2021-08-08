@@ -179,7 +179,6 @@ export class EnemyComponent implements OnInit, OnDestroy {
   {
     return "..\..\..\..\assets\img\twrpg_map.png";
   }
-
   openMinionDetails(id: string) : void {
     const url = this.router.serializeUrl(
       this.router.createUrlTree([`/enemy/${id}`])
@@ -207,5 +206,9 @@ export class EnemyComponent implements OnInit, OnDestroy {
     if(this.routeSub) {
       this.routeSub.unsubscribe();
     }
+  }
+  statSpecial(id : string) : void {
+    //BD, SB, ZL, AE, SM, Valt, Nereid, Aga
+    
   }
 }
