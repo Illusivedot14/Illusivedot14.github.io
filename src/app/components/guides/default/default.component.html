@@ -12,8 +12,8 @@
         <span class="enemy-location-conditions" *ngIf="enemy.conditions">Requires: {{ enemy.conditions }}</span> 
     </div>
     <div class="guide-overall">
-        <div class="spell-container" *ngIf="enemy.spells" style="width: 90%; align-self:center;">
-            <span class="spell-label">Spells</span>
+        <div class="guide-spells" *ngIf="enemy.spells" style="width: 90%; align-self:center;">
+            <span class="guide-label" [style.color]="enemy.color">Spells</span>
             <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
             <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="skills"></app-enemy-spell-display>
         </div>
