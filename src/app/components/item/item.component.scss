@@ -22,6 +22,7 @@
 
     &-stats-container {
       min-width: 40%;
+      width: 100%;
     }
 
     &-details-container {
@@ -121,17 +122,15 @@
     }
     //lists (ingredients and dropped)
     &-lists {
-      max-width: 70%;
-      margin-left: auto;
       display: flex;
       flex-flow: row;
-      justify-content: flex-end;
+      width: 100%;
+      justify-content: center;
     }
     &-list {
       &-container {
-        display: flex;
-        flex-flow: column;
-        align-items: center;
+        display: grid;
+        grid-auto-rows: min-content;
         color:#fff;
         margin-right: 20px;
       }
@@ -161,6 +160,7 @@
         line-height: 34px;
         margin-bottom: .2vw;
         align-self: center;
+        text-align: center;
       }
       &-filler {
         width: calc(32px + 1vw);
@@ -171,12 +171,12 @@
         flex-flow: row;
         max-height: 128px;
         min-height: 32px;
-        width: 100%;
       }
     }
     &-ingredient-swap {
       cursor: pointer;
       align-self: center;
+      margin-left: .1vw;
       height: calc(32px + 1vw);
       max-height: calc(32px + 1vw);
       width: calc(32px + 1vw);;
@@ -185,39 +185,21 @@
 }
 .back-button
 {
-  width:64px;
-  height:64px;
+  width: calc(32px + 2.4vw);
+  height: calc(32px + 2.4vw);
 }
 .back-button-container
 {
   display: flex;
   flex-flow: row;
-  padding: 10px;
-  height: 90px;
+  padding: .5vw;
+  height: calc(45px + 3vw);
 }
 .back-button-label
 {
       color: #FFD700;
       font-weight: 250;
-      font-size: 28px;
-      text-overflow: ellipsis;
-      align-self: center;
-      margin-left: 10px;
-}
-.back-button{
-  width:64px;
-  height:64px;
-}
-.back-button-container{
-  display: flex;
-  flex-flow: row;
-  padding: 10px;
-  height: 90px;
-}
-.back-button-label{
-      color: #FFD700;
-      font-weight: 250;
-      font-size: 28px;
+      font-size: calc(12px + 1vw);
       text-overflow: ellipsis;
       align-self: center;
       margin-left: 10px;

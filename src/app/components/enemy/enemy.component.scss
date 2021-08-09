@@ -182,31 +182,6 @@
     }
 }
 
-
-.back-button{
-  width:64px;
-  height:64px;
-}
-.back-button-container{
-  display: flex;
-  flex-flow: row;
-  padding: 10px;
-  height: 90px;
-}
-.back-button-label{
-      color: #FFD700;
-      font-weight: 250;
-      font-size: 28px;
-      text-overflow: ellipsis;
-      align-self: center;
-      margin-left: 10px;
-}
-
-
-.mat-divider {
-    border-top-color: white;
-  }
-
 .guide {
     display: flex;
     flex-direction: column;
@@ -307,4 +282,27 @@
 
 .mat-divider{
     border-top-width: 5px;
+    border-top-color: white;
+}
+
+.back-button
+{
+  width: calc(32px + 2.4vw);
+  height: calc(32px + 2.4vw);
+}
+.back-button-container
+{
+  display: flex;
+  flex-flow: row;
+  padding: .5vw;
+  height: calc(45px + 3vw);
+}
+.back-button-label
+{
+      color: #FFD700;
+      font-weight: 250;
+      font-size: calc(12px + 1vw);
+      text-overflow: ellipsis;
+      align-self: center;
+      margin-left: 10px;
 }
