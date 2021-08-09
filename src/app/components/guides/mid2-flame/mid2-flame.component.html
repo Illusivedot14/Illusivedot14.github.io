@@ -4,23 +4,22 @@
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <img class="guide-summon-image"
         src="https://i.imgur.com/pBxIci0.jpg"
-        alt="location-image"
-        width="1344" height="448"/>
-        <p class="guide-summon-description">
+        alt="location-image"/>
+        <p class="guide-description">
         Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
         before approaching this boss as you will get no loot if you're below that threshold. Also if you're not being carried, 
         have at least Demon Lord level gear before attempting to make your life easier.
         <br>
         <br> 
-        To summon this boss, first, gather 8 red stones from any red stone deposit in Wallachia (Teleport 7) 
-        or if you have an Abyssal Pickaxe or above, you can mine directly from the stone deposits in front of the golem cave (Teleport 4). Use any pickaxe to gather the stones. Then, go to 
+        To summon this boss, first, gather 8 red Stones from any red Stone Deposit in Wallachia (Teleport 7) 
+        or if you have an Abyssal Pickaxe or above, you can mine directly from the Stone Deposits in front of the golem cave (Teleport 4).  Then, go to 
         Lava Land and kill Ragnaar for Nightmare Rod, which you will need to summon Flame Nightmare. Finally, bring all these items to crimson circle left of Ragnaar's spawn and use 
         the Nightmare Rod.</p>
     </div>
     <div class="guide-overall">
         <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
-        <p class="guide-overall-description">
+        <p class="guide-description">
             <br>
             What sets Flame Nightmare apart from the other Mid-tier bosses, is the fact you have to worry about Hatred and Anger by his side. However, these unkillable minions are easy to deal with. 
             <br><br>
@@ -38,13 +37,13 @@
                 alt="thumbnail"/>
             </button>
         </div>
-        <p class="guide-overall-description">
+        <p class="guide-description">
             <br>
             The first <span style="color:#90EE90">25% HP</span> is easy as all you do is make sure he keeps hitting you so he doesn't use Overload and run away from the Flame Barrage. Flame Barrage can be easily dodged by moving in a circle. 
             At <span style="color:#90EE90">75% HP</span>, Flame Nightmare will trigger his "On Your Knees". There's two approaches to this spell, you can either kite him away from the Flame Spawns, or use AOE to kill them all when they're close. 
             <br><br></p>
             <app-enemy-spell-display [category]="enemy.category" [skills]="getSkills(skills, ['On%20Your%20Knees%21'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
-        <p class="guide-overall-description">
+        <p class="guide-description">
             <br>
             If you choose to kite him, after he uses his "On Your Knees!", move him away from the epicenter of the jump. He will not be healed when the Flame Spawns reach his jump location.
             <br><br>
@@ -61,6 +60,6 @@
     <div class="guide-kill">
         <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
         <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
-        <iframe src="https://drive.google.com/file/d/1pZcUWG8vLJuX_ZrjkuNET68UXiYOlnI2/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
+        <iframe class="guide-kill-video" src="https://drive.google.com/file/d/1pZcUWG8vLJuX_ZrjkuNET68UXiYOlnI2/preview" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

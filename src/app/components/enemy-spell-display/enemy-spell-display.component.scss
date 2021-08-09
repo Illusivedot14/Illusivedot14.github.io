@@ -17,7 +17,8 @@
     }
     &-name {
         font-weight: 350;
-        font-size: 40px;
+        font-size: calc(25px + 1vw);
+        line-height: calc(30px + 1vw);
         margin-bottom: 1%;
         color: #fff;
         align-self: center;
@@ -63,9 +64,19 @@
         color: #fff;
         &-label {
             height: 75%;
-            font-size: 25px;
+            font-size: calc(12px + 1vw);
+            line-height: calc(14px + 1vw);
             color: #b3c2cb;
             align-self: center;
+        }
+        &-image {
+            height: calc(32px + 1vw);
+            max-height: calc(32px + 1vw);
+            min-height: 32px;
+            width: calc(32px + 1vw);
+            max-width: calc(32px + 1vw);
+            min-width: 32px;
+            vertical-align: middle;
         }
     }
     &-cost {
@@ -75,18 +86,31 @@
         color: #fff;
         &-label {
             height: 75%;
-            font-size: 25px;
+            font-size: calc(12px + 1vw);
+            line-height: calc(14px + 1vw);
             color: #8292e9;
             align-self: center;
+        }
+        &-image {
+            height: calc(32px + 1vw);
+            max-height: calc(32px + 1vw);
+            min-height: 32px;
+            width: calc(32px + 1vw);
+            max-width: calc(32px + 1vw);
+            min-width: 32px;
+            vertical-align: top;
         }
     }
 
     &-summon {
-        &-button {
-            width: 64px;
-        }
+        height: calc(32px + 1vw);
+        max-height: calc(32px + 1vw);
+        min-height: 32px;
+        width: calc(32px + 1vw);
+        max-width: calc(32px + 1vw);
+        min-width: 32px;
         &-container {
-            height: 64px;
+            height: calc(32px + 1vw);
             display: flex;
             flex-flow: row;
             margin-top: auto;

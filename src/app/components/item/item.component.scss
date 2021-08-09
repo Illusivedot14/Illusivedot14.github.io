@@ -29,13 +29,13 @@
       flex-direction: row;
     }
     &-thumbnail {
-      width: 168px;
-      height: 168px;
-      padding: 20px;
+      padding: 1vw;
+      width: calc(64px + 6vw);
+      height: calc(64px + 6vw);
     }
     &-content {
       align-self: center;
-      margin-top: 20px;
+      margin-top: 1vw;
     }
     //Flavor text
     &-name {
@@ -112,6 +112,8 @@
           min-height: 64px;
           height: 12.5%;
           width: 12.5%;
+          max-width: 96px;
+          max-height: 96px;
           position: relative;
           z-index: 3;
           display: block;
@@ -120,7 +122,6 @@
     //lists (ingredients and dropped)
     &-lists {
       max-width: 70%;
-      min-width: 50%;
       margin-left: auto;
       display: flex;
       flex-flow: row;
@@ -133,7 +134,6 @@
         align-items: center;
         color:#fff;
         margin-right: 20px;
-        min-width: 50%;
       }
       &-details {
         font-size: calc(12px + .6vw);
@@ -197,6 +197,24 @@
 }
 .back-button-label
 {
+      color: #FFD700;
+      font-weight: 250;
+      font-size: 28px;
+      text-overflow: ellipsis;
+      align-self: center;
+      margin-left: 10px;
+}
+.back-button{
+  width:64px;
+  height:64px;
+}
+.back-button-container{
+  display: flex;
+  flex-flow: row;
+  padding: 10px;
+  height: 90px;
+}
+.back-button-label{
       color: #FFD700;
       font-weight: 250;
       font-size: 28px;

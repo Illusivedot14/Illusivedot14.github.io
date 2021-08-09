@@ -4,21 +4,20 @@
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <img class="guide-summon-image"
         src="https://i.imgur.com/VxdUC8W.jpg"
-        alt="location-image"
-        width="1344" height="448"/>
-        <p class="guide-summon-description">
+        alt="location-image"/>
+        <p class="guide-description">
             Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 50</span> 
             before approaching this boss as you will get no experience nor loot if you're below that threshold.
             <br>
             <br> 
-            To summon this boss, first, gather 12 blue stones from any blue stone deposit in the Snowy Hills (Teleport 6) or if you have an Abyssal Pickaxe or above, 
-            you can mine directly from the stone deposits in front of the golem cave (Teleport 4). Use any pickaxe to gather the stones. Then, bring them to the 
-            Old Man within the Deep Snowfield where he will use the Blue Stones to unlock Shadow Dragon's lair.</p>
+            To summon this boss, first, gather 12 <span style="color:#0288d1"> Blue Stone</span> s from any <span style="color:#0288d1"> Blue Stone</span>  Deposit in the Snowy Hills (Teleport 6) or if you have an Abyssal Pickaxe or above, 
+            you can mine directly from the Stone Deposits in front of the golem cave (Teleport 4).  Then, bring them to the 
+            Old Man within the Deep Snowfield where he will use the <span style="color:#0288d1"> Blue Stone</span> s to unlock Shadow Dragon's lair.</p>
     </div>
     <div class="guide-overall">
         <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
-        <p class="guide-overall-description">
+        <p class="guide-description">
             <br>
             As the final High boss, he does not hold any punches. Shadow Dragon begins with three spells: Shadow Breath, Dragonic Skin, and Seal. Super Armor is the same as Skeleton King's and he 
             can attack multiple people at once. To dodge Shadow Breath, when Shadow Dragon abruptly turns torward one person, don't stun him and run away from that line of sight. For Dragonic Skin, you'll 
@@ -26,13 +25,13 @@
             At 50% max HP, he will regain all health and use his Illusions of Shadow. Which creates one Large Illusion and 3 other Illusions.
             </p>
             <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Illusions%20of%20Shadow'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
-            <p class="guide-overall-description">
+            <p class="guide-description">
             <br>
             The Large Illusion will have all of Shadow Dragon's spells from the first phase outside of Super Armor, and the other Illusions will just have Shadow Breath. Prioritize the Smaller Illusions first by grouping them up and using your bursts on it. After they die, SPREAD. 
             Dark Detonation will be cast on everyone in the arena. After the Dark Detonation is over, pull Large Illusion to the center so you don't take damage from the aura and kill it. Don't take your time 
             killing it either, if you spend longer than a few minutes, it will be unkillable, resulting in a reset. Dark Detonation will happen again on its death.</p>
             <!-- <app-enemy-spell-display [caster]="'Illusion of Irbert'" [category]="enemy.category" [skills]="getSkills(minionSkills['Illusion of Irbert'], ['Reinforcement%20of%20Darkness', 'Dark%20Detonation'])" style="width: 90%; align-self: center;"></app-enemy-spell-display> -->
-            <p class="guide-overall-description">
+            <p class="guide-description">
                 <br>
                 After the Illusions are dead, Shadow Dragon will have unlocked three very annoying spells, but the fight is the same as the first phase. These spells require you to PAY ATTENTION to the surroundings. 
                 For Shadow Circle, there are no preventative measures for it, so avoid it when it spawns, or have someone who's on cooldowns take them. Make sure you're always near at least one person for Eternity link. 
@@ -40,7 +39,7 @@
                 it's not visible. Dark Blast goes through invulnerability effects.
                 </p>
                 <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Shadow%20Circle', 'Eternity%20Link', 'Dark%20Blast'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
-            <p class="guide-overall-description">
+            <p class="guide-description">
                 <br>
                 Just be mindful of your environment and you'll kill this boss.
                 </p>
@@ -53,6 +52,6 @@
     <div class="guide-kill">
         <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
         <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
-        <iframe src="https://drive.google.com/file/d/1M8uyaT_nE1Ard2YNzOJ9IVoBuWJrBt3W/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
+        <iframe class="guide-kill-video" src="https://drive.google.com/file/d/1M8uyaT_nE1Ard2YNzOJ9IVoBuWJrBt3W/preview" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

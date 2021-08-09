@@ -4,9 +4,8 @@
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <img class="guide-summon-image"
         src="https://i.imgur.com/Va9tuKo.jpg"
-        alt="location-image"
-        width="1344" height="448"/>
-        <p class="guide-summon-description">
+        alt="location-image"/>
+        <p class="guide-description">
             Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
             before approaching this boss as you will get no loot if you're below that threshold. Also if you're not being carried, 
             have at least Mid level gear before attempting to make your life easier, from this point on, you need a party.
@@ -17,7 +16,7 @@
     <div class="guide-overall">
         <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
-        <p class="guide-overall-description">
+        <p class="guide-description">
             <br>
             This boss will test your patience if you're melee as you NEED TO STAY AWAY FROM THE BOSS at <span style="color:#90EE90">every 25% HP threshold</span>. I'd recommend modifying your Health Bar so that you can see every 25%.
             <br>
@@ -28,7 +27,7 @@
                 <img class="button-image" src="{{ getEnemyImageURL('Skeletal Solider') }}"
                 alt="thumbnail"/>
             </button>
-            <p class="guide-overall-description">
+            <p class="guide-description">
             <br>
             If you have a lot of summons, don't clump them around Skeleton King, He'll use Soul Drain to regain a ton of health. He'll use Soul Terror at ranged, clumped up units. There aren't a lot of wind-ups for his abilities, 
             so you have to know the cooldowns to dodge them.
@@ -37,12 +36,12 @@
             At <span style="color:#90EE90">every 25% HP lost</span>, he'll begin using True Power of Despair, which takes 3 seconds to fully power. Once activated, <span style="color:red">he will instantly kill any 
             player or player-owned unit around him (500 range).</span> So dodge it, or don't if you're that kind of person.</p>
             <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['True%20Power%20of%20Despair'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
-            <p class="guide-overall-description">
+            <p class="guide-description">
             <br>
             After this point, he'll unlock Absolute Devastation, which he will need to cast <u>at least once</u> during the fight. If he reaches below 0 and he hasn't cast it, he will regain 25% of his health and 
             cast it immediately. Make sure the Skeleton Soliders don't pull you during the ability.</p>
             <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Absolute%20Devastation'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
-            <p class="guide-overall-description">
+            <p class="guide-description">
             <br>
             Keep the Solider number down and keep going through the fight and he'll go down.
             </p>
@@ -55,6 +54,6 @@
     <div class="guide-kill">
         <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
         <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
-        <iframe src="https://drive.google.com/file/d/1w6graQgjH4XWtu51jwVpmG5hhhFvkvdD/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
+        <iframe class="guide-kill-video" src="https://drive.google.com/file/d/1w6graQgjH4XWtu51jwVpmG5hhhFvkvdD/preview" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

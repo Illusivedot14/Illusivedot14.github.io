@@ -1,205 +1,206 @@
-<div class="enemy">
-    <div class ="back-button-container">
-        <button class="back-button" mat-icon-button class="back-button" (click)="returnToPrior()">
-            <img class="item-swap-button"
-            src="https://raw.githubusercontent.com/sfarmani/twicons/master/GoBack.jpg"
-            style="width:64px;height:64px;"
-            alt="thumbnail"/>
-        </button>
-        <p class="back-button-label">Return to Prior Page</p>
+<div class="enemy-container">
+    <div class="enemy">
+        <div class ="back-button-container">
+            <button class="back-button" mat-icon-button class="back-button" (click)="returnToPrior()">
+                <img class="item-swap-button"
+                src="https://raw.githubusercontent.com/sfarmani/twicons/master/GoBack.jpg"
+                style="width:64px;height:64px;"
+                alt="thumbnail"/>
+            </button>
+            <p class="back-button-label">Return to Prior Page</p>
+        </div>
+        <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="1" dynamicHeight>
+            <mat-tab label="Stats">
+                <div class="enemy-details" *ngIf="enemy">
+                    <div class="enemy-basics">
+                        <div class="enemy-card">
+                            <img class="enemy-image"
+                            src="{{getEnemyImageURL(enemy.name)}}"
+                            alt="Body Image"/>
+                            <div class="enemy-quick-details">
+                                <span class="enemy-name"  *ngIf="enemy.name" [style.color]="enemy.color">{{ enemy.name }}&nbsp;</span>  
+                                <div class="enemy-quote" *ngIf="enemy.quote" [style.color]="enemy.color">"{{ enemy.quote }}"</div>
+                                <div class="enemy-descript">
+                                    <span class="enemy-descript-line" *ngIf="enemy.level" style="color: #FFD700;">Lvl. {{ enemy.level }}&nbsp;</span> 
+                                    <span class="enemy-descript-line" *ngIf="enemy.category">{{ enemy.category }}&nbsp;</span> 
+                                    <span class="enemy-descript-line" *ngIf="enemy.type && enemy.type!='Mob'">{{ enemy.type }}&nbsp;</span> 
+                                    <p class="enemy-descript-line"  *ngIf="enemy.respawn">Respawns: {{ enemy.respawn }}</p>
+                                    <p class="enemy-descript-line"  *ngIf="enemy.timer">Respawns: Every {{ enemy.timer }} seconds</p>
+                                </div>
+                            </div>
+                            <div class="enemy-special-stat-change">
+                                
+                            </div>
+                        </div>
+                        <div class="enemy-difficulty" *ngIf="enemy.category != 'Field' && enemy.category != 'Creep' && !enemy.name.includes('Clown')">
+                            <span class="enemy-difficulty-label" *ngIf='difficulty==1'>Difficulty: {{ difficulty }} Player</span>
+                            <span class="enemy-difficulty-label" *ngIf='difficulty>1'>Difficulty: {{ difficulty }} Players</span>
+                            <mat-slider min="1" max="10" step="1" value="1" (input)="onInputChange($event)"></mat-slider>
+                        </div>
+                        <div class="enemy-stats">
+                            <div class="enemy-stats-row">
+                                <div class="enemy-stat">
+                                    <img class="enemy-stat-image"
+                                    src="../../../assets/img/health.jpg"
+                                    alt="Health Thumbnail"/>
+                                    <div class="enemy-stat-label-container">
+                                        <span class="enemy-stat-label" [style.color]="possibleStats['health'].color">
+                                            {{ getHealth() }} HP<br>({{ possibleStats['healthRegen'].value }} HP/s)
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="enemy-stat">
+                                    <img class="enemy-stat-image"
+                                    src="../../../assets/img/mana.jpg"
+                                    alt="Mana Thumbnail"/>
+                                    <div class="enemy-stat-label-container">
+                                        <span class="enemy-stat-label" [style.color]="possibleStats['mana'].color">
+                                            {{ possibleStats['mana'].value }} MP<br>({{ possibleStats['manaRegen'].value }} MP/s)
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="enemy-stats-row">
+                                <div class="enemy-stat">
+                                    <img class="enemy-stat-image"
+                                    src="../../../assets/img/attack.png"
+                                    alt="Attack Thumbnail"/>
+                                    <div class="enemy-stat-label-container">
+                                        <span class="enemy-stat-label" [style.color]="possibleStats['attackDamage'].color">
+                                            {{ possibleStats['attackDamage'].value }} - {{ maxAttack }} Attack<br>({{ possibleStats['attackSpeed'].value}} Attack/s)
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="enemy-stat">
+                                    <img class="enemy-stat-image"
+                                    src="../../../assets/img/range.png"
+                                    alt="Range Thumbnail"/>
+                                    <div class="enemy-stat-label-container">
+                                        <span class="enemy-stat-label" [style.color]="possibleStats['attackRange'].color">
+                                            {{ possibleStats['attackRange'].value }} Range
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="enemy-stats-row">
+                                <div class="enemy-stat">
+                                    <img class="enemy-stat-image"
+                                    src="../../../assets/img/light.png"
+                                    alt="Armor Thumbnail"
+                                    *ngIf="possibleStats['armorType'].value=='Light'"/>
+                                    <img class="enemy-stat-image"
+                                    src="../../../assets/img/medium.png"
+                                    alt="Armor Thumbnail"
+                                    *ngIf="possibleStats['armorType'].value=='Medium'"/>
+                                    <img class="enemy-stat-image"
+                                    src="../../../assets/img/heavy.png"
+                                    alt="Armor Thumbnail"
+                                    *ngIf="possibleStats['armorType'].value=='Heavy'"/>
+                                    <img class="enemy-stat-image"
+                                    src="../../../assets/img/hero.png"
+                                    alt="Armor Thumbnail"
+                                    *ngIf="possibleStats['armorType'].value=='Hero'"/>
+                                    <div class="enemy-stat-label-container">
+                                        <span class="enemy-stat-label" [style.color]="possibleStats['armor'].color">
+                                            {{ possibleStats['armor'].value }} Armor
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="enemy-stat">
+                                    <img class="enemy-stat-image"
+                                    src="../../../assets/img/speed.png"
+                                    alt="Speed Thumbnail"/>
+                                    <div class="enemy-stat-label-container">
+                                        <span class="enemy-stat-label" [style.color]="possibleStats['moveSpeed'].color">
+                                            {{ possibleStats['moveSpeed'].value }} Movespeed
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="enemy-stats-row">
+                                <div class="enemy-stat">
+                                    <img class="enemy-stat-image"
+                                    src="../../../assets/img/magicResist.png"
+                                    alt="Magic Defense Thumbnail"/>
+                                    <div class="enemy-stat-label-container">
+                                        <span class="enemy-stat-label" [style.color]="possibleStats['magicResist'].color">
+                                            {{ possibleStats['magicResist'].value }}% Magic Defense
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="enemy-stat">
+                                    <img class="enemy-stat-image"
+                                    src="../../../assets/img/damageResist.png"
+                                    alt="Damage Defense Thumbnail"/>
+                                    <div class="enemy-stat-label-container">
+                                        <span class="enemy-stat-label" [style.color]="possibleStats['damageResist'].color">
+                                            {{ possibleStats['damageResist'].value }}% Damage Defense
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="enemy-notes-container" *ngIf='enemy.notes'>
+                            <p class="enemy-notes-label">Notes</p>
+                            <ng-container *ngFor="let line of enemy.notes">
+                                <span class="enemy-notes-description">※ {{ line }}</span>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="enemy-drop-container" *ngIf="enemy.drops">
+                        <div class="enemy-drop-label-container">
+                            <span class="enemy-drop-label">Drops (Max: {{ enemy.limit }})</span>
+                        </div>
+                        <div class="enemy-drop-list">
+                            <ng-container *ngFor="let drop of enemy.drops">
+                                <div class="enemy-drop">
+                                    <button mat-icon-button class="enemy-drop-button" (click)="openItemDetails(drop)">
+                                    <img src="{{ getItemImageURL(drop) }}"
+                                    alt="thumbnail"
+                                    width="100%"/>
+                                    </button>
+                                    <p class="enemy-drop-details"> {{ drop }} {{ getDropRateString(enemy, drop) }}</p>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Details">
+                <div *ngIf='enemy'>
+                    <div [ngSwitch]="true">
+                        <app-minor0-hydra    *ngSwitchCase="enemy.name.includes('Hydra')"             [enemy]='enemy' [skills]='skills'></app-minor0-hydra>
+                        <app-minor1-jack     *ngSwitchCase="enemy.name.includes('Jack')"              [enemy]='enemy' [skills]='skills'></app-minor1-jack>
+                        <app-minor2-count    *ngSwitchCase="enemy.name.includes('Count')"             [enemy]='enemy' [skills]='skills'></app-minor2-count>
+                        <app-minor3-mage     *ngSwitchCase="enemy.name.includes('Mage Lord')"         [enemy]='enemy' [skills]='skills'></app-minor3-mage>
+                        <app-minor4-wings    *ngSwitchCase="enemy.name.includes('Wings')"             [enemy]='enemy' [skills]='skills'></app-minor4-wings>
+                        <app-minor5-gate     *ngSwitchCase="enemy.name.includes('Gatekeeper')"        [enemy]='enemy' [skills]='skills'></app-minor5-gate>
+                        <app-minor6-angel    *ngSwitchCase="enemy.name.includes('Guardian Angel')"    [enemy]='enemy' [skills]='skills'></app-minor6-angel>
+                        <app-minor7-corrupt  *ngSwitchCase="enemy.name.includes('Corrupt Angel')"     [enemy]='enemy' [skills]='skills'></app-minor7-corrupt>
+                        <app-minor8-soul     *ngSwitchCase="enemy.name.includes('Soul of Everfrost')" [enemy]='enemy' [skills]='skills'></app-minor8-soul>
+                        <app-minor9-spider   *ngSwitchCase="enemy.name.includes('Frostspider Queen')" [enemy]='enemy' [skills]='skills'></app-minor9-spider>
+                        <app-minor10-lord    *ngSwitchCase="enemy.name.includes('Frostspider Lord')"  [enemy]='enemy' [skills]='skills'></app-minor10-lord>
+                        <app-minor11-demon   *ngSwitchCase="enemy.name.includes('Demon Lord Beriel')" [enemy]='enemy' [skills]='skills'></app-minor11-demon>
+                        <app-minor12-clown   *ngSwitchCase="enemy.name.includes('Clown')"             [enemy]='enemy' [skills]='skills'></app-minor12-clown>
+                        <app-mid0-spirit     *ngSwitchCase="enemy.name.includes('Spirit Beast')"      [enemy]='enemy' [skills]='skills'></app-mid0-spirit>
+                        <app-mid1-rectus     *ngSwitchCase="enemy.name.includes('Rectus')"            [enemy]='enemy' [skills]='skills'></app-mid1-rectus>
+                        <app-mid2-flame      *ngSwitchCase="enemy.name.includes('Flame Nightmare')"   [enemy]='enemy' [skills]='skills'></app-mid2-flame>
+                        <app-mid3-turtle     *ngSwitchCase="enemy.name.includes('Turtle Lord')"       [enemy]='enemy' [skills]='skills'></app-mid3-turtle>
+                        <app-high0-bone      *ngSwitchCase="enemy.name.includes('Bone Dragon')"       [enemy]='enemy' [skills]='skills'></app-high0-bone>
+                        <app-high1-skeleton  *ngSwitchCase="enemy.name.includes('Skeleton King')"     [enemy]='enemy' [skills]='skills'></app-high1-skeleton>
+                        <app-high2-zombie    *ngSwitchCase="enemy.name.includes('Zombie Lord')"       [enemy]='enemy' [skills]='skills'></app-high2-zombie>
+                        <app-high3-ent       *ngSwitchCase="enemy.name.includes('Ancient Ent')"       [enemy]='enemy' [skills]='skills'></app-high3-ent>
+                        <app-high4-archangel *ngSwitchCase="enemy.name.includes('Archangel')"         [enemy]='enemy' [skills]='skills'></app-high4-archangel>
+                        <app-high5-shadow    *ngSwitchCase="enemy.name.includes('Shadow Dragon')"     [enemy]='enemy' [skills]='skills'></app-high5-shadow>
+                        <app-end0-death      *ngSwitchCase="enemy.name.includes('Death Fiend')"       [enemy]='enemy' [skills]='skills'></app-end0-death>
+                        <app-end1-valtora    *ngSwitchCase="enemy.name.includes('Valtora')"           [enemy]='enemy' [skills]='skills'></app-end1-valtora>
+                        <app-end2-ifrit      *ngSwitchCase="enemy.name.includes('Ifrit')"             [enemy]='enemy' [skills]='skills'></app-end2-ifrit>
+                        <app-end3-nereid     *ngSwitchCase="enemy.name.includes('Nereid')"            [enemy]='enemy' [skills]='skills'></app-end3-nereid>
+                        <!-- <app-end4-agareth    *ngSwitchCase="enemy.name.includes('Agareth')"          [enemy]='enemy' [skills]='skills'></app-end4-agareth> -->
+                        <app-default         *ngSwitchDefault                                        [enemy]='enemy' [skills]='skills'></app-default>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
     </div>
-    <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="0" dynamicHeight>
-        <mat-tab label="Stats">
-            <div class="enemy-details" *ngIf="enemy">
-                <div class="enemy-basics">
-                    <div class="enemy-card">
-                        <img class="enemy-image"
-                        src="{{getEnemyImageURL(enemy.name)}}"
-                        style="width:168px;height:168px;"
-                        alt="Body Image"/>
-                        <div class="enemy-quick-details">
-                            <span class="enemy-name-details"  *ngIf="enemy.name" [style.color]="enemy.color">{{ enemy.name }}&nbsp;</span>  
-                            <div class="enemy-quote" *ngIf="enemy.quote" [style.color]="enemy.color">"{{ enemy.quote }}"</div>
-                            <div>
-                                <span class="enemy-level">Lvl. {{ enemy.level }}&nbsp;</span> 
-                                <span class="enemy-category" *ngIf="enemy.category">{{ enemy.category }}&nbsp;</span> 
-                                <span class="enemy-type" *ngIf="enemy.type && enemy.type!='Mob'">{{ enemy.type }}&nbsp;</span> 
-                            </div>
-                            <p class="enemy-respawn"  *ngIf="enemy.respawn">Respawns: {{ enemy.respawn }}</p>
-                            <p class="enemy-respawn"  *ngIf="enemy.timer">Respawns: Every {{ enemy.timer }} seconds</p>
-                        </div>
-                        <div class="enemy-special-stat-change">
-                            
-                        </div>
-                    </div>
-                    <div class="enemy-difficulty" *ngIf="enemy.category != 'Field' && enemy.category != 'Creep' && !enemy.name.includes('Clown')">
-                        <span class="enemy-difficulty-label" *ngIf='difficulty==1'>Difficulty: {{ difficulty }} Player</span>
-                        <span class="enemy-difficulty-label" *ngIf='difficulty>1'>Difficulty: {{ difficulty }} Players</span>
-                        <mat-slider min="1" max="10" step="1" value="1" (input)="onInputChange($event)"></mat-slider>
-                    </div>
-                    <div class="enemy-stats">
-                        <div class="enemy-stats-row">
-                            <div class="enemy-stat">
-                                <img class="enemy-attribute-image"
-                                src="../../../assets/img/health.jpg"
-                                alt="Health Thumbnail"/>
-                                <div class="enemy-stat-label-container">
-                                    <span class="enemy-stat-label" [style.color]="possibleStats['health'].color">
-                                        {{ getHealth() }} HP<br>({{ possibleStats['healthRegen'].value }} HP/s)
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="enemy-stat">
-                                <img class="enemy-attribute-image"
-                                src="../../../assets/img/mana.jpg"
-                                alt="Mana Thumbnail"/>
-                                <div class="enemy-stat-label-container">
-                                    <span class="enemy-stat-label" [style.color]="possibleStats['mana'].color">
-                                        {{ possibleStats['mana'].value }} MP<br>({{ possibleStats['manaRegen'].value }} MP/s)
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="enemy-stats-row">
-                            <div class="enemy-stat">
-                                <img class="enemy-attribute-image"
-                                src="../../../assets/img/attack.png"
-                                alt="Attack Thumbnail"/>
-                                <div class="enemy-stat-label-container">
-                                    <span class="enemy-stat-label" [style.color]="possibleStats['attackDamage'].color">
-                                        {{ possibleStats['attackDamage'].value }} - {{ maxAttack }} Attack<br>({{ possibleStats['attackSpeed'].value}} Attack/s)
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="enemy-stat">
-                                <img class="enemy-attribute-image"
-                                src="../../../assets/img/range.png"
-                                alt="Range Thumbnail"/>
-                                <div class="enemy-stat-label-container">
-                                    <span class="enemy-stat-label" [style.color]="possibleStats['attackRange'].color">
-                                        {{ possibleStats['attackRange'].value }} Range
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="enemy-stats-row">
-                            <div class="enemy-stat">
-                                <img class="enemy-attribute-image"
-                                src="../../../assets/img/light.png"
-                                alt="Armor Thumbnail"
-                                *ngIf="possibleStats['armorType'].value=='Light'"/>
-                                <img class="enemy-attribute-image"
-                                src="../../../assets/img/medium.png"
-                                alt="Armor Thumbnail"
-                                *ngIf="possibleStats['armorType'].value=='Medium'"/>
-                                <img class="enemy-attribute-image"
-                                src="../../../assets/img/heavy.png"
-                                alt="Armor Thumbnail"
-                                *ngIf="possibleStats['armorType'].value=='Heavy'"/>
-                                <img class="enemy-attribute-image"
-                                src="../../../assets/img/hero.png"
-                                alt="Armor Thumbnail"
-                                *ngIf="possibleStats['armorType'].value=='Hero'"/>
-                                <div class="enemy-stat-label-container">
-                                    <span class="enemy-stat-label" [style.color]="possibleStats['armor'].color">
-                                        {{ possibleStats['armor'].value }} Armor
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="enemy-stat">
-                                <img class="enemy-attribute-image"
-                                src="../../../assets/img/speed.png"
-                                alt="Speed Thumbnail"/>
-                                <div class="enemy-stat-label-container">
-                                    <span class="enemy-stat-label" [style.color]="possibleStats['moveSpeed'].color">
-                                        {{ possibleStats['moveSpeed'].value }} Movespeed
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="enemy-stats-row">
-                            <div class="enemy-stat">
-                                <img class="enemy-attribute-image"
-                                src="../../../assets/img/magicResist.png"
-                                alt="Magic Defense Thumbnail"/>
-                                <div class="enemy-stat-label-container">
-                                    <span class="enemy-stat-label" [style.color]="possibleStats['magicResist'].color">
-                                        {{ possibleStats['magicResist'].value }}% Magic Defense
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="enemy-stat">
-                                <img class="enemy-attribute-image"
-                                src="../../../assets/img/damageResist.png"
-                                alt="Damage Defense Thumbnail"/>
-                                <div class="enemy-stat-label-container">
-                                    <span class="enemy-stat-label" [style.color]="possibleStats['damageResist'].color">
-                                        {{ possibleStats['damageResist'].value }}% Damage Defense
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="enemy-notes-container" *ngIf='enemy.notes'>
-                        <p class="enemy-notes-label">Notes</p>
-                        <ng-container *ngFor="let line of enemy.notes">
-                            <span class="enemy-note">※ {{ line }}</span>
-                        </ng-container>
-                    </div>
-                </div>
-                <div class="enemy-drop-container" *ngIf="enemy.drops">
-                    <div class="enemy-drop-label-container">
-                        <span class="enemy-drop-label">Drops (Max: {{ enemy.limit }})</span>
-                    </div>
-                    <div class="enemy-drop-list">
-                        <ng-container *ngFor="let drop of enemy.drops">
-                            <div class="enemy-drop">
-                                <button mat-icon-button class="enemy-drop-button" (click)="openItemDetails(drop)">
-                                <img src="{{ getItemImageURL(drop) }}"
-                                alt="thumbnail"
-                                width="100%"/>
-                                </button>
-                                <p class="enemy-drop-details"> {{ drop }} {{ getDropRateString(enemy, drop) }}</p>
-                            </div>
-                        </ng-container>
-                    </div>
-                </div>
-            </div>
-        </mat-tab>
-        <mat-tab label="Details">
-            <div *ngIf='enemy'>
-                <div [ngSwitch]="true">
-                    <app-minor0-hydra    *ngSwitchCase="enemy.name.includes('Hydra')"             [enemy]='enemy' [skills]='skills'></app-minor0-hydra>
-                    <app-minor1-jack     *ngSwitchCase="enemy.name.includes('Jack')"              [enemy]='enemy' [skills]='skills'></app-minor1-jack>
-                    <app-minor2-count    *ngSwitchCase="enemy.name.includes('Count')"             [enemy]='enemy' [skills]='skills'></app-minor2-count>
-                    <app-minor3-mage     *ngSwitchCase="enemy.name.includes('Mage Lord')"         [enemy]='enemy' [skills]='skills'></app-minor3-mage>
-                    <app-minor4-wings    *ngSwitchCase="enemy.name.includes('Wings')"             [enemy]='enemy' [skills]='skills'></app-minor4-wings>
-                    <app-minor5-gate     *ngSwitchCase="enemy.name.includes('Gatekeeper')"        [enemy]='enemy' [skills]='skills'></app-minor5-gate>
-                    <app-minor6-angel    *ngSwitchCase="enemy.name.includes('Guardian Angel')"    [enemy]='enemy' [skills]='skills'></app-minor6-angel>
-                    <app-minor7-corrupt  *ngSwitchCase="enemy.name.includes('Corrupt Angel')"     [enemy]='enemy' [skills]='skills'></app-minor7-corrupt>
-                    <app-minor8-soul     *ngSwitchCase="enemy.name.includes('Soul of Everfrost')" [enemy]='enemy' [skills]='skills'></app-minor8-soul>
-                    <app-minor9-spider   *ngSwitchCase="enemy.name.includes('Frostspider Queen')" [enemy]='enemy' [skills]='skills'></app-minor9-spider>
-                    <app-minor10-lord    *ngSwitchCase="enemy.name.includes('Frostspider Lord')"  [enemy]='enemy' [skills]='skills'></app-minor10-lord>
-                    <app-minor11-demon   *ngSwitchCase="enemy.name.includes('Demon Lord Beriel')" [enemy]='enemy' [skills]='skills'></app-minor11-demon>
-                    <app-minor12-clown   *ngSwitchCase="enemy.name.includes('Clown')"             [enemy]='enemy' [skills]='skills'></app-minor12-clown>
-                    <app-mid0-spirit     *ngSwitchCase="enemy.name.includes('Spirit Beast')"      [enemy]='enemy' [skills]='skills'></app-mid0-spirit>
-                    <app-mid1-rectus     *ngSwitchCase="enemy.name.includes('Rectus')"            [enemy]='enemy' [skills]='skills'></app-mid1-rectus>
-                    <app-mid2-flame      *ngSwitchCase="enemy.name.includes('Flame Nightmare')"   [enemy]='enemy' [skills]='skills'></app-mid2-flame>
-                    <app-mid3-turtle     *ngSwitchCase="enemy.name.includes('Turtle Lord')"       [enemy]='enemy' [skills]='skills'></app-mid3-turtle>
-                    <app-high0-bone      *ngSwitchCase="enemy.name.includes('Bone Dragon')"       [enemy]='enemy' [skills]='skills'></app-high0-bone>
-                    <app-high1-skeleton  *ngSwitchCase="enemy.name.includes('Skeleton King')"     [enemy]='enemy' [skills]='skills'></app-high1-skeleton>
-                    <app-high2-zombie    *ngSwitchCase="enemy.name.includes('Zombie Lord')"       [enemy]='enemy' [skills]='skills'></app-high2-zombie>
-                    <app-high3-ent       *ngSwitchCase="enemy.name.includes('Ancient Ent')"       [enemy]='enemy' [skills]='skills'></app-high3-ent>
-                    <app-high4-archangel *ngSwitchCase="enemy.name.includes('Archangel')"         [enemy]='enemy' [skills]='skills'></app-high4-archangel>
-                    <app-high5-shadow    *ngSwitchCase="enemy.name.includes('Shadow Dragon')"     [enemy]='enemy' [skills]='skills'></app-high5-shadow>
-                    <app-end0-death      *ngSwitchCase="enemy.name.includes('Death Fiend')"       [enemy]='enemy' [skills]='skills'></app-end0-death>
-                    <app-end1-valtora    *ngSwitchCase="enemy.name.includes('Valtora')"           [enemy]='enemy' [skills]='skills'></app-end1-valtora>
-                    <app-end2-ifrit      *ngSwitchCase="enemy.name.includes('Ifrit')"             [enemy]='enemy' [skills]='skills'></app-end2-ifrit>
-                    <app-end3-nereid     *ngSwitchCase="enemy.name.includes('Nereid')"            [enemy]='enemy' [skills]='skills'></app-end3-nereid>
-                    <!-- <app-end4-agareth    *ngSwitchCase="enemy.name.includes('Agareth')"          [enemy]='enemy' [skills]='skills'></app-end4-agareth> -->
-                    <app-default         *ngSwitchDefault                                        [enemy]='enemy' [skills]='skills'></app-default>
-                </div>
-            </div>
-        </mat-tab>
-    </mat-tab-group>
 </div>

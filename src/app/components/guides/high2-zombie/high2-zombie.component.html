@@ -4,9 +4,8 @@
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <img class="guide-summon-image"
         src="https://i.imgur.com/hmP0u9g.jpg"
-        alt="location-image"
-        width="1344" height="448"/>
-            <p class="guide-summon-description">
+        alt="location-image"/>
+            <p class="guide-description">
                 Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
                 before approaching this boss as you will get no loot if you're below that threshold. Also if you're not being carried, 
                 have at least Mid level gear before attempting to make your life easier, from this point on, you need a party.
@@ -18,7 +17,7 @@
     <div class="guide-overall">
         <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
-        <p class="guide-overall-description">
+        <p class="guide-description">
             <br>
             This boss is the the most unique high boss as you will be killing him not once, but three or more times. You will need at least one or two people than can interrupt enemies.
             <br>
@@ -31,7 +30,7 @@
             When Zombie Lord dies, if he has full mana, he will use Immortality, which uses up all of his mana. On his first and second life, he will have full mana thanks to his Worshippers. At past 80% HP past his 
             second life, he'll be able to use Aura of Death. You can either dodge the blasts or move out of range. Priest or Witch can interrupt this spell by using Hex or Raguel's Pull.</p>
             <app-enemy-spell-display [caster]= "enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Immortality', 'Aura%20of%20Death'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
-            <p class="guide-overall-description">
+            <p class="guide-description">
             <br>
             On that note, Supports or people who can interrupt channeling will be EXPECTED to stun Worshippers when they reach full mana and are casting their Gift of Immortality. This gift will kill all those 
             between the Worshipper and Zombie Lord and heal him for 25% of his max HP and give 45 mana. It is imperative that these acolytes are interrupted. They will lose all mana after interruption and start to 
@@ -65,7 +64,7 @@
                     width="64px"/>
                 </button>
             </div>
-            <p class="guide-overall-description">
+            <p class="guide-description">
             On his third life and beyond, Zombie Lord can drop items. The fight will be exactly like the second life. You may have noticed that everytime Zombie Lord ressurects he gets stronger. He'll gain more 
             and more Damage Reduction the more he ressurects and by the fourth life and beyond, his damage will also start increasing by 25% every life. If you're just after the loot, just kill him on the third life. 
             On that note, make sure his Zombies (the ones that spawn every 10 seconds) are kept below 50, or else you'll fail. There is a secret reward in form of the Immortal Kitty Token when you kill Zombie Lord nine times.
@@ -93,6 +92,6 @@
     <div class="guide-kill">
         <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
         <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
-        <iframe src="https://drive.google.com/file/d/1VSyFIxt_0Psn7uhhpgLbP_MIxfxwy1Eu/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
+        <iframe class="guide-kill-video" src="https://drive.google.com/file/d/1VSyFIxt_0Psn7uhhpgLbP_MIxfxwy1Eu/preview" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

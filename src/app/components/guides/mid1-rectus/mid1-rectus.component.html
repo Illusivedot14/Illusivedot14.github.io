@@ -4,9 +4,8 @@
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <img class="guide-summon-image"
         src="https://i.imgur.com/5RcjTcb.jpg"
-        alt="location-image"
-        width="1344" height="448"/>
-        <p class="guide-summon-description">
+        alt="location-image"/>
+        <p class="guide-description">
         Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
         before approaching this boss as you will get no loot if you're below that threshold. Also if you're not being carried, 
         have at least Demon Lord level gear before attempting to make your life easier.
@@ -17,7 +16,7 @@
     <div class="guide-overall">
         <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
-        <p class="guide-overall-description">
+        <p class="guide-description">
         <br>
         When he is first attacked, he will channel for 5 seconds and then deal <span style="color:red">25% HP damage</span> to all players in his room. He'll have all spells but Soul Swap during this part. 
         Just focus him down and kill the Life Orb if you need health. <span style="color:#90EE90">75% HP</span>, he'll summon Avenger at the center of the arena and become invulnerable. His Corruption Overload 
@@ -30,15 +29,15 @@
             <button mat-icon-button class="minion-button" (click)="openMinionDetails('Life Orb')" style="position: absolute; width: 64px; height: 64px; left:352px; top:80px;">
                 <img class="button-image" src="{{ getEnemyImageURL('Life Orb') }}"
                 alt="thumbnail"
-                width="64px"/>
+                width="100%"/>
             </button>
             <button mat-icon-button class="minion-button" (click)="openMinionDetails('Avenger')" style="position: absolute; width: 64px;  height: 64px; left:150px; top:200px;">
                 <img class="button-image" src="{{ getEnemyImageURL('Avenger') }}"
                 alt="thumbnail"
-                width="64px"/>
+                width="100%"/>
             </button>
         </div>
-        <p class="guide-overall-description">
+        <p class="guide-description">
         The Avenger is pretty simple, just move behind him when he uses his Corruption Wave, which makes an arc in front of him. And you'll kill him quickly.
         <br><br>
         After the first summoning, he'll gain access to Soul Swap. Which can insta-kill the party if you're not careful, so make sure that both members are separated far away from each other and others. His Death 
@@ -55,7 +54,7 @@
                 alt="thumbnail"/>
             </button>
         </div>
-        <p class="guide-overall-description" style="margin-top: 30px;">
+        <p class="guide-description" style="margin-top: 30px;">
         After the second summoning, he'll be the same as the second phase.
         <br><br>
         At the last phase, at <span style="color:#90EE90">25% HP</span>, he'll summon the same as the <span style="color:#90EE90">50% HP</span> trigger, except he'll turn vulnernable after 5 seconds of channeling. 
@@ -70,6 +69,6 @@
     <div class="guide-kill">
         <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
         <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
-        <iframe src="https://drive.google.com/file/d/1VoxvIzWrj-V3WYOOWix8gWih0M_RnofI/preview" width="960" height="720" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
+        <iframe class="guide-kill-video" src="https://drive.google.com/file/d/1VoxvIzWrj-V3WYOOWix8gWih0M_RnofI/preview" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>
