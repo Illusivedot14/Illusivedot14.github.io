@@ -4,20 +4,27 @@
     background-color: #202020;
     display: flex;
     flex-direction: column;
-    min-width: 1734px;
+    min-width: calc(100vw - 60px);
+    min-height: calc(100vh - 60px);
     margin: auto;
     align-self: center;
+
+    &-container {
+      padding-left: 2vw;
+      padding-right: 2vw;
+    }
+    
     &-large-container {
       display: flex;
       flex-direction: row;
+      height: 100%;
+      width: 100%;
     }
-    &-container {
-      width: 40%;
-      max-width: auto;
-      min-width: 700px;
-      padding-left:1%;
-      padding-top: .99%;
+
+    &-stats-container {
+      min-width: 40%;
     }
+
     &-details-container {
       display: flex;
       flex-direction: row;
@@ -25,293 +32,156 @@
     &-thumbnail {
       width: 168px;
       height: 168px;
-      align-self: center;
       padding: 20px;
     }
     &-content {
       align-self: center;
+      margin-top: 20px;
     }
-    &-descript {
-        display: flex;
-        flex-direction: row;
-        padding-top: 2%;
-    } 
+    //Flavor text
     &-name {
       color: #fff;
       font-weight: 700;
-      font-size: 25px;
-      margin-bottom: 20px;
+      font-size: calc(20px + .5vw);
+      line-height: calc(22px + .5vw);
       text-overflow: ellipsis;
       align-self: center;
     }
-    &-rank {
-      color: #fff;
-      font-weight: 350;
-      font-size: 18px;
-    }
-    &-level {
-      color: #FFD700;
-      font-weight: 350;
-      font-size: 18px;
-    }
-    &-grade {
-      color: #fff;
-      font-weight: 350;
-      font-size: 18px;
-    }
-    &-type {
-      color: #fff;
-      font-weight: 350;
-      font-size: 18px;
-    }
     &-quote {
-      padding-top: 3%;
       color: #fff;
       flex-grow: 1;
-      font-size: 20px;
+      font-size: calc(14px + .3vw);
+      line-height: calc(16px + .3vw);
       flex-wrap: wrap;
-      max-width: 200% ;
       overflow-wrap: break-word;
-      
     }
-
+    &-flavor {
+      &-container {
+        display: flex;
+        flex-direction: row;
+      }
+      &-line {
+        color: #fff;
+        font-weight: 350;
+        font-size: calc(12px + .3vw);
+        line-height: calc(16px + .3vw);
+      }
+    }
     //stats
-    &-stats-outer-container {
-      display: flex;
-      flex-direction: row;
-      padding-bottom: 20px;
+    &-attribute {
+      &-container {
+        padding-top: 1%;
+        display: flex;
+        flex-direction: column;
+        overflow-wrap: break-word;
+      }
+      &-label {
+        font-weight: 500;
+        font-size:calc(16px + .3vw);
+        line-height: calc(16px + .3vw);
+      }
+      &-description {
+        font-weight: 200;
+        font-size:calc(12px + .3vw);
+        line-height: calc(12px + .3vw);
+      }
     }
-    &-details-padding {
-      width: 168px;
-      min-width: 168px;
-      height: 168px;
-      resize: none;
-    }
-    &-stat-container {
-      display: flex;
-      flex-direction: column;
-
-    }
-    &-stat {
-      color: #fff;
-      font-weight: 200;
-      font-size: 22px;
-      padding: 5px;
-    }
-    &-active {
-      color: #40e0d0;
-      font-weight: 200;
-      font-size: 22px;
-    }
-    &-active-container {
-      padding-top: 3%;
-      display: flex;
-      flex-direction: column;
-      overflow-wrap: break-word;
-    }
-    &-active-label {
-      color: #40e0d0;
-      font-weight: 500;
-      font-size: 25px;
-    }
-    &-passive-label {
-      color: #40e0d0;
-      font-weight: 500;
-      font-size: 25px;
-    }
-    &-passive-container {
-      padding-top: 3%;
-      display: flex;
-      flex-direction: column;
-      overflow-wrap: break-word;
-    }
-    &-passive {
-      color: #40e0d0;
-      font-weight: 200;
-      font-size: 22px;
-    }
-    &-spec-container {
-      padding-top: 3%;
-      display: flex;
-      flex-direction: column;
-      overflow-wrap: break-word;
-    }
-    &-spec {
-      color: #5a7da0;
-      font-weight: 260;
-      font-size: 20px;
-    }
-    &-note {
-      color: #ffffff;
-      font-weight: 200;
-      font-size: 22px;
-    }
-    &-notes-container {
-      padding-top: 3%;
-      display: flex;
-      flex-direction: column;
-      overflow-wrap: break-word;
-    }
-    &-notes-label {
-      color: #ffffff;
-      font-weight: 500;
-      font-size: 25px;
-    }
-
     //used-in
-    &-used-in-container {
-      display: flex;
-      flex-flow: column;
-      padding: 2.8%;
-    }
     &-used-in {
         display: flex;
         flex-flow: row wrap;
-        
+        justify-content: center;
+        &-container {
+          display: flex;
+          flex-flow: column;
+          padding: 2.8%;
+          height: 50%;
+        }
+        &-label {
+          color: #fff;
+          font-weight: 500;
+          font-size: calc(12px + 1.2vw);
+          margin-bottom: .2vw;
+          display: inline-block;
+          margin: 0 auto;
+          padding: 1%;
+        }
+        &-button {
+          cursor: pointer;
+          align-self: center;
+          min-width: 64px;
+          min-height: 64px;
+          height: 12.5%;
+          width: 12.5%;
+          position: relative;
+          z-index: 3;
+          display: block;
+        }
     }
-    &-used-in-label {
-      color: #fff;
-      font-weight: 500;
-      font-size: 30px;
-      display: inline-block;
-      margin: 0 auto;
-      padding: 1%;
-    }
-    &-button {
-      cursor: pointer;
-      align-self: center;
-      min-width: 64px;
-      min-height: 64px;
-      height: 12.5%;
-      max-height: 96px;
-      width: 12.5%;
-      max-width: 96px;
-      position: relative;
-      z-index: 3;
-      display: block;
-    }
-
-    //Recipe
-    &-recipe-label {
-      color: #fff;
-      font-weight: 700;
-      font-size: 34px;
-      padding-bottom: 1%;
-      line-height: 34px;
-      align-self: center;
-    }
-    &-recipe-container {
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-      color:#fff;
+    //lists (ingredients and dropped)
+    &-lists {
+      max-width: 70%;
+      min-width: 50%;
       margin-left: auto;
-
-      max-width: 517px;
-      width: 100%;
-      min-width: 517px;
-      height: 100%;
-      min-height: 96px;
-    }
-    &-recipe-descript-single {
-        display: flex;
-        flex-flow: row;
-        max-width: 517px;
-        width: 100%;
-        min-width: 517px;
-    }
-    &-recipe-descript-multiple {
       display: flex;
       flex-flow: row;
-      max-width: 517px;
-      width: 100%;
-      min-width: 517px;
+      justify-content: flex-end;
     }
-    &-recipe-details {
-      color: #fff;
-      font-weight: 700;
-      font-size: 22px;
-      text-overflow: ellipsis;
-      align-self: center;
-
-      max-width: 325px;
-      width: 100%;
-      max-height: 128px;
-      padding: 10px;
-    }
-    &-recipe-filler-button{
-      width: 64px;
-    }
-    &-recipe-button {
-      align-self: center;
-      height: 100%;
-      max-height: 128px;
-      min-height: 32px;
-      width: 100%;
-      max-width: 128px;
-      min-width: 32px;
+    &-list {
+      &-container {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        color:#fff;
+        margin-right: 20px;
+        min-width: 50%;
+      }
+      &-details {
+        font-size: calc(12px + .6vw);
+        line-height:calc(12px + .6vw);
+        font-weight: 600;
+        padding-left: 5px;
+        align-self: center;
+  
+        width: 100%;
+      }
+      &-button {
+        align-self: center;
+        height: calc(32px + 4vw);
+        max-height: calc(32px + 4vw);
+        min-height: 32px;
+        width: calc(32px + 4vw);
+        max-width: calc(32px + 4vw);
+        min-width: 32px;
+      }
+      &-label {
+        color: #fff;
+        font-weight: 700;
+        font-size: calc(12px + 1.2vw);
+        padding-bottom: 1%;
+        line-height: 34px;
+        margin-bottom: .2vw;
+        align-self: center;
+      }
+      &-filler {
+        width: calc(32px + 1vw);
+        min-width: calc(32px + 1vw);
+      }
+      &-content {
+        display: flex;
+        flex-flow: row;
+        max-height: 128px;
+        min-height: 32px;
+        width: 100%;
+      }
     }
     &-ingredient-swap {
       cursor: pointer;
       align-self: center;
-      height: 64px;
-      max-height: 64px;
-      width: 64px;
-      max-width: 64px;
-    }
-    //Dropped
-    &-boss-label {
-      color: #fff;
-      font-weight: 700;
-      font-size: 34px;
-      padding-bottom: 1%;
-      line-height: 34px;
-      align-self: center;
-      
-    }
-    &-boss-container {
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-      color:#fff;
-      margin-left: auto;
-
-      max-width: 517px;
-      width: 100%;
-      min-width: 517px;
-      height: 100%;
-      min-height: 96px;
-    }
-    &-boss {
-      display: flex;
-      flex-flow: row;
-      max-height: 128px;
-      min-height: 32px;
-      width: 100%;
-      max-width: 517px;
-      min-width: 517px;
-      
-    }
-    &-boss-button {
-      align-self: center;
-      height: 100%;
-      max-height: 128px;
-      min-height: 32px;
-      width: 100%;
-      max-width: 128px;
-      min-width: 32px;
-    }
-    &-drop-details {
-      color: #fff;
-      font-weight: 700;
-      font-size: 22px;
-      text-overflow: ellipsis;
-      align-self: center;
-
-      max-width: 325px;
-      width: 100%;
-      max-height: 325px;
-      padding: 10px;
+      height: calc(32px + 1vw);
+      max-height: calc(32px + 1vw);
+      width: calc(32px + 1vw);;
+      max-width: calc(32px + 1vw);
     }
 }
 .back-button
