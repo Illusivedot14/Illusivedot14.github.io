@@ -7,41 +7,58 @@
         alt="location-image"/>
         <p class="guide-description">
             Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
-            before approaching this boss as you will get no loot if you're below that threshold. Also if you're not being carried, 
-            have at least Mid level gear before attempting to make your life easier.
+            before approaching this boss as you'll get no loot if you're below that threshold. Also if you're not being carried, 
+            have at least Mid Level gear before attempting to make your life easier.
             <br>
             <br> 
-            To find this boss, go to the Volcanic Lands (Teleport 8) and go far east, into the Dragon Lair. He'll be in the giant grove in the south.</p>
+            To find this boss, go to the Volcanic Lands <span style="color:#FFD700">(Teleport 8)</span> and go far east, into the 
+            <span [style.color]='enemy.color'>Dragon Lair</span>. He'll be in the giant grove in the south.</p>
     </div>
     <div class="guide-overall">
         <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <p class="guide-description">
             <br>
-            As the first High boss, this guy is pretty tough if you're unprepared. You'll require someone who can <span style="color:#90EE90">tank 50% max hp damage every 8 seconds</span> due to his Swipe ability 
-            he'll be using all game. You'll also require good positioning for his Hell Spikes. 
+            As the first High boss, this guy is pretty tough if you're unprepared. You'll require someone who can 
+            <span style="color:#90EE90">tank 50% max hp damage every 8 seconds</span> due to his 
+            <span [style.color]='enemy.color'>Swipe</span> ability 
+            he'll be using all fight. You'll also require good positioning for his Hell Spikes. 
             <br>
             <br>
-            Bone Dragon has two Phases: a calm phase, and enraged phase. The duration of his rage phase depends on his mana. So it is important to drain all of his mana during this phase or else he'll go into this 
+            <span [style.color]='enemy.color'>Bone Dragon</span> has two Phases: a calm phase, and 
+            <span style="color:#FF6666">enraged phase</span>. The duration of his rage phase depends on his mana. 
+            So it is important to drain all of his mana during this phase or else he'll go into this 
             mode twice with the remaining mana.
             <br>
             <br>
-            Bone Dragon starts out in his calm phase, where he will have access to the spells: Swipe, Flame Breath, and Petrification. Make sure to have someone to take every Swipe, or else Bone Dragon 
-            will wipe the entire team! Be prepared for anything as Bone Dragon can quickly change aggro and turn and swipe. Whenever Bone Dragon says "Freeze!!!", just turn around and you'll be fine, or else 
-            you'll be trapped for 10 seconds. If he uses Flame Breath on top of that, you're pretty much screwed as the Flame Spirits will kill you. Flame breath is pretty easy to dodge when unfrozen, 
+            <span [style.color]='enemy.color'>Bone Dragon</span> starts out in his calm phase, where he will have access to the spells: 
+            <span [style.color]='enemy.color'>Swipe, Flame Breath, and Petrification</span>. Make sure to have someone to take every 
+            <span [style.color]='enemy.color'>Swipe</span>, or else <span [style.color]='enemy.color'>Bone Dragon</span>
+            <span style="color:#FF6666"> will wipe the entire team</span>! Be prepared for anything as <span [style.color]='enemy.color'>Bone Dragon</span> can quickly change aggro and turn and swipe. Whenever <span [style.color]='enemy.color'>Bone Dragon</span> says "Freeze!!!", just turn around and you'll be fine, or else 
+            you'll be trapped for <span style="color:#FFD700">10 seconds</span>. If he uses <span [style.color]='enemy.color'>Flame Breath</span> 
+            on top of that, you're pretty much screwed as the <span [style.color]='enemy.color'>Flame Spirits</span> will kill you. 
+            <span [style.color]='enemy.color'>Flame breath</span> is pretty easy to dodge when unfrozen, 
             just keep moving.
             <br>
             <br>
-            At <span style="color:#90EE90">50% HP</span>, Bone Dragon will appear in the middle of the arena in his Rage Mode. He'll gain <span style="color:#FFFF99">75% Damage Reduction</span> and gain 2% max HP per second at the cost of 2 mana per second. During this mode, he will be unable to 
-            use Petrification. Instead, he'll be able to use Hell Spike for the rest of the fight. Make sure your party deals at least 10% max hp to him during this form, so you don't have to deal with this mode 
-            twice.
+            At <span style="color:#90EE90">50% HP</span>, <span [style.color]='enemy.color'>Bone Dragon</span> will appear in the 
+            middle of the arena in his <span style="color:#FF6666">Rage Mode</span>. He'll gain 
+            <span style="color:#FFFF99">75% Damage Reduction</span> and gain 
+            <span style="color:#90EE90">2% max HP per second</span> at the <span style="color:#8292e9">cost of 2 mana per second</span>. During this mode, he will be unable to 
+            use <span [style.color]='enemy.color'>Petrification</span>. Instead, he'll be able to use 
+            <span [style.color]='enemy.color'>Hell Spike </span>the rest of the fight. 
+            <span style="color:#FF6666">Make sure your party deals at least 10% max hp to him during this form, so you don't have to deal with this mode 
+            twice</span>.
             <br>
             <br></p>
             <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Dragon%27s%20Rage'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
             <p class="guide-description">
             <br>
-            To deal with Hell Spike, place the first two somewhere near the middle of the arena, so there's room to maneuver to hide from the third Hell Spike (see video below). Other than that, once he's 
-            off his Rage mode, he'll gain Petrification again, but keep his Hell Spike. Keep going and he'll be dead in no time.
+            To deal with <span [style.color]='enemy.color'>Hell Spike</span>, place the first 
+            two somewhere near the middle of the arena, so there's room to maneuver to hide from the 
+            third <span [style.color]='enemy.color'>Hell Spike</span> (see video below). Other than that, once he's 
+            off his <span style="color:#FF6666">Rage Mode</span>, he'll gain <span [style.color]='enemy.color'>Petrification</span> 
+            again, but keep his <span [style.color]='enemy.color'>Hell Spike</span>. Keep going and he'll be dead in no time.
             </p>
             <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Hell%20Spike'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
             <div class="guide-video-container" style="align-self: center;">

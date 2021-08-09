@@ -7,32 +7,42 @@
         alt="location-image"/>
         <p class="guide-description">
             Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 90</span> 
-            before approaching this boss as you will get no experience nor loot if you're below that threshold.
+            before approaching this boss as you'll get no experience nor loot if you're below that threshold.
             <br>
             <br> 
-            To summon this boss, get 6 red Stones from either the red Stone Deposits at Volcanic Lands (Teleport 8) or in front of the Cave Entrance (Teleport 4) if you have an Abyssal Pickaxeaxe or above. 
-            Place these Stones at the skulls East of Wallachia (Teleport 7), below the fort that houses Count and Death Knight, as shown above. 
-            A cutscene will play and a portal will appear at East Prius Gate (Teleport 4). <b><u style="color:red">MAKE SURE YOU DO NOT KILL THE PORTAL OR YOU WILL UNLEASH A TERRIBLE EVIL.</u></b> 
-            Defend the town for 90 seconds or kill all the demons to summon Lord Beriel.
+            To summon this boss, get <span style="color:#ff9ca4">6 Red Stones</span> from either the 
+            <span style="color:#ff9ca4">Red Stone Deposits</span> at Volcanic Lands <span style="color:#FFD700">(Teleport 8)</span> 
+            or in front of the Cave Entrance <span style="color:#FFD700">(Teleport 4)</span> if you have an 
+            <span style="color:#52E252">Abyssal Pickaxe</span> or above. 
+            Place these Stones at the skulls East of Wallachia <span style="color:#FFD700">(Teleport 7)</span>, 
+            below the fort that houses Count and Death Knight, as shown above. 
+            A cutscene will play and a portal will appear at East Prius Gate <span style="color:#FFD700">(Teleport 4)</span>. 
+            <b><u style="color:red">MAKE SURE YOU DO NOT KILL THE PORTAL OR YOU WILL UNLEASH A TERRIBLE EVIL</u></b>. 
+            Defend the town for <span style="color:#FFD700">90 seconds</span> or kill all the demons to summon 
+            <span [style.color]='enemy.color'>Lord Beriel</span>.
         </p>
-        <div class="minion-container">
+        <div class="minion-container" style="padding-top: 0px;">
             <button mat-icon-button class="minion-button" (click)="openMinionDetails('Hell Portal')">
                 <img class="button-image" src="{{ getEnemyImageURL('Hell Portal') }}"
-                alt="thumbnail"/>
+                alt="thumbnail"
+                width="100%"/>
             </button>
         </div>
-        <div class="minion-container">
+        <div class="minion-container" style="padding-top: 0px;">
             <button mat-icon-button class="minion-button" (click)="openMinionDetails('Slime Monster')">
                 <img class="button-image" src="{{ getEnemyImageURL('Slime Monster') }}"
-                alt="thumbnail"/>
+                alt="thumbnail"
+                width="100%"/>
             </button>
             <button mat-icon-button class="minion-button" (click)="openMinionDetails('Golem Monster')">
                 <img class="button-image" src="{{ getEnemyImageURL('Golem Monster') }}"
-                alt="thumbnail"/>
+                alt="thumbnail"
+                width="100%"/>
             </button>
             <button mat-icon-button class="minion-button" (click)="openMinionDetails('Hound Monster')">
                 <img class="button-image" src="{{ getEnemyImageURL('Hound Monster') }}"
-                alt="thumbnail"/>
+                alt="thumbnail"
+                width="100%"/>
             </button>
         </div>
     </div>
@@ -41,8 +51,10 @@
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <p class="guide-description">
             <br>
-            Generally, the main strategy is like all the other bosses before, run and die. However, to make the kills faster, make sure to avoid the Meteors that he casts on people. 
-            Be sure to keep track of his Destructions, as the third one will stun him for three seconds. Whenever he uses his Catacylsm or Craze, just run away as the footmen will take aggro 
+            Generally, the main strategy is like all the other bosses before, run and die. However, to make the kills faster, 
+            avoid the <span [style.color]='enemy.color'>Meteors</span> that he casts on people. 
+            Be sure to keep track of his <span [style.color]='enemy.color'>Destructions</span>, as the third one will stun him for three seconds. 
+            Whenever he uses his <span [style.color]='enemy.color'>Catacylsm</span> (which is an <span style="color:#9acd32">insta-kill</span>!) or <span [style.color]='enemy.color'>Craze</span>, just run away as the footmen will take aggro 
             (both Footmen and Ian are tanky).
             </p>
         <div class="guide-spells">

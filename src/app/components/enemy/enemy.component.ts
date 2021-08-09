@@ -98,6 +98,7 @@ export class EnemyComponent implements OnInit, OnDestroy {
   getEnemyImageURL(name: string)
   {
     if(name == "Elemental of Chaos") return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this._enemyService.getEnemyImageFilename(name)) + '.jpg';
+    if(name == "Hell Golem") return "https://static.wikia.nocookie.net/wowpedia/images/4/49/BTNInfernal.png";
     return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this._enemyService.getEnemyImageFilename(name)) + '%20Icon.jpg';
   }
 
@@ -162,13 +163,17 @@ export class EnemyComponent implements OnInit, OnDestroy {
 
   private exclusionList : string[] = [];
   getSkills(skillList: EnemySkill[], names: string[]) : EnemySkill[] {
-    for(let i = 0; i < names.length; i++){
-      names[i] = decodeURI(names[i]);
-      if(!this.exclusionList.includes(names[i]))
-        this.exclusionList.push(names[i]);
+    if(skillList)
+    {
+      for(let i = 0; i < names.length; i++){
+        names[i] = decodeURI(names[i]);
+        if(!this.exclusionList.includes(names[i]))
+          this.exclusionList.push(names[i]);
+      }
+      let result = skillList.filter(x => names.includes(x.name));
+      return result;
     }
-    let result = skillList.filter(x => names.includes(x.name));
-    return result;
+    return [];
   }
   getRemainingSkills(skillList: EnemySkill[]) : EnemySkill[] {
     let result = skillList.filter(x => !this.exclusionList.includes(x.name));

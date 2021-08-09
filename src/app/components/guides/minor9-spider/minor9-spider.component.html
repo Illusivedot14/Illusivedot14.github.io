@@ -7,29 +7,39 @@
         alt="location-image"/>
         <p class="guide-description">
             Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 90</span> 
-            before approaching this boss as you will get no experience nor loot if you're below that threshold.
+            before approaching this boss as you'll get no experience nor loot if you're below that threshold.
             <br>
             <br> 
-            This boss will be part of the waves in the Expedition Scenario, alongside Soul of Everfrost. To summon this boss, get 6 <span style="color:#0288d1"> Blue Stone</span> s from 
-            either the Deposits at the Cave Entrance (Teleport 4) if you have an Abyssal Pickaxe or above, or the <span style="color:#0288d1"> Blue Stone</span>  Deposits at Frosty Snowfield (Teleport 6). Then, talk to the captain 
-            of the expedition at Frosty Snowfield, and bring the Stones to the circle surrounded by 3 Prius Magus. You will then be assaulted by waves of Frost Spiders, Frost Skirmishers, and 
-            Frostvemon Spiders. Go near the green spiders to trigger their explosion (and run away from them) and use AoE on the other spiders. Near the end of the waves, both Soul of 
-            Everfrost and Frostspider Queen will arrive.</p>
+            This boss will be part of the waves in the <span style="color:#d6fffa">Expedition Scenario</span>, alongside 
+            <span [style.color]='enemy.color'>Soul of Everfrost</span>. 
+            To summon this boss, get <span style="color:#0288d1">6 Blue Stones</span> from 
+            either the Deposits at the Cave Entrance <span style="color:#FFD700">(Teleport 4)</span> 
+            if you have an <span style="color:#52E252">Abyssal Pickaxe</span> or above, or the 
+            <span style="color:#0288d1"> Blue Stone Deposits</span> at Frosty Snowfield 
+            <span style="color:#FFD700">(Teleport 6)</span>. Then, talk to the Captain 
+            of the Expedition at the Frosty Snowfield, and bring the Stones to the circle surrounded by 3 Prius Magus. 
+            You will then be assaulted by waves of Frost Spiders, Frost Skirmishers, and 
+            Frostvemon Spiders. Go near the Green Spiders to trigger their explosion (and run away from them) and use AoE 
+            on the other spiders. Near the end of the waves, both <span [style.color]='enemy.color'> Frostspider Queen and Soul of
+             Everfrost</span> will arrive.</p>
             <div class="guide-minions">
                 <h1 class="guide-label" [style.color]="enemy.color">Minions</h1>
                 <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
                 <div class="minion-container">
                 <button mat-icon-button class="minion-button" (click)="openMinionDetails('Frost Spider')">
                     <img class="button-image" src="{{ getEnemyImageURL('Frost Spider') }}"
-                    alt="thumbnail"/>
+                    alt="thumbnail"
+                    width="100%"/>
                 </button>
                 <button mat-icon-button class="minion-button" (click)="openMinionDetails('Frost Skirmisher')">
                     <img class="button-image" src="{{ getEnemyImageURL('Frost Skirmisher') }}"
-                    alt="thumbnail"/>
+                    alt="thumbnail"
+                    width="100%"/>
                 </button>
                 <button mat-icon-button class="minion-button" (click)="openMinionDetails('Frostvemon Spider')">
                     <img class="button-image" src="{{ getEnemyImageURL('Frostvemon Spider') }}"
-                    alt="thumbnail"/>
+                    alt="thumbnail"
+                    width="100%"/>
                 </button>
                 </div>
             </div> 
@@ -39,8 +49,10 @@
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <p class="guide-description">
             <br>
-            Depending if she comes first or second will determine your strategy. Don't die or else they'll have a chance to kill the Prius Mages and end the Scenario. 
-            Stun whenever she is channeling and dodge her Frost Spike. If she comes first, focus her down before Soul of Everfrost. If she comes second, focus Everfrost.</p>
+            Depending if she comes first or second will determine your strategy. <span style="color:#FF6666">Don't die or 
+                else they'll have a chance to kill the Prius Mages and end the Scenario</span>. 
+            Stun whenever she is channeling and dodge her Frost Spike. If she comes first, with any pickaxe, focus her 
+            down before <span [style.color]='enemy.color'>Soul of Everfrost</span>. If she comes second, focus <span [style.color]='enemy.color'>Everfrost</span>.</p>
         <div class="guide-spells">
             <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
             <mat-divider [style.border-top-color]="enemy.color"></mat-divider>

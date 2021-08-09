@@ -7,31 +7,38 @@
         alt="location-image"/>
         <p class="guide-description">
             Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
-            before approaching this boss as you will get no loot if you're below that threshold. Also if you're not being carried, 
+            before approaching this boss as you'll get no loot if you're below that threshold. Also if you're not being carried, 
             have at least Mid level gear before attempting to make your life easier, from this point on, you need a party.
             <br>
             <br> 
-            To find this boss, you need to get a Seal Breaking Gem, which can be obtained by the Mana Ancient in the Fairy Forest (Teleport 9) or the Spirit Beast in the Deep Forest at the same area. 
-            You will also need a Green Stone gotten from the Fairy Forest or in the Stone Deposit at the Cave Entrance (Teleport 4) if you have an abyssal pick. Enter the circle at the statue north 
-            of Fairy Forest and place the Seal Breaking Gem on the circle in front of a dormant Ancient Ent to start the fight.</p>
+            To find this boss, you need to get a <span style="color:#52E252">Seal Breaking Gem</span>, which can be obtained by the Mana Ancient in the Fairy Forest 
+            <span style="color:#FFD700">(Teleport 9)</span> or the <span style="color:#C9E7CC">Spirit Beast</span> 
+            in the Deep Forest at the same area. 
+            You will also need a <span style="color:#52E252">Green Stone</span> obtained from the Fairy Forest or 
+            in the Stone Deposit at the Cave Entrance <span style="color:#FFD700">(Teleport 4)</span> if you have 
+            an abyssal pick. Enter the circle at the statue north 
+            of Fairy Forest and place the Seal Breaking Gem on the circle in front of a dormant <span [style.color]='enemy.color'>Ancient Ent</span> to start the fight.</p>
     </div>
     <div class="guide-overall">
         <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <p class="guide-description">
             <br>
-            This boss is the easiest High boss, but it is also the easiest to mess up if you're not careful. This boss has a lot of avenues to heal itself, and if it gets to full once triggering 
-            its phase, it will reset and lower drop rates considerably.
+            This boss is the easiest High Boss, but it is also the easiest to mess up if you're not careful. This boss has a lot of avenues to heal itself, and if it gets to full once triggering 
+            its phase, <u>it will reset and lower drop rates considerably</u>.
             <br>
             <br>
-            Starting off, the Ancient Ent itself isn't a large issue. It only has access to two whole spells throughout the fight, both relatively easy to dodge. Just get it down 
-            to 50%, where it will cast "Fortitude of Nature". This is where the real fight begins.</p>
+            Starting off, the <span [style.color]='enemy.color'>Ancient Ent</span> itself isn't a large issue. It only has access to two whole spells throughout the fight, both relatively easy to dodge. Just get it down 
+            to 50%, where it will cast <span [style.color]='enemy.color'>"Fortitude of Nature"</span>. This is where the real fight begins.</p>
             <app-enemy-spell-display [caster]= "enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Fortitude%20of%20Nature'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
             <p class="guide-description">
             <br>
-            Once this spell is activated, two Elder Giants will rise from the ground, taking 4 seconds to fully get up. These giants will have three spells you'll have to worry about but the most 
-            important ones are Thorns Armor, Blessing of Nature and Might of Nature. <span style="color: red;">MAKE SURE THESE GUYS STAY AWAY FROM EACH OTHER AND ANCIENT ENT.</span> Blessing of Nature 
-            will garuantee a reset if these guys are near anyone. Other than that, position yourselves well (even if it means dying, re-entry is free), to keep Elder Ents away. Pay attention. </p>
+            Once this spell is activated, two <span [style.color]='enemy.color'>Elder Ents</span> will rise from the ground, taking 4 seconds to fully get up. These giants will have three spells you'll have to worry about but the most 
+            important ones are <span [style.color]='enemy.color'>Thorns Armor, Blessing of Nature and Might of Nature</span>. <span style="color: red;">MAKE SURE THESE GUYS STAY AWAY FROM EACH OTHER AND Ancient Ent.</span> Blessing of Nature 
+            will garuantee a reset if these guys are near anyone. Other than that, try to bait out 
+            <span [style.color]='enemy.color'>Thorns Armor</span> so you don't kill yourself (and try not to lure it into anyone's AOE), 
+            position yourselves well (even if it means dying, re-entry is free), to keep 
+            <span [style.color]='enemy.color'>Elder Ents</span> away from the other bosses. <span style="color:#FF6666">Pay attention</span>. </p>
             <div class="guide-spells">
                 <h1 class="guide-label" [style.color]="enemy.color">Elder Ent Spells</h1>
                 <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
@@ -39,22 +46,25 @@
             </div>
             <p class="guide-description">
                 <br>
-                After at least one of these Elder Ents are dead, they will spawn 5 Giant Ents, these guys are just filler. Kill the other Elder Ent and finish off Ancient Ent for your loot.</p>
+                After at least one of these <span [style.color]='enemy.color'>Elder Ents</span> are dead, they will spawn <span [style.color]='enemy.color'>5 Giant Ents</span>, these guys are just filler. Kill the other <span [style.color]='enemy.color'>Elder Ent</span> and finish off <span [style.color]='enemy.color'>Ancient Ent</span> for your loot.</p>
             <div class="guide-minions">
                 <h1 class="guide-label" [style.color]="enemy.color">Minions</h1>
                 <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
                 <div class="minion-container">
                 <button mat-icon-button class="minion-button" (click)="openMinionDetails('Elder Ent')">
                     <img class="button-image" src="{{ getEnemyImageURL('Elder Ent') }}"
-                    alt="thumbnail"/>
+                    alt="thumbnail"
+                    width="100%"/>
                 </button>
                 <button mat-icon-button class="minion-button" (click)="openMinionDetails('Giant Ent')">
                     <img class="button-image" src="{{ getEnemyImageURL('Giant Ent') }}"
-                    alt="thumbnail"/>
+                    alt="thumbnail"
+                    width="100%"/>
                 </button>
                 <button mat-icon-button class="minion-button" (click)="openMinionDetails('Ent')">
                     <img class="button-image" src="{{ getEnemyImageURL('Ent') }}"
-                    alt="thumbnail"/>
+                    alt="thumbnail"
+                    width="100%"/>
                 </button>
                 </div>
             </div> 
@@ -67,6 +77,6 @@
     <div class="guide-kill">
         <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
         <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
-        <iframe class="guide-kill-video" src="https://drive.google.com/file/d/1AovxBDfWYj9mnlKSXQ4fdLBJf6l6ry5X/preview" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
+        <iframe class="guide-kill-video" src="https://drive.google.com/file/d/1H1t0Mt5HMdeHXPsP94nAQLmaBonJMg7T/preview" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

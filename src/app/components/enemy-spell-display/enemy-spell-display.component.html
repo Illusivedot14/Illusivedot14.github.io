@@ -1,6 +1,6 @@
 <mat-accordion class="spell-container">
-    <mat-expansion-panel hideToggle *ngFor="let spell of skills" style="background-color: #151515;width:1200px;align-self: center; width: 100%;">
-      <mat-expansion-panel-header style="height:100px">
+    <mat-expansion-panel hideToggle *ngFor="let spell of skills" style="background-color: #151515; align-self: center; width: 100%;">
+      <mat-expansion-panel-header style="height: calc(32px + 2.2vw);">
         <mat-panel-title class="spell-name" [style.color]="spell.color"> {{spell.name}}</mat-panel-title>
         <mat-panel-description style="margin-left: auto;">
             <div class="spell-cooldown" *ngIf="spell.cooldown">
@@ -34,7 +34,7 @@
         </div>
         <div class="spell-video-container" *ngIf="hasMP4(spell.name)">
             <video class="spell-video" controls>
-                <source src="{{ getEnemySpellMP4(spell.name) }}" type="video/mp4"/>
+                <source [src]="getEnemySpellMP4(spell.name)" type="video/mp4"/>
                 Browser not supported
             </video>
         </div>

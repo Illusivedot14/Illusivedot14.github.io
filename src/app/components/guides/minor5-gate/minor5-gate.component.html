@@ -7,24 +7,31 @@
         alt="location-image"/>
         <p class="guide-description">
             Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 80</span> 
-            before approaching this boss as you will get no experience nor loot if you're below that threshold.
+            before approaching this boss as you'll get no experience nor loot if you're below that threshold.
             <br>
             <br> 
-            This boss is the first boss you ecounter in the Avalon Scenario, alongside the three Guardian Angels and Corrupt Angel. To summon these bosses, get 4 White Stones from 
-            either the Deposits at the Cave Entrance (Teleport 4) if you have an Abyssal Pickaxe or above, or the white Stone Deposits at the Duchy of Wallachia (Teleport 7). Then, bring
-            the Stones into the Cave, toward the white Stones at the very end, as shown above. Avalon will appear in front of the Cave Entrance, where you'll
-            have to fight (or run past) Avalon Defenders and Protectors until you reach the Gatekeeper.</p>
+            This boss is the first boss you ecounter in the <span style="color:#FFD700">Avalon Scenario</span>, 
+            alongside the <span style="color:#d1b004">three Guardian Angels</span> 
+            and <span style="color:#d857d8">Corrupt Angel</span>. To summon these bosses, get 4 White Stones from 
+            either the Deposits at the Cave Entrance <span style="color:#FFD700">(Teleport 4)</span> if you have an 
+            <span style="color:#52E252">Abyssal Pickaxe</span> or above, or the White Stone Deposits at the Duchy of Wallachia
+             <span style="color:#FFD700">(Teleport 7)</span>. Then, bring
+            the Stones into the Cave, toward the White Stones at the very end, as shown above. 
+            Avalon will appear in front of the Cave Entrance, where you'll
+            have to fight (or run past) Avalon Defenders and Protectors until you reach the <span [style.color]='enemy.color'>Gatekeeper</span>.</p>
         <div class="guide-minions">
             <h1 class="guide-label" [style.color]="enemy.color">Minions</h1>
             <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
             <div class="minion-container">
             <button mat-icon-button class="minion-button" (click)="openMinionDetails('Avalon Defender')">
                 <img class="button-image" src="{{ getEnemyImageURL('Avalon Defender') }}"
-                alt="thumbnail"/>
+                alt="thumbnail"
+                width="100%"/>
             </button>
             <button mat-icon-button class="minion-button" (click)="openMinionDetails('Avalon Protector')">
                 <img class="button-image" src="{{ getEnemyImageURL('Avalon Protector') }}"
-                alt="thumbnail"/>
+                alt="thumbnail"
+                width="100%"/>
             </button>
             </div>
         </div> 
@@ -34,7 +41,8 @@
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <p class="guide-description">
         <br>
-        This boss is pretty simple as it only has one spell to avoid, Genocide Sword, which has a long wind-up.</p>
+        This boss is pretty simple as it only has one spell to avoid, <span [style.color]='enemy.color'>Genocide Sword</span>, which has 
+        a long and obvious wind-up.</p>
         <div class="guide-spells">
             <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
             <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
