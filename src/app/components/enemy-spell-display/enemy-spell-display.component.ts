@@ -66,6 +66,7 @@ export class EnemySpellDisplayComponent implements OnInit {
       case /^Ent Power/ig.test(spellName): return false;
       case /^Shadow Attack/ig.test(spellName): return false;
       case /^Reinforcement of Darkness/ig.test(spellName): return false;
+      case /^Bindings of Darkness/ig.test(spellName): return false;
       case /^Grasp of the Fiend/ig.test(spellName): return false;
       default: return true;
   }

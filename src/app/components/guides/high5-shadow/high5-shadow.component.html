@@ -10,44 +10,55 @@
             before approaching this boss as you'll get no experience nor loot if you're below that threshold.
             <br>
             <br> 
-            To summon this boss, first, with any pickaxe, gather 12 <span style="color:#0288d1"> Blue Stone</span> s from any <span style="color:#0288d1"> Blue Stone</span>  Deposit in the Snowy Hills <span style="color:#FFD700">(Teleport )</span>6) or if you have an <span style="color:#52E252">Abyssal Pickaxe</span> or above, 
-            you can mine directly from the Stone Deposits in front of the golem cave <span style="color:#FFD700">(Teleport )</span>4).  Then, bring the stones to the 
-            Old Man within the Deep Snowfield where he will use the <span style="color:#0288d1"> Blue Stone</span> s to unlock Shadow Dragon's lair.</p>
+            To summon this boss, first, with any pickaxe, gather <span style="color:#0288d1">12 Blue Stones</span> from any <span style="color:#0288d1"> Blue Stone Deposit</span> 
+            in the Frosty Snowfield <span style="color:#FFD700">(Teleport 6)</span> or if you have an 
+            <span style="color:#52E252">Abyssal Pickaxe</span> or above, 
+            you can mine directly from the Stone Deposits in front of the golem cave <span style="color:#FFD700">(Teleport 4)</span>.  
+            Then, bring the stones to the 
+            Old Man within the Deep Snowfield where he will use the <span style="color:#0288d1"> Blue Stones</span> to unlock 
+            <span [style.color]='enemy.color'>Shadow Dragon's lair</span>.</p>
     </div>
     <div class="guide-overall">
         <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <p class="guide-description">
             <br>
-            As the final High boss, he does not hold any punches. Shadow Dragon begins with three spells: Shadow Breath, Dragonic Skin, and Seal. Super Armor is the same as Skeleton King's and he 
-            can attack multiple people at once. To dodge Shadow Breath, when Shadow Dragon abruptly turns torward one person, don't stun him and run away from that line of sight. For Dragonic Skin, you'll 
-            need to exercise some patiences, else risk healing Shadow Dragon back to full. You can also break Dragonic Skin. There is no counter for seal, just keep the person on fire away from everyone else. 
-            At 50% max HP, he will regain all health and use his Illusions of Shadow. Which creates one Large Illusion and 3 other Illusions.
+            As the final High Boss, he does not hold any punches. <span [style.color]='enemy.color'>Shadow Dragon</span> begins with three spells: 
+            <span [style.color]='enemy.color'>Shadow Breath</span>, <span [style.color]='enemy.color'>Dragonic Skin</span>, and 
+            <span [style.color]='enemy.color'>Seal</span>. Super Armor is the same as <span style="color:#8a2be2">Skeleton King's</span> and he 
+            can attack multiple people at once. To dodge <span [style.color]='enemy.color'>Shadow Breath</span>, whenever <span [style.color]='enemy.color'>Shadow Dragon</span> abruptly turns torward one person, don't stun him and run away from that line of sight. For <span [style.color]='enemy.color'>Dragonic Skin</span>, you'll 
+            need to exercise some patience, else risk healing <span [style.color]='enemy.color'>Shadow Dragon</span> back to full. You can also break <span [style.color]='enemy.color'>Dragonic Skin</span>. There is no counter for <span [style.color]='enemy.color'>Seal</span>, just keep the person on fire away from everyone else. 
+            At <span style="color:#90EE90">50% max HP</span>, he will regain all health and use his <span [style.color]='enemy.color'>Illusions of Shadow</span>. 
+            Which creates one <span [style.color]='enemy.color'>Large Illusion</span> and <span [style.color]='enemy.color'>3 other Illusions</span>. Watch out for the barely visible <span [style.color]='enemy.color'>Shadow Runes</span> on the floor, they will silence anyone that steps on them 
+            and they will keep spawning throughout the fight from this point on! To make everyone's lives easier, if you're on cooldowns, then take as many as these as possible.
             </p>
             <app-enemy-spell-display 
             [caster]="enemy.name" 
             [category]="enemy.category" 
-            [skills]="getSkills(skills, ['Illusions%20of%20Shadow'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            [skills]="getSkills(skills, ['Illusions%20of%20Shadow', 'Shadow%20Rune'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <p></p>
             <p class="guide-description">
-            <br>
-            The Large Illusion will have all of Shadow Dragon's spells from the first phase outside of Super Armor, and the other Illusions will just have Shadow Breath. Prioritize the Smaller Illusions first by grouping them up and using your bursts on it. After they die, SPREAD. 
-            Dark Detonation will be cast on everyone in the arena. After the Dark Detonation is over, pull Large Illusion to the center so you don't take damage from the aura and kill it. Don't take your time 
-            killing it either, if you spend longer than a few minutes, it will be unkillable, resulting in a reset. Dark Detonation will happen again on its death.</p>
+            <span [style.color]='enemy.color'>The Large Illusion</span> will have all of <span [style.color]='enemy.color'>Shadow Dragon</span>'s spells from the first phase 
+            outside of Super Armor, and the other Illusions will just have <span [style.color]='enemy.color'>Shadow Breath</span>. <span style="color:#FF6666">DO NOT STACK THREE SMALL ILLUSIONS AND ONE LARGE ILLLUSION, doing this also results in a reset due to Bindings of Darkness</span>. Prioritize the 
+            <span [style.color]='enemy.color'>Smaller Illusions</span> first by grouping them up and using your bursts on it. After they die, <span style="color:#FF6666">SPREAD</span>. 
+            <span [style.color]='enemy.color'>Dark Detonation</span> will be cast on everyone in the arena. After the <span [style.color]='enemy.color'>Dark Detonation</span> is over, pull Large Illusion to the center so you don't take damage from the aura and kill it. Don't take your time 
+            killing it either, if you spend longer than a few minutes, it will be unkillable, resulting in a reset. 
+            <span [style.color]='enemy.color'>Dark Detonation</span> will happen again on its death.</p>
             <app-enemy-spell-display 
             [caster]="'Illusion of Irbert'" 
             [category]="enemy.category" 
-            [skills]="getSkills(minionSkills['Illusion of Irbert'], ['Reinforcement%20of%20Darkness', 'Dark%20Detonation'])" 
+            [skills]="getSkills(minionSkills['Illusion of Irbert'], ['Reinforcement%20of%20Darkness', 'Dark%20Detonation', 'Bindings%20of%20Darkness'])" 
             style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <p></p>
             <p class="guide-description">
-                <br>
-                After the Illusions are dead, Shadow Dragon will have unlocked three very annoying spells, but the fight is the same as the first phase. These spells require you to PAY ATTENTION to the surroundings. 
-                For Shadow Circle, there are no preventative measures for it, so avoid it when it spawns, or have someone who's on cooldowns take them. Make sure you're always near at least one person for Eternity link. 
-                This spell will one-shot you if you have no one to link with. If you're linked, move away from the other person ASAP. Move in opposite directions. Dark Blast is pretty easy to dodge unless its on a hill where 
-                it's not visible. Dark Blast goes through invulnerability effects.
+                After the <span [style.color]='enemy.color'>Illusions</span> are dead, <span [style.color]='enemy.color'>Shadow Dragon</span> will have unlocked his final two spells, but the fight is the same as the first phase. These spells require you to PAY ATTENTION to the surroundings. 
+                Make sure you're always near at least one person for <span [style.color]='enemy.color'>Eternity link</span>. <span style="color:#9acd32">This spell will one-shot you if you have no one to link with</span>. If you're linked, move away from the other person ASAP. 
+                Move in opposite directions. <span [style.color]='enemy.color'>Dark Blast</span> is pretty easy to dodge unless its on a hill where 
+                it's not visible. <span [style.color]='enemy.color'>Dark Blast</span> goes through invulnerability effects.
                 </p>
-                <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Shadow%20Circle', 'Eternity%20Link', 'Dark%20Blast'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
-            <p class="guide-description">
-                <br>
+                <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills, ['Eternity%20Link', 'Dark%20Blast'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <p></p>
+                <p class="guide-description">
                 Just be mindful of your environment and you'll kill this boss.
                 </p>
             <div class="guide-spells">
