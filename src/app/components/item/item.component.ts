@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import {Location} from '@angular/common';
 import { Subscription } from 'rxjs';
 import { Item, RecipeWithOptions, BossWithRate } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
@@ -69,7 +68,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   itemSub!: Subscription;
   public display: string = "Used In";
 
-  constructor(private _location: Location, private ActivatedRoute: ActivatedRoute, private router: Router, private _itemService: HttpService, private titleService: Title) { }
+  constructor(private ActivatedRoute: ActivatedRoute, private router: Router, private _itemService: HttpService, private titleService: Title) { }
 
   ngOnInit(): void {
     
@@ -163,11 +162,6 @@ export class ItemComponent implements OnInit, OnDestroy {
     }
     if(name.includes("Sealed") && name !== "Sealed Weapon") { name = name.substring(7) }
     return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(name) + '.jpg';
-  }
-  returnToPrior(): void {
-    this.recipe = [];
-    this.display = "Used In";
-    this._location.back();
   }
   openEnemyDetails(id: string): void {
     this.recipe = [];

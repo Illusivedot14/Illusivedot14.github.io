@@ -14,15 +14,9 @@
     }
     
     &-large-container {
-      display: flex;
-      flex-direction: row;
-      height: 100%;
-      width: 100%;
-    }
-
-    &-stats-container {
-      min-width: 40%;
-      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+      grid-auto-flow: row;
     }
 
     &-details-container {
@@ -31,8 +25,8 @@
     }
     &-thumbnail {
       padding: 1vw;
-      width: calc(64px + 6vw);
-      height: calc(64px + 6vw);
+      width: calc(32px + 8vw);
+      height: calc(32px + 8vw);
     }
     &-content {
       align-self: center;
@@ -42,29 +36,34 @@
     &-name {
       color: #fff;
       font-weight: 700;
-      font-size: calc(20px + .5vw);
-      line-height: calc(22px + .5vw);
+      font-size: calc(1em + 1.5vw);
+      line-height: calc(.5em + 1.25vw);
       text-overflow: ellipsis;
       align-self: center;
     }
     &-quote {
       color: #fff;
-      flex-grow: 1;
-      font-size: calc(14px + .3vw);
-      line-height: calc(16px + .3vw);
+      font-size: calc(.95em + .6vw);
+      line-height: calc(.95em + .6vw);
       flex-wrap: wrap;
       overflow-wrap: break-word;
+      &-container {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: .5vw;
+      }
     }
     &-flavor {
       &-container {
         display: flex;
         flex-direction: row;
+        margin-bottom: .5vw;
       }
       &-line {
         color: #fff;
         font-weight: 350;
-        font-size: calc(12px + .3vw);
-        line-height: calc(16px + .3vw);
+        font-size: calc(.8em + .8vw);
+        line-height: calc(.85em + .8vw);
       }
     }
     //stats
@@ -77,54 +76,19 @@
       }
       &-label {
         font-weight: 500;
-        font-size:calc(16px + .3vw);
-        line-height: calc(16px + .3vw);
+        font-size: calc(.9em + .75vw);
+        line-height: calc(.95em + .75vw);
       }
       &-description {
         font-weight: 200;
-        font-size:calc(12px + .3vw);
-        line-height: calc(12px + .3vw);
+        font-size: calc(.8em + .75vw);
+        line-height: calc(.85em + .75vw);
       }
-    }
-    //used-in
-    &-used-in {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
-        &-container {
-          display: flex;
-          flex-flow: column;
-          padding: 2.8%;
-          height: 50%;
-        }
-        &-label {
-          color: #fff;
-          font-weight: 500;
-          font-size: calc(12px + 1.2vw);
-          margin-bottom: .2vw;
-          display: inline-block;
-          margin: 0 auto;
-          padding: 1%;
-        }
-        &-button {
-          cursor: pointer;
-          align-self: center;
-          min-width: 64px;
-          min-height: 64px;
-          height: 12.5%;
-          width: 12.5%;
-          max-width: 96px;
-          max-height: 96px;
-          position: relative;
-          z-index: 3;
-          display: block;
-        }
     }
     //lists (ingredients and dropped)
     &-lists {
       display: flex;
       flex-flow: row;
-      width: 100%;
       justify-content: center;
     }
     &-list {
@@ -132,55 +96,74 @@
         display: grid;
         grid-auto-rows: min-content;
         color:#fff;
-        margin-right: 20px;
       }
       &-details {
-        font-size: calc(12px + .6vw);
-        line-height:calc(12px + .6vw);
         font-weight: 600;
-        padding-left: 5px;
-        align-self: center;
-  
+        font-size: calc(.75em + .8vw);
+        line-height: calc(.75em + .8vw);
+        margin-left: 1vw;
+        margin-right: 1vw;
         width: 100%;
       }
       &-button {
-        align-self: center;
-        height: calc(32px + 4vw);
-        max-height: calc(32px + 4vw);
-        min-height: 32px;
-        width: calc(32px + 4vw);
-        max-width: calc(32px + 4vw);
-        min-width: 32px;
+        width: calc(32px + 3.5vw);
+        height: calc(32px + 3.5vw);
+        cursor: pointer;
       }
       &-label {
-        color: #fff;
         font-weight: 700;
-        font-size: calc(12px + 1.2vw);
-        padding-bottom: 1%;
-        line-height: calc(12px + 1.2vw);
-        margin-bottom: .2vw;
+        font-size: calc(.75em + 1.5vw);
+        line-height: calc(.75em + 1.5vw);
         align-self: center;
         text-align: center;
       }
       &-filler {
-        width: calc(32px + 1vw);
-        min-width: calc(32px + 1vw);
+        width: calc(16px + 1.75vw);
+        height: calc(16px + 1.75vw);
       }
       &-content {
         display: flex;
-        flex-flow: row;
-        max-height: 128px;
-        min-height: 32px;
+        align-items: center;
+        justify-content: center;
+      }
+      &-swap {
+        width: calc(16px + 1.75vw);
+        height: calc(16px + 1.75vw);
+        cursor: pointer;
       }
     }
-    &-ingredient-swap {
-      cursor: pointer;
-      align-self: center;
-      margin-left: .1vw;
-      height: calc(32px + 1vw);
-      max-height: calc(32px + 1vw);
-      width: calc(32px + 1vw);;
-      max-width: calc(32px + 1vw);
+    //used-in
+    &-used-in {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      &-container {
+        text-align: center;
+      }
+      &-label {
+        color: #fff;
+        font-weight: 500;
+        font-size: calc(.8em + 1.5vw);
+        line-height: calc(.8em + 1.5vw);
+        margin-bottom: .2vw;
+        display: inline-block;
+        white-space: nowrap;
+        margin: 0 auto;
+        padding: 1%;
+      }
+      &-button {
+        cursor: pointer;
+        align-self: center;
+        min-width: 32px;
+        min-height: 32px;
+        height: calc(32px + 2vw);
+        width: calc(32px + 2vw);
+        max-width: 128px;
+        max-height: 128px;
+        position: relative;
+        z-index: 3;
+        display: block;
+      }
     }
 }
 .back-button
@@ -203,4 +186,36 @@
       text-overflow: ellipsis;
       align-self: center;
       margin-left: 10px;
+}
+
+
+@media screen and (max-width: 749px) {
+  .item {
+    &-large-container {
+      grid-template-columns: repeat(1, 99%);
+    }
+    &-lists {
+      margin-top: 1vw;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .item {
+    &-attribute {
+      &-label {
+        font-weight: 500;
+        font-size: calc(.9em + .75vw);
+        line-height: calc(.75em + .5vw);
+      }
+      &-description {
+        font-weight: 200;
+        font-size: calc(.8em + .75vw);
+        line-height: calc(.6em + .55vw);
+      }
+    }
+  }
 }

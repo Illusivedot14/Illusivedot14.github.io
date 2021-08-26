@@ -5,7 +5,7 @@ import { EnemyComponent } from '../../enemy/enemy.component';
 @Component({
   selector: 'app-mid3-turtle',
   templateUrl: './mid3-turtle.component.html',
-  styleUrls: ['../../enemy/enemy.component.scss']
+  styleUrls: ['../default/default.component.scss']
 })
 export class Mid3TurtleComponent extends EnemyComponent  {
   @Input() enemy!: Enemy;

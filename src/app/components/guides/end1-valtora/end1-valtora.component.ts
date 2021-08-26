@@ -5,7 +5,7 @@ import { EnemyComponent } from '../../enemy/enemy.component';
 @Component({
   selector: 'app-end1-valtora',
   templateUrl: './end1-valtora.component.html',
-  styleUrls: ['../../enemy/enemy.component.scss']
+  styleUrls: ['../default/default.component.scss']
 })
 export class End1ValtoraComponent extends EnemyComponent  {
   @Input() enemy!: Enemy;

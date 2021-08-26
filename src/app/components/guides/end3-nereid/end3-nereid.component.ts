@@ -5,7 +5,7 @@ import { EnemyComponent } from '../../enemy/enemy.component';
 @Component({
   selector: 'app-end3-nereid',
   templateUrl: './end3-nereid.component.html',
-  styleUrls: ['../../enemy/enemy.component.scss']
+  styleUrls: ['../default/default.component.scss']
 })
 export class End3NereidComponent extends EnemyComponent  {
   @Input() enemy!: Enemy;

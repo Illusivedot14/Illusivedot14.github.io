@@ -5,7 +5,7 @@ import { EnemyComponent } from '../../enemy/enemy.component';
 @Component({
   selector: 'app-high5-shadow',
   templateUrl: './high5-shadow.component.html',
-  styleUrls: ['../../enemy/enemy.component.scss']
+  styleUrls: ['../default/default.component.scss']
 })
 export class High5ShadowComponent extends EnemyComponent  {
   @Input() enemy!: Enemy;

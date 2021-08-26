@@ -65,6 +65,7 @@ import { CharacterDatabaseComponent } from './components/character-database/char
 import { CharacterComponent } from './components/character/character.component';
 import { DefaultComponent } from './components/guides/default/default.component';
 import { EnemySpellDisplayComponent } from './components/enemy-spell-display/enemy-spell-display.component';
+import { BackButtonComponent } from './components/back-button/back-button.component';
 
 
 @NgModule({
@@ -108,6 +109,7 @@ import { EnemySpellDisplayComponent } from './components/enemy-spell-display/ene
     CharacterComponent,
     DefaultComponent,
     EnemySpellDisplayComponent,
+    BackButtonComponent,
     
   ],
   imports: [

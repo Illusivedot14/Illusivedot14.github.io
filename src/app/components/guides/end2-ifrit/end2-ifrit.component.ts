@@ -5,7 +5,7 @@ import { EnemyComponent } from '../../enemy/enemy.component';
 @Component({
   selector: 'app-end2-ifrit',
   templateUrl: './end2-ifrit.component.html',
-  styleUrls: ['../../enemy/enemy.component.scss']
+  styleUrls: ['../default/default.component.scss']
 })
 export class End2IfritComponent extends EnemyComponent  {
   @Input() enemy!: Enemy;

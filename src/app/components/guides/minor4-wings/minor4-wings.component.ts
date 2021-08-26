@@ -5,7 +5,7 @@ import { EnemyComponent } from '../../enemy/enemy.component';
 @Component({
   selector: 'app-minor4-wings',
   templateUrl: './minor4-wings.component.html',
-  styleUrls: ['../../enemy/enemy.component.scss']
+  styleUrls: ['../default/default.component.scss']
 })
 export class Minor4WingsComponent extends EnemyComponent {
   @Input() enemy!: Enemy;

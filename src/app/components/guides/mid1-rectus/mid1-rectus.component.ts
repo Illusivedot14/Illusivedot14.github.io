@@ -6,7 +6,7 @@ import { EnemyComponent } from '../../enemy/enemy.component';
 @Component({
   selector: 'app-mid1-rectus',
   templateUrl: './mid1-rectus.component.html',
-  styleUrls: ['../../enemy/enemy.component.scss']
+  styleUrls: ['../default/default.component.scss']
 })
 export class Mid1RectusComponent extends EnemyComponent  {
   @Input() enemy!: Enemy;

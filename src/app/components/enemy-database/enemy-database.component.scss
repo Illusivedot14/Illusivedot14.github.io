@@ -16,6 +16,8 @@
     box-shadow: 4px 3px 8px 0px rgb(50 50 100 / 22%);
     transition-duration: 0.3s;
     cursor: pointer;
+    display: flex;
+    flex-flow: column;
   
     &:hover {
       box-shadow: 4px 3px 11px 6px rgb(50 50 100 / 46%);
@@ -44,7 +46,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      height: 222px;
+      margin-bottom: auto;
       color: #fff;
       font-size: 18px;
     }
@@ -76,7 +78,7 @@
     }   
 
     &-items {
-        height: 121px;
+        height: calc(70px + 1.75vw);;
         text-align: center;
     }
 
@@ -84,13 +86,13 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 1vw;
+        padding-right: 1vw;
     &-button {
         cursor: pointer;
-        height: 48px;
+        width: calc(32px + 1.75vw);
+        height: calc(32px + 1.75vw);
         max-height: 48px;
-        width: 48px;
         max-width: 48px;
     }
 }

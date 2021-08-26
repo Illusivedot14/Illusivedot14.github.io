@@ -5,7 +5,7 @@ import { EnemyComponent } from '../../enemy/enemy.component';
 @Component({
   selector: 'app-high1-skeleton',
   templateUrl: './high1-skeleton.component.html',
-  styleUrls: ['../../enemy/enemy.component.scss']
+  styleUrls: ['../default/default.component.scss']
 })
 export class High1SkeletonComponent extends EnemyComponent  {
   @Input() enemy!: Enemy;

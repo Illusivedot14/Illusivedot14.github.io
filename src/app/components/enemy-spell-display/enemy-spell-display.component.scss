@@ -17,8 +17,9 @@
     }
     &-name {
         font-weight: 350;
-        font-size: calc(25px + 1vw);
-        line-height: calc(30px + 1vw);
+        font-size: calc(12px + 1.2vw);
+        line-height: calc(12px + 1.2vw);
+        overflow-wrap: break-word;
         margin-bottom: 1%;
         color: #fff;
         align-self: center;
@@ -27,20 +28,21 @@
     }
     &-detail-label {
         font-weight: 350;
-        font-size: 30px;
-        margin-bottom: 20px;
-        line-height: 30px;
+        font-size: calc(12px + 1.2vw);
+        margin-bottom: 1vw;
+        line-height: calc(12px + 1.2vw);
         font-family: "Times New Roman", Times, serif !important;
     }
     &-details {
         display: flex;
         flex-direction: column;
         width: 100%;
-        line-height: 22px;
     }
     &-description {
-        font-size: 22px;
         width: 90%;
+        font-size: calc(8px + 1vw);
+        line-height: calc(10px + 1vw);
+        margin-bottom: .4vw;
     }
     &-video {
         height: 100%;
@@ -51,8 +53,7 @@
         &-container {
             align-self: center;
             height: calc(200px+1vw);
-            padding: 20px;
-            width: 75%;
+            padding: 1vw;
         }
     }
     &-image {
@@ -64,18 +65,18 @@
         color: #fff;
         &-label {
             height: 75%;
-            font-size: calc(12px + 1vw);
-            line-height: calc(14px + 1vw);
+            font-size: calc(8px + 1.2vw);
+            line-height: calc(9px + 1.2vw);
             color: #b3c2cb;
             align-self: center;
         }
         &-image {
-            height: calc(32px + 1vw);
-            max-height: calc(32px + 1vw);
-            min-height: 32px;
-            width: calc(32px + 1vw);
-            max-width: calc(32px + 1vw);
-            min-width: 32px;
+            height: calc(16px + 1.7vw);
+            max-height: calc(16px + 1.7vw);
+            min-height: 16px;
+            width: calc(16px + 1.7vw);
+            max-width: calc(16px + 1.7vw);
+            min-width: 16px;
             vertical-align: middle;
         }
     }
@@ -86,34 +87,65 @@
         color: #fff;
         &-label {
             height: 75%;
-            font-size: calc(12px + 1vw);
-            line-height: calc(14px + 1vw);
+            font-size: calc(8px + 1.2vw);
+            line-height: calc(9px + 1.2vw);
             color: #8292e9;
             align-self: center;
         }
         &-image {
-            height: calc(32px + 1vw);
-            max-height: calc(32px + 1vw);
-            min-height: 32px;
-            width: calc(32px + 1vw);
-            max-width: calc(32px + 1vw);
-            min-width: 32px;
+            height: calc(16px + 1.7vw);
+            max-height: calc(16px + 1.7vw);
+            min-height: 16px;
+            width: calc(16px + 1.7vw);
+            max-width: calc(16px + 1.7vw);
+            min-width: 16px;
             vertical-align: top;
         }
     }
 
     &-summon {
-        height: calc(32px + 1vw);
-        max-height: calc(32px + 1vw);
-        min-height: 32px;
-        width: calc(32px + 1vw);
-        max-width: calc(32px + 1vw);
-        min-width: 32px;
+        margin-top: auto;
         &-container {
             height: calc(32px + 1vw);
             display: flex;
             flex-flow: row;
-            margin-top: auto;
+            
+        }
+        &-button {
+            height: calc(16px + 1.7vw);
+            width: calc(16px + 1.7vw);
         }
     }
 }
+
+
+@media screen and (max-width: 699px) {
+    .spell {
+        flex-direction: column;
+        &-video {
+            align-self: center;
+            &-container {
+                align-self: center;
+                height: calc(200px+1vw);
+            }
+        }
+        &-description {
+            width: 100%;
+            font-size: calc(10px + 1vw);
+            line-height: calc(12px + 1vw);
+        }
+    }
+}
+
+
+@media screen and (min-width: 700px) {
+    .spell {
+        &-video {
+            &-container {
+                width: 75%;
+                height: 75%;
+            }
+        }
+    }
+}
+  

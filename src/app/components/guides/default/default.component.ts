@@ -5,7 +5,7 @@ import { EnemyComponent } from '../../enemy/enemy.component';
 @Component({
   selector: 'app-default',
   templateUrl: './default.component.html',
-  styleUrls: ['../../enemy/enemy.component.scss']
+  styleUrls: ['./default.component.scss']
 })
 export class DefaultComponent extends EnemyComponent  {
   @Input() enemy!: Enemy;

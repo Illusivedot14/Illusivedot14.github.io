@@ -1,14 +1,6 @@
 <div class="enemy-container">
     <div class="enemy">
-        <div class ="back-button-container">
-            <button class="back-button" mat-icon-button class="back-button" (click)="returnToPrior()">
-                <img class="item-swap-button"
-                src="https://raw.githubusercontent.com/sfarmani/twicons/master/GoBack.jpg"
-                alt="thumbnail"
-                width="100%"/>
-            </button>
-            <p class="back-button-label">Return to Prior Page</p>
-        </div>
+        <app-back-button></app-back-button>
         <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="0" dynamicHeight>
             <mat-tab label="Stats">
                 <div class="enemy-details" *ngIf="enemy">
@@ -28,120 +20,27 @@
                                     <p class="enemy-descript-line"  *ngIf="enemy.timer">Respawns: Every {{ enemy.timer }} seconds</p>
                                 </div>
                             </div>
-                            <div class="enemy-special-stat-change">
+                            <!-- <div class="enemy-special-stat-change">
                                 
-                            </div>
+                            </div> -->
                         </div>
                         <div class="enemy-difficulty" *ngIf="enemy.category != 'Field' && enemy.category != 'Creep' && !enemy.name.includes('Clown')">
                             <span class="enemy-difficulty-label" *ngIf='difficulty==1'>Difficulty: {{ difficulty }} Player</span>
                             <span class="enemy-difficulty-label" *ngIf='difficulty>1'>Difficulty: {{ difficulty }} Players</span>
                             <mat-slider min="1" max="10" step="1" value="1" (input)="onInputChange($event)"></mat-slider>
                         </div>
-                        <div class="enemy-stats">
-                            <div class="enemy-stats-row">
+                        <div class="enemy-stats" >
+                            <ng-container *ngFor="let stat of displayedStats">
                                 <div class="enemy-stat">
                                     <img class="enemy-stat-image"
-                                    src="../../../assets/img/health.jpg"
-                                    alt="Health Thumbnail"/>
-                                    <div class="enemy-stat-label-container">
-                                        <span class="enemy-stat-label" [style.color]="possibleStats['health'].color">
-                                            {{ getHealth() }} HP<br>({{ possibleStats['healthRegen'].value }} HP/s)
-                                        </span>
-                                    </div>
+                                    src="{{getStatImage(stat)}}"
+                                    alt="{{stat}} Thumbnail"/>
+                                    <span class="enemy-stat-details" [style.color]="possibleStats[stat].color">{{ getStatString(stat) }}</span>
                                 </div>
-                                <div class="enemy-stat">
-                                    <img class="enemy-stat-image"
-                                    src="../../../assets/img/mana.jpg"
-                                    alt="Mana Thumbnail"/>
-                                    <div class="enemy-stat-label-container">
-                                        <span class="enemy-stat-label" [style.color]="possibleStats['mana'].color">
-                                            {{ possibleStats['mana'].value }} MP<br>({{ possibleStats['manaRegen'].value }} MP/s)
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="enemy-stats-row">
-                                <div class="enemy-stat">
-                                    <img class="enemy-stat-image"
-                                    src="../../../assets/img/attack.png"
-                                    alt="Attack Thumbnail"/>
-                                    <div class="enemy-stat-label-container">
-                                        <span class="enemy-stat-label" [style.color]="possibleStats['attackDamage'].color">
-                                            {{ possibleStats['attackDamage'].value }} - {{ maxAttack }} Attack<br>({{ possibleStats['attackSpeed'].value}} Attack/s)
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="enemy-stat">
-                                    <img class="enemy-stat-image"
-                                    src="../../../assets/img/range.png"
-                                    alt="Range Thumbnail"/>
-                                    <div class="enemy-stat-label-container">
-                                        <span class="enemy-stat-label" [style.color]="possibleStats['attackRange'].color">
-                                            {{ possibleStats['attackRange'].value }} Range
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="enemy-stats-row">
-                                <div class="enemy-stat">
-                                    <img class="enemy-stat-image"
-                                    src="../../../assets/img/light.png"
-                                    alt="Armor Thumbnail"
-                                    *ngIf="possibleStats['armorType'].value=='Light'"/>
-                                    <img class="enemy-stat-image"
-                                    src="../../../assets/img/medium.png"
-                                    alt="Armor Thumbnail"
-                                    *ngIf="possibleStats['armorType'].value=='Medium'"/>
-                                    <img class="enemy-stat-image"
-                                    src="../../../assets/img/heavy.png"
-                                    alt="Armor Thumbnail"
-                                    *ngIf="possibleStats['armorType'].value=='Heavy'"/>
-                                    <img class="enemy-stat-image"
-                                    src="../../../assets/img/hero.png"
-                                    alt="Armor Thumbnail"
-                                    *ngIf="possibleStats['armorType'].value=='Hero'"/>
-                                    <div class="enemy-stat-label-container">
-                                        <span class="enemy-stat-label" [style.color]="possibleStats['armor'].color">
-                                            {{ possibleStats['armor'].value }} Armor
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="enemy-stat">
-                                    <img class="enemy-stat-image"
-                                    src="../../../assets/img/speed.png"
-                                    alt="Speed Thumbnail"/>
-                                    <div class="enemy-stat-label-container">
-                                        <span class="enemy-stat-label" [style.color]="possibleStats['moveSpeed'].color">
-                                            {{ possibleStats['moveSpeed'].value }} Movespeed
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="enemy-stats-row">
-                                <div class="enemy-stat">
-                                    <img class="enemy-stat-image"
-                                    src="../../../assets/img/magicResist.png"
-                                    alt="Magic Defense Thumbnail"/>
-                                    <div class="enemy-stat-label-container">
-                                        <span class="enemy-stat-label" [style.color]="possibleStats['magicResist'].color">
-                                            {{ possibleStats['magicResist'].value }}% Magic Defense
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="enemy-stat">
-                                    <img class="enemy-stat-image"
-                                    src="../../../assets/img/damageResist.png"
-                                    alt="Damage Defense Thumbnail"/>
-                                    <div class="enemy-stat-label-container">
-                                        <span class="enemy-stat-label" [style.color]="possibleStats['damageResist'].color">
-                                            {{ possibleStats['damageResist'].value }}% Damage Defense
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
+                            </ng-container>
                         </div>
                         <div class="enemy-notes-container" *ngIf='enemy.notes'>
-                            <p class="enemy-notes-label">Notes</p>
+                            <span class="enemy-notes-label">Notes</span>
                             <ng-container *ngFor="let line of enemy.notes">
                                 <span class="enemy-notes-description">※ {{ line }}</span>
                             </ng-container>
@@ -159,7 +58,7 @@
                                     alt="thumbnail"
                                     width="100%"/>
                                     </button>
-                                    <p class="enemy-drop-details"> {{ drop }} {{ getDropRateString(enemy, drop) }}</p>
+                                    <span class="enemy-drop-details"> {{ drop }} {{ getDropRateString(enemy, drop) }}</span>
                                 </div>
                             </ng-container>
                         </div>

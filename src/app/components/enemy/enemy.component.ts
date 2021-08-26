@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Location} from '@angular/common';
 import { Subscription } from 'rxjs';
 import { Item, Enemy, EnemySkill } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
@@ -19,8 +18,6 @@ export class EnemyComponent implements OnInit, OnDestroy {
   public skills     : EnemySkill[]  = [];
   public minionSkills : Record<string, EnemySkill[]> = {};
   public stats      : string[]  = [];
-  public hasGuide   : boolean = false;
-  public maxAttack  : number = 0;
   public difficulty : number = 1;
 
   private routeSub!: Subscription;
@@ -33,6 +30,7 @@ export class EnemyComponent implements OnInit, OnDestroy {
   private higherDropRateScale = .2;
   private cutOffDropRateScale = 5;
 
+  public displayedStats: string[] = ["health", "mana", "attackDamage", "attackRange", "armor", "moveSpeed", "magicResist", "damageResist"];
   public possibleStats: any = {
     'health':        {  name: " Health",        color: '#90EE90', value: 0 },
     'healthRegen':   {  name: " Health Regen",  color: '#90EE90', value: 0 },
@@ -48,7 +46,8 @@ export class EnemyComponent implements OnInit, OnDestroy {
     'attackSpeed':   {  name: " Attack Speed",  color: '#FF6666', value: 0 },
     'moveSpeed':     {  name: " Move Speed",    color: '#808080', value: 0 },
   };
-  constructor(private _location: Location, private ActivatedRoute: ActivatedRoute, private router: Router, private _enemyService: HttpService, private titleService: Title) { }
+  
+  constructor(private ActivatedRoute: ActivatedRoute, private router: Router, private _enemyService: HttpService, private titleService: Title) { }
 
   ngOnInit(): void {
     this.routeSub = this.ActivatedRoute.params.subscribe((params : Params) => {
@@ -69,7 +68,6 @@ export class EnemyComponent implements OnInit, OnDestroy {
               this.possibleStats[key].value = value;
             }
           });
-          this.maxAttack = Number(this.possibleStats['attackDamage'].value) + Number(this.possibleStats['attackSpread'].value)
           this.possibleStats['attackSpeed'].value = Math.round(Number(this.possibleStats['attackSpeed'].value) * 10000) / 10000;
           this.possibleStats['magicResist'].value = Math.round(Number(this.possibleStats['magicResist'].value) * 10000) / 100;
           this.possibleStats['damageResist'].value = Math.round(Number(this.possibleStats['damageResist'].value) * 10000) / 100;
@@ -115,11 +113,92 @@ export class EnemyComponent implements OnInit, OnDestroy {
     this.router.navigate(['item', encodeURIComponent(id)]);
   }
 
+
+
+
+  private exclusionList : string[] = [];
+  getSkills(skillList: EnemySkill[], names: string[]) : EnemySkill[] {
+    if(skillList)
+    {
+      for(let i = 0; i < names.length; i++){
+        names[i] = decodeURI(names[i]);
+        if(!this.exclusionList.includes(names[i]))
+          this.exclusionList.push(names[i]);
+      }
+      let result = skillList.filter(x => names.includes(x.name));
+      return result;
+    }
+    return [];
+  }
+  getRemainingSkills(skillList: EnemySkill[]) : EnemySkill[] {
+    let result = skillList.filter(x => !this.exclusionList.includes(x.name));
+    return result;
+  }
+  
+  getLocationAsset(name: string) : string
+  {
+    return "..\..\..\..\assets\img\twrpg_map.png";
+  }
+  openMinionDetails(id: string) : void {
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree([`/enemy/${id}`])
+    );
+  
+    window.open(url, '_blank');
+  }
+
+  openEnemyDetails(id: string): void {
+    this.router.navigate(['enemy', encodeURIComponent(id)]);
+  }
+
+  ngOnDestroy(): void {
+    if(this.enemySub) {
+      this.enemySub.unsubscribe();
+    }
+    if(this.enemySpellsSub) {
+      this.enemySpellsSub.unsubscribe();
+    }
+    if(this.itemsSub) {
+      this.itemsSub.unsubscribe();
+    }
+    if(this.routeSub) {
+      this.routeSub.unsubscribe();
+    }
+  }
+  getStatImage(id: string) : string {
+    if(id != "armor") return "../../../assets/img/" + id + ".png"
+    switch(true){
+      case /^Medium/ig.test(this.possibleStats['armorType'].value): return "../../../assets/img/medium.png";
+      case /^Heavy/ig.test(this.possibleStats['armorType'].value):  return "../../../assets/img/heavy.png";
+      case /^Hero/ig.test(this.possibleStats['armorType'].value):   return "../../../assets/img/hero.png";
+      default: return "../../../assets/img/light.png";
+    }
+  }
+  getStatString(id: string) : string {
+    let attackSpread = Number(this.possibleStats['attackDamage'].value) + Number(this.possibleStats['attackSpread'].value);
+    switch(true){
+      case /^health/ig.test(id):       
+      return this.getHealth(this.possibleStats[id].value) + " HP\n(" + this.possibleStats['healthRegen'].value + " HP/s)";
+      case /^mana/ig.test(id):         
+      return this.possibleStats[id].value + " MP\n(" + this.possibleStats['manaRegen'].value + " MP/s)";
+      case /^attackDamage/ig.test(id): return this.possibleStats[id].value + " - " + attackSpread + " ATK\n(" + this.possibleStats['attackSpeed'].value + " ATK/s)";
+      case /^attackRange/ig.test(id):  return this.possibleStats[id].value + " Range";
+      case /^armor/ig.test(id):        return this.possibleStats[id].value + " Armor";
+      case /^moveSpeed/ig.test(id):    return this.possibleStats[id].value + " Movespeed";
+      case /^magicResist/ig.test(id):  return this.possibleStats[id].value + "% Magic DEF";
+      case /^damageResist/ig.test(id): return this.possibleStats[id].value + "% Damage DEF";
+      default: return "DOES NOT EXIST";
+    }
+  }
+  statSpecial(id : string) : void {
+    //BD, SB, ZL, AE, SM, Valt, Nereid, Aga
+    
+  }
   onInputChange(event: MatSliderChange) {
     this.difficulty = event.value!;
   }
-  getHealth() : number {
-    var health = parseFloat(this.possibleStats['health'].value);
+  getHealth(hp: any) : number {
+    var health = parseFloat(hp);
     var difficultyHealth = 0;
     if((this.enemy.category == "Minor" || this.enemy.category == "Mid"))
     {
@@ -159,61 +238,5 @@ export class EnemyComponent implements OnInit, OnDestroy {
       droprateScale = this.difficulty > this.cutOffDropRateScale ? droprate*this.higherDropRateScale*(this.difficulty-5) : 0;
     }
     return ' (' + (Math.round((droprate + droprateScale) * 10000) / 100) + "%)"
-  }
-
-  private exclusionList : string[] = [];
-  getSkills(skillList: EnemySkill[], names: string[]) : EnemySkill[] {
-    if(skillList)
-    {
-      for(let i = 0; i < names.length; i++){
-        names[i] = decodeURI(names[i]);
-        if(!this.exclusionList.includes(names[i]))
-          this.exclusionList.push(names[i]);
-      }
-      let result = skillList.filter(x => names.includes(x.name));
-      return result;
-    }
-    return [];
-  }
-  getRemainingSkills(skillList: EnemySkill[]) : EnemySkill[] {
-    let result = skillList.filter(x => !this.exclusionList.includes(x.name));
-    return result;
-  }
-  
-  getLocationAsset(name: string) : string
-  {
-    return "..\..\..\..\assets\img\twrpg_map.png";
-  }
-  openMinionDetails(id: string) : void {
-    const url = this.router.serializeUrl(
-      this.router.createUrlTree([`/enemy/${id}`])
-    );
-  
-    window.open(url, '_blank');
-  }
-  returnToPrior(): void {
-    this._location.back();
-  }
-  openEnemyDetails(id: string): void {
-    this.router.navigate(['enemy', encodeURIComponent(id)]);
-  }
-
-  ngOnDestroy(): void {
-    if(this.enemySub) {
-      this.enemySub.unsubscribe();
-    }
-    if(this.enemySpellsSub) {
-      this.enemySpellsSub.unsubscribe();
-    }
-    if(this.itemsSub) {
-      this.itemsSub.unsubscribe();
-    }
-    if(this.routeSub) {
-      this.routeSub.unsubscribe();
-    }
-  }
-  statSpecial(id : string) : void {
-    //BD, SB, ZL, AE, SM, Valt, Nereid, Aga
-    
   }
 }

@@ -1,6 +1,6 @@
 <mat-accordion class="spell-container">
     <mat-expansion-panel hideToggle *ngFor="let spell of skills" style="background-color: #151515; align-self: center; width: 100%;">
-      <mat-expansion-panel-header style="height: calc(32px + 2.2vw);">
+      <mat-expansion-panel-header style="height: calc(16px + 3vw);">
         <mat-panel-title class="spell-name" [style.color]="spell.color"> {{spell.name}}</mat-panel-title>
         <mat-panel-description style="margin-left: auto;">
             <div class="spell-cooldown" *ngIf="spell.cooldown">
@@ -27,7 +27,8 @@
                 <ng-container *ngFor="let summon of spell.summons">
                     <button mat-icon-button class="spell-summon-button" (click)="openMinionDetails(summon)">
                         <img class="button-image" src="{{ getEnemyImageURL(summon) }}"
-                        alt="thumbnail" style="width:100%"/>
+                        alt="thumbnail" width="100%"
+                        style="position:absolute; left: 0; top: 0;"/>
                         </button>
                 </ng-container>
             </div>
