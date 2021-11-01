@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { Enemy, EnemySkill } from 'src/app/models';
+import { EnemySkill } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 
 
@@ -18,11 +18,8 @@ export class EnemySpellDisplayComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  getEnemyImageURL(name: string)
-  {
-    if(name == "Elemental of Chaos") return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this._enemyService.getEnemyImageFilename(name)) + '.jpg';
-    if(name == "Hell Golem") return "https://static.wikia.nocookie.net/wowpedia/images/4/49/BTNInfernal.png";
-    return 'https://raw.githubusercontent.com/sfarmani/twicons/master/' + encodeURIComponent(this._enemyService.getEnemyImageFilename(name)) + '%20Icon.jpg';
+  getEnemyImageURL(name: string) {
+    return this._enemyService.getEnemyImageURL(name);
   }
   openEnemyDetails(id: string): void {
     this.router.navigate(['enemy', encodeURIComponent(id)]);

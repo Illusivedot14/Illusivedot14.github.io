@@ -19,12 +19,14 @@ export interface Item {
     required_by: Array<string>;
     
 }
+
 //Item Classes
 export interface RecipeWithOptions {
     currentIndex: number;
     name: Array<string>;
     amount: Array<number>;
 }
+
 export interface BossWithRate {
     name: string;
     rate: number;

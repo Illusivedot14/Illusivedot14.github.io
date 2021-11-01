@@ -1,0 +1,40 @@
+<div class="guide">
+    <div class="guide-summon">
+        <h1 class="guide-label" [style.color]="enemy.color">How to Summon</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>-*
+        <img class="guide-summon-image"
+        src="https://i.imgur.com/3T64Re7.jpg"
+        alt="location-image"/>
+        <p class="guide-description">
+            Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 60</span> 
+            before approaching this boss as you'll get no experience nor loot if you're below that threshold.
+            <br>
+            <br> 
+            To summon this boss, gather 4 White Stones from any White Stone Deposits at the Duchy of Wallachia <span style="color:#FFD700">(Teleport 7)</span> 
+            with any pickaxe or if you have an <span style="color:#52E252">Abyssal Pickaxe</span> or above, 
+            you can mine directly from the Stone Deposits at the Cave Entrance <span style="color:#FFD700">(Teleport 4)</span>. Then, bring the stones in front of the 
+            Church in East Wallachia, as shown above.</p>
+    </div>
+    <div class="guide-overall">
+        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <p class="guide-description">
+            <br>
+            This boss is also pretty straight-forward. Be careful when he reaches <span style="color:#90EE90">50% HP</span> as he will 
+            <span [style.color]='enemy.color'>unleash his True Form</span> for <span style="color:#FFD700">10 seconds</span>. During this form, he will have 
+            <span style="color:#FF6666">increased attack speed and damage</span>. He will also unlock <span [style.color]='enemy.color'>Requiem of Blood</span>.
+            If he uses his <span [style.color]='enemy.color'>Death Bind</span> on you during this form, you're pretty much dead. To avoid this, just keep your distance until its over and he'll 
+            go down like the rest.</p>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills[enemy.name], ['Unleash%20True%20Form', 'Requiem%20of%20Blood'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+        <div class="guide-spells">
+            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getRemainingSkills(skills[enemy.name])"></app-enemy-spell-display>
+        </div>
+    </div>
+    <div class="guide-kill">
+        <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
+        <iframe class="guide-kill-video" src="https://drive.google.com/file/d/1LSSKEsjxdgpQO18P8GVLJEDgR1j4mYKq/preview" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
+    </div>
+</div>

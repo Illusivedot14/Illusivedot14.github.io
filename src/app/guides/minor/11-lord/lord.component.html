@@ -1,0 +1,52 @@
+<div class="guide">
+    <div class="guide-summon">
+        <h1 class="guide-label" [style.color]="enemy.color">How to Summon</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <img class="guide-summon-image"
+        src="https://i.imgur.com/tfCnmyJ.jpg"
+        alt="location-image"/>
+        <p class="guide-description">
+            Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 90</span> 
+            before approaching this boss as you'll get no experience nor loot if you're below that threshold.
+            <br>
+            <br> 
+            This boss is within the lair during the <span style="color:#d6fffa">Expedition Scenario</span>. To summon this boss, get 
+            <span style="color:#0288d1">6 Blue Stones</span> from either the Deposits at the Cave Entrance 
+            <span style="color:#FFD700">(Teleport 4)</span> if you have an <span style="color:#52E252">Abyssal Pickaxe</span> or 
+            above, or the <span style="color:#0288d1">Blue Stone Deposits</span> at Frosty Snowfield 
+            <span style="color:#FFD700">(Teleport 6)</span>. Then, talk to the Captain of the Expedition at Frosty Snowfield, 
+            and bring the Stones to the circle surrounded 
+            by 3 Prius Magus. See <span style="color:#5e66ae">Soul of Everfrost or Frostspider Queen</span> to see how to deal with the waves.</p>
+    </div>
+    <div class="guide-overall">
+        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <p class="guide-description">
+            <br>
+            This boss is extremely tanky for a Minor and has the first 
+            <span style="color:#9acd32">insta-kill mechanic</span> in the game. Throughout the fight there will be no time to recover as 
+            you will take periodic damage no matter where you are in the Lair due to <span [style.color]='enemy.color'>Hellfrost Body</span>. 
+            <span [style.color]='enemy.color'>Frostspider Lord</span> can only cast his spells whenever he has full mana, or once every 
+            4 seconds. You'll only have to worry about <span [style.color]='enemy.color'>Ice Storm</span> and 
+            <span [style.color]='enemy.color'>Frozen 
+            Shatter</span> as <span [style.color]='enemy.color'>Web Binding</span> is pretty weak.
+            <br>
+            <br>
+            At <span style="color:#90EE90">66% and 33% HP</span>, he will cast his <span [style.color]='enemy.color'>Frozen Barrier</span>, 
+            which is a shield that makes up about 10% of his HP. You can either wait it out, break it with a break spell, or deal enough damage 
+            to break it. He'll freeze you when its over but it's nothing to worry about. After this, he will gain access to 
+            <span [style.color]='enemy.color'>Frozen Shatter</span>, the <span style="color:#9acd32">insta-kill</span> mentioned earlier. 
+            When he uses <span [style.color]='enemy.color'>Frozen Shatter</span>, make sure you dont stand in front of him and 
+            keep moving to the side as that's the best way to avoid it. Keep going until he is dead.</p>
+        <div class="guide-spells">
+            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="skills[enemy.name]"></app-enemy-spell-display>
+        </div>
+    </div>
+    <div class="guide-kill">
+        <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
+        <iframe class="guide-kill-video" src="https://drive.google.com/file/d/1RYzslcwyRvOufJhOPXx7bV5bK3LiUSic/preview" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
+    </div>
+</div>

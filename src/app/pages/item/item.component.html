@@ -1,0 +1,115 @@
+<div class="item-container">
+    <div class="item">
+        <back-button></back-button>
+        <div class="item-large-container">
+            <ng-container *ngIf="item">
+                <div class="item-stats-container">
+                    <div class="item-details-container">
+                        <img class="item-thumbnail" *ngIf="item.name" src="{{ getItemImageURL(item.name) }}" alt="thumbnail" />
+                        <div class="item-content">
+                            <span class="item-name">{{item.name}}</span>
+                            <div class="item-flavor-container">
+                                <span>
+                                    <span class="item-flavor-line"  *ngIf="item.rank" [style.color]="item.color">{{ item.rank }}&nbsp;</span>
+                                    <span class="item-flavor-line" *ngIf="item.level" style="color: #FFD700;">Lvl. {{ item.level }}&nbsp;</span>
+                                    <span class="item-flavor-line"  *ngIf="item.grade" [style.color]="grade[item.grade].color">{{ grade[item.grade].name }}&nbsp;</span>
+                                    <span class="item-flavor-line"  *ngIf="item.type" >{{ item.type }}</span>
+                                </span>
+                            </div>
+                            <div class="item-quote-container">
+                                <span class="item-quote">{{ item.description }}</span>
+                            </div>
+                            <div class="item-attributes">
+                                <div class="item-attribute-container"  *ngIf='stats.length > 0'>
+                                    <ng-container *ngFor="let stat of stats">
+                                        <span class="item-attribute-label" [style.color]="possibleStats[stat].color">∴ {{ possibleStats[stat].value }}{{ possibleStats[stat].name }}</span>
+                                    </ng-container>
+                                </div>
+                                <div class="item-attribute-container" *ngIf='passive.length > 0' style="color: #40e0d0;">
+                                    <span class="item-attribute-label">Passive</span>
+                                    <ng-container *ngFor="let line of passive">
+                                        <span class="item-attribute-description">⁘ {{ line }}</span>
+                                    </ng-container>
+                                </div>
+                                <div class="item-attribute-container" *ngIf='active.length > 0' style="color: #40e0d0;"> 
+                                    <span class="item-attribute-label">Active</span>
+                                    <ng-container *ngFor="let line of active">
+                                        <span class="item-attribute-description">❖ {{ line }}</span>
+                                    </ng-container>
+                                </div>
+                                <div class="item-attribute-container" *ngIf='spec.length > 0' style="color: #5a7da0;">
+                                    <ng-container *ngFor="let line of spec">
+                                        <span class="item-attribute-description">※ {{ line }}</span>
+                                    </ng-container>
+                                </div>
+                                <div class="item-attribute-container" *ngIf='item.notes' style="color: #ffffff;">
+                                    <span class="item-attribute-label">Notes</span>
+                                    <ng-container *ngFor="let line of item.notes">
+                                        <span class="item-attribute-description">※ {{ line }}</span>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-lists">
+                    <div class="item-list-container" *ngIf='recipe.length > 0'>
+                        <span class="item-list-label">Ingredients</span>
+                        <ng-container *ngFor="let ingredient of recipe">
+                            <div class="item-list-content" *ngIf='ingredient.name.length==1'>
+                                <button mat-icon-button class="item-list-button" (click)="openItemDetails(ingredient.name[ingredient.currentIndex])">
+                                    <img src="{{ getItemImageURL(ingredient.name[ingredient.currentIndex]) }}"
+                                    alt="thumbnail"
+                                    width="100%" height="100%"
+                                    style="position:absolute; left: 0; top: 0;"/>
+                                </button>
+                                <span class="item-list-details"> x{{ingredient.amount[ingredient.currentIndex]}} {{ingredient.name[ingredient.currentIndex]}}</span>
+                                <div class="item-list-filler"></div>
+                            </div>
+                            <div class="item-list-content" *ngIf='ingredient.name.length>1;'>
+                                <button mat-icon-button inline=true class="item-list-button" (click)="openItemDetails(ingredient.name[ingredient.currentIndex])">
+                                    <img src="{{ getItemImageURL(ingredient.name[ingredient.currentIndex]) }}"
+                                    alt="thumbnail"
+                                    width="100%" height="100%"/>
+                                </button>
+                                <span class="item-list-details"> x{{ingredient.amount[ingredient.currentIndex]}} {{ingredient.name[ingredient.currentIndex]}}</span>
+                                <button mat-icon-button class="item-list-swap" (click)='ingredient.currentIndex = incrementIndex(ingredient.currentIndex,ingredient.name.length)'>
+                                    <img
+                                    src="https://static.wikia.nocookie.net/wowpedia/images/4/4f/BTNSelectUnit.png"
+                                    width="100%" height="100%"
+                                    style="position:absolute; left: 0; top: 0;"
+                                    alt="thumbnail"/>
+                                </button>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <div class="item-list-container" *ngIf='this.item.droprate'>
+                        <span class="item-list-label">Dropped By</span>
+                        <ng-container *ngFor="let rate of rates">
+                            <div class="item-list-content">
+                                <button mat-icon-button class="item-list-button" (click)="openEnemyDetails(rate.name)">
+                                <img src="{{ getBossImageURL(rate.name) }}"
+                                alt="thumbnail"
+                                width="100%" height="100%"/>
+                                </button>
+                                <p class="item-list-details"> {{ rate.name }}  ({{ rate.rate }}%) </p>
+                                <div class="item-list-filler"></div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="item-used-in-container" *ngIf="item.required_by">
+                    <span class="item-used-in-label">{{ display }}</span>
+                    <div class="item-used-in">
+                        <ng-container *ngFor="let req of item.required_by">
+                            <button mat-icon-button class="item-used-in-button" (click)="openItemDetails(req)" (mouseover)="changeItemDisplay(req)" (mouseout)="changeItemDisplay('Used In')">
+                                <img class="item-button-image" src="{{ getItemImageURL(req) }}"
+                                alt="thumbnail" style="width:100%;"/>
+                                </button>
+                        </ng-container>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

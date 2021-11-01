@@ -1,0 +1,105 @@
+<div class="enemy-container">
+    <div class="enemy">
+        <back-button></back-button>
+        <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="0" dynamicHeight>
+            <mat-tab label="Stats">
+                <div class="enemy-details" *ngIf="enemy">
+                    <div class="enemy-basics">
+                        <div class="enemy-card">
+                            <img class="enemy-image"
+                            src="{{getEnemyImageURL(enemy.name)}}"
+                            alt="Body Image"/>
+                            <div class="enemy-quick-details">
+                                <span class="enemy-name"  *ngIf="enemy.name" [style.color]="enemy.color">{{ enemy.name }}&nbsp;</span>  
+                                <div class="enemy-quote" *ngIf="enemy.quote" [style.color]="enemy.color">"{{ enemy.quote }}"</div>
+                                <div class="enemy-descript">
+                                    <span class="enemy-descript-line" *ngIf="enemy.level" style="color: #FFD700;">Lvl. {{ enemy.level }}&nbsp;</span> 
+                                    <span class="enemy-descript-line" *ngIf="enemy.category">{{ enemy.category }}&nbsp;</span> 
+                                    <span class="enemy-descript-line" *ngIf="enemy.type && enemy.type!='Mob'">{{ enemy.type }}&nbsp;</span> 
+                                    <p class="enemy-descript-line"  *ngIf="enemy.respawn">Respawns: {{ enemy.respawn }}</p>
+                                    <p class="enemy-descript-line"  *ngIf="enemy.timer">Respawns: Every {{ enemy.timer }} seconds</p>
+                                </div>
+                            </div>
+                            <!-- <div class="enemy-special-stat-change">
+                                
+                            </div> -->
+                        </div>
+                        <div class="enemy-difficulty" *ngIf="enemy.category != 'Field' && enemy.category != 'Creep' && !enemy.name.includes('Clown')">
+                            <span class="enemy-difficulty-label" *ngIf='difficulty==1'>Difficulty: {{ difficulty }} Player</span>
+                            <span class="enemy-difficulty-label" *ngIf='difficulty>1'>Difficulty: {{ difficulty }} Players</span>
+                            <mat-slider min="1" max="10" step="1" value="1" (input)="onInputChange($event)"></mat-slider>
+                        </div>
+                        <div class="enemy-stats" >
+                            <ng-container *ngFor="let stat of displayedStats">
+                                <div class="enemy-stat">
+                                    <img class="enemy-stat-image"
+                                    src="{{getStatImage(stat)}}"
+                                    alt="{{stat}} Thumbnail"/>
+                                    <span class="enemy-stat-details" [style.color]="possibleStats[stat].color">{{ getStatString(stat) }}</span>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="enemy-notes-container" *ngIf='enemy.notes'>
+                            <span class="enemy-notes-label">Notes</span>
+                            <ng-container *ngFor="let line of enemy.notes">
+                                <span class="enemy-notes-description">※ {{ line }}</span>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="enemy-drop-container" *ngIf="enemy.drops">
+                        <div class="enemy-drop-label-container">
+                            <span class="enemy-drop-label">Drops (Max: {{ enemy.limit }})</span>
+                        </div>
+                        <div class="enemy-drop-list">
+                            <ng-container *ngFor="let drop of enemy.drops">
+                                <div class="enemy-drop" *ngIf="getItemImageURL(drop) != 'ERROR'">
+                                    <button mat-icon-button class="enemy-drop-button" (click)="openItemDetails(drop)">
+                                    <img src="{{ getItemImageURL(drop) }}"
+                                    alt="thumbnail"
+                                    width="100%"/>
+                                    </button>
+                                    <span class="enemy-drop-details"> {{ getItemNameString(drop) }} {{ getDropRateString(enemy, drop) }}</span>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Details">
+                <div *ngIf='enemy'>
+                    <div [ngSwitch]="true">
+                        <hydraGuide     *ngSwitchCase="enemy.name.includes('Hydra')"             [enemy]='enemy' [skills]='skills'></hydraGuide>
+                        <jackGuide      *ngSwitchCase="enemy.name.includes('Jack')"              [enemy]='enemy' [skills]='skills'></jackGuide>
+                        <countGuide     *ngSwitchCase="enemy.name.includes('Count')"             [enemy]='enemy' [skills]='skills'></countGuide>
+                        <mageGuide      *ngSwitchCase="enemy.name.includes('Mage Lord')"         [enemy]='enemy' [skills]='skills'></mageGuide>
+                        <wingsGuide     *ngSwitchCase="enemy.name.includes('Wings')"             [enemy]='enemy' [skills]='skills'></wingsGuide>
+                        <gateGuide      *ngSwitchCase="enemy.name.includes('Gatekeeper')"        [enemy]='enemy' [skills]='skills'></gateGuide>
+                        <angelGuide     *ngSwitchCase="enemy.name.includes('Guardian Angel')"    [enemy]='enemy' [skills]='skills'></angelGuide>
+                        <corruptGuide   *ngSwitchCase="enemy.name.includes('Corrupt Angel')"     [enemy]='enemy' [skills]='skills'></corruptGuide>
+                        <clownGuide     *ngSwitchCase="enemy.name.includes('Clown')"             [enemy]='enemy' [skills]='skills'></clownGuide>
+                        <soulGuide      *ngSwitchCase="enemy.name.includes('Soul of Everfrost')" [enemy]='enemy' [skills]='skills'></soulGuide>
+                        <spiderGuide    *ngSwitchCase="enemy.name.includes('Frostspider Queen')" [enemy]='enemy' [skills]='skills'></spiderGuide>
+                        <lordGuide      *ngSwitchCase="enemy.name.includes('Frostspider Lord')"  [enemy]='enemy' [skills]='skills'></lordGuide>
+                        <demonGuide     *ngSwitchCase="enemy.name.includes('Demon Lord Beriel')" [enemy]='enemy' [skills]='skills'></demonGuide>
+                        <spiritGuide    *ngSwitchCase="enemy.name.includes('Spirit Beast')"      [enemy]='enemy' [skills]='skills'></spiritGuide>
+                        <rectusGuide    *ngSwitchCase="enemy.name.includes('Rectus')"            [enemy]='enemy' [skills]='skills'></rectusGuide>
+                        <flameGuide     *ngSwitchCase="enemy.name.includes('Flame Nightmare')"   [enemy]='enemy' [skills]='skills'></flameGuide>
+                        <turtleGuide    *ngSwitchCase="enemy.name.includes('Turtle Lord')"       [enemy]='enemy' [skills]='skills'></turtleGuide>
+                        <boneGuide      *ngSwitchCase="enemy.name.includes('Bone Dragon')"       [enemy]='enemy' [skills]='skills'></boneGuide>
+                        <skeletonGuide  *ngSwitchCase="enemy.name.includes('Skeleton King')"     [enemy]='enemy' [skills]='skills'></skeletonGuide>
+                        <zombieGuide    *ngSwitchCase="enemy.name.includes('Zombie Lord')"       [enemy]='enemy' [skills]='skills'></zombieGuide>
+                        <entGuide       *ngSwitchCase="enemy.name.includes('Ancient Ent')"       [enemy]='enemy' [skills]='skills'></entGuide>
+                        <archangelGuide *ngSwitchCase="enemy.name.includes('Archangel')"         [enemy]='enemy' [skills]='skills'></archangelGuide>
+                        <shadowGuide    *ngSwitchCase="enemy.name.includes('Shadow Dragon')"     [enemy]='enemy' [skills]='skills'></shadowGuide>
+                        <deathGuide     *ngSwitchCase="enemy.name.includes('Death Fiend')"       [enemy]='enemy' [skills]='skills'></deathGuide>
+                        <valtoraGuide   *ngSwitchCase="enemy.name.includes('Valtora')"           [enemy]='enemy' [skills]='skills'></valtoraGuide>
+                        <ifritGuide     *ngSwitchCase="enemy.name.includes('Ifrit')"             [enemy]='enemy' [skills]='skills'></ifritGuide>
+                        <nereidGuide    *ngSwitchCase="enemy.name.includes('Nereid')"            [enemy]='enemy' [skills]='skills'></nereidGuide>
+                        <agarethGuide   *ngSwitchCase="enemy.name.includes('Agareth')"           [enemy]='enemy' [skills]='skills'></agarethGuide>
+                        <defaultGuide   *ngSwitchDefault                                         [enemy]='enemy' [skills]='skills'></defaultGuide>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

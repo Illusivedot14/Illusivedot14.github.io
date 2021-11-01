@@ -1,0 +1,11 @@
+<div class="enemy-container">
+    <mat-tab-group class="enemy-tabs" mat-align-tabs="center" backgroundColor="primary" [selectedIndex]="2" dynamicHeight>
+        <mat-tab *ngFor="let category of enemy_categories; let i = index" [label]="category">
+          <div class="enemies">
+            <ng-container *ngFor="let enemy of enemy_list[i]">
+              <enemy-card *ngIf='enemy' [enemy]='enemy' [drops]='getBossDropsInfo(enemy.drops)'></enemy-card>
+            </ng-container>
+          </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

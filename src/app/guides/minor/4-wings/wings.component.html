@@ -1,0 +1,39 @@
+<div class="guide">
+    <div class="guide-summon">
+        <h1 class="guide-label" [style.color]="enemy.color">How to Summon</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <img class="guide-summon-image"
+        src="https://i.imgur.com/0asG0Co.jpg"
+        alt="location-image"/>
+        <p class="guide-description">
+            Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 70</span> 
+            before approaching this boss as you'll get no experience nor loot if you're below that threshold.
+            <br>
+            <br> 
+            To summon this boss, gather <span style="color:#ff9ca4">4 Red Stones</span> from any 
+            <span style="color:#ff9ca4">Red Stone Deposit</span> in Lava Lands 
+            <span style="color:#FFD700">(Teleport 8)</span> with any pickaxe or, if you have an <span style="color:#52E252">Abyssal Pickaxe</span> or above, 
+            you can mine directly from the Stone Deposits in front of golem cave <span style="color:#FFD700">(Teleport 4)</span>.  
+            Then, bring the stones above the 
+            Ancient Elemental in Lava Land <span style="color:#FFD700">(Teleport 8)</span>, as shown above.</p>
+    </div>
+    <div class="guide-overall">
+        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <p class="guide-description">
+            <br>
+            Look carefully at his actions as he does not have any wind-up animation for any of his spells. At <span style="color:#90EE90">50% HP</span>, just dodge 
+        his fireballs as his <span [style.color]='enemy.color'>Dragon's Might</span> only lasts for <span style="color:#FFD700">5 seconds</span>.</p>
+        <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills[enemy.name], ['Dragon%27s%20Might'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+        <div class="guide-spells">
+            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getRemainingSkills(skills[enemy.name])"></app-enemy-spell-display>
+        </div>
+    </div>
+    <div class="guide-kill">
+        <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
+        <iframe class="guide-kill-video" src="https://drive.google.com/file/d/1pVwI1FA8fkMifRbJpWrwrOqGB-r8Vo2N/preview" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
+    </div>
+</div>

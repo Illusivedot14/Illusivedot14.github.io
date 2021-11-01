@@ -1,0 +1,72 @@
+<div class="guide">
+    <div class="guide-summon">
+        <h1 class="guide-label" [style.color]="enemy.color">Location</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <img class="guide-summon-image"
+        src="https://i.imgur.com/Va9tuKo.jpg"
+        alt="location-image"/>
+        <p class="guide-description">
+            Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
+            before approaching this boss as you'll get no loot if you're below that threshold. Also if you're not being carried, 
+            have at least Mid Level gear before attempting to make your life easier, from this point on, you need a party.
+            <br>
+            <br> 
+            To find this boss, just go to the Prius Forward Camp <span style="color:#FFD700">(Teleport Q-1)</span> 
+            and go north, to the <span [style.color]='enemy.color'>Sealed Land</span>.</p>
+    </div>
+    <div class="guide-overall">
+        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <p class="guide-description">
+            <br>
+            This boss will test your patience if you're melee as you 
+            <span style="color:#FF6666">NEED TO STAY AWAY FROM THE BOSS</span> at 
+            <span style="color:#90EE90">every 25% HP threshold</span>. I'd recommend modifying your 
+            Health Bar so that you can see 25% Marks, see Discord for more details.
+            <br>
+            <br>
+            <span [style.color]='enemy.color'><span [style.color]='enemy.color'>Skeleton King</span></span> starts out with all of his abilities except 
+            <span [style.color]='enemy.color'>Absolute Devastation</span>, which he will unlock later. He'll also spawn 2 
+            <span [style.color]='enemy.color'>Skeleton Soliders</span> every <span style="color:#FFD700">15 seconds</span>, one on each side of the arena. Be sure to 
+            keep their numbers low as they can pull people into the skeleton piles on the side, which will 
+            <span style="color:#FF7276">deal 10% max HP magic damage per second.</span></p>
+            <button mat-icon-button class="minion-button" (click)="openMinionDetails('Skeletal Solider')" style="align-self: center;">
+                <img class="button-image" src="{{ getEnemyImageURL('Skeletal Solider') }}"
+                alt="thumbnail"
+                width="100%"/>
+            </button>
+            <p></p>
+            <p class="guide-description">
+            If you have a lot of summons, <u>don't clump them around</u> <span [style.color]='enemy.color'> Skeleton King</span>, 
+            he'll use <span [style.color]='enemy.color'>Soul Drain</span> to <span style="color:#90EE90">regain a ton of health</span>. 
+            He'll use <span [style.color]='enemy.color'>Soul Terror</span> at ranged, clumped up units. There aren't a lot of wind-ups for his abilities, 
+            so you have to know the cooldowns to dodge them.
+            <br>
+            <br>
+            At <span style="color:#90EE90">every 25% HP lost</span>, he'll begin using <span [style.color]='enemy.color'>True Power of Despair</span>, 
+            which takes 3 seconds to fully power. Once activated, <span style="color:#9acd32">he will instantly kill any 
+            player or player-owned unit around him (500 range).</span> So dodge it, or don't if you're that kind of person.</p>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills[enemy.name], ['True%20Power%20of%20Despair'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <p class="guide-description">
+            <br>
+            After this point, he'll unlock <span [style.color]='enemy.color'>Absolute Devastation</span>, which he will need to cast 
+            <u>at least once</u> during the fight. If he reaches below 0 and he hasn't cast it, he will regain 
+            <span style="color:#90EE90">25% of his health</span> and 
+            cast it immediately. Make sure the <span [style.color]='enemy.color'>Skeleton Soliders</span> don't pull you during the ability.</p>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills[enemy.name], ['Absolute%20Devastation'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <p class="guide-description">
+            <br>
+            Keep the Solider number down and keep going through the fight and he'll go down.
+            </p>
+        <div class="guide-spells">
+            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getRemainingSkills(skills[enemy.name])"></app-enemy-spell-display>
+        </div>
+    </div>
+    <div class="guide-kill">
+        <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
+        <iframe class="guide-kill-video" src="https://drive.google.com/file/d/1w6graQgjH4XWtu51jwVpmG5hhhFvkvdD/preview" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
+    </div>
+</div>

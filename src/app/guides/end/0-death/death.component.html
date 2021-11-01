@@ -1,0 +1,110 @@
+<div class="guide">
+    <div class="guide-summon">
+        <h1 class="guide-label" [style.color]="enemy.color">How to Summon</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <img class="guide-summon-image"
+        src="https://i.imgur.com/Mwl2S3I.jpg"
+        alt="location-image"/>
+        <p class="guide-description">
+            Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
+            before approaching this boss as you'll get no experience nor loot if you're below that threshold.
+            <br>
+            <br> 
+            To summon this boss, first, with any pickaxe, gather <span style="color:red">12 Red Stones</span> from any 
+            <span style="color:red"> Red Stone Deposit</span> 
+            in the Lava Lands <span style="color:#FFD700">(Teleport 8)</span> or if you have an 
+            <span style="color:#52E252">Abyssal Pickaxe</span> or above, 
+            you can mine directly from the Stone Deposits in front of the golem cave <span style="color:#FFD700">(Teleport 4)</span>.  
+            Next, kill the <span>Mad Clown</span> and cancel his Memory Cube so he doesn't respawn. Then, kill all the high level mobs 
+            on the lower half of the area. Finally, bring the red stone's to where <span>Mad Clown</span> was to summon Death Fiend, where he 
+            will spawn on the bottom right corner.
+        </p>
+    </div>
+    <div class="guide-overall">
+        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <p class="guide-description">
+            <br>
+            Death Fiend is a boss of separation. Your team will be expected to handle Death Fiend (DF) and two other summons 
+            at once spread across the arena. It is essential that these minions are spread at least 1,000 range apart or else 
+            they gain 99% Damage Reduction. To accomplish this, you will need at least 3 people to hold each minion. For the 
+            main boss, you will need someone dedicated to survival as Death Fiend packs a punch. However, for the minions, 
+            most DPS can tank them with slight survival gear. All of these enemies must be killed at the same time. It is 
+            imperative that you have at least some DPS on every boss. If any holder dies, you must either revive or replace 
+            them. Each member must also have a way to survive a one shot or they will all die when the phase changes. 
+            Communication is key as each boss can potentially wipe the whole team
+        </p>
+        <h1 class="guide-label" [style.color]="enemy.color">Death Fiend</h1>
+        <p class="guide-description">
+            Death Fiend is a boss of separation. Your team will be expected to handle Death Fiend (DF) and two other summons 
+            at once spread across the arena. It is essential that these minions are spread at least 1,000 range apart or else 
+            they gain 99% Damage Reduction. To accomplish this, you will need at least 3 people to hold each minion. For the 
+            main boss, you will need someone dedicated to survival as Death Fiend packs a punch. However, for the minions, 
+            most DPS can tank them with slight survival gear. All of these enemies must be killed at the same time. It is 
+            imperative that you have at least some DPS on every boss. If any holder dies, you must either revive or replace 
+            them. Each member must also have a way to survive a one shot or they will all die when the phase changes. 
+            Communication is key as each boss can potentially wipe the whole team
+        </p>
+        <div class="guide-minion-example">
+            <img
+            src="https://i.imgur.com/KcZQOgy.png"
+            alt="location-image"
+            style="width: 33vw; height: 100vh; min-width: 220px; min-height: 220px;"/>
+        </div>
+        <app-enemy-spell-display [caster]= "enemy.name" [category]="enemy.category" 
+        [skills]="getSkills(skills[enemy.name], ['Mark%20of%20Death'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+        <h1 class="guide-label" [style.color]="enemy.color">Death Huntress</h1>
+        <p class="guide-description">
+            Death Fiend is a boss of separation. Your team will be expected to handle Death Fiend (DF) and two other summons 
+            at once spread across the arena. It is essential that these minions are spread at least 1,000 range apart or else 
+            they gain 99% Damage Reduction. To accomplish this, you will need at least 3 people to hold each minion. For the 
+            main boss, you will need someone dedicated to survival as Death Fiend packs a punch. However, for the minions, 
+            most DPS can tank them with slight survival gear. All of these enemies must be killed at the same time. It is 
+            imperative that you have at least some DPS on every boss. If any holder dies, you must either revive or replace 
+            them. Each member must also have a way to survive a one shot or they will all die when the phase changes. 
+            Communication is key as each boss can potentially wipe the whole team
+        </p>
+        <div class="guide-spells">
+            <h1 class="guide-label" [style.color]="enemy.color">Death Huntress Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+            <app-enemy-spell-display [caster]="'Death Huntress'" [category]="enemy.category" [skills]="skills['Death Huntress']"></app-enemy-spell-display>
+        </div>
+        <h1 class="guide-label" [style.color]="enemy.color">Death Weaver</h1>
+        <p class="guide-description">
+            Death Fiend is a boss of separation. Your team will be expected to handle Death Fiend (DF) and two other summons 
+            at once spread across the arena. It is essential that these minions are spread at least 1,000 range apart or else 
+            they gain 99% Damage Reduction. To accomplish this, you will need at least 3 people to hold each minion. For the 
+            main boss, you will need someone dedicated to survival as Death Fiend packs a punch. However, for the minions, 
+            most DPS can tank them with slight survival gear. All of these enemies must be killed at the same time. It is 
+            imperative that you have at least some DPS on every boss. If any holder dies, you must either revive or replace 
+            them. Each member must also have a way to survive a one shot or they will all die when the phase changes. 
+            Communication is key as each boss can potentially wipe the whole team
+        </p>
+        <div class="guide-spells">
+            <h1 class="guide-label" [style.color]="enemy.color">Death Weaver Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+            <app-enemy-spell-display [caster]="'Death Weaver'" [category]="enemy.category" [skills]="skills['Death Weaver']"></app-enemy-spell-display>
+        </div>
+        <h1 class="guide-label" [style.color]="enemy.color">Death Devourer</h1>
+        <p class="guide-description">
+            Death Fiend is a boss of separation. Your team will be expected to handle Death Fiend (DF) and two other summons 
+            at once spread across the arena. It is essential that these minions are spread at least 1,000 range apart or else 
+            they gain 99% Damage Reduction. To accomplish this, you will need at least 3 people to hold each minion. For the 
+            main boss, you will need someone dedicated to survival as Death Fiend packs a punch. However, for the minions, 
+            most DPS can tank them with slight survival gear. All of these enemies must be killed at the same time. It is 
+            imperative that you have at least some DPS on every boss. If any holder dies, you must either revive or replace 
+            them. Each member must also have a way to survive a one shot or they will all die when the phase changes. 
+            Communication is key as each boss can potentially wipe the whole team
+        </p>
+        <div class="guide-spells">
+            <h1 class="guide-label" [style.color]="enemy.color">Death Devourer Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+            <app-enemy-spell-display [caster]="'Death Devourer'" [category]="enemy.category" [skills]="skills['Death Devourer']"></app-enemy-spell-display>
+        </div>
+        <div class="guide-spells">
+            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+            <app-enemy-spell-display [caster]= "enemy.name" [category]="enemy.category" [skills]="getRemainingSkills(skills[enemy.name])"></app-enemy-spell-display>
+        </div>
+    </div>
+</div>

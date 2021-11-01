@@ -3,9 +3,9 @@
       <h1 class = 'logo'>TWRPG Guidebook</h1>
       <span class="menu-spacer"></span>
       <div>
-        <a mat-button [routerLink]="'/character'"> Characters </a>
-        <a mat-button [routerLink]="'/enemy'"> Enemies </a>
-        <a mat-button [routerLink]="'/item'"> Items </a>
+        <a class="nav-button" mat-button [routerLink]="'/character'"> Characters </a>
+        <a class="nav-button" mat-button [routerLink]="'/enemy'"> Enemies </a>
+        <a class="nav-button" mat-button [routerLink]="'/item'"> Items </a>
       </div>
       <form class="nav-form" #form="ngForm" (ngSubmit)="onSubmitItem(form)" *ngIf='checkIfItems()'>
         <input
@@ -13,7 +13,7 @@
             name="nav"
             ngModel
             placeholder="Search 300+ Items!" />
-        <button class="nav-button">Search</button>
+        <button class="nav-search-button">Search</button>
     </form>
     </mat-toolbar-row>
 </mat-toolbar>

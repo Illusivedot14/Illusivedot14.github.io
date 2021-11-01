@@ -1,0 +1,45 @@
+<div class="guide">
+    <div class="guide-summon">
+        <h1 class="guide-label" [style.color]="enemy.color">Location</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <img class="guide-summon-image"
+        src="https://i.imgur.com/aXVvxri.jpg"
+        alt="location-image"/>
+        <p class="guide-description">
+        Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
+        before approaching this boss as you'll get no loot if you're below that threshold. Also if you're not being carried, 
+        have at least <span style="color:#bb2233">Demon Lord</span> level gear before attempting to make your life easier.
+        <br>
+        <br> 
+        To find this boss, just go into the Deep Forest in the Spirit Forest West of Prius 
+        <span style="color:#FFD700">(Teleport 9)</span>.</p>
+    </div>
+    <div class="guide-overall">
+        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <p class="guide-description">
+        <br>
+        This is your first Mid boss, it is also the easiest Mid boss. Your main concerns are dodging his 
+        <span [style.color]='enemy.color'>Ethereal Strike/Spirit Echo</span> and blocking the <span [style.color]='enemy.color'>Drain Orbs</span> 
+        from reaching him, like with Mana Ancient. 
+        This boss is straight forward until he reaches <span style="color:#90EE90">50% HP</span>, where he will use 
+        <span [style.color]='enemy.color'>Heaven's Wrath</span>. 
+        <br><br></p>
+        <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills[enemy.name], ['Heaven%27s%20Wrath'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+        <p class="guide-description">
+        <br>
+        After <span style="color:#90EE90">50% HP</span>, he will gain <span style="color:#FFFF99">25% Damage Reduction</span> 
+        and his <span [style.color]='enemy.color'>Ethereal Strike</span> will travel a second time after reaching its maximum range. This part is the same as before except he's a little bit tankier. 
+        Mind your positioning due to the Spirit Flames and you'll get this boss down in no time.</p>
+        <div class="guide-spells">
+            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getRemainingSkills(skills[enemy.name])"></app-enemy-spell-display>
+        </div>
+    </div>
+    <div class="guide-kill">
+        <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
+        <iframe class="guide-kill-video" src="https://drive.google.com/file/d/13e1cijRsMz6NSLiLVCcAEaoNBeUd0Fft/preview" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
+    </div>
+</div>

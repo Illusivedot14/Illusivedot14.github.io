@@ -1,0 +1,113 @@
+<div class="guide">
+    <div class="guide-summon">
+        <h1 class="guide-label" [style.color]="enemy.color">How to Summon</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <img class="guide-summon-image"
+        src="https://i.imgur.com/hmP0u9g.jpg"
+        alt="location-image"/>
+            <p class="guide-description">
+                Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
+                before approaching this boss as you'll get no loot if you're below that threshold. Also if you're not being carried, 
+                have at least Mid Level gear before attempting to make your life easier, from this point on, you need a party.
+                <br>
+                <br> 
+                To find this boss, just go into the Prius Forward Camp <span style="color:#FFD700">(Teleport Q-1)</span> 
+                and go east into the <span [style.color]='enemy.color'>Eternal Graveyard</span>. On the first kill, bring 4 Holy Waters from the Priest 
+                in the top-left corner of Prius <span style="color:#FFD700">(Teleport 5)</span> and 
+                use them on the <span [style.color]='enemy.color'>Worshippers of Immortality</span> around the dormant boss. </p>
+    </div>
+    <div class="guide-overall">
+        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <p class="guide-description">
+            <br>
+            This boss is the the most unique high boss as <span style="color:#FF6666">you'll be killing him not once, 
+            but three or more times</span>. You will need at least one or two people than can interrupt enemies.
+            <br>
+            <br>
+            When starting, <span [style.color]='enemy.color'>Zombie Lord</span> will take <span style="color:#FFD700">4 seconds</span> to get up, he'll have 
+            <span style="color:#FFFF99">90% Damage Reduction</span> at this point. When he finally gets up, he'll knock everyone back and lose his Damage Reduction. 
+            In his first life, he has all of his abilities except <span [style.color]='enemy.color'>Aura of Death</span>, 
+            which he will unlock in his next life. Whenever Zombie Lord shouts <span style="color: greenyellow;">"..."</span>, 
+            run. If he gets you, he'll be able to recover at least half of his HP. 
+            In later lives this put you at a major disadvantage. 
+            <br>
+            <br>
+            When <span [style.color]='enemy.color'>Zombie Lord</span> dies, if he has full mana, he will use 
+            <span [style.color]='enemy.color'>Immortality</span>, which uses up all of his mana. On his first and second life, 
+            he will have full mana thanks to his <span [style.color]='enemy.color'>Worshippers</span>. At past 
+            <span style="color:#90EE90">80% HP</span> past his 
+            second life, he'll be able to use <span [style.color]='enemy.color'>Aura of Death</span>. You can either dodge the blasts or move out of range. Priest or Witch can interrupt this spell by using Hex or Raguel's Pull.</p>
+            <app-enemy-spell-display [caster]= "enemy.name" [category]="enemy.category" [skills]="getSkills(skills[enemy.name], ['Immortality', 'Aura%20of%20Death'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <p></p>
+            <p class="guide-description">
+            On that note, <span style="color:#90EE90">Supports or people who can interrupt channeling will be EXPECTED to stun Worshippers when they reach full mana and are casting their Gift of Immortality</span>. This gift will kill all those 
+            between the <span [style.color]='enemy.color'>Worshipper and Zombie Lord</span> and 
+            <span style="color:#90EE90">heal him for 25% of his max HP</span> and <span style="color:#8292e9">give 45 mana</span>. 
+            It is imperative that these acolytes are interrupted. They will lose all mana after interruption and start to 
+            regen mana. Supports can also cleanse those with the Infect debuff, which is important to do when the person who has the debuff is about to die.
+            </p>
+            <app-enemy-spell-display [caster]= "'Worshipper of Immortality'" [category]="enemy.category" [skills]="getSkills(skills['Worshipper of Immortality'], ['Gift%20of%20Immortality'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+            <p></p>
+            <div class="guide-minion-example">
+                <img
+                src="https://i.imgur.com/J16VPwT.png"
+                alt="location-image"
+                style="width: 30vw; height: 40vh; min-width: 220px; min-height: 220px;"/>
+                <button mat-icon-button class="minion-button" (click)="openMinionDetails('Worshipper of Immortality')" 
+                style="position: absolute; width: 6.4%; height: 6.4%; left:85%; top:40%;">
+                    <img class="button-image" src="{{ getEnemyImageURL('Worshipper of Immortality') }}"
+                    alt="thumbnail"
+                    width="100%"/>
+                </button>
+                <button mat-icon-button class="minion-button" (click)="openMinionDetails('Worshipper of Immortality')" 
+                style="position: absolute; width: 6.4%; height: 6.4%; left:5%; top:40%;">
+                    <img class="button-image" src="{{ getEnemyImageURL('Worshipper of Immortality') }}"
+                    alt="thumbnail"
+                    width="100%"/>
+                </button>
+                <button mat-icon-button class="minion-button" (click)="openMinionDetails('Worshipper of Immortality')" 
+                style="position: absolute; width: 6.4%; height: 6.4%; left:45%; top:1%;">
+                    <img class="button-image" src="{{ getEnemyImageURL('Worshipper of Immortality') }}"
+                    alt="thumbnail"
+                    width="100%"/>
+                </button>
+                <button mat-icon-button class="minion-button" (click)="openMinionDetails('Worshipper of Immortality')" 
+                style="position: absolute; width: 6.4%; height: 6.4%; left:45%; top:85%;">
+                    <img class="button-image" src="{{ getEnemyImageURL('Worshipper of Immortality') }}"
+                    alt="thumbnail"
+                    width="100%"/>
+                </button>
+            </div>
+            <p class="guide-description">
+            On his third life and beyond, <span [style.color]='enemy.color'>Zombie Lord</span> can drop items. The fight will be exactly like the second life. You may have noticed that everytime <span [style.color]='enemy.color'>Zombie Lord</span> ressurects he gets stronger. He'll gain more 
+            and more <span style="color:#FFFF99">Damage Reduction</span> the more he ressurects and <span style="color:#FF6666">by the fourth life and beyond, his damage will also start increasing by 25% every life</span>. If you're just after the loot, just kill him on the third life. 
+            On that note, make sure his Zombies (the ones that spawn every 10 seconds) are kept below 50 units, or else you'll fail. There is a secret reward in form of the Immortal Kitty Token when you kill <span [style.color]='enemy.color'>Zombie Lord</span> nine times.
+            <br>
+            <br>
+            If you're going for <span [style.color]='enemy.color'>Ninth Life Zombie Lord</span>, keep your party to about 5-7 people. <span [style.color]='enemy.color'>Zombie Lord</span> will have <span style="color:#FFFF99">90% Damage Reduction</span> beyond 7th life. I'd recommend bringing <span style="color:#90EE90">3-4 supports who can cleanse and keep 
+            the group alive between one-shots</span> and a ton of burst damage since you'll only have 3 minutes to kill <span [style.color]='enemy.color'>Zombie Lord</span> in his ninth life.
+            </p>
+            <div class="guide-minions">
+                <h1 class="guide-label" [style.color]="enemy.color">Minions</h1>
+                <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+                <div class="minion-container">
+                <button mat-icon-button class="minion-button" (click)="openMinionDetails('Zombie')">
+                    <img class="button-image" src="{{ getEnemyImageURL('Zombie') }}"
+                    alt="thumbnail"
+                    width="100%"/>
+                </button>
+                </div>
+            </div> 
+        <div class="guide-spells">
+            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+            <app-enemy-spell-display [caster]= "enemy.name" [category]="enemy.category" [skills]="getRemainingSkills(skills[enemy.name])"></app-enemy-spell-display>
+        </div>
+    </div>
+    <div class="guide-kill">
+        <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
+        <iframe class="guide-kill-video" src="https://drive.google.com/file/d/1VSyFIxt_0Psn7uhhpgLbP_MIxfxwy1Eu/preview" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
+    </div>
+</div>

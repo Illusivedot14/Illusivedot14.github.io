@@ -7,26 +7,35 @@ import { Enemy, EnemySkill, Item } from '../models';
   providedIn: 'root'
 })
 export class HttpService {
-  private _item_URL: string = "https://raw.githubusercontent.com/sfarmani/twrpg-info/master/items.json";
-  private _enemy_URL: string = "https://raw.githubusercontent.com/Illusivedot14/twrpg-info/master/bosses.json";
-  private _enemy_skills_URL: string = "https://raw.githubusercontent.com/Illusivedot14/twrpg-info/master/skills-boss.json";
+  private itemURL:        string = "https://raw.githubusercontent.com/sfarmani/twrpg-info/master/items.json";
+  private enemyURL:       string = "https://raw.githubusercontent.com/sfarmani/twrpg-info/master/bosses.json";
+  private enemySkillsURL: string = "https://raw.githubusercontent.com/sfarmani/twrpg-info/master/skills-boss.json";
+  private iconURL:        string = "https://raw.githubusercontent.com/sfarmani/twicons/master/";
+  
   constructor(private http: HttpClient) { }
 
-  getItems() : Observable<Item[]>
-  {
-    return this.http.get<Item[]>(this._item_URL);
+  getItems() : Observable<Item[]> {
+    return this.http.get<Item[]>(this.itemURL);
   }
 
-  getEnemies() : Observable<Enemy[]>
-  {
-    return this.http.get<Enemy[]>(this._enemy_URL);
-  }
-  getEnemySkills() : Observable<EnemySkill[]>
-  {
-    return this.http.get<EnemySkill[]>(this._enemy_skills_URL);
+  getItemImageURL(name: string): string {
+    if(name.includes("Token")) { return this.iconURL + 'Token.jpg'; }
+    if(name.includes("Sealed") && name !== "Sealed Weapon") { name = name.substring(7) }
+    return this.iconURL + encodeURIComponent(name) + '.jpg';
   }
 
-  getEnemyImageFilename(boss_name: string){
+  getEnemies() : Observable<Enemy[]> {
+    return this.http.get<Enemy[]>(this.enemyURL);
+  }
+
+  getEnemySkills() : Observable<EnemySkill[]> {
+    return this.http.get<EnemySkill[]>(this.enemySkillsURL);
+  }
+  getEnemyImageURL(name: string) : string {
+    if(name == "Elemental of Chaos") return this.iconURL + encodeURIComponent(this.correctedEnemyName(name)) + '.jpg';
+    return this.iconURL + encodeURIComponent(this.correctedEnemyName(name)) + '%20Icon.jpg'
+  }
+  correctedEnemyName(boss_name: string): string {
     switch(true){
         case /^Spider/ig.test(boss_name): return "Spider Queen";
         case /^(Giant|Frost|Frostvemon) Spider/ig.test(boss_name): return "Spider Queen";

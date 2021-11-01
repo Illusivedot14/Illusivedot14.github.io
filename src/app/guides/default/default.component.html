@@ -1,0 +1,22 @@
+<div class="guide">
+    <div class="guide-summon">
+        <h1 class="guide-label" [style.color]="enemy.color" *ngIf="!enemy.conditions">Location</h1>
+        <h1 class="guide-label" [style.color]="enemy.color" *ngIf="enemy.conditions">Location and Conditions</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <img class="enemy-summon-image"
+        src="{{ getLocationAsset(enemy.name) }}"
+        alt="location-image"
+        *ngIf="!(enemy.type == 'Minion' || enemy.type == 'Mechanic')"/>
+        <div *ngIf="(enemy.type == 'Minion' || enemy.type == 'Mechanic')" style="height: 32px;"></div>
+        <span class="guide-description">{{ enemy.location }}</span> 
+        <span class="guide-description" *ngIf="enemy.conditions">Requires: {{ enemy.conditions }}</span> 
+    </div>
+    <div class="guide-overall">
+        <div class="guide-spells" *ngIf="enemy.spells" style="width: 90%; align-self:center;">
+            <span class="guide-label" [style.color]="enemy.color">Spells</span>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="skills[enemy.name]"></app-enemy-spell-display>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,98 @@
+<div class="guide">
+    <div class="guide-summon">
+        <h1 class="guide-label" [style.color]="enemy.color">Location</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <img class="guide-summon-image"
+        src="https://i.imgur.com/5RcjTcb.jpg"
+        alt="location-image"/>
+        <p class="guide-description">
+        Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> 
+        before approaching this boss as you'll get no loot if you're below that threshold. Also if you're not being carried, 
+        have at least <span style="color:#bb2233">Demon Lord</span> level gear before attempting to make your life easier.
+        <br>
+        <br> 
+        To find this boss, just go to the Corrupted Tower south of the Spirit Forest <span style="color:#FFD700">(Teleport 9)</span>.</p>
+    </div>
+    <div class="guide-overall">
+        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <p class="guide-description">
+        <br>
+        When he is first attacked, he will channel for 3 seconds and then deal <span style="color:red">50% HP damage</span> 
+        to all players in his room. He'll have all spells but Soul Swap during this part. 
+        Just focus him down and kill the <span [style.color]='enemy.color'>Life Orb</span> if you need health. When he reaches 
+        <span style="color:#90EE90">75% HP</span>, he'll summon <span [style.color]='enemy.color'>Avenger</span> 
+        at the center of the arena and become invulnerable. However, <span [style.color]='enemy.color'>Corruption Overload</span> 
+        will continue increasing in power during this phase. So don't take your time killing the minions!</p>
+        <div class="guide-minion-example">
+            <img
+            src="https://i.imgur.com/HAX3cRZ.jpg"
+            alt="location-image"
+            style="width: 22vw; height: 50vh; min-width: 220px; min-height: 220px;"/>
+            <button mat-icon-button class="minion-button" (click)="openMinionDetails('Life Orb')" 
+            style="position: absolute; width: 12.8%; height: 12.8%; left:75%; top:9%;">
+                <img class="button-image" src="{{ getEnemyImageURL('Life Orb') }}"
+                alt="thumbnail"
+                width="100%"/>
+            </button>
+            <button mat-icon-button class="minion-button" (click)="openMinionDetails('Avenger')" 
+            style="position: absolute; width: 12.8%;  height: 12.8%; left:22%; top:42%;">
+                <img class="button-image" src="{{ getEnemyImageURL('Avenger') }}"
+                alt="thumbnail"
+                width="100%"/>
+            </button>
+        </div>
+        <p class="guide-description">
+        The <span [style.color]='enemy.color'>Avenger</span> is pretty simple, just move behind him when he uses his 
+        <span [style.color]='enemy.color'>Corruption Wave</span>, which makes an arc in front of him. And you'll kill him quickly.
+        </p>
+        <app-enemy-spell-display 
+        [caster]="'Avenger'" 
+        [category]="enemy.category" 
+        [skills]="getSkills(skills['Avenger'], ['Corruption%20Wave'])" 
+        style="width: 90%; align-self: center;"></app-enemy-spell-display>
+        <p></p>
+        <p class="guide-description">
+        After the first summoning, he'll gain access to <span [style.color]='enemy.color'>Soul Swap</span>. Which can 
+        <span style="color: #9acd32;">insta-kill</span> the party if you're not careful, so make sure that both members are 
+        separated far away from each other and others. His  <span [style.color]='enemy.color'>Death 
+        Coil</span> will also get an upgrade in this phase, where it will shoot out eight coils that'll stun you.
+        <br><br>
+        In the second summoning, at <span style="color:#90EE90">50% HP</span>, he'll use 
+        <span [style.color]='enemy.color'>Corrupted Summoning</span> again and summon 1 
+        <span [style.color]='enemy.color'>Avenger</span> at the same spot, and 8 
+        <span [style.color]='enemy.color'>Stalkers</span> around himself. He will also go invulnerable. 
+        These <span [style.color]='enemy.color'>Stalkers</span> deal a massive amount of damage on death so be careful!</p>
+        <div class="minion-container" style="padding-top: 0px;">
+            <button mat-icon-button class="minion-button" (click)="openMinionDetails('Avenger')">
+                <img class="button-image" src="{{ getEnemyImageURL('Avenger') }}"
+                alt="thumbnail"
+                width="100%"/>
+            </button>
+            <button mat-icon-button class="minion-button" (click)="openMinionDetails('Stalker')">
+                <img class="button-image" src="{{ getEnemyImageURL('Stalker') }}"
+                alt="thumbnail"
+                width="100%"/>
+            </button>
+        </div>
+        <p></p>
+        <p class="guide-description">
+        After the second summoning, he'll be the same as the second phase.
+        <br><br>
+        At the last phase, at <span style="color:#90EE90">25% HP</span>, he'll summon the same amount of minions as the 
+        <span style="color:#90EE90">50% HP</span> trigger, except he'll turn vulnernable after <span style="color:#FFD700">5 seconds</span> of channeling. 
+        Focus down the minions or both <span [style.color]='enemy.color'>Rectus</span> 
+        and his minions if they're stacked and you'll kill this boss.
+        </p>
+        <div class="guide-spells">
+            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+            <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="skills[enemy.name]"></app-enemy-spell-display>
+        </div>
+    </div>
+    <div class="guide-kill">
+        <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
+        <iframe class="guide-kill-video" src="https://drive.google.com/file/d/1VoxvIzWrj-V3WYOOWix8gWih0M_RnofI/preview" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
+    </div>
+</div>

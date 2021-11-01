@@ -4,11 +4,11 @@
         <mat-panel-title class="spell-name" [style.color]="spell.color"> {{spell.name}}</mat-panel-title>
         <mat-panel-description style="margin-left: auto;">
             <div class="spell-cooldown" *ngIf="spell.cooldown">
-                <img class="spell-cooldown-image" src="../../../assets/img/cooldown.png"> 
+                <img class="spell-cooldown-image" src="../../../assets/img/spells/cooldown.png"> 
                 <span class="spell-cooldown-label">{{spell.cooldown}}</span>
             </div>
             <div class="spell-cost" *ngIf="spell.cost">
-                <img class="spell-cost-image" src="../../../assets/img/BTNManaBurn.png"> 
+                <img class="spell-cost-image" src="../../../assets/img/spells/BTNManaBurn.png"> 
                 <span class="spell-cost-label">{{spell.cost}}</span>
             </div>
           </mat-panel-description>

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="options">
+    <div class="sorters">
+      <mat-form-field>
+          <mat-label>Sort</mat-label>
+          <mat-select
+            panelClass="sort-select"
+            [(ngModel)]="sort"
+            (selectionChange)="selectItemsToDisplay(sort)">
+            <mat-option value="name">Name</mat-option>
+            <mat-option value="grade">Grade</mat-option>
+            <mat-option value="grade-rev">Grade Rev.</mat-option>
+            <mat-option value="drop">Drop Rate (Low to High)</mat-option>
+            <mat-option value="drop-rev">Drop Rate (High to Low)</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+    <mat-button-toggle-group multiple class="filters" #group="matButtonToggleGroup" (change)="toggleFilters(group.value)" style="flex-wrap: wrap; justify-content: center;">
+      <mat-button-toggle class="filter-button" *ngFor="let filter of getFilterNames(filterOptions);" [value]="filter">{{filter}}</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="items">
+    <ng-container *ngFor="let item of displayedItems">
+      <item-card [item]="item"></item-card>
+    </ng-container>
+  </div>
+</div>
