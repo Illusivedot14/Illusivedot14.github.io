@@ -1,31 +1,149 @@
 <div class="guide">
     <div class="guide-summon">
-        <h1 class="guide-label" [style.color]="enemy.color">How to Summon</h1>
-        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
-        <img class="guide-summon-image"
-        src="https://i.imgur.com/rYnin4d.jpg"
-        alt="location-image"
-        width="1344" height="448"/>
-        <p class="guide-description">
-            Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 50</span> 
-            before approaching this boss as you'll get no experience nor loot if you're below that threshold.
-            <br>
-            <br> 
-            To summon this boss, first, with any pickaxe, gather 4 <span style="color:#0288d1"> Blue Stone</span> s from any <span style="color:#0288d1"> Blue Stone</span>  Deposit in the Snowy Hills <span style="color:#FFD700">(Teleport )</span>6) or if you have an <span style="color:#52E252">Abyssal Pickaxe</span> or above, 
-            you can mine directly from the Stone Deposits in front of the golem cave <span style="color:#FFD700">(Teleport )</span>4).  Then, bring the stones to the 
-            top-right of the Seaside Area <span style="color:#FFD700">(Teleport )</span>3) in front of the shipwreck, as shown above.</p>
+      <h1 class="guide-label" [style.color]="enemy.color">How to Summon</h1>
+      <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+      <img class="guide-summon-image" src="https://i.imgur.com/VNouXWg.jpg" alt="location-image" />
+      <p class="guide-description">
+        To summon this boss, get
+        <span style="color: #ff9ca4">6 Red Stones</span> from either the
+        <span style="color: #ff9ca4">Red Stone Deposits</span> at Volcanic Lands
+        <span style="color: #ffd700">(Teleport 8)</span> or in front of the Cave Entrance
+        <span style="color: #ffd700">(Teleport 4)</span> if you have an
+        <span style="color: #52e252">Abyssal Pickaxe</span> or above. Place these Stones at the skulls East of Wallachia
+        <span style="color: #ffd700">(Teleport 7)</span>, below the fort that houses Count and Death Knight, as shown above. A cutscene will play and a portal will appear at East Prius Gate
+        <span style="color: #ffd700">(Teleport 4)</span>.
+        <b><u style="color: red">MAKE SURE YOU KILL THE PORTAL BEFORE ALL DEMONS DIE IN 90 SECONDS</u></b>. Walk into the portal where
+        <span [style.color]="enemy.color">Agareth</span> is located.
+      </p>
     </div>
     <div class="guide-overall">
-        <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
-        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+      <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
+      <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+      <p class="guide-description">
+        <br />
+        Agareth has multiple things going on at once so 
+      </p>
+      <div class="guide-kill">
+        <h1 class="guide-label" [style.color]="enemy.color">Phase 1</h1>
+        <mat-divider style="margin-bottom: 20px" [style.border-top-color]="enemy.color"></mat-divider>
         <p class="guide-description">
-            <br>
-            This boss is pretty simple as you can just hit and die until the boss is dead. However, its spells are pretty easy to avoid due to their long wind-ups. 
-            Just be mindful of your surroundings in case mobs come.</p>
-        <div class="guide-spells">
-            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
-            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
-            <app-enemy-spell-display [skills]="skills[enemy.name]"></app-enemy-spell-display>
+          <br /><br />
+          When Agareth is first attacked he will take 3 seconds to stand up. During that time he will take no damage, but he can be moved by spells.
+          <br /><br />
+          After he says "Come mortals, I will show you the true power of demons!" he can be damaged.
+          <br /><br />
+          Throughout this phase he will remain in his normal form and will cast his general spells. It is recommended to burst through this phase.
+        </p>
+      </div>
+      <div class="guide-spells">
+        <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <app-enemy-spell-display 
+        [caster]="'Agareth'" 
+        [category]="enemy.category" 
+        [skills]="getSkills(skills['Underlord Agareth'], ['Color', 'Soul%20Burst', 'Umbra%20Dance', 'Skewer', 'Finger%20of%20Death'])"
+        style="width: 90%; align-self: center;"></app-enemy-spell-display>
+      </div>
+      <div class="guide-minions">
+        <h1 class="guide-label" [style.color]="enemy.color">Minions</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <div class="minion-container">
+          <button mat-icon-button class="minion-button" (click)="openMinionDetails('Soul Crystal')">
+            <img class="button-image" src="{{ getEnemyImageURL('Soul Crystal') }}" alt="thumbnail" width="100%" />
+          </button>
+          <button mat-icon-button class="minion-button" (click)="openMinionDetails('Hellspawn')">
+            <img class="button-image" src="{{ getEnemyImageURL('Hellspawn') }}" alt="thumbnail" width="100%" />
+          </button>
         </div>
+      </div>
+      <div class="guide-spells">
+        <h1 class="guide-label" [style.color]="enemy.color">Soul Crystal Spells</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <app-enemy-spell-display [caster]="'Soul Crystal'" [category]="enemy.category" [skills]="skills['Soul Crystal']"></app-enemy-spell-display>
+      </div>
+      <div class="guide-kill">
+        <h1 class="guide-label" [style.color]="enemy.color">Intermission Phase 1</h1>
+        <mat-divider style="margin-bottom: 20px" [style.border-top-color]="enemy.color"></mat-divider>
+        <p class="guide-description">
+          <br /><br />
+          When he reaches 66%, he will begin to shout "Bow Down..." and teleport to the center.
+          <br /><br />
+          He will then drag everyone toward him, eating up to 1-3 players, depending on the group size. Coils will also spawn around the edges of the arena and will stun the player for 3 seconds on contact. He will kill anything that isn't the first 1-3 players, including his own minions, on contact.
+          <br /><br />
+          <span style="color: red">If any other player outside the first 1-3 touches him, he will heal 20% of his hp.</span>
+          <br /><br />
+          It is possible to redo this channel when players fail minigame or <span [style.color]="enemy.color">Agareth</span> hp is back to curtain threshold, however this will not reset the Phase Count.
+          <br /><br />
+          In the meantime, Agareth will be in his "Empowered state". During this time, all of his spells will be empowered and he will have 90% Damage Reduction. Just survive until the mini game is done and the intermission phase is over. The crystals will not heal him during this phase but he will regenerate his health naturally (0.25%/s).
+          <br /><br />
+          During this phase, he will have two new spells: Voidfall and Fear. He will keep these spells past this point
+        </p>
+        <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills['Underlord Agareth'], ['Void%20Fall', 'Fear', 'Empowered%20Soul%20Burst', 'Empowered%20Umbra%20Dance', 'Empowered%20Skewer' ])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+      </div>
+      <div class="guide-minions">
+        <h1 class="guide-label" [style.color]="enemy.color">Minigame</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <div class="minion-container">
+          <button mat-icon-button class="minion-button" (click)="openMinionDetails('Gatekeeper of Hell')">
+            <img class="button-image" src="{{ getEnemyImageURL('Gatekeeper of Hell') }}" alt="thumbnail" width="100%" />
+          </button>
+          <button mat-icon-button class="minion-button" (click)="openMinionDetails('Soul Shatterer')">
+            <img class="button-image" src="{{ getEnemyImageURL('Gatekeeper of Hell') }}" alt="thumbnail" width="100%" />
+          </button>
+          <button mat-icon-button class="minion-button" (click)="openMinionDetails('Cursed Spirit')">
+            <img class="button-image" src="{{ getEnemyImageURL('Gatekeeper of Hell') }}" alt="thumbnail" width="100%" />
+          </button>
+        </div>
+      </div>
+      <div class="guide-spells">
+        <h1 class="guide-label" [style.color]="enemy.color">Minigame Spells</h1>
+        <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+        <app-enemy-spell-display [caster]="'Gatekeeper of Hell'" [category]="enemy.category" [skills]="skills['Gatekeeper of Hell']"></app-enemy-spell-display>
+        <app-enemy-spell-display [caster]="'Soul Shatterer'" [category]="enemy.category" [skills]="skills['Soul Shatterer']"></app-enemy-spell-display>
+      </div>
+      <div class="guide-kill">
+        <h1 class="guide-label" [style.color]="enemy.color">Minigame Video</h1>
+        <mat-divider style="margin-bottom: 20px" [style.border-top-color]="enemy.color"></mat-divider>
+        <iframe class="guide-kill-video" src="https://www.youtube.com/embed/KMl1iR3g5ss" allow="autoplay" allowfullscreen style="align-self: center" frameborder="0"></iframe>
+      </div>
+      <div class="guide-kill">
+        <h1 class="guide-label" [style.color]="enemy.color">Phase 2</h1>
+        <mat-divider style="margin-bottom: 20px" [style.border-top-color]="enemy.color"></mat-divider>
+        <p class="guide-description">
+          <br /><br />
+          When the minigame is done, Agerath and all crystals will return back to normal. He will also gain one new spell in the new phase.
+        </p>
+        <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills['Underlord Agareth'], ['Abyssal%20Miasma'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+      </div>
+      <div class="guide-kill">
+        <h1 class="guide-label" [style.color]="enemy.color">Intermission Phase 2</h1>
+        <mat-divider style="margin-bottom: 20px" [style.border-top-color]="enemy.color"></mat-divider>
+        <p class="guide-description">
+          <br /><br />
+          This will be the same as Intermission Phase 1. He will also keep miasma.
+          <br /><br />
+          After the second mini game has started, he will create a giant green line that will divide the arena in half. It is possible to cross the line but you will take heavy magic damage and be mini-stunned.
+          <br /><br />
+          <span style="color: red">This can be triggered at 66% HP if he was fed too much during the first Intermission Phase.</span>
+        </p>
+      </div>
+      <div class="guide-kill">
+        <h1 class="guide-label" [style.color]="enemy.color">Phase 3</h1>
+        <mat-divider style="margin-bottom: 20px" [style.border-top-color]="enemy.color"></mat-divider>
+        <p class="guide-description">
+          <br /><br />
+          After the second minigame has ended, Agerath will remain in his EMPOWERED state for the rest of the fight, his damage reduction will be 75% and keep all of his spells mentioned above.
+          <br /><br />
+          He also gains one more spell called Armageddon that he will cast it right after minigame is complete. And the special mechanic, Fear stacks.
+        </p>
+        <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getSkills(skills['Agareth'], ['Fear', 'Armageddon'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+        <app-enemy-spell-display [caster]="enemy.name" [category]="enemy.category" [skills]="getRemainingSkills(skills['Underlord Agareth'])" style="width: 90%; align-self: center;"></app-enemy-spell-display>
+      </div>
     </div>
-</div>
+    <div class="guide-kill">
+      <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
+      <mat-divider style="margin-bottom: 20px" [style.border-top-color]="enemy.color"></mat-divider>
+      <iframe class="guide-kill-video" src="https://www.youtube.com/embed/Ow5LPmVxhRA" allow="autoplay" allowfullscreen style="align-self: center" frameborder="0"></iframe>
+      <iframe class="guide-kill-video" src="https://www.youtube.com/embed/vMVjgKxCmV4" allow="autoplay" allowfullscreen style="align-self: center" frameborder="0"></iframe>
+    </div>
+  </div>

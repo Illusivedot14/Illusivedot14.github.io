@@ -7,25 +7,105 @@
         alt="location-image"
         width="1344" height="448"/>
         <p class="guide-description">
-            Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 50</span> 
-            before approaching this boss as you'll get no experience nor loot if you're below that threshold.
+            Make sure that you're <u style="color:red">AT LEAST</u><span style="color:#FFD700"> Level 100</span> AND at least <b><u>high-level geared</u></b> before approaching this boss, 
+            the difficulty will ramp up dramatically from here on out.
             <br>
             <br> 
-            To summon this boss, first, with any pickaxe, gather 4 <span style="color:#0288d1"> Blue Stone</span> s from any <span style="color:#0288d1"> Blue Stone</span>  Deposit in the Snowy Hills <span style="color:#FFD700">(Teleport )</span>6) or if you have an <span style="color:#52E252">Abyssal Pickaxe</span> or above, 
-            you can mine directly from the Stone Deposits in front of the golem cave <span style="color:#FFD700">(Teleport )</span>4).  Then, bring the stones to the 
-            top-right of the Seaside Area <span style="color:#FFD700">(Teleport )</span>3) in front of the shipwreck, as shown above.</p>
+            To get to this boss, first gather <span style="color:#b19cd9">3 Chaos Magic Stones</span> from killing <span style="color:#b19cd9">Chaos Elementals</span> in front of the 
+            Elemental Tower <span style="color:#FFD700">(Teleport Q-2)</span> which is also below Golem Cave <span style="color:#FFD700">(Teleport 4)</span>, or if you have an 
+            <span style="color:#52E252">Chaos Pickaxe</span>, you can mine directly from the Stone Deposit inside the tower <span style="color:#FFD700">(Teleport Q-2)</span>.  You'll also need 3 White Stones from 
+            either the Deposits at the Cave Entrance <span style="color:#FFD700">(Teleport 4)</span> if you have an 
+            <span style="color:#52E252">Abyssal Pickaxe</span> or above, or the White Stone Deposits at the Duchy of Wallachia <span style="color:#FFD700">(Teleport 7)</span>.
+            Then bring the stones to the tinkerer in the center of the tower and craft the <span [style.color]='enemy.color'>Key of Storm</span>, 
+            then bring it to the left-most teleport to enter <span [style.color]='enemy.color'>Valtora's Room</span>.</p>
     </div>
     <div class="guide-overall">
         <h1 class="guide-label" [style.color]="enemy.color">Overall</h1>
         <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
         <p class="guide-description">
             <br>
-            This boss is pretty simple as you can just hit and die until the boss is dead. However, its spells are pretty easy to avoid due to their long wind-ups. 
-            Just be mindful of your surroundings in case mobs come.</p>
+            This boss is the most straight-forward out of the Tower bosses as it only has one intermission phase. For this boss, you'll need consistent healing, two tanky people and at least one person who doesn't mind being far apart.
+            <br>
+            <br>
+            To start the fight, have one of the tanks hit <span [style.color]='enemy.color'>Valtora</span>. They will be marked with <span [style.color]='enemy.color'>Magnetic Attraction</span>, which will bind the closest person, in this case, the other tank. These two will be 
+            bound together till death to them part. If the marked person dies, the next person who attacks <span [style.color]='enemy.color'>Valtora</span> will be marked, if the bound person dies, they will pull everyone in the room towards him until a person is close enough to be 
+            linked. <span style="color:#FF6666">SO DON'T DIE IF YOU'RE LINKED</span>.</p>
+        <br>
+        <app-enemy-spell-display 
+        [caster]="'Valtora'" 
+        [category]="enemy.category" 
+        [skills]="getSkills(skills['Valtora'], ['Magnetic%20Attraction'])" 
+        style="width: 90%; align-self: center;"></app-enemy-spell-display>
+        <p class="guide-description">
+            <br>
+            Another mechanic to keep track of are the blue balls that will travel around the arena. <span style="color:#FF6666">DO NOT TOUCH THEM</span>. They will apply the debuff <span [style.color]='enemy.color'>Nasty Shock</span> 
+            which is the main killer in this fight. Try to either avoid or mitigate damage. <span style="color:#90EE90">Nasty Shock can also be cleansed</span>.</p>
+            <br>
+            <app-enemy-spell-display 
+            [caster]="'Valtora'" 
+            [category]="enemy.category" 
+            [skills]="getSkills(skills['Valtora'], ['Electric%20Storm', 'Nasty%20Shock'])" 
+            style="width: 90%; align-self: center;"></app-enemy-spell-display>
+        <p class="guide-description">
+            <br>
+            The boss will have two spells in the first half. <span [style.color]='enemy.color'>Storm Hammer</span> will target the furthest person within 1300 range, which is generally around the middle of the arena from where Valtora starts. Have one person or a summon soak 
+            the Hammer (Priest summon Raguel will get no damage from Hammer). 
+            The other spell, <span [style.color]='enemy.color'>Servant of Lightning</span>, will summon 2 smaller Minions which will grant both minions and Valtora a <span [style.color]='enemy.color'>Lightning Shield</span>. 
+            <span style="color:#FFFF99">These shields will reduce damage to <span [style.color]='enemy.color'>Valtora</span> and his minions by 50%</span> and make every attack by the Servants interrupt actions. These shields can be broken. </p>
+            <br>
+        <app-enemy-spell-display 
+        [caster]="'Valtora'" 
+        [category]="enemy.category" 
+        [skills]="getSkills(skills['Valtora'], ['Storm%20Hammer', 'Servant%20of%20Lightning'])" 
+        style="width: 90%; align-self: center;"></app-enemy-spell-display>
+        <br>
         <div class="guide-spells">
-            <h1 class="guide-label" [style.color]="enemy.color">Spells</h1>
+            <h1 class="guide-label" [style.color]="enemy.color">Servant of Lightning Spells</h1>
             <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
-            <app-enemy-spell-display [skills]="skills[enemy.name]"></app-enemy-spell-display>wellz
+            <app-enemy-spell-display [caster]="'Servant of Lightning God'" [category]="enemy.category" [skills]="skills['Servant of Lightning God']"></app-enemy-spell-display>
         </div>
+        <p class="guide-description">
+            <br>
+            Keep attacking the boss and avoiding the Blue Orbs until he reaches <span style="color:#90EE90">HP 50%</span>, where he will begin the intermission phase. <span [style.color]='enemy.color'>Valtora</span> will fly to the sky and four Tornados will appear in each quadrant. 
+            Split your team so that a healer can reach as many people as possible while also being on a Tornado. A rule of thumb is that the 2 linked people will go on one Tornado while everyone will split onto the other Tornados. 
+            These Tornados will hurt and will silence you so don't get 
+            on it with <span [style.color]='enemy.color'>Nasty Shock</span> applied or else you'll kill your whole team. <span [style.color]='enemy.color'>Valtora</span> will then summon 3 red lines to sweep across the arena. 
+            <span style="color:#9acd32">THESE LINES WILL INSTA-KILL YOU</span>. The only way to dodge them is if you're above them.
+         </p>
+         <br>
+         <app-enemy-spell-display 
+         [caster]="'Valtora'" 
+         [category]="enemy.category" 
+         [skills]="getSkills(skills['Valtora'], ['Rage%20of%20the%20Thunder%20God', 'Windy%20Presence'])" 
+         style="width: 90%; align-self: center;"></app-enemy-spell-display>
+         <p class="guide-description">
+            <br>
+            After the intermission, he will gain <span style="color:#FFFF99">30% Damage Reduction</span>, <span [style.color]='enemy.color'>Storm Hammer</span> will now spawn a lightning pool that will 
+            <span style="color:#90EE90">heal the boss for 10% per second</span>, and he will gain a new spell, <span [style.color]='enemy.color'>Wrath of Heaven</span>, which will summon one line. 
+            <span style="color:#FF6666">ALWAYS BAIT THESE SPELL OUT BEFORE ENGAGING</span>. It will be the first spell he'll cast if the other spells are on cooldown. 
+            After those spell are baited, you can continue to attack him until he is dead. However he will cast his new spell when its off cooldown so kill it quick.
+         </p>
+         <br>
+         <app-enemy-spell-display 
+         [caster]="'Valtora'" 
+         [category]="enemy.category" 
+         [skills]="getSkills(skills['Valtora'], ['Wrath%20of%20Heaven'])" 
+         style="width: 90%; align-self: center;"></app-enemy-spell-display>
+         <div class="guide-minions">
+            <h1 class="guide-label" [style.color]="enemy.color">Minions</h1>
+            <mat-divider [style.border-top-color]="enemy.color"></mat-divider>
+            <div class="minion-container">
+            <button mat-icon-button class="minion-button" (click)="openMinionDetails('Servant of Lightning God')">
+                <img class="button-image" src="{{ getEnemyImageURL('Servant of Lightning God') }}"
+                alt="thumbnail"
+                width="100%"/>
+            </button>
+            </div>
+        </div> 
+    </div>
+    <div class="guide-kill">
+        <h1 class="guide-label" [style.color]="enemy.color">Kill Video</h1>
+        <mat-divider style="margin-bottom: 20px;" [style.border-top-color]="enemy.color"></mat-divider>
+        <iframe class="guide-kill-video" src="https://drive.google.com/file/d/1M8uyaT_nE1Ard2YNzOJ9IVoBuWJrBt3W/preview" allow="autoplay" allowfullscreen style="align-self: center;" frameborder="0"></iframe>
     </div>
 </div>

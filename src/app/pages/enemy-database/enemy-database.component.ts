@@ -17,8 +17,8 @@ export class EnemyDatabaseComponent implements OnInit, OnDestroy {
   private itemsSub!: Subscription;
 
   public enemies  : Enemy[] = [];
-  public enemy_categories : string[] = ["Mobs", "Fields", "Minors", "Mids", "Highs", "Ends"];
-  public enemy_list : Enemy[][] = [[], [], [], [], [], []];
+  public enemy_categories : string[] = ["Mobs", "Fields", "Minors", "Mids", "Highs", "Lates", "Ends"];
+  public enemy_list : Enemy[][] = [[], [], [], [], [], [], []];
 
   public items : Item[]  = [];
 
@@ -44,7 +44,8 @@ export class EnemyDatabaseComponent implements OnInit, OnDestroy {
         else if(enemy.category == "Minor")                   this.enemy_list[2].push(enemy);
         else if(enemy.category == "Mid")                     this.enemy_list[3].push(enemy);
         else if(enemy.category == "High")                    this.enemy_list[4].push(enemy);
-        else if(enemy.category == "Endgame")                 this.enemy_list[5].push(enemy);
+        else if(enemy.category == "Late")                    this.enemy_list[5].push(enemy);
+        else if(enemy.category == "Endgame")                 this.enemy_list[6].push(enemy);
       }
     });
     this.itemsSub = this.enemyService.getItems().subscribe(itemData => { this.items = itemData });
