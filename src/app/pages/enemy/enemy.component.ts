@@ -25,6 +25,7 @@ export class EnemyComponent implements OnInit, OnDestroy {
 
   public difficulty           : number = 1;
   private lowerDropRateScale  : number = .125;
+  private midDropRateScale    : number = .05;
   private higherDropRateScale : number = .2;
   private cutOffDropRateScale : number = 5;
 
@@ -175,14 +176,18 @@ export class EnemyComponent implements OnInit, OnDestroy {
   onInputChange(event: MatSliderChange) {
     this.difficulty = event.value!;
   }
-
+//Difficulty bonus 25% HP / 12.5% drop rate per player from 2 ~ 5 → 40% HP / 5% drop rate per player from 4 ~ 8
   getHealth(hp: any) : number {
     var health = parseFloat(hp);
     var difficultyHealth = 0;
-    if((this.enemy.category == "Minor" || this.enemy.category == "Mid")) {
+    if((this.enemy.category == "Minor")) {
       difficultyHealth = this.difficulty <= 5 ? health*.5*(this.difficulty-1) : health*2;
     }
-    if((this.enemy.category == "High" || this.enemy.category == "Endgame")) {
+    else if(this.enemy.category == "Mid") {
+        difficultyHealth = this.difficulty > 3 ? health*.40*(this.difficulty-3) : 0;
+        difficultyHealth = this.difficulty > 8 ? health*2 : difficultyHealth;
+    }
+    else if((this.enemy.category == "Late" || this.enemy.category == "High" || this.enemy.category == "Endgame")) {
       difficultyHealth = this.difficulty > 5 ? health*.2*(this.difficulty-5) : 0;
     }
     return health+difficultyHealth;
@@ -210,10 +215,14 @@ export class EnemyComponent implements OnInit, OnDestroy {
     if(item.name.includes("Token") || item.name.includes("Icon") || item.name.includes("Effort")) {
       return ' (' + (Math.round((droprate) * 10000) / 100) + "%)"
     }
-    if((enemy.category == "Minor" || enemy.category == "Mid")) {
+    if(enemy.category == "Minor") {
       droprateScale = this.difficulty <= this.cutOffDropRateScale ? droprate*this.lowerDropRateScale*(this.difficulty-1) : droprate*this.lowerDropRateScale*4;
     }
-    if((enemy.category == "High" || enemy.category == "Endgame")) {
+    else if(enemy.category == "Mid") {
+      droprateScale = this.difficulty > 3 ? droprate*this.midDropRateScale*(this.difficulty-3) : 0;
+      droprateScale = this.difficulty > 8 ? droprate*this.midDropRateScale*5: droprateScale;
+    }
+    else if((this.enemy.category == "Late" || enemy.category == "High" || enemy.category == "Endgame")) {
       droprateScale = this.difficulty > this.cutOffDropRateScale ? droprate*this.higherDropRateScale*(this.difficulty-5) : 0;
     }
     return ' (' + (Math.round((droprate + droprateScale) * 10000) / 100) + "%)"

@@ -68,11 +68,12 @@ import { EntGuideComponent }       from './guides/high/3-ent/ent.component';
 import { ArchangelGuideComponent } from './guides/high/4-archangel/archangel.component';
 import { ShadowGuideComponent }    from './guides/high/5-shadow/shadow.component';
 
-import { DeathGuideComponent }     from './guides/end/0-death/death.component';
-import { ValtoraGuideComponent }   from './guides/end/1-valtora/valtora.component';
-import { IfritGuideComponent }     from './guides/end/2-ifrit/ifrit.component';
-import { NereidGuideComponent }    from './guides/end/3-nereid/nereid.component';
-import { AgarethGuideComponent }   from './guides/end/4-agareth/agareth.component';
+import { DeathGuideComponent }     from './guides/late/0-death/death.component';
+import { ValtoraGuideComponent }   from './guides/late/1-valtora/valtora.component';
+import { IfritGuideComponent }     from './guides/late/2-ifrit/ifrit.component';
+
+import { NereidGuideComponent }    from './guides/end/0-nereid/nereid.component';
+import { AgarethGuideComponent }   from './guides/end/1-agareth/agareth.component';
 // import { DukeGuideComponent }      from './guides/end5-duke/duke.component';
 
 
