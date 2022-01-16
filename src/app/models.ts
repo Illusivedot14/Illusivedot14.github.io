@@ -85,7 +85,10 @@ export interface EnemySkill {
     cooldown: number;
     cost: number;
 
-    description: Array<string>;
+    description: {
+        base: Array<string>;
+        hard: Array<string>;
+    };
     summons: Array<string>;
     
 }

@@ -17,7 +17,7 @@
         <div class="spell-details">
             <div class="spell-description" [style.color]="spell.color">
                 <div class="spell-detail-label">[{{ capitalizeFirstLetter(spell.type) }}]</div>
-                <ng-container *ngFor="let line of spell.description">
+                <ng-container *ngFor="let line of spell.description.base">
                     <span class="spell-active"  *ngIf="spell.type=='active'">❖ {{line}}<br></span>
                     <span class="spell-passive" *ngIf="spell.type=='passive'">⁘ {{line}}<br></span>
                     <span class="spell-trigger" *ngIf="spell.type=='trigger'">※ {{line}}<br></span>

@@ -14,6 +14,7 @@ export class EnemySpellDisplayComponent implements OnInit {
   @Input() skills!: EnemySkill[];
   @Input() category: string = "";
   @Input() caster: string = "";
+  @Input() mode: string = 'base';
   constructor(private router: Router, private _enemyService: HttpService, public sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
@@ -28,7 +29,8 @@ export class EnemySpellDisplayComponent implements OnInit {
     return name.charAt(0).toUpperCase() + name.slice(1);
   }
   getEnemySpellMP4(spellName : string) : SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl("https://ia601502.us.archive.org/5/items/twrpg_guidebook/EnemySpells%2F" + encodeURI(this.category) + '%2F' + encodeURI(this.caster) + '%2F' + encodeURI(spellName) + ".mp4");
+    return this.sanitizer.bypassSecurityTrustResourceUrl("https://ia601502.us.archive.org/5/items/twrpg_guidebook/EnemySpells%2F" + 
+    encodeURI(this.category) + '%2F' + encodeURI(this.caster) + '%2F' + encodeURI(this.mode) + '%2F' + encodeURI(spellName) + ".mp4");
   }
   openMinionDetails(id: string) : void {
     const url = this.router.serializeUrl(
