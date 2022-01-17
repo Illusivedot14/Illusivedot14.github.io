@@ -14,7 +14,7 @@ export class EnemySpellDisplayComponent implements OnInit {
   @Input() skills!: EnemySkill[];
   @Input() category: string = "";
   @Input() caster: string = "";
-  @Input() mode: string = 'base';
+  @Input() mode: string = 'Base';
   constructor(private router: Router, private _enemyService: HttpService, public sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
