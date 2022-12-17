@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+
+  ngOnInit(): void {
+    this.redirectToActualTWRPG();
+  }
+
+  redirectToActualTWRPG(): void {
+    document.location.href = 'https://discord.gg/twrpg';
+  }
 }
