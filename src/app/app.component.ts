@@ -13,6 +13,6 @@ export class AppComponent {
   }
 
   redirectToActualTWRPG(): void {
-    document.location.href = 'https://discord.gg/twrpg';
+    document.location.href = 'https://sfarmani.github.io/';
   }
 }
