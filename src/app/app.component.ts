@@ -9,7 +9,7 @@ export class AppComponent {
 
 
   ngOnInit(): void {
-    this.redirectToActualTWRPG();
+    // this.redirectToActualTWRPG();
   }
 
   redirectToActualTWRPG(): void {
