@@ -37,6 +37,7 @@ export class ItemComponent implements OnInit, OnDestroy {
     'attackspeedpercent':    {  name: "% Attack Speed",            color: '#ff8c00', value: 0 },
     'movespeed':             {  name: " Movement Speed",           color: '#ff8c00', value: 0 },
     'movespeedpercent':      {  name: "% Movement Speed",          color: '#ff8c00', value: 0 },
+    'procdamagepercent':     {  name: "% Proc Damage",             color: '#40e0d0', value: 0 },
     'dodgechancepercent':    {  name: "% Dodge Chance",            color: '#40e0d0', value: 0 },
     'skilldamagepercent':    {  name: "% Skill Damage",            color: '#40e0d0', value: 0 },
     'critchancepercent':     {  name: "% Critical Chance",         color: '#40e0d0', value: 0 },
